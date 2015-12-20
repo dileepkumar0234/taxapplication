@@ -1345,7 +1345,7 @@ img.logo{
     padding: 20px;
     margin: 0;
     float: left;
-    background: none repeat scroll 0 0 rgba(255, 255, 255, 0.3);
+    /*background: none repeat scroll 0 0 rgba(255, 255, 255, 0.3);*/
     color: #fff;
     font-weight: normal;
 }
@@ -1412,10 +1412,11 @@ padding: 5px;
 	    background: none repeat scroll 0 0 rgba(255, 255, 255, 0.9)!important;
 	    padding-left: 20px;
 }
-.inprogress{
-	background: url("../images/animatedEllipse.gif") no-repeat center center fixed;
+/*.inprogress{
+background: url("../images/animatedEllipse.gif") no-repeat center center fixed;
 	min-height: 500px;
-}
+}*/
+
 
 .feel_form input,.feel_form select{
        width: 100%;
@@ -1436,3 +1437,37 @@ padding: 5px;
 .sidebar li.Log_out i{
 	margin-right: 5px;
 }
+.taxpayer{
+	margin-top:20px;
+	/*background: white;*/
+	background:none repeat scroll 0 0 rgba(255, 255, 255, 0.9)!important;
+	padding: 20px 0;
+	border-radius: 10px;
+}
+ul.adminGroup {
+list-style: none;
+margin: 0;
+display: table;
+table-layout: fixed;
+}
+ul.adminGroup li{
+	color:black;
+	display: table-cell;
+	border-bottom: 1px solid #ccc;
+
+	padding: 10px 0;
+
+}
+ul.adminGroup li:first-child{
+font-weight: bold;
+	}
+	div.adminGroup{
+		color:black;
+		margin-bottom:10px;
+	}
+	.uploadAdmin{
+		border-bottom: none!important;
+	}
+	.activeState{
+		background-color: red;
+	}
