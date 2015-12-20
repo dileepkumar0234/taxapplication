@@ -1,0 +1,33 @@
+<div id="topbar">
+
+  <p>CONTACT US: <strong>0800 200 200</strong> | <strong>contact@sampledomain.com</strong></p>
+<a ui-sref="admin.user" >Admin</a>
+  <div class="right_btns" >  <a  ng-click="OpenLogin()" class="login_btn"><i class="fa fa-lock"> </i> Login / Sign Up</a>
+  <!-- <a class="ref_frnd" ng-click="referals()"><i class="fa fa-user"></i> Referal Program</a> -->
+<a class="ref_frnd" ui-sref="main.referalProgram"><i class="fa fa-user"></i> Referal Program</a>
+  </div>
+
+  <div class="alpha"></div>
+  
+</div>
+<div class="header">
+  <img src="img/logo.png" class="logo1">
+  <div class="nav2">
+
+    <ul>
+
+      <li class="banner"><a ng-class="{'active':current=='main.home'}" ui-sref="main.home">Home</a></li>
+      <li class="banner"><a ng-class="{'active':current=='main.firmProfile'}" ui-sref="main.firmProfile">Firm Profile </a></li>
+      <li class="banner" style="position:relative;"><a ng-mouseover="service_list=!service_list"  ng-class="{'active':current=='main.Service'}" ui-sref="main.Service">Our Services</a>
+          <ul style="position:absolute;top:30px;" ng-show="service_list">
+            <li style="width:250px" class="banner"><a ng-class="{'active':current=='main.Service'}" ui-sref="main.Service">Indian Tax  Services</a></li>
+             <li style="width:100%" class="banner"><a ng-class="{'active':current=='main.Service'}" ui-sref="main.Service">Business Tax Services</a></li>
+          </ul>
+      </li>
+      <li><a ui-sref="main.tax_center" ng-class="{'active':current=='main.tax_center'}" >Tax Center</a></li>
+      <li class="banner"><a ui-sref="main.carriers" ng-class="{'active':current=='main.carriers'}">Careers</a></li>
+      <li class="banner"><a ng-class="{'active':current=='main.contactUs'}" ui-sref="main.contactUs">Contact Us</a></li>
+    </ul>
+  </div>
+</div>
+

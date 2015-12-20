@@ -1,0 +1,68 @@
+<div class="popup_main">
+
+ <ul>
+
+   <li ng-click="signup=!signup;" ng-class="{'active':!signup}">Login</li>
+   <li ng-click="signup=!signup;" ng-class="{'active':signup}">Sign up</li>
+
+ </ul>
+ <form class="signup" name="signupform" ng-if="signup">
+  <div  class="row">
+    <div class="col-xs-6"><input type="text" name="first" ng-class="{'error':signupform.first.$invalid}" validate-form  ng-model="signupuser.inputFirstname" placeholder="First Name">
+    </div>
+
+    <div class="col-xs-6"><input type="text" ng-class="{'error':signupform.last.$invalid}" validate-form  name="last" ng-model="signupuser.inputLastname" placeholder="Last Name">
+    </div>
+
+  </div>
+
+  <div  class="row">
+    <div class="col-xs-12"><input type="text" ng-class="{'error':signupform.contact.$invalid}" validate-form  name="contact" ng-model="signupuser.inputTelephone" ng-pattern="/^[1-9]{1}[0-9]{9}$/" placeholder="Contact Number">
+    </div>
+
+    <div class="col-xs-12"><input type="text" name="email"  ng-class="{'error':signupform.email.$invalid}"  validate-form ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/" ng-model="signupuser.inputEmail" placeholder="Email-Addreess">
+      <p style="color:red;font-weight:bold;margin-top:-10px;" ng-show="emailExist">E-mail already Exist</p>
+    </div>
+
+    <div class="col-xs-12"><input type="text" ng-pattern="/^((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{6,20})$/" ng-class="{'error':signupform.password.$invalid}" validate-form  name="password" ng-model="signupuser.userpwd" placeholder="Password">
+    </div>
+
+ <div class="col-xs-12"><input type="text" ng-pattern="/^((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{6,20})$/" ng-class="{'error':signupform.confirmpassword.$invalid}" validate-form = "signupuser.userpwd"   name="confirmpassword" ng-model="confirmPassword" placeholder="Confirm Password">
+    </div>
+
+
+    <div class="col-xs-12"><input type="text" ng-class="{'error':signupform.occupation.$invalid}" validate-form  name="occupation" ng-model="signupuser.occupation" placeholder="Occupation">
+    </div>
+
+    <div class="col-xs-12"><input type="submit"  ng-click="signupClient(signupuser,signupform)" class="submit">
+    </div>
+  </div>
+</form>
+
+<p class="msg" ng-show="signup&&successRegistr">You have successfully Registered.Please <a ng-click="signup=!signup;">click here</a> to login</p>
+<p class="msg" ng-show="!signup&&resetdone">You Password have been sent to Registered E-mail id </p>
+<form class="login" name="login" ng-if="!signup">
+  <div  class="row">
+    <div class="col-xs-12"><input type="text" name="email" ng-class="{'error':login.email.$invalid}"  validate-form ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/" ng-model="loginuser.userEmail" placeholder="Email-Addreess">
+    </div>
+    <div class="col-xs-12"><input type="password" name="password" ng-model="loginuser.pwd" placeholder="Password">
+    </div>
+    <div ng-show="invalidCredentials" class="col-md-12" style="color:red;margin-bottom:10px;">Invalid Credentials</div>
+    <div class="col-xs-6"><a href="#" ng-click="toggleForgot($event)">Forgot Password</a> </div>
+    <div class="col-xs-6"><input type="submit" ng-click="userlogin(loginuser)" class="submit" value="Login">
+    </div>
+  </div>
+</form>
+
+
+<form class="login" name="forgot" ng-if="!signup&&showforgot">
+  <div  class="row">
+    <div class="col-xs-12"><input type="text" name="email" ng-model="userEmail" placeholder="Email-Addreess">
+    </div>
+
+    
+    <div class="col-xs-12"><input type="submit" ng-click="getBack(userEmail)" class="submit pull-right" value="submit">
+    </div>
+  </div>
+</form>
+</div>

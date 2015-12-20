@@ -1,0 +1,77 @@
+<div class="right_content">
+    <h1>Dependants Info (If any) <span ng-if="editmode" class="btn btn-primay" ng-click="editProfile()">Edit</span></h1>
+    <form ng-class="{'feel_form':editMode}">
+    <div ng-repeat="item in dependants"> 
+    <h1>Dependant-{{$index}}<button class='btn btn-danger' ng-click="DeleteDependant(item,$index)">X</button></h1>    
+        <div class="col-xs-12">
+            <div class="col-xs-6">
+                <div class="form-group">
+                    <label for="email">First Name:</label>
+                    <input type="text" ng-model="item.first_name" class="form-control" id="email">
+                </div>
+            </div>
+            <div class="col-xs-6">
+                <div class="form-group">
+                    <label for="email">Last Name:</label>
+                    <input type="text" ng-model="item.last_name" class="form-control" id="email">
+                </div>
+
+            </div>
+
+
+        </div>
+
+        <div class="col-xs-12">
+            <div class="col-xs-6">
+                <div class="form-group">
+                    <label for="email">DOB:</label>
+                    <input type="text" ng-model="item.dob" class="form-control" id="email">
+                </div>
+            </div>
+            <div class="col-xs-6">
+                <div class="form-group">
+                    <label for="email">Relationship :</label>
+                    <select ng-selected="item.occupation==relation" ng-model="item.occupation"  ng-options="relation for relation in relations" class="form-control" name="category">
+                        <!-- <option>select</option>
+                        <option>Mother </option>
+                       <option>Father  </option>
+                       <option>Son  </option>
+                       <option>Daughter  </option>
+                       <option>Other </option> -->
+
+                    </select>
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="col-xs-12">
+            <div class="col-xs-6">
+                <div class="form-group">
+                    <label for="email">Address:</label>
+                    <input type="text" ng-model="item.address" class="form-control" id="email">
+                </div>
+            </div>
+            <div class="col-xs-6">
+                <div class="form-group">
+                    <label for="email">E-mail:</label>
+                    <input type="text" ng-model="item.mail_id" class="form-control" id="email">
+                </div>
+            </div>
+
+
+        </div>
+</div>
+        <div class="col-lg-12">
+<button ng-if="dependants.length<5" style="margin-left:10px;" ng-click="addMore()" class="btn btn-success pull-left" type="submit">Add More Dependants</button>
+            <button style="margin-left:10px;" ng-click="UpdateDependants()" class="btn btn-success pull-right" type="submit">SUBMIT</button>
+            <button class="btn btn-warning  pull-right" ng-click="reset();" type="reset">RESET</button>
+        </div>
+<!-- <p style="text-align: center">Note: Here User  should be able to Update the Basic Info</p> -->
+
+
+    </form>
+</div>

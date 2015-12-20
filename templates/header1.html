@@ -1,0 +1,30 @@
+
+
+<div class="sidebar">
+
+    <ul>
+        <li><a  ng-click="RefreshGrid($event)"><i class="fa fa-upload"></i>To be Assigned(x) </a></li>
+        <li><a  ng-click="RefreshGrid($event)"><i class="fa fa-upload"></i> All Records({{allUsers.length}}) </a></li>
+        <li><a  ng-click="RefreshGrid($event)"><i class="fa fa-upload"></i> To be Allocated(X) </a></li>
+        <li><a  ng-click="RefreshGrid($event,1)" class="active"><i class="fa fa-product-hunt"></i>Basic Info Pending({{count.basisinfoCnt}}) <i class="fa fa-chevron-circle-down"></i>  </a>
+            
+
+        </li>
+
+        <li><a  ng-click="RefreshGrid($event,2)"><i class="fa fa-upload"></i> Scheduling Pending({{count.Schedulingcnt}}) </a></li>
+        <li><a  ng-click="RefreshGrid($event,3)"><i class="fa fa-sticky-note"></i> Interview Pending({{count.interviewCnt}})</a></li>
+        <li><a  ng-click="RefreshGrid($event,4)"> <i class="fa fa-file-archive-o"></i> Documents Upload Pending( {{count.docsCnt}})</a></li>
+        <li><a ng-click="RefreshGrid($event,5)"><i class="fa fa-cc-paypal"></i> Other Documents Upload Pending(  {{count.otherDocsCnt}})</a></li>
+        <li><a ng-click="RefreshGrid($event,6)"> <i class="fa fa-download"></i>	Preparation Pending({{count.preparationCnt}})</a></li>
+        <li><a  ng-click="RefreshGrid($event,7)"> <i class="fa fa-download"></i> Synopsys Pending({{count.synopsisCnt}})</a></li>
+        <li><a  ng-click="RefreshGrid($event,8)"> <i class="fa fa-download"></i> Payment Pending({{count.paymentCnt}})</a></li>
+        <li><a  ng-click="RefreshGrid($event,9)"> <i class="fa fa-download"></i> Review Pending({{count.reviewCnt}})</a></li>
+        <li><a  ng-click="RefreshGrid($event,10)"> <i class="fa fa-download"></i> Confirmation Pending({{count.confirmationCnt}})</a></li>
+        <li><a  ng-click="RefreshGrid($event,11)"> <i class="fa fa-download"></i> Filing Pending({{count.filing}})</a></li>
+        <li><a  ng-click="RefreshGrid($event,12)"> <i class="fa fa-download"></i>  E – Filing Complete({{count.filing}})</a></li>
+        <li><a ng-click="RefreshGrid($event,13)"> <i class="fa fa-download"></i>  Filing Docs Sent (x)</a></li>
+    </ul>
+
+    
+</div>
+<ui-view>

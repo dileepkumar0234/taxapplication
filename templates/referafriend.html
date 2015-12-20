@@ -1,0 +1,37 @@
+<div class="popup_main">
+  <h1 style="text-align:center;">Referal Program</h1>
+  
+  
+  <form class="signup" name="friendReference">
+    <div  class="row">
+      <div class="col-xs-6"><input type="text" name="fname" ng-model="user.first_name" placeholder="Your Name ">
+      </div>
+
+      <div class="col-xs-6"><input type="text" ng-model="user.email" placeholder="Your Email Id">
+      </div>
+
+    </div>
+
+    <div  class="row">
+      <div class="col-xs-12"><input type="text" ng-model="user.phone" placeholder="Your Telephone number">
+      </div>
+
+      <div class="col-xs-12"><input type="text" ng-model="friend.rf_name" placeholder="Name of your friend">
+      </div>
+
+
+      
+
+      <div class="col-xs-12"><input type="text" ng-model="friend.rf_email" placeholder="Friend's Email id">
+      </div>
+      <div class="col-xs-12"><input type="text" ng-model="friend.rf_phone" placeholder="Friend's Telephone Number">
+      </div>
+
+
+      <div class="col-xs-12"><input type="submit" ng-click="referRegister()" class="submit">
+      </div>
+    </div>
+  </form>
+
+  
+</div>

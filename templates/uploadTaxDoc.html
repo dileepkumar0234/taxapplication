@@ -1,0 +1,62 @@
+<div class="right_content">
+    <h1>Upload Your Tax Documents</h1>
+    <form name="uploadForm">
+        <div class="col-xs-12">
+            <div class="col-xs-6">
+                <div class="form-group">
+                    <label for="email">W-2</label>
+                    <input type="file" file-change ng-model="w_2"  class="form-control" id="email">
+                </div>
+            </div>
+            <div class="col-xs-6">
+                <div class="form-group">
+                    <label for="email">1099 int / div/ b<!-- 1099-int --></label>
+                    <input type="file" file-change ng-model="p1099int"  class="form-control" id="email">
+                </div>
+
+            </div>
+
+
+        </div>
+
+        <div class="col-xs-12">
+            <div class="col-xs-6">
+                <div class="form-group">
+                    <label for="email">Hsa / 5498 <!-- Hsa --></label>
+                    <input type="file" file-change  ng-model="Hsa" class="form-control" id="email">
+                </div>
+            </div>
+            <div class="col-xs-6">
+                <div class="form-group">
+                    <label for="email">Ira/1099r<!-- Ira --></label>
+                    <input type="file" file-change ng-model="Ira"  class="form-control" id="email">
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="col-xs-12">
+            <div class="col-xs-6">
+                <div class="form-group">
+                    <label for="email">Other Misc Docs<!-- Health Card --></label>
+                    <input type="file" file-change  ng-model="health_card" class="form-control" id="email">
+                </div>
+            </div>
+            
+
+
+        </div>
+
+        <div class="col-lg-12">
+
+            <button style="margin-left:10px;"  ng-click="uploadDocuments()" class="btn btn-success pull-right" type="submit">SUBMIT</button>
+            <button class="btn btn-warning  pull-right" type="reset">RESET</button>
+        </div>
+<!-- <p style="text-align: center">Note: Here User  should be able to Update the Basic Info</p> -->
+
+
+    </form>
+</div>
