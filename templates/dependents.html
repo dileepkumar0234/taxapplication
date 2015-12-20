@@ -1,5 +1,5 @@
 <div class="right_content">
-    <h1>Dependants Info (If any) <span ng-if="editmode" class="btn btn-primay" ng-click="editProfile()">Edit</span></h1>
+    <h1>Dependants Info (If any) <span ng-if="editMode" class="btn btn-primay" ng-click="editProfile()">Edit</span></h1>
     <form ng-class="{'feel_form':editMode}">
     <div ng-repeat="item in dependants"> 
     <h1>Dependant-{{$index}}<button class='btn btn-danger' ng-click="DeleteDependant(item,$index)">X</button></h1>    

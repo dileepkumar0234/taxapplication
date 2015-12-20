@@ -33,7 +33,9 @@
 
     <div class="col-xs-12"><input type="text" ng-class="{'error':signupform.occupation.$invalid}" validate-form  name="occupation" ng-model="signupuser.occupation" placeholder="Occupation">
     </div>
-
+<div class="col-md-12" style="color: white;margin-bottom:10px;">
+By clicking Create an account, you agree to our <a href="templates/terms.html" target="_blank"> Terms </a>and that you have read our Data Policy, including our Cookie Use.
+</div>
     <div class="col-xs-12"><input type="submit"  ng-click="signupClient(signupuser,signupform)" class="submit">
     </div>
   </div>

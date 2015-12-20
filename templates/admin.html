@@ -40,8 +40,8 @@
 </div>
 <div ng-if="!home_banner" class="gridStyle" ng-grid="gridOptions"></div>
 <div ng-if="home_banner&&userSelected">
- <div class="col-md-12" style="margin-top:20px;">
- <div class="col-md-2 no_padding" ng-click="getCurrentInfo($index)" ng-repeat="item in user_details_tabs"> <button  class="btn btn-primary">{{item.label}}</button></div>
+   <div class="col-md-12" style="margin-top:20px;">
+       <div class="col-md-2 no_padding" ng-click="getCurrentInfo($index)" ng-repeat="item in user_details_tabs"> <button  class="btn btn-primary">{{item.label}}</button></div>
      <!-- <div class="col-md-2 no_padding"> <button  class="btn btn-primary">Basic info</button></div>
      <div class="col-md-2 no_padding"> <button  class="btn btn-primary">Other info</button></div>
      <div class="col-md-2 no_padding"> <button  class="btn btn-primary">Scheduling Time</button></div>
@@ -53,149 +53,159 @@
 
  </div>
  
- <div class="col-md-12" ng-if="user_details_tabs[0].show">
-     <div class="form-group">
-         <p>First Name</p>
-         <p style="color:black;font-weight:bold;">{{PayerInfo.first_name}}</p>
-     </div>
-     <div class="form-group">
-         <p>Last Name</p>
-         <p style="color:black;font-weight:bold;">{{PayerInfo.last_name}}</p>
-     </div>
-     <div class="form-group">
-         <p>EMail</p>
-         <p style="color:black;font-weight:bold;">{{PayerInfo.email}}</p>
-     </div>
-     <div class="form-group">
-         <p>Mobile</p>
-         <p style="color:black;font-weight:bold;">{{PayerInfo.phone}}</p>
-     </div>
-     <div class="form-group">
-         <p>Address</p>
-         <p style="color:black;font-weight:bold;">{{PayerInfo.address}}</p>
-     </div>
+ <div class="col-md-12 taxpayer" ng-if="user_details_tabs[0].show">
+   <ul class="adminGroup col-md-6">
+       <li>First Name</li>
+       <li>{{PayerInfo.first_name}}</li>
+   </ul>
+   <ul class="adminGroup col-md-6">
+       <li>Last Name</li>
+       <li>{{PayerInfo.last_name}}</li>
+   </ul>
+   <ul class="adminGroup col-md-6">
+       <li>EMail</li>
+       <li>{{PayerInfo.email}}</li>
+   </ul>
+   <ul class="adminGroup col-md-6">
+       <li>Mobile</li>
+       <li>{{PayerInfo.phone}}</li>
+   </ul>
+   <ul class="adminGroup col-md-6">
+       <li>Address</li>
+       <li>{{PayerInfo.address}}</li>
+   </ul>
+   
+   <ul class="adminGroup col-md-6">
+       <li>Alternative Number</li>
+       <li>{{PayerInfo.alterphone}}</li>
+   </ul>
+   <ul class="adminGroup col-md-6">
+       <li>Client Location</li>
+       <li>{{PayerInfo.c_location}}</li>
+   </ul>
+   <ul class="adminGroup col-md-6">
+       <li>Current Employer</li>
+       <li>{{PayerInfo.current_emp}}</li>
+   </ul>
+   <ul class="adminGroup col-md-6">
+       <li>Date Of Birth</li>
+       <li>{{PayerInfo.dob}}</li>
+   </ul>
+   <ul class="adminGroup col-md-6">
+       <li>Occupation</li>
+       <li>{{PayerInfo.occupation}}</li>
+   </ul>
+</div>
+
+<div class="col-md-12 taxpayer" ng-if="user_details_tabs[1].show">
+<h1>Spouse Information</h1>
+    <div class="col-md-12">
+
+      <ul class="adminGroup col-md-6">
+           <li>First Name</li>
+           <li>{{SpouseInfo.first_name}}</li>
+       </ul>
+      <ul class="adminGroup col-md-6">
+          <li>Last Name</li>
+          <li>{{SpouseInfo.last_name}}</li>
+      </ul>
+     <ul class="adminGroup col-md-6">
+          <li>Mobile</li>
+          <li>{{SpouseInfo.phone}}</li>
+      </ul>
+     <ul class="adminGroup col-md-6">
+       <li>Occupation</li>
+       <li>{{SpouseInfo.occupation}}</li>
+   </ul>
+  <ul class="adminGroup col-md-6">
+       <li>Date Of Birth</li>
+       <li>{{SpouseInfo.dob}}</li>
+   </ul>
+</div>
+
+<div class="col-md-6" ng-repeat="dependantInfo in dependants">
+   <h1>Dependant{{$index+1}}</h1>
+   <ul class="adminGroup col-md-12">
+       <li>First Name</li>
+       <li>{{dependantInfo.first_name}}</li>
+   </ul>
+   <ul class="adminGroup col-md-12">
+      <li>Last Name</li>
+      <li>{{dependantInfo.last_name}}</li>
+  </ul>
+  <ul class="adminGroup col-md-12">
+      <li>Relationship</li>
+      <li>{{dependantInfo.occupation}}</li>
+  </ul>
+  <ul class="adminGroup col-md-12">
+   <li>Address</li>
+   <li>{{dependantInfo.address}}</li>
+</ul>
+<ul class="adminGroup col-md-12">
+   <li>E-Mail</li>
+   <li>{{dependantInfo.mail_id}}</li>
+</ul>
+</div>
+</div>
+
+<div class="col-md-12 taxpayer" ng-if="user_details_tabs[2].show">
+   <ul class="adminGroup col-md-6">
+       <li>Scheduled Date</li>
+       <li>{{scheduleInfo.schedule_dt}}</li>
+  </ul>
+   <ul class="adminGroup col-md-6">
+      <li>Scheduled Time</li>
+      <li>{{scheduleInfo.schedule_period}}</li>
+ </ul>
+</div>
+
+<div class="col-md-12 taxpayer" ng-if="user_details_tabs[3].show">
+  <ul class="adminGroup col-md-6">
+   <li>w2</li>
+   <li><a  href="ustaxfilerapis{{file_path}}/{{uploads.w2pdf}}">Download</a></li>
+</ul>
+<ul class="adminGroup col-md-6">
+   <li>healthcard</li>
+   <li><a href="ustaxfilerapis{{file_path}}/{{uploads.healthcard}}">Download</a></li>
+</ul>
+<ul class="adminGroup col-md-6">
+   <li>hsa</li>
+   <li><a href="ustaxfilerapis{{file_path}}/{{uploads.hsa}}">Download</a></li>
+</ul>
+<ul class="adminGroup col-md-6">
+   <li>ira</li>
+   <li><a href="ustaxfilerapis{{file_path}}/{{uploads.ira}}">Download</a></li>
+</ul>
+<ul class="adminGroup col-md-6">
+   <li>1099Int</li>
+   <li><a href="ustaxfilerapis{{file_path}}/{{uploads.p1099Int}}">Download</a></li>
+</ul>
+
+</div>
+
+
+<div class="col-md-12 taxpayer" ng-if="user_details_tabs[4].show">
+  <ul class="adminGroup col-md-6">
+    <li class="uploadAdmin">Upload Synopsys</li>
+    <li class="uploadAdmin"> <input  type="file" name="fname"  class="form-control" id="email"></li>
     
-      <div class="form-group">
-         <p>Alternative Number</p>
-         <p style="color:black;font-weight:bold;">{{PayerInfo.alterphone}}</p>
-     </div>
-      <div class="form-group">
-         <p>Client Location</p>
-         <p style="color:black;font-weight:bold;">{{PayerInfo.c_location}}</p>
-     </div>
-      <div class="form-group">
-         <p>Current Employer</p>
-         <p style="color:black;font-weight:bold;">{{PayerInfo.current_emp}}</p>
-     </div>
-     <div class="form-group">
-         <p>Date Of Birth</p>
-         <p style="color:black;font-weight:bold;">{{PayerInfo.dob}}</p>
-     </div>
-     <div class="form-group">
-         <p>Occupation</p>
-         <p style="color:black;font-weight:bold;">{{PayerInfo.occupation}}</p>
-     </div>
- </div>
+</ul>
+<ul class="adminGroup col-md-6">
+    
+    <li class="uploadAdmin"><button  type="submit"  class="btn btn-primary" id="email">UPLOAD</li>
+</ul>
+</div>
 
- <div class="col-md-12" ng-if="user_details_tabs[1].show">
-     <div class="col-md-6">
-     <div class="form-group">
-             <p>First Name</p>
-         <p style="color:black;font-weight:bold;">{{SpouseInfo.first_name}}</p>
-     </div>
-     <div class="form-group">
-          <p>Last Name</p>
-         <p style="color:black;font-weight:bold;">{{SpouseInfo.last_name}}</p>
-     </div>
-     <div class="form-group">
-          <p>Mobile</p>
-         <p style="color:black;font-weight:bold;">{{SpouseInfo.phone}}</p>
-     </div>
-     <div class="form-group">
-         <p>Occupation</p>
-         <p style="color:black;font-weight:bold;">{{SpouseInfo.occupation}}</p>
-     </div>
-     <div class="form-group">
-         <p>Date Of Birth</p>
-         <p style="color:black;font-weight:bold;">{{SpouseInfo.dob}}</p>
-     </div>
-     </div>
+<div class="col-md-12 taxpayer" ng-if="user_details_tabs[5].show">
+  <div for="email" class="adminGroup">File Number <label for="email">XXXXXXXXXX</label></div> 
+  <div ng-repeat="role in states" class="adminGroup">
+      <input type="checkbox"  ng-change="changeState($index)" ng-model="role.checked"> {{role.text}}
+  </div>
+  <button class="btn btn-primary" ng-click="updateStatus()">Push to State</button>
+</div>
 
-     <div class="col-md-6" ng-repeat="dependantInfo in dependants">
-     <h1>Dependant{{$index+1}}</h1>
-     <div class="form-group">
-             <p>First Name</p>
-         <p style="color:black;font-weight:bold;">{{dependantInfo.first_name}}</p>
-     </div>
-     <div class="form-group">
-          <p>Last Name</p>
-         <p style="color:black;font-weight:bold;">{{dependantInfo.last_name}}</p>
-     </div>
-     <div class="form-group">
-          <p>Relationship</p>
-         <p style="color:black;font-weight:bold;">{{dependantInfo.occupation}}</p>
-     </div>
-     <div class="form-group">
-         <p>Address</p>
-         <p style="color:black;font-weight:bold;">{{dependantInfo.address}}</p>
-     </div>
-     <div class="form-group">
-         <p>E-Mail</p>
-         <p style="color:black;font-weight:bold;">{{dependantInfo.mail_id}}</p>
-     </div>
-     </div>
- </div>
-
- <div class="col-md-12" ng-if="user_details_tabs[2].show">
-     <div class="form-group">
-             <p>Scheduled Date</p>
-         <p style="color:black;font-weight:bold;">{{scheduleInfo.schedule_dt}}</p>
-     </div>
-     <div class="form-group">
-          <p>Scheduled Time</p>
-         <p style="color:black;font-weight:bold;">{{scheduleInfo.schedule_period}}</p>
-     </div>
- </div>
-
-<div class="col-md-12" ng-if="user_details_tabs[3].show">
-      <div class="form-group">
-             <p>w2</p>
-         <p style="color:black;font-weight:bold;"><a  href="ustaxfilerapis{{file_path}}/{{uploads.w2pdf}}">Download</a></p>
-     </div>
-      <div class="form-group">
-             <p>healthcard</p>
-         <p style="color:black;font-weight:bold;"><a href="ustaxfilerapis{{file_path}}/{{uploads.healthcard}}">Download</a></p>
-     </div>
-      <div class="form-group">
-             <p>hsa</p>
-         <p style="color:black;font-weight:bold;"><a href="ustaxfilerapis{{file_path}}/{{uploads.hsa}}">Download</a></p>
-     </div>
-     <div class="form-group">
-             <p>ira</p>
-         <p style="color:black;font-weight:bold;"><a href="ustaxfilerapis{{file_path}}/{{uploads.ira}}">Download</a></p>
-     </div>
-     <div class="form-group">
-             <p>1099Int</p>
-         <p style="color:black;font-weight:bold;"><a href="ustaxfilerapis{{file_path}}/{{uploads.p1099Int}}">Download</a></p>
-     </div>
-
- </div>
-
-
-<div class="col-md-12" ng-if="user_details_tabs[4].show">
-     <h1>Upload Synopsys</h1>
- </div>
-
- <div class="col-md-12" ng-if="user_details_tabs[5].show">
-     
-     <label ng-repeat="role in states">
-      <input type="checkbox"  ng-change="changeState($index)" ng-model="role.checked"> {{role.text}}<br>
-     </label>
-     <button class="btn btn-primary" ng-click="updateStatus()">Push to State</button>
- </div>
-
- <div class="col-md-12" ng-if="user_details_tabs[6].show">
-     <h1>Payment Status & Paid Amount</h1>
- </div>
- <div>
- </div>
+<div class="col-md-12" ng-if="user_details_tabs[6].show">
+   <h1>Payment Status & Paid Amount</h1>
+</div>
+<div>
+</div>
