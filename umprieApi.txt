@@ -1,0 +1,123 @@
+Rest Api Checking 
+
+Click below link and check it, and install in chrome.
+chrome-extension://hgmloofddffdnphfgcellkdfbfbjeloo/RestClient.html
+
+Login :
+	Url      : http://localhost/code8-12-2015/ustaxfilerapis/login
+	Method   : POST
+	Data     : userEmail=dileepkumarkonda@gmail.com&pwd=dileepkumar
+	Response : {"status":"sucess","data":{"uid":"2","username":"fname","useremail":"dileepkumarkonda@gmail.com","userphone":"8500222765"},"UserType":"User"}
+
+Exists Email Checking :
+	Url      : http://localhost/code8-12-2015/ustaxfilerapis/email-verified
+	Method   : POST
+	Data     : user_email=dileepkumarkonda@gmail.com
+	Response : {"output":"exists"}
+	
+Register : 
+	Url      : http://localhost/code8-12-2015/ustaxfilerapis/registration
+	Method   : POST
+	Data     : inputFirstname=Balu&inputLastname=Koti&inputEmail=balu.konnipati79@gmail.com&userpwd=balu123!&
+			   occupation=Software&dob=05/10/1988&city_name=Hyd&state_name=Ap&addr=XXXXX XX xx&apt_no=Dno:143
+			   &inputTelephone=9989200205
+	Response : {"Success":"Registration Success","UserId":"9","Email":"balu.konnipati79@gmail.com"}
+	
+Forgot Password :
+	Url      : http://localhost/code8-12-2015/ustaxfilerapis/forgetpassword
+	Method   : POST
+	Data     : email=dileepkumarkonda@gmail.com
+	Response : Reset Password:  Created Email Template 
+	
+Change Password : Log in required.
+	Url      : http://localhost/code8-12-2015/ustaxfilerapis/changepassword
+	Method   : POST
+	Data     : oldPwd=dileep&cnfPwd=dileep1
+	Response : {"value":"1","Success":"Password Successfully Updated"}
+	(Note: Here if entered old password is wrong response is)
+	Response : {"value":"0","Success":"Old Password Is Wrong."}
+	
+schedules-page: Log in required.
+	Url      : http://localhost/code8-12-2015/ustaxfilerapis/schedules-page
+	Method   : POST
+	Data     : schedule_dt=12-8-2015&period_time=6am to 10am
+	Response : {"value":"1","output":"success",uid:1}
+	
+Get User Data : Log in required
+	Url      : http://localhost/code8-12-2015/ustaxfilerapis/registration?id=1
+	Method   : GET
+	Response : {"data":{"user_id":"1","user_name":"Dileep","email":"dkonda@aapthitech.com","password":"ea452f3b31ac158c119a0b295740d63e"
+,"locked_pwd":"dileep","date_added":"2015-11-26 20:09:37","date_updated":"2015-12-07 11:33:47","user_type_id"
+:"2","status":"1","user_details_id":"1","first_name":"Dileep","last_name":"Kumar","occupation":"occupation"
+,"gender":"1","current_emp":"Aapthi","dob":"986256","address":"Address","city_name":"City name","state_name"
+:"state name","zip":"500049","apt_no":"78787","phone":"8500222765","alterphone":"8500222765","time_zone"
+:null,"hint_question":null,"hint_answer":null,"tax_id_type":"1855","dependent":"1","relation_ship":"rq"
+,"ssnitin":"s2-s3-s4","visa_type":"1","c_location":"EEE","filling_status":"2"}}
+	
+TaxPayer : Log in required.
+	Url      : http://localhost/code8-12-2015/ustaxfilerapis/taxpayer-page/1
+	Method   : PUT
+	Data     : user_name=Dileep&inputLastname=Kumar&occupation=occupation&dob=05-10-1988&
+			   filling_status=1&dependent=1&addr=XXXXX&apt_no=Dno:143&inputTelephone=8500222765&city_name=HYd
+			   &state_name=AP&zipcode=555855&work_phone=8500222765&c_e=KPT&tax_id=1&cLocation=VNagar
+	Response : {"value":"1","output":"success",uid:1}
+	
+Dependent : Log in required.
+	Url      : http://localhost/code8-12-2015/ustaxfilerapis/dependent-page/1
+	Method   : PUT
+	Data     : inputLastname=DileepK&occupation=occupation&dob=05-10-1988&addr=XXXXX&inputTelephone=8500222765
+	Response : {"value":"1","output":"success",uid:1}
+	
+Spouse: Log in required.
+	Url      : http://localhost/code8-12-2015/ustaxfilerapis/spouse-page/1
+	Method   : PUT
+	Data     : user_name=DileepK&inputLastname=raj&occupation=occupation&dob=05-10-1988&inputTelephone=8500222765
+	Response : {"value":"1","output":"success",uid:1}
+	
+Refferal Friend: Log in required.
+	Url      : http://localhost/code8-12-2015/ustaxfilerapis/referral-friend
+	Method   : POST
+	Data     : rf_on_name=dileep&rf_on_email=dileepkumarkonda@gmail.com&rf_on_phone=8500222765&rf_name=Sarath&rf_email=something@gmail.com&rf_phone=988898989
+	Response : {"value":"1","output":"success",uid:1}
+
+Log Out: Log in required.
+	Url      : http://localhost/code8-12-2015/ustaxfilerapis/logout/something
+	Method   : GET
+	Response : {"output":"Session Expried"}
+
+
+User list :
+	
+	Url      : http://localhost/code8-12-2015/ustaxfilerapis/user-list
+	Method   : GET
+	Response : {"output":"success","success":[{"user_id":"4","user_name":"sarath","email":"sarath.anagha@gmail.com","password":"3bad6af0fa4b8b330d162e19938ee981","locked_pwd":"sarath","date_added":"2015-12-06 12:25:42","date_updated":"2015-12-13 16:00:36","user_type_id":"2","logged_ip":null,"status":"1"},{"user_id":"5","user_name":"Hello",
+	"email":"xyz@gmail.com","password":"6451d62c34ba801398a21df221f675b6","locked_pwd":
+	"sarath2@S","date_added":"2015-12-13 06:25:47","date_updated":"2015-12-13 08:02:01","user_type_id":"2",
+	"logged_ip":null,"status":"1"}]}
+	
+Count Of Each Proccess:
+	
+	Url      : http://localhost/code8-12-2015/ustaxfilerapis/coount-each-stages
+	Method   : GET
+	Response : {"value":1,"output":"success","basisinfoCnt":2,"Schedulingcnt":"","interviewCnt":"",
+	"docsCnt":"","otherDocsCnt":"","preparationCnt":"","synopsisCnt":"","paymentCnt":"","reviewCnt":"",
+	"confirmationCnt":"","filing":"","efiling":"","peFiling":""}
+	
+Each step list of users:
+	
+	Url      : http://localhost/14-12-2015/umpire-tax-filler/ustaxfilerapis/get-processing-info/1
+	Method   : GET
+	Response : {"value":1,"output":"success","list":[{"ps_id":"1","ps_user_id":"4","ps_state":"1","ps_added_at":"2015-12-16 07:58:33","ps_updated_at":null,"user_id":"4","user_name":"sarath","email":"sarath.anagha@gmail.com","password":"3bad6af0fa4b8b330d162e19938ee981","locked_pwd":"sarath","date_added":"2015-12-06 12:25:42","date_updated":"2015-12-13 16:00:36","user_type_id":"2","logged_ip":null,"status":"1","user_details_id":"4","u_user_id":"4","first_name":"Dileep","last_name":"DKumar","occupation":"occupation","current_emp":"hf","dob":"dob","address":"address","city_name":"","state_name":"dfq","zip":"523002","apt_no":"dsad","phone":"8500222765","alterphone":"67","tax_id_type":"","dependent":"2","relation_ship":null,"ssnitin":null,"visa_type":null,"c_location":"RESOURCEON","filling_status":"2","spouse_id":"8","s_user_id":"4","added_at":"2015-12-13 14:51:31","updated_at":"2015-12-13 14:51:31","dependent_id":"6","d_user_id":"4","mail_id":"abc@gmail.com","current_year":null},{"ps_id":"2","ps_user_id":"5","ps_state":"1","ps_added_at":"2015-12-16 08:00:50","ps_updated_at":null,"user_id":"5","user_name":"Hello","email":"xyz@gmail.com","password":"6451d62c34ba801398a21df221f675b6","locked_pwd":"sarath2@S","date_added":"2015-12-13 06:25:47","date_updated":"2015-12-13 08:02:02","user_type_id":"2","logged_ip":null,"status":null,"user_details_id":"5","u_user_id":"5","first_name":null,"last_name":null,"occupation":null,"current_emp":"zczxczc","dob":null,"address":null,"city_name":"","state_name":"","zip":"czxczc","apt_no":"","phone":null,"alterphone":"zczczc","tax_id_type":"","dependent":"Yes","relation_ship":null,"ssnitin":null,"visa_type":null,"c_location":"sadsadasd","filling_status":"zxczxczxc","spouse_id":"9","s_user_id":"5","added_at":null,"updated_at":null,"dependent_id":null,"d_user_id":null,"mail_id":null,"current_year":null}]}Each step list of users:
+
+Status update by admin
+	
+	Url      : http://localhost/14-12-2015/umpire-tax-filler/ustaxfilerapis/update-process/4
+	Method   : POST
+	DATA     : ps_state=2
+	Response : {"output":"success","success":true}
+
+
+	
+
+	
+	
