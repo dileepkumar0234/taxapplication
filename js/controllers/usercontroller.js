@@ -2,11 +2,13 @@
 appinstal.controller("userController", function($scope,$rootScope,$state,$stateParams,$uibModal,commonService) {
  console.log("sarath:::",$scope.response_user);
  $scope.relations= ['Father','Mother','Son','Daughter','others'];
+ $scope.havedependants = [{name:'Yes',status:'2'},{name:'No',status:'1'}];
   function getUserData(){
     commonService.getData('GET','taxpayer-page?id='+$scope.response_user.id).then(function(resp){
       console.log("SpouseInfo",resp);
       commonService.stopSpinner();
       $scope.user = resp.data.data;
+      
     });
   }
   getUserData();

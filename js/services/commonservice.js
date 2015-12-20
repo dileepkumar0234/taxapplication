@@ -1,5 +1,5 @@
 appinstal.factory("commonService", function($http,$rootScope) {
-	var webServiceUrl="http://localhost/taxapplication/ustaxfilerapis/";
+	var webServiceUrl="http://localhost/taxapplication/trunk/ustaxfilerapis/";
 	var user_data = {};
 
 	return {

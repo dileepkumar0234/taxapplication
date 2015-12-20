@@ -36,15 +36,7 @@ console.log("success",resp);
             
                    });
 
-        // onChange, push the files to $scope.files.
-       /* element.bind('change', function (event) {
-            var files = event.target.files;
-            $scope.$apply(function () {
-                for (var i = 0, length = files.length; i < length; i++) {
-                    $scope.files.push(files[i]);
-                }
-            });
-        });*/
+        
     };
 
     return {
@@ -81,6 +73,26 @@ appinstal.directive('carouselDirective',function(){
       $("#"+attr.id).trigger('owl.goTo',currentIndex);
     });
 
+
+   }
+ }
+});
+
+appinstal.directive('toggleCss',function(){
+ return {
+   restrict:'A',
+   link:function(scope,elm,attr){
+    elm.find('li').bind('click',function(e){
+      console.log(e.currentTarget)
+         angular.element(elm).find('li').removeClass('activeState');
+         if(e.currentTarget.tagName!='LI'){
+           angular.element(e.currentTarget).parents('li').addClass('activeState');
+         }
+        else{
+          angular.element(e.currentTarget).addClass('activeState');
+        }
+    });
+     
 
    }
  }

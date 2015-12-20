@@ -7,7 +7,7 @@ appinstal.controller("admin",function($scope,$rootScope,$state,$uibModal,commonS
 			data: 'allUsers',
 			jqueryUITheme: true,
 			columnDefs: [{field: 'user_name', displayName: 'Client Name'},
-			{field:'email', displayName:'Email id',cellTemplate: '<div  ng-click="foo(row)" ng-bind="row.getProperty(col.field)"></div>'},
+			{field:'email', width:200,displayName:'Email id',cellTemplate: '<div  ng-click="foo(row)" ng-bind="row.getProperty(col.field)"></div>'},
 		{field:'phone', displayName:'Phone num'},
 		{field:'user_id', displayName:'File Number'},
 		{field:'user_id', displayName:'Payment Info'},
