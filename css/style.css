@@ -1098,7 +1098,15 @@ font-weight:normal
 	padding:20px;
 	box-sizing:border-box;
 }
-
+.admin{
+	float:left;
+	margin:0;
+	padding:0;
+	height: 997px;
+    background: none repeat scroll 0 0 #00283a;
+	padding:20px;
+	box-sizing:border-box;
+}
 .content_Div:first-child{
 	display:block;
 }
@@ -1400,7 +1408,9 @@ padding: 5px;
 .gridStyle {
     border: 1px solid rgb(212,212,212);
     width:100%;
-    height: 300px
+    height: 300px;
+    padding: 0px;
+    color:black!important;
 }
 .no_padding{
 	padding: 0px!important;
@@ -1418,7 +1428,7 @@ background: url("../images/animatedEllipse.gif") no-repeat center center fixed;
 }*/
 
 
-.feel_form input,.feel_form select{
+.feel_form input,.feel_form select,.feel_form textarea{
        width: 100%;
     height: 34px;
     padding: 6px 12px;
