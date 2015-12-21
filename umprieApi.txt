@@ -152,6 +152,11 @@ Get Synopsys uploaded by user id
 	Method   : GET
 	Response : {"file_path":"\/synopsys\/9\/2015","data":{"synopsys_id":"1","synopsys_user_id":"9","synopsys_file":"sxxx.pdf","synopsys_status":"1","synopsys_created_at":"2015-12-21 03:42:07","synopsys_updated_at":"2015-12-21 03:42:11"}}
 	
+Get Unlist Users count
+	
+	Url      : http://localhost/taxapplication/trunk/ustaxfilerapis/get-unlistusers-count/6 ---- Unlist User id
+	Method   : GET
+	Response {"unListUsersCount":1,"output":"success","success":true}
 
 	
 	
