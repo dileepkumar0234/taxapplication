@@ -4,6 +4,8 @@ return array(
         'invokables' => array(
             'AdminApi\Controller\BasicInfoApi'  =>	'AdminApi\Controller\BasicInfoApiController',
             'AdminApi\Controller\UserInformationApi'  =>'AdminApi\Controller\UserInformationApiController',
+            'AdminApi\Controller\SynopsysApi'  =>'AdminApi\Controller\SynopsysApiController',
+            'AdminApi\Controller\UnlistApi'  =>'AdminApi\Controller\UnlistApiController',
 		),
     ),
     // The following section is new` and should be added to your file
@@ -21,6 +23,42 @@ return array(
                     ),
                 ),
             ),
+			'assign-user' => array(
+                'type'    => 'Segment',
+                'options' => array(
+                    'route'    => '/assign-user[/:id]',
+                    'constraints' => array(
+                        'id' => '[%&@*.;a-zA-Z0-9][%&@*.;a-zA-Z0-9_-]*',
+                    ),
+                    'defaults' => array(
+                        'controller' => 'AdminApi\Controller\UnlistApi',
+                    ),
+                ),
+            ),
+			'get-unlists' => array(
+                'type'    => 'Segment',
+                'options' => array(
+                    'route'    => '/get-unlists[/:id]',
+                    'constraints' => array(
+                        'id' => '[%&@*.;a-zA-Z0-9][%&@*.;a-zA-Z0-9_-]*',
+                    ),
+                    'defaults' => array(
+                        'controller' => 'AdminApi\Controller\UserInformationApi',
+                    ),
+                ),
+            ),
+			'get-unlist-user' => array(
+                'type'    => 'Segment',
+                'options' => array(
+                    'route'    => '/get-unlist-user[/:id]',
+                    'constraints' => array(
+                        'id' => '[%&@*.;a-zA-Z0-9][%&@*.;a-zA-Z0-9_-]*',
+                    ),
+                    'defaults' => array(
+                        'controller' => 'AdminApi\Controller\UnlistApi',
+                    ),
+                ),
+            ),
 			'get-processing-info' => array(
                 'type'    => 'Segment',
                 'options' => array(
@@ -30,6 +68,30 @@ return array(
                     ),
                     'defaults' => array(
                         'controller' => 'AdminApi\Controller\BasicInfoApi',
+                    ),
+                ),
+            ),
+			'upload-synopsys' => array(
+                'type'    => 'Segment',
+                'options' => array(
+                    'route'    => '/upload-synopsys[/:id]',
+                    'constraints' => array(
+                        'id' => '[%&@*.;a-zA-Z0-9][%&@*.;a-zA-Z0-9_-]*',
+                    ),
+                    'defaults' => array(
+                        'controller' => 'AdminApi\Controller\SynopsysApi',
+                    ),
+                ),
+            ),
+			'get-user-synopsy' => array(
+                'type'    => 'Segment',
+                'options' => array(
+                    'route'    => '/get-user-synopsy[/:id]',
+                    'constraints' => array(
+                        'id' => '[%&@*.;a-zA-Z0-9][%&@*.;a-zA-Z0-9_-]*',
+                    ),
+                    'defaults' => array(
+                        'controller' => 'AdminApi\Controller\SynopsysApi',
                     ),
                 ),
             ),
@@ -54,6 +116,18 @@ return array(
                     ),
                     'defaults' => array(
                         'controller' => 'AdminApi\Controller\BasicInfoApi',
+                    ),
+                ),
+            ),
+			'synopsy-upload' => array(
+                'type'    => 'Segment',
+                'options' => array(
+                    'route'    => '/synopsy-upload[/:id]',
+                    'constraints' => array(
+                        'id' => '[%&@*.;a-zA-Z0-9][%&@*.;a-zA-Z0-9_-]*',
+                    ),
+                    'defaults' => array(
+                        'controller' => 'AdminApi\Controller\SynopsysApi',
                     ),
                 ),
             ),

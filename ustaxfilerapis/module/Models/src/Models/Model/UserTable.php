@@ -63,6 +63,15 @@ class UserTable
 		return $resultSet;
 		
 	}
+	public function getUnListUserList(){
+		$select = $this->tableGateway->getSql()->select();
+		$select->join('user_details', new Expression('user_details.u_user_id=user.user_id'),array('*'),'left');
+		$select->where('user.status="1"');                         
+		$select->where('user.user_type_id="3"');                         
+		$resultSet = $this->tableGateway->selectWith($select);			
+		return $resultSet;
+		
+	}
 	public function checkAdminIp($data,$ip){
 		$select = $this->tableGateway->getSql()->select();
 		$select->join('user_details', new Expression('user_details.u_user_id=user.user_id'),array('*'),'left');

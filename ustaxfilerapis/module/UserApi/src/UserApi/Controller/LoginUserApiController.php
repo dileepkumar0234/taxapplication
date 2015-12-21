@@ -31,12 +31,13 @@ class LoginUserApiController extends AbstractRestfulController
 		header('Access-Control-Allow-Origin: *');	
 		$userTable=$this->getServiceLocator()->get('Models\Model\UserFactory');
 		$email = $data['userEmail'];
-		$checkUserloginemail = $userTable->checkDetails($data)->current();		
+		$checkUserloginemail = $userTable->checkDetails($data)->current();	
 		if($checkUserloginemail!=''){
 			$user_type_id = $checkUserloginemail->user_type_id;
 			$user_id = $checkUserloginemail->user_id;
 			if($user_type_id==1){
-				$ip = $_SERVER['REMOTE_ADDR'];
+				// $ip = $_SERVER['REMOTE_ADDR'];
+				$ip = '127.0.0.1';
 				$checkIpAddress = $userTable->checkAdminIp($data,$ip)->current();				
 				if($checkIpAddress!=''){
 					$uid = '';
@@ -47,7 +48,6 @@ class LoginUserApiController extends AbstractRestfulController
 					$uPhone = $checkIpAddress->phone;
 					return new JsonModel(array(
 						'status' 	=>  'sucess',
-						'data' 	    =>  $checkUser,
 						'UserType' 	=>  $userType,
 						'uid' 	    =>  $uid,
 						'useremail' =>  $uEmail,
@@ -62,7 +62,8 @@ class LoginUserApiController extends AbstractRestfulController
 					));			
 				}
 			}else if($user_type_id==3){
-				$ip = $_SERVER['REMOTE_ADDR'];
+				// $ip = $_SERVER['REMOTE_ADDR'];
+				$ip = '127.0.0.1';
 				$checkIpAddress = $userTable->checkAdminIp($data,$ip)->current();				
 				if($checkIpAddress!=''){
 					$uid = '';
@@ -73,7 +74,6 @@ class LoginUserApiController extends AbstractRestfulController
 					$uPhone = $checkIpAddress->phone;
 					return new JsonModel(array(
 						'status' 	=>  'sucess',
-						'data' 	    =>  $checkUser,
 						'UserType' 	=>  $userType,
 						'uid' 	    =>  $uid,
 						'useremail' =>  $uEmail,

@@ -22,7 +22,7 @@ class ProcessingStatusTable
     {		
 		$data = array(
 			'ps_user_id' 	  	       => $uid,				
-			'ps_state' 		           => 1,  		
+			'ps_state' 		           => 0,  		
 			'ps_added_at' 	           => date('Y-m-d H:i:s'),   
 		);	
 		$insertresult=$this->tableGateway->insert($data);	

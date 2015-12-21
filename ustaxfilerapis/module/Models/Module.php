@@ -18,6 +18,10 @@ use Models\Model\Dependent;
 use Models\Model\DependentTable;
 use Models\Model\ProcessingStatus;
 use Models\Model\ProcessingStatusTable;
+use Models\Model\AssignUserList;
+use Models\Model\AssignUserListTable;
+use Models\Model\Synopsys;
+use Models\Model\SynopsysTable;
 use Zend\Db\ResultSet\ResultSet;
 use Zend\Db\TableGateway\TableGateway;
 class Module
@@ -49,6 +53,8 @@ class Module
 				'Models\Model\SpouseFactory'		        =>'Models\Factory\Model\SpouseTableFactory',
 				'Models\Model\DependentFactory'		        =>'Models\Factory\Model\DependentTableFactory',
 				'Models\Model\ProcessingStatusFactory'	    =>'Models\Factory\Model\ProcessingStatusTableFactory',
+				'Models\Model\AssignUserListFactory'	    =>'Models\Factory\Model\AssignUserListTableFactory',
+				'Models\Model\SynopsysFactory'	            =>'Models\Factory\Model\SynopsysTableFactory',
 			),
         );
     }
