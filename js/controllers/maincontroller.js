@@ -2,6 +2,16 @@ appinstal.controller("UmprireTaxController",function($scope,$rootScope,$state,$u
 
 $scope.service_list= false;
 $scope.friend ={};
+if (localStorage.getItem("user") === null) {
+  $rootScope.userExist = false;
+}
+else{
+  $rootScope.userExist = true;
+  $rootScope.user_exist_id=localStorage.getItem('user');
+}
+$scope.goToDashboard = function(){
+    $state.go('user.user',{id:$rootScope.user_exist_id});
+}
  
  $rootScope.userbody ='';
  $scope.referRegister = function (friend) {

@@ -15,7 +15,12 @@ $scope.dateOptions = {
 };
 
 $scope.scheduling={};
-$scope.scheduletimings =['10:00 Am - 10:30 Am','10:30 Am - 11:00 Am','11:00 Am - 11:30 Am'];
+$scope.scheduletimings =['10:00 Am - 10:30 Am','10:30 Am - 11:00 Am','11:00 Am - 11:30 Am',
+'11:30 Am - 12:00 pm','12:00 pm - 1:00 pm','1:00 pm - 2:00 pm',
+'2:00 pm - 2:30 pm','2:30 pm - 3:00 pm','3:00 pm - 3:30 pm',
+'3:30 pm - 4:00 pm','4:00 pm - 4:30 pm','4:30 pm - 5:30 pm',
+'5:30 pm - 6:00 pm'
+];
 
 $scope.open = function($event) {
   $scope.status.opened = true;
@@ -37,6 +42,7 @@ $scope.disabled = function(date, mode) {
 function getSchedule(){
   commonService.getData('GET','schedules-page?id='+$scope.response_user.id).then(function(resp){
     console.log("schedule::",resp);
+    $scope.scheduleInfo= resp.data.data;
     commonService.stopSpinner();
   });
 }
@@ -51,9 +57,23 @@ $scope.ScheduleDT = function(){
   commonService.getData('POST','schedules-page',{schedule_dt:final_date,schedule_period:$scope.scheduling.schedule_period}).then(function(resp){
     console.log("schedule::",resp);
     getSchedule();
+    $scope.editMode = true;
+
     commonService.stopSpinner();
   });
 }
 getSchedule();
+
+
+$scope.editMode = true;
+$scope.editProfile =function(){
+$scope.editMode = false;
+}
+$scope.reset = function(){
+  $scope.editMode = true;
+}
+$scope.setTime = function(ind){
+  $scope.scheduling.schedule_period = $scope.scheduletimings[ind];
+}
 
 });

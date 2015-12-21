@@ -6,10 +6,20 @@ appinstal.controller("uploadController", function($scope,$rootScope,$state,$stat
  function getUploads(){
   commonService.getData('GET','uploadPdfs-page?id='+$scope.response_user.id).then(function(resp){
     console.log("uploads Are::",resp);
+    $scope.uploads = resp.data.data;
+    $scope.file_path= resp.data.file_path;
     commonService.stopSpinner();
     
   });
 }
 getUploads();
+
+$scope.editMode = true;
+$scope.editProfile =function(){
+$scope.editMode = false;
+}
+$scope.reset = function(){
+  $scope.editMode = true;
+}
 
 });

@@ -88,6 +88,17 @@ controller:'scheduleController',
   
     templateUrl:'templates/admin.html'
   })
+  .state('Agent', {
+    url: '/Agent',
+    abstract: true,
+      controller:'AgentController',
+    templateUrl:'templates/AgentMain.html'
+  })
+  .state('Agent.user', {
+    url: '/',
+  
+    templateUrl:'templates/Agent.html'
+  })
   
   $urlRouterProvider.otherwise('/home');
 });

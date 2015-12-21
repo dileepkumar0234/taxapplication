@@ -38,8 +38,18 @@
       $scope.invalidCredentials = false;
       $scope.resetdone = false;
       $scope.successRegistr = false;
-      //commonService.setuserData(resp.data);
-      $state.go('user.user',{id:resp.data.uid});
+      if(resp.data.UserType=="Admin"){
+        $state.go('admin.user');
+      }
+      else if(resp.data.UserType=="Agent"){
+        $state.go('Agent.user');
+      }
+      else{
+        commonService.sessionStart(resp.data.uid);
+        $state.go('user.user',{id:resp.data.uid});
+      }
+      
+
       $uibModalInstance.dismiss('close');
       
     }
@@ -49,46 +59,46 @@
   });
     
   }
-$scope.signupform = {};
+  $scope.signupform = {};
   
   $scope.signupClient = function(signupuser,signupform){
-if(signupform.$valid==false)
-  return false;
-  
-  
-if(signupuser.inputEmail){
-  commonService.getData('POST','email-verified',{user_email:signupuser.inputEmail}).then(function(resp){
-     console.log("resp",resp);
-     commonService.stopSpinner();
-     if(resp.data.output == 'exists'){
-      $scope.emailExist = true;
-      if(!$scope.$$phase){
-        $scope.$apply();
-      }
-    }
-    else{
-      commonService.getData('POST','registration',signupuser).then(function(resp){
-        console.log("resp",resp);
-        commonService.stopSpinner();
-        if(resp.data.Success == 'Registration Success'){
-          $uibModalInstance.dismiss('close');
-          $scope.signupuser = {};
-          $scope.successRegistr = true;
-         // $scope.signupform.$setPristine();
+    if(signupform.$valid==false)
+      return false;
+    
+    
+    if(signupuser.inputEmail){
+      commonService.getData('POST','email-verified',{user_email:signupuser.inputEmail}).then(function(resp){
+       console.log("resp",resp);
+       commonService.stopSpinner();
+       if(resp.data.output == 'exists'){
+        $scope.emailExist = true;
+        if(!$scope.$$phase){
+          $scope.$apply();
         }
+      }
+      else{
+        commonService.getData('POST','registration',signupuser).then(function(resp){
+          console.log("resp",resp);
+          commonService.stopSpinner();
+          if(resp.data.Success == 'Registration Success'){
+            $uibModalInstance.dismiss('close');
+            $scope.signupuser = {};
+            $scope.successRegistr = true;
+         // $scope.signupform.$setPristine();
+       }
 
-        else
-          $scope.successRegistr = false;
+       else
+        $scope.successRegistr = false;
 
-      });
-      $scope.emailExist = false;
+    });
+        $scope.emailExist = false;
+      }
+
+    });
     }
-
-  });
-}
-   
+    
 
 
-   
- }
+    
+  }
 });

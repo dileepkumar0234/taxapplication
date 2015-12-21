@@ -1,5 +1,18 @@
 
 appinstal.controller("userdashboard", function($scope,$rootScope,$state,$stateParams,$uibModal,commonService) {
+  if(localStorage.getItem('user')==null){
+     $state.go('main.home');
+    return false;
+  }
+  console.log($state);
+  if($state.current.url!='/'){
+    $state.go('user.user');
+  }
+
+    
+
+
+  console.log($scope);
   $scope.response_user = $stateParams;
   $scope.upload ={};
   $scope.friend = {};
@@ -14,6 +27,7 @@ appinstal.controller("userdashboard", function($scope,$rootScope,$state,$statePa
   $scope.logout = function(){
    commonService.getData('GET','logout/logout').then(function(resp){
     console.log("logout",resp);
+    commonService.sessionEnd();
     commonService.stopSpinner();
     $state.go('main.home');
   });
@@ -53,9 +67,7 @@ $scope.changePassword = function(){
   }
 });
 }
-$scope.setTime = function(ind){
-  $scope.scheduling.schedule_period = $scope.scheduletimings[ind];
-}
+
 
 
 });

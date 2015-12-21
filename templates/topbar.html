@@ -2,7 +2,8 @@
 
   <p>CONTACT US: <strong>0800 200 200</strong> | <strong>contact@sampledomain.com</strong></p>
 <a ui-sref="admin.user" >Admin</a>
-  <div class="right_btns" >  <a  ng-click="OpenLogin()" class="login_btn"><i class="fa fa-lock"> </i> Login / Sign Up</a>
+  <div class="right_btns" >  <a  ng-if="!userExist" ng-click="OpenLogin()" class="login_btn"><i class="fa fa-lock"> </i> Login / Sign Up</a>
+  <a ng-if="userExist" ng-click="goToDashboard()" class="login_btn"><i class="fa fa-lock"> </i> Go To Dashboard</a>
   <!-- <a class="ref_frnd" ng-click="referals()"><i class="fa fa-user"></i> Referal Program</a> -->
 <a class="ref_frnd" ui-sref="main.referalProgram"><i class="fa fa-user"></i> Referal Program</a>
   </div>

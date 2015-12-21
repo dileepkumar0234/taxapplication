@@ -1,11 +1,9 @@
 appinstal.controller("admin",function($scope,$rootScope,$state,$uibModal,commonService) {
 	
-	commonService.getData('GET','user-list').then(function(resp){
-		console.log("user Data::",resp);
-		$scope.allUsers=resp.data.success;
-		$scope.gridOptions = { 
+	$scope.gridOptions = { 
 			data: 'allUsers',
-			jqueryUITheme: true,
+			multiSelect:false,
+		//	jqueryUITheme: true,
 			columnDefs: [{field: 'user_name', displayName: 'Client Name'},
 			{field:'email', width:200,displayName:'Email id',cellTemplate: '<div  ng-click="foo(row)" ng-bind="row.getProperty(col.field)"></div>'},
 		{field:'phone', displayName:'Phone num'},
@@ -14,6 +12,12 @@ appinstal.controller("admin",function($scope,$rootScope,$state,$uibModal,commonS
 		{field:'user_id', displayName:'Assigned'}
 		]
 	};
+
+	commonService.getData('GET','user-list').then(function(resp){
+		console.log("user Data::",resp);
+		$scope.totalCount= resp.data.success.length;
+		$scope.allUsers=resp.data.success;
+		
 	commonService.stopSpinner();
 });
 
@@ -34,21 +38,27 @@ appinstal.controller("admin",function($scope,$rootScope,$state,$uibModal,commonS
 	
 
 	$scope.RefreshGrid = function(e,i){
+
 		e.preventDefault();
-		$scope.home_banner = false;
+		if(i=='total'){
+			$state.reload();
+			return false;
+		}
+		$scope.home_banner = true;
+		$scope.userSelected = false;
 		commonService.getData('GET','get-processing-info/'+i).then(function(resp){
-		console.log("Individual stage Data::",resp);
-		$scope.allUsers=resp.data.list;
+			$scope.allUsers=resp.data.list;
 		commonService.stopSpinner();
 	     });
 
 	}
+
 	$scope.foo = function(resp){
 		console.log(resp);
 		$scope.userSelected = true;
 		$scope.home_banner = true;
 		$scope.user_id=resp.entity.user_id;
-		
+		$scope.getCurrentInfo(0);
 	}
 
 	$scope.getCurrentInfo = function(index){
