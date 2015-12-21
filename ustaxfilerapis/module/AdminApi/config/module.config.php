@@ -6,6 +6,7 @@ return array(
             'AdminApi\Controller\UserInformationApi'  =>'AdminApi\Controller\UserInformationApiController',
             'AdminApi\Controller\SynopsysApi'  =>'AdminApi\Controller\SynopsysApiController',
             'AdminApi\Controller\UnlistApi'  =>'AdminApi\Controller\UnlistApiController',
+            'AdminApi\Controller\UnlistUsersApi'  =>'AdminApi\Controller\UnlistUsersApiController',
 		),
     ),
     // The following section is new` and should be added to your file
@@ -32,6 +33,18 @@ return array(
                     ),
                     'defaults' => array(
                         'controller' => 'AdminApi\Controller\UnlistApi',
+                    ),
+                ),
+            ),
+			'get-unlistusers-count' => array(
+                'type'    => 'Segment',
+                'options' => array(
+                    'route'    => '/get-unlistusers-count[/:id]',
+                    'constraints' => array(
+                        'id' => '[%&@*.;a-zA-Z0-9][%&@*.;a-zA-Z0-9_-]*',
+                    ),
+                    'defaults' => array(
+                        'controller' => 'AdminApi\Controller\UnlistUsersApi',
                     ),
                 ),
             ),
