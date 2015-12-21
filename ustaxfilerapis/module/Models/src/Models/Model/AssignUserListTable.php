@@ -44,4 +44,10 @@ class AssignUserListTable
 		$resultSet = $this->tableGateway->selectWith($select);	
 		return $resultSet;		
 	}
+	public function getUnlistUserCount($id){
+		$select = $this->tableGateway->getSql()->select();
+		$select->where('assign_user_list.unlists_u_id= "'.$id.'"');
+		$resultSet = $this->tableGateway->selectWith($select);	
+		return $resultSet->count();		
+	}
 }
