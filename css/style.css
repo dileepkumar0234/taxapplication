@@ -1481,3 +1481,9 @@ font-weight: bold;
 	.activeState{
 		background-color: red;
 	}
+	.adminstates{
+		    padding: 0px!important;
+    min-width: 1%;
+    margin-right: 10px;
+    width: auto!important;
+	}
