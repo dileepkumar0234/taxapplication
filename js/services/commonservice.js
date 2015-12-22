@@ -31,10 +31,10 @@ appinstal.factory("commonService", function($http,$rootScope,$timeout,$state) {
         var x=this;
          idleTimer = $timeout(function () {
 
-           x.sessionEnd(); 
-           alert('Your Session Expired');
-           x.getData('GET','logout/logout');
-          $state.go('main.home');
+        //   x.sessionEnd(); 
+        //   alert('Your Session Expired');
+         //  x.getData('GET','logout/logout');
+         // $state.go('main.home');
           }, totalIdleTime);
          },
 		sessionEnd:function(id){

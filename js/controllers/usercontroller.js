@@ -12,25 +12,26 @@ appinstal.controller("userController", function($scope,$rootScope,$state,$stateP
       $scope.user.dependent=Number($scope.user.dependent)
       $rootScope.userData= resp.data.data;
       $scope.states = [
-    {id: 0, text: 'Basic Info Pending'},
-    {id: 1, text: 'Scheduling Pending'},
-    {id: 2, text: 'Interview Pending'},
-    {id: 3, text: 'Docs Upload Pending'},
-    {id: 4, text: 'Other Docs Upload Pending'},
-    {id: 5, text: 'Preparation Pending'},
-    {id: 6, text: 'Synopsys Pending'},
-    {id: 7, text: 'Payment Pending'},
-    {id: 8, text: 'Review Pending'},
-    {id: 9, text: 'Confirmation Pending'},
-    {id: 10, text: 'Filing Pending'},
-    {id: 11, text: 'E-Filing Complete'},
-    {id: 12, text: 'Filing Docs Sent'}
+       {id: 0, text: 'To be assigned'},
+    {id: 1, text: 'Basic Info Pending'},
+    {id: 2, text: 'Scheduling Pending'},
+    {id: 3, text: 'Interview Pending'},
+    {id: 4, text: 'Docs Upload Pending'},
+    {id: 5, text: 'Other Docs Upload Pending'},
+    {id: 6, text: 'Preparation Pending'},
+    {id: 7, text: 'Synopsys Pending'},
+    {id: 8, text: 'Payment Pending'},
+    {id: 9, text: 'Review Pending'},
+    {id: 10, text: 'Confirmation Pending'},
+    {id: 11, text: 'Filing Pending'},
+    {id: 12, text: 'E-Filing Complete'},
+    {id: 13, text: 'Filing Docs Sent'}
     ];
 
     
 
     angular.forEach($scope.states,function(val,key){
-      if(val.id+1==$rootScope.userData.filling_status){
+      if(val.id==$rootScope.userData.ps_state){
         $rootScope.userData.FilingStatusCode = val.text;
       }
     })
@@ -67,7 +68,7 @@ console.info(user);
    getUserData();
  });
 }
-$scope.editMode = true;
+$scope.editMode = /*true*/false;
 $scope.editProfile =function(){
 $scope.editMode = false;
 }

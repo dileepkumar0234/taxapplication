@@ -26,6 +26,10 @@ appinstal.controller("admin",function($scope,$rootScope,$state,$uibModal,commonS
 		$scope.count= resp.data;
 		commonService.stopSpinner();
 	});
+	commonService.getData('GET','get-unlists/1').then(function(resp){
+		console.log("Unlist Members::",resp);
+		$scope.UnListMembers = resp.data.UnListUser;
+	});
 
 
 
@@ -35,7 +39,14 @@ appinstal.controller("admin",function($scope,$rootScope,$state,$uibModal,commonS
 	{name: "Jacob", age: 27,email:'sarath.anagha@gmail.com',assignee:'unlist-2'},
 	{name: "Nephi", age: 29,email:'sarath.anagha@gmail.com',assignee:'unlist-1'},
 	{name: "Enos", age: 34,email:'sarath.anagha@gmail.com',assignee:'unlist-2'}]; */ 
-	
+	$scope.assignedChange = function(item){
+console.info("Unlist Change:",item);
+commonService.getData('POST','assign-user',{unlists_u_id:item.user_id,client_id:$scope.user_id}).then(function(resp){
+		console.log("Assign check::",resp);
+		
+	});
+
+	}
 
 	$scope.RefreshGrid = function(e,i){
 
@@ -47,7 +58,16 @@ appinstal.controller("admin",function($scope,$rootScope,$state,$uibModal,commonS
 		$scope.home_banner = true;
 		$scope.userSelected = false;
 		commonService.getData('GET','get-processing-info/'+i).then(function(resp){
-			$scope.allUsers=resp.data.list;
+			console.log("To Be assigned::",resp);
+			if(i==0){
+				$scope.allUsers=resp.data.list;
+				
+
+			}
+			else{
+				$scope.allUsers=resp.data.list;
+			}
+			
 		commonService.stopSpinner();
 	     });
 
@@ -107,6 +127,9 @@ appinstal.controller("admin",function($scope,$rootScope,$state,$uibModal,commonS
 				else if(index==5){
 					
 				}
+				else if(index==7){
+					
+				}
 				
 
 			}
@@ -128,7 +151,8 @@ appinstal.controller("admin",function($scope,$rootScope,$state,$uibModal,commonS
 	{label:'Download documents',show:false},
 	{label:'Upload documents',show:false},
 	{label:'File no',show:false},
-	{label:'Payment info',show:false}
+	{label:'Payment info',show:false},
+	{label:'Assigned To',show:false}
 	];
    $scope.states = [
     {id: 0, text: 'Basic Info Pending'},

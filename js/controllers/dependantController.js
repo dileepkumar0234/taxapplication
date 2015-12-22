@@ -62,7 +62,7 @@ $scope.addMore = function(){
   $scope.dependants.push(new_one);
 }
 
-$scope.editMode = true;
+$scope.editMode = /*true*/false;
 $scope.editProfile =function(){
 $scope.editMode = false;
 }

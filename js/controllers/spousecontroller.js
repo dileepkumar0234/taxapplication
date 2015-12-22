@@ -24,7 +24,7 @@ $scope.updatespouse = function(){
  });
 }
 getSpouseInfo();
-$scope.editMode = true;
+$scope.editMode = /*true*/false;
 $scope.editProfile =function(){
 $scope.editMode = false;
 }
