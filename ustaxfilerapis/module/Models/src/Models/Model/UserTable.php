@@ -57,6 +57,8 @@ class UserTable
 	public function getUserList(){
 		$select = $this->tableGateway->getSql()->select();
 		$select->join('user_details', new Expression('user_details.u_user_id=user.user_id'),array('*'),'left');
+		$select->join('assign_user_list', new Expression('assign_user_list.client_id=user.user_id'),array('*'),'left');
+		$select->join(array('u' => 'user'), 'assign_user_list.unlists_u_id=u.user_id',array('client_id' =>new Expression('u.user_id'),'client_name' =>new Expression('u.user_name'),'client_email' =>new Expression('u.email')),'left');
 		$select->where('user.status="1"');                         
 		$select->where('user.user_type_id="2"');                         
 		$resultSet = $this->tableGateway->selectWith($select);			
@@ -147,6 +149,7 @@ class UserTable
 	public function getUserData($user_id){        
 		$select = $this->tableGateway->getSql()->select();
 		$select->join('user_details', new Expression('user_details.u_user_id=user.user_id'),array('*'),'left');	
+		$select->join('processing_status', new Expression('processing_status.ps_user_id=user.user_id'),array('*'),'left');	
 		$select->where('user.user_id="'.$user_id.'"');                                         
 		$resultSet = $this->tableGateway->selectWith($select);			
 		return $resultSet->current();

@@ -6,8 +6,10 @@ class BasicInfoApiController extends AbstractRestfulController
 {
     public function getList()
     {
+
 		header('Access-Control-Allow-Origin: *');
 		$processStatusTable = $this->getServiceLocator()->get('Models\Model\ProcessingStatusFactory');
+		$toBeAssignedCnt  = $processStatusTable->getcntOfeach('0');
 		$basisinfoCnt  = $processStatusTable->getcntOfeach('1');
 		$Schedulingcnt = $processStatusTable->getcntOfeach('2');
 		$interviewCnt = $processStatusTable->getcntOfeach('3');
@@ -21,6 +23,11 @@ class BasicInfoApiController extends AbstractRestfulController
 		$filing = $processStatusTable->getcntOfeach('11');
 		$eFiling = $processStatusTable->getcntOfeach('12');
 		$peFiling = $processStatusTable->getcntOfeach('13');
+		if(isset($toBeAssignedCnt) && $toBeAssignedCnt>0){
+			$toBeAssignedCnt = $toBeAssignedCnt;
+		}else{
+			$toBeAssignedCnt = 0;
+		}
 		if(isset($basisinfoCnt) && $basisinfoCnt>0){
 			$basisinfoCnt = $basisinfoCnt;
 		}else{
@@ -88,6 +95,7 @@ class BasicInfoApiController extends AbstractRestfulController
 		return new JsonModel(array(
 			'value'  => 1,
 			'output'   => 'success',
+			'toBeAssignedCnt' 	 => $toBeAssignedCnt,
 			'basisinfoCnt' 	 => $basisinfoCnt,
 			'Schedulingcnt' 	 => $Schedulingcnt,
 			'interviewCnt' 	 => $interviewCnt,
@@ -108,7 +116,9 @@ class BasicInfoApiController extends AbstractRestfulController
 		header('Access-Control-Allow-Origin: *');
 		$processStatusTable = $this->getServiceLocator()->get('Models\Model\ProcessingStatusFactory');
 		$getData =array();
-		if($id=='1'){
+		if($id=='0'){
+			$getData = $processStatusTable->getToassignedData($id);
+		}else if($id=='1'){
 			$getData = $processStatusTable->getBaseInfoData($id);
 		}else if($id=='2'){
 			$getData = $processStatusTable->getScheduleData($id);

@@ -44,6 +44,16 @@ class ProcessingStatusTable
 		$resultSet = $this->tableGateway->selectWith($select);	
 		return $resultSet->count();		
 	}
+	public function getToassignedData($state)
+    {	
+		$select = $this->tableGateway->getSql()->select();
+		$select->join('user', new Expression('processing_status.ps_user_id=user.user_id'),array('*'),'left');
+		$select->join('user_details', new Expression('user_details.u_user_id=user.user_id'),array('*'),'left');
+		$select->where('processing_status.ps_state="'.$state.'"');
+		$select->group('user.user_id');
+		$resultSet = $this->tableGateway->selectWith($select);	
+		return $resultSet;		
+	}
 	public function getBaseInfoData($state)
     {	
 		$select = $this->tableGateway->getSql()->select();

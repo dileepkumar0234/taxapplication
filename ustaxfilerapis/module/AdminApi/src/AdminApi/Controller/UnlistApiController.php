@@ -52,6 +52,9 @@ class UnlistApiController extends AbstractRestfulController
 				));
 			}else{
 				$allocatedUserId = $assignUserListTable->assignUser($data);
+				$processStatusTable = $this->getServiceLocator()->get('Models\Model\ProcessingStatusFactory');
+				$st =1;
+				$updateProcessStatus = $processStatusTable->updateProcess($client_id,$st);
 				if($allocatedUserId!=0){
 					return new JsonModel(array(
 						'assigned' 	=> $allocatedUserId,
