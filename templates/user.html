@@ -157,11 +157,11 @@
                     <label for="email"> Address</label>
                      <textarea  ng-model="user.address" class="form-control custom-control" rows="3" style="resize:none"></textarea>
                    <!--  <textarea  ng-model="{{user.apt_no}}{{user.address}}{{user.state_name}}{{user.zip}}" class="form-control custom-control" rows="3" style="resize:none"></textarea> 
-
+ng-if="user.filling_status=='1'"
                    -->
                 </div>
             </div>
-            <div class="col-lg-12" ng-if="user.filling_status=='1'" >
+            <div class="col-lg-12"  >
 
                 <button style="margin-left:10px;" ng-click="update(user);" class="btn btn-success pull-right" type="submit">SUBMIT</button>
                 <button class="btn btn-warning  pull-right" ng-click="reset();" type="reset">RESET</button>

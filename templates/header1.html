@@ -3,7 +3,7 @@
 <div class="sidebar">
 
     <ul>
-        <li><a  ng-click="RefreshGrid($event)"><i class="fa fa-upload"></i>To be Assigned(x) </a></li>
+        <li><a  ng-click="RefreshGrid($event,0)"><i class="fa fa-upload"></i>To be Assigned({{count.toBeAssignedCnt}}) </a></li>
         <li><a  ng-click="RefreshGrid($event,'total')"><i class="fa fa-upload"></i> All Records({{totalCount}}) </a></li>
         <li><a  ng-click="RefreshGrid($event)"><i class="fa fa-upload"></i> To be Allocated(X) </a></li>
         <li><a  ng-click="RefreshGrid($event,1)" class="active"><i class="fa fa-product-hunt"></i>Basic Info Pending({{count.basisinfoCnt}}) <i class="fa fa-chevron-circle-down"></i>  </a>

@@ -41,8 +41,8 @@
 <div ng-if="home_banner&&allUsers==''" class="col-md-12"><h1>No Records Found</h1></div>
 <div ng-if="home_banner&&allUsers!=''" style="padding:0;" class="col-md-12 gridStyle" ng-grid="gridOptions"></div>
 <div ng-if="home_banner&&userSelected">
-   <div class="col-md-12" style="margin-top:20px;">
-       <div class="col-md-2 no_padding" ng-click="getCurrentInfo($index)" ng-repeat="item in user_details_tabs"> <button  class="btn btn-primary">{{item.label}}</button></div>
+   <div class="col-md-12" style="margin-top:20px;padding:0;">
+       <div class="col-md-1 adminstates" ng-click="getCurrentInfo($index)" ng-repeat="item in user_details_tabs"> <button  class="btn btn-primary">{{item.label}}</button></div>
      <!-- <div class="col-md-2 no_padding"> <button  class="btn btn-primary">Basic info</button></div>
      <div class="col-md-2 no_padding"> <button  class="btn btn-primary">Other info</button></div>
      <div class="col-md-2 no_padding"> <button  class="btn btn-primary">Scheduling Time</button></div>
@@ -207,6 +207,14 @@
 
 <div class="col-md-12" ng-if="user_details_tabs[6].show">
    <h1>Payment Status & Paid Amount</h1>
+</div>
+<div class="col-md-12 taxpayer" ng-if="user_details_tabs[7].show">
+   
+   <ul class="adminGroup">
+                  <li>  <label for="email">Assign To :</label></li>
+</li><select ng-options="item.user_name  for item in UnListMembers" ng-model="assignInfo" ng-change="assignedChange(assignInfo)"></select>
+</li>
+</ul>
 </div>
 <div>
 </div>
