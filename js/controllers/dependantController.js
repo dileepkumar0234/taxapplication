@@ -1,4 +1,4 @@
-appinstal.controller("dependantController", function($scope,$rootScope,$state,$stateParams,$uibModal,commonService) {
+angular.module("myapp").controller("dependantController", ['$scope','$rootScope','$state','$stateParams','$uibModal','commonService',function($scope,$rootScope,$state,$stateParams,$uibModal,commonService) {
  $scope.relations= ['Father','Mother','Son','Daughter','others'];
 
 function createDependant(){
@@ -15,25 +15,83 @@ function createDependant(){
 
 }
 
+$scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
+
+$scope.format = $scope.formats[0];
+
+$scope.maxDate = new Date(2020, 5, 22);
+$scope.dateOptions = {
+  formatYear: 'yy',
+  startingDay: 1
+};
+$scope.open = function($event,ind) {
+  console.log($scope.status);
+  $scope.status[ind].opened = true;
+};
+$scope.today = function() {
+  $scope.dt = new Date();
+};
+$scope.today();
+
+$scope.toggleMin = function() {
+  $scope.minDate = $scope.minDate ? null : new Date();
+};
+$scope.toggleMin();
+
+$scope.disabled = function(date, mode) {
+  return ( mode === 'day' && ( date.getDay() === 0 || date.getDay() === 6 ) );
+};
+
 
 
 $scope.getDependants = function(){
- commonService.getData('GET','dependent-page?id='+$scope.response_user.id).then(function(resp){
+ commonService.getData('GET','dependent-page/'+$scope.response_user.id).then(function(resp){
    console.log("Dependants are::::",resp);
    commonService.stopSpinner();
    if(resp.data.dep.length==0){
     $scope.dependants=[];
     var new_one = createDependant();
     $scope.dependants.push(new_one);
-  }
-  $scope.dependants = resp.data.dep;
+    }
+    else{
+$scope.status=[];
+       $scope.dependants = resp.data.dep;
+       angular.forEach($scope.dependants,function(val,key){
+        console.log($scope.status);
+        $scope.status.push({opened: false});
+              if(val.dob!=""){
+      var x= val.dob.split('-');
+      if(x[1].length==1){
+        x[1]="0"+parseInt(x[1]-1)
+      }
+      else{
+        x[1]=parseInt(x[1]-1)
+      }
+      val.dob=new Date(x[2],x[1],x[0]);
+
+      }
+       });
+    }
+ 
 });
 }
 $scope.getDependants();
 
 
 $scope.UpdateDependants = function(){
-  console.log($scope.dependants);
+ 
+  angular.forEach($scope.dependants,function(val,key){
+              if(val.dob!=""){
+  if(val.dob)
+var date_to_send=val.dob.getDate().toString()+"-"+(val.dob.getMonth()+1).toString()+"-"+val.dob.getFullYear().toString();
+  else
+    date_to_send="";
+   console.log(date_to_send);
+   val.dob=date_to_send;
+ }
+ });
+
+ console.log($scope.dependants);
 
   commonService.getData('POST','dependent-page',{dep:$scope.dependants}).then(function(resp){
    console.log("post",resp);
@@ -69,4 +127,4 @@ $scope.editMode = false;
 $scope.reset = function(){
   $scope.editMode = true;
 }
-});
+}]);

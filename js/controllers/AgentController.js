@@ -1,4 +1,4 @@
-appinstal.controller("AgentController",function($scope,$rootScope,$state,$uibModal,commonService) {
+angular.module("myapp").controller("AgentController",['$scope','$rootScope','$state','$uibModal','commonService',function($scope,$rootScope,$state,$uibModal,commonService) {
 	
 	$scope.gridOptions = { 
 		data: 'allUsers',
@@ -150,4 +150,4 @@ $scope.updateStatus = function(){
                     commonService.stopSpinner();
                 });
 }
-});
+}]);

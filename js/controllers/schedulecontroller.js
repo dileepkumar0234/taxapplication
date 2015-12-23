@@ -1,5 +1,5 @@
 
-appinstal.controller("scheduleController", function($scope,$rootScope,$state,$stateParams,$uibModal,commonService) {
+angular.module("myapp").controller("scheduleController",['$scope','$rootScope','$state','$stateParams','$uibModal','commonService',function($scope,$rootScope,$state,$stateParams,$uibModal,commonService) {
  
 
 $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
@@ -26,7 +26,7 @@ $scope.open = function($event) {
   $scope.status.opened = true;
 };
 $scope.today = function() {
-  $scope.dt = new Date();
+  //$scope.dt = new Date();
 };
 $scope.today();
 
@@ -40,19 +40,32 @@ $scope.disabled = function(date, mode) {
 };
 
 function getSchedule(){
-  commonService.getData('GET','schedules-page?id='+$scope.response_user.id).then(function(resp){
+  commonService.getData('GET','schedules-page/'+$scope.response_user.id).then(function(resp){
     console.log("schedule::",resp);
+
     $scope.scheduleInfo= resp.data.data;
+    if($scope.scheduleInfo.schedule_dt!=""){
+      var x= $scope.scheduleInfo.schedule_dt.split('-');
+      if(x[1].length==1){
+        x[1]="0"+parseInt(x[1]-1)
+      }
+      else{
+        x[1]=parseInt(x[1]-1)
+      }
+      $scope.dt=new Date(x[2],x[1],x[0]);
+
+      }
     commonService.stopSpinner();
   });
 }
 $scope.ScheduleDT = function(){
 
+
   var x= new Date($scope.dt);
   var month = x.getMonth()+1;
   var date= x.getDate();
   var year = x.getFullYear();
-  var final_date= date+"/"+month+"/"+year;
+  var final_date= date+"-"+month+"-"+year;
   console.log(final_date,$scope.scheduling);
   commonService.getData('POST','schedules-page',{schedule_dt:final_date,schedule_period:$scope.scheduling.schedule_period}).then(function(resp){
     console.log("schedule::",resp);
@@ -76,4 +89,4 @@ $scope.setTime = function(ind){
   $scope.scheduling.schedule_period = $scope.scheduletimings[ind];
 }
 
-});
+}]);

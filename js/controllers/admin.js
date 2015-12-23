@@ -1,16 +1,17 @@
-appinstal.controller("admin",function($scope,$rootScope,$state,$uibModal,commonService) {
-	
-	$scope.gridOptions = { 
-			data: 'allUsers',
-			multiSelect:false,
-		//	jqueryUITheme: true,
-			columnDefs: [{field: 'user_name', displayName: 'Client Name'},
+angular.module("myapp").controller("admin",['$scope','$rootScope','$state','$uibModal','commonService',function($scope,$rootScope,$state,$uibModal,commonService) {
+	$scope.AlreadyAssigned = true;
+	$scope.coldefs=[{field: 'user_name', displayName: 'Client Name'},
 			{field:'email', width:200,displayName:'Email id',cellTemplate: '<div  ng-click="foo(row)" ng-bind="row.getProperty(col.field)"></div>'},
 		{field:'phone', displayName:'Phone num'},
 		{field:'user_id', displayName:'File Number'},
 		{field:'user_id', displayName:'Payment Info'},
-		{field:'user_id', displayName:'Assigned'}
-		]
+		{field:'client_name', displayName:'Assigned'}
+		];
+	$scope.gridOptions = { 
+			data: 'allUsers',
+			multiSelect:false,
+		//	jqueryUITheme: true,
+			columnDefs: 'coldefs'
 	};
 
 	commonService.getData('GET','user-list').then(function(resp){
@@ -34,22 +35,35 @@ appinstal.controller("admin",function($scope,$rootScope,$state,$uibModal,commonS
 
 
 
-	/*$scope.myData = [{name: "Moroni", age: 50,email:'sarath.anagha@gmail.com',assignee:'unlist-1'},
-	{name: "Tiancum", age: 43,email:'sarath.anagha@gmail.com',assignee:'unlist-1'},
-	{name: "Jacob", age: 27,email:'sarath.anagha@gmail.com',assignee:'unlist-2'},
-	{name: "Nephi", age: 29,email:'sarath.anagha@gmail.com',assignee:'unlist-1'},
-	{name: "Enos", age: 34,email:'sarath.anagha@gmail.com',assignee:'unlist-2'}]; */ 
-	$scope.assignedChange = function(item){
-console.info("Unlist Change:",item);
-commonService.getData('POST','assign-user',{unlists_u_id:item.user_id,client_id:$scope.user_id}).then(function(resp){
-		console.log("Assign check::",resp);
-		
-	});
+	
+	$scope.assignedChange = function(item,row){
+console.info("Unlist Change:",item,row);
+$scope.optionSelected = item;
+$scope.user_id_selected=row.entity.user_id;
 
+
+	}
+	$scope.assignConfirm = function(){
+
+		commonService.getData('POST','assign-user',{unlists_u_id:$scope.optionSelected.user_id,client_id:$scope.user_id_selected}).then(function(resp){
+		console.log("Assign check::",resp);
+		$state.reload();
+		
+	       });
+	}
+
+	$scope.uploadSynopsys = function(event){
+			console.log(event);
+	var files = event.target.files[0];
+      var form_data= new FormData();           
+      form_data.append("file", files) ;
+      commonService.getData('PUT','uploadPdfs-page/'+$scope.user_id,form_data).then(function(resp){
+        console.log("Synopsys",resp);
+      })
 	}
 
 	$scope.RefreshGrid = function(e,i){
-
+        
 		e.preventDefault();
 		if(i=='total'){
 			$state.reload();
@@ -60,12 +74,38 @@ commonService.getData('POST','assign-user',{unlists_u_id:item.user_id,client_id:
 		commonService.getData('GET','get-processing-info/'+i).then(function(resp){
 			console.log("To Be assigned::",resp);
 			if(i==0){
+				$scope.x=[];
 				$scope.allUsers=resp.data.list;
+				angular.forEach($scope.allUsers,function(val,key){
+					if(val.client_name!=null){
+						angular.forEach($scope.UnListMembers,function(v,k){
+                 if(v.user_name==val.client_name)
+                 	$scope.x[key]=v;
+						})
+						 
+					}
+                    
+				});
+				$scope.coldefs=[{field: 'user_name', displayName: 'Client Name'},
+			{field:'email', width:200,displayName:'Email id',cellTemplate: '<div  ng-click="foo(row)" ng-bind="row.getProperty(col.field)"></div>'},
+		{field:'phone', displayName:'Phone num'},
+		{field:'user_id', displayName:'File Number'},
+		{field:'user_id', displayName:'Payment Info'},
+		{field:'client_name', displayName:'Assigned',cellTemplate:"<select ng-change='assignedChange(x[row.rowIndex],row)' ng-model='x[row.rowIndex]' ng-options='item.user_name  for item in UnListMembers'></select><button ng-click='assignConfirm();'>Assign</button>"
+	}
+		];
 				
 
 			}
 			else{
 				$scope.allUsers=resp.data.list;
+				$scope.coldefs=[{field: 'user_name', displayName: 'Client Name'},
+			{field:'email', width:200,displayName:'Email id',cellTemplate: '<div  ng-click="foo(row)" ng-bind="row.getProperty(col.field)"></div>'},
+		{field:'phone', displayName:'Phone num'},
+		{field:'user_id', displayName:'File Number'},
+		{field:'user_id', displayName:'Payment Info'},
+		{field:'client_name', displayName:'Assigned'}
+		];
 			}
 			
 		commonService.stopSpinner();
@@ -75,6 +115,12 @@ commonService.getData('POST','assign-user',{unlists_u_id:item.user_id,client_id:
 
 	$scope.foo = function(resp){
 		console.log(resp);
+		if(resp.client_name!=null){
+			$scope.AlreadyAssigned = false;
+		}
+		else{
+			$scope.AlreadyAssigned = true;
+		}
 		$scope.userSelected = true;
 		$scope.home_banner = true;
 		$scope.user_id=resp.entity.user_id;
@@ -88,9 +134,20 @@ commonService.getData('POST','assign-user',{unlists_u_id:item.user_id,client_id:
 				console.log(val);
 				val.show = true;
 				if(index==0){
-				commonService.getData('GET','taxpayer-page?id='+$scope.user_id).then(function(resp){
+				commonService.getData('GET','taxpayer-page/'+$scope.user_id).then(function(resp){
 					console.log("Tax payer",resp.data.data);
 					$scope.PayerInfo= resp.data.data;
+					if($scope.PayerInfo.dob!=""){
+      var x= $scope.PayerInfo.dob.split('-');
+      if(x[1].length==1){
+        x[1]="0"+parseInt(x[1]-1)
+      }
+      else{
+        x[1]=parseInt(x[1]-1)
+      }
+      $scope.PayerInfo.dob=new Date(x[2],x[1],x[0]);
+
+      }
 					commonService.stopSpinner();
 
 				});	
@@ -182,4 +239,4 @@ $scope.updateStatus = function(){
                     commonService.stopSpinner();
                      });
 }
-});
+}]);

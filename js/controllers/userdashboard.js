@@ -1,5 +1,5 @@
 
-appinstal.controller("userdashboard", function($scope,$rootScope,$state,$stateParams,$uibModal,commonService) {
+angular.module("myapp").controller("userdashboard",['$scope','$rootScope','$state','$stateParams','$uibModal','commonService',function($scope,$rootScope,$state,$stateParams,$uibModal,commonService) {
   if(localStorage.getItem('user')==null){
      $state.go('main.home');
     return false;
@@ -35,7 +35,7 @@ appinstal.controller("userdashboard", function($scope,$rootScope,$state,$statePa
  
 
 $scope.referRegister = function(){
-  var user_data= {rf_on_name:$scope.user.first_name,rf_on_email:$scope.user.email,rf_on_phone:$scope.user.phone};
+  var user_data= {rf_on_name:$scope.userData.first_name,rf_on_email:$scope.userData.email,rf_on_phone:$scope.userData.phone};
   var referal_data= angular.extend(user_data,$scope.friend);
   commonService.getData('POST','referral-friend',referal_data).then(function(resp){
    console.log("Refered:::",resp);
@@ -70,4 +70,4 @@ $scope.changePassword = function(){
 
 
 
-});
+}]);

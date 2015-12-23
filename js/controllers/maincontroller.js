@@ -1,4 +1,4 @@
-appinstal.controller("UmprireTaxController",function($scope,$rootScope,$state,$uibModal,commonService) {
+angular.module("myapp").controller("UmprireTaxController",['$scope','$rootScope','$state','$uibModal','commonService','$timeout',function($scope,$rootScope,$state,$uibModal,commonService,$timeout) {
 
 $scope.service_list= false;
 $scope.friend ={};
@@ -24,6 +24,19 @@ $scope.checkemail = function(email){
   console.log("checkemail",email);
   
 }
+
+$scope.contactform ={};
+$scope.contactusService = function(data){
+commonService.getData('POST','contact-us',data).then(function(resp){
+   console.info(resp);
+   $scope.contactform ={};
+   $scope.willcontact=true;
+   $timeout(function(){
+ $scope.willcontact=false;
+   },5000);
+});
+
+};
 
 
 /*$scope.forgotPassword = function(){
@@ -138,4 +151,4 @@ $scope.OpenLogin=function($event){
 
     });
 
-  });
+  }]);

@@ -1,4 +1,4 @@
- appinstal.controller("logInCtrl",function($scope,$rootScope,$state,$uibModalInstance,commonService) {
+ angular.module("myapp").controller("logInCtrl",['$scope','$rootScope','$state','$uibModalInstance','commonService',function($scope,$rootScope,$state,$uibModalInstance,commonService) {
   console.log("hi");
   $scope.loginuser = {};
   $scope.signupuser = {};
@@ -101,4 +101,4 @@
 
     
   }
-});
+}]);
