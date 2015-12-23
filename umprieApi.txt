@@ -157,6 +157,17 @@ Get Unlist Users count
 	Url      : http://localhost/taxapplication/trunk/ustaxfilerapis/get-unlistusers-count/6 ---- Unlist User id
 	Method   : GET
 	Response {"unListUsersCount":1,"output":"success","success":true}
+	
+Get Refferal friends	
+	Url      : http://localhost/taxapplication/trunk/ustaxfilerapis/get-friends/4 ----  User id
+	Method   : GET
+	Response : get information
+
+Get Refferal friends	
+	Url      : http://localhost/taxapplication/trunk/ustaxfilerapis/contact-us ----  User id
+	Method   : POST
+	DATA     : c_name:c_name,c_email:xxx@gmail.com,c_phone:8500222765,c_message:dnsubd shuas ddas
+	Response : templete
 
 	
 	
