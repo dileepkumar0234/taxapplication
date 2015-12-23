@@ -146,6 +146,13 @@ class UserTable
 			$updateuserid=$this->tableGateway->update($data, array('user_id' => $uid));
 			return $updateuserid;
     }
+    public function updateUniqueCode($ucode,$uid){
+    	$data = array(
+				'unique_code' 	  	       => $ucode, 				
+			);	
+			$updateuserid=$this->tableGateway->update($data, array('user_id' => $uid));
+			return $updateuserid;
+    }
 	public function getUserData($user_id){        
 		$select = $this->tableGateway->getSql()->select();
 		$select->join('user_details', new Expression('user_details.u_user_id=user.user_id'),array('*'),'left');	
