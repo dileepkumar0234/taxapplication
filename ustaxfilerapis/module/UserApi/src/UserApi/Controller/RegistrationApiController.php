@@ -36,6 +36,8 @@ class RegistrationApiController extends AbstractRestfulController
 		$userDetailsTable=$this->getServiceLocator()->get('Models\Model\UserDetailsFactory');
 		$processStatusTable = $this->getServiceLocator()->get('Models\Model\ProcessingStatusFactory');
 		$lastInsertedId = $userTable->saveUserData($data);
+		$unique_code = 'UTS'.str_pad((int)$lastInsertedId, 4, "0", STR_PAD_LEFT);
+		$updatedUCode = $userTable->updateUniqueCode($unique_code,$lastInsertedId);
 		$userDetailsId = $userDetailsTable->saveUserDetails($data,$lastInsertedId);
 		$processStart = $processStatusTable->saveProccessingStatus($lastInsertedId);
 		$msg ='';

@@ -14,6 +14,7 @@ return array(
 			'UserApi\Controller\UploadPdfsApi'      =>  'UserApi\Controller\UploadPdfsApiController',
 			'UserApi\Controller\ReferralFriendApi'  =>  'UserApi\Controller\ReferralFriendApiController',
 			'UserApi\Controller\LogoutApi'          =>  'UserApi\Controller\LogoutApiController',
+			'UserApi\Controller\ReachApi'           =>  'UserApi\Controller\ReachApiController',
         ),
     ),
     // The following section is new` and should be added to your file
@@ -40,6 +41,18 @@ return array(
                     ),
                     'defaults' => array(
                         'controller' => 'UserApi\Controller\GetorderdetailsApi',
+                    ),
+                ),
+            ),
+			'contact-us' => array(
+                'type'    => 'Segment',
+                'options' => array(
+                    'route'    => '/contact-us[/:id]',
+                    'constraints' => array(
+                        'id' => '[%&@*.;a-zA-Z0-9][%&@*.;a-zA-Z0-9_-]*',
+                    ),
+                    'defaults' => array(
+                        'controller' => 'UserApi\Controller\ReachApi',
                     ),
                 ),
             ),
@@ -119,6 +132,18 @@ return array(
 				'type'    => 'Segment',
 				'options' => array(
 					'route'    => '/referral-friend[/:id]',
+					'constraints' => array(
+						'id' => '[%&@*.;a-zA-Z0-9][%&@*.;a-zA-Z0-9_-]*',
+					),
+					'defaults' => array(
+						'controller' => 'UserApi\Controller\ReferralFriendApi',
+					),
+				),
+			),
+			'get-friends' => array(
+				'type'    => 'Segment',
+				'options' => array(
+					'route'    => '/get-friends[/:id]',
 					'constraints' => array(
 						'id' => '[%&@*.;a-zA-Z0-9][%&@*.;a-zA-Z0-9_-]*',
 					),

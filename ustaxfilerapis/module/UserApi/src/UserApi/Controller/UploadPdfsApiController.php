@@ -14,7 +14,7 @@ class UploadPdfsApiController extends AbstractRestfulController
 			$uploadPdfsTable =$this->getServiceLocator()->get('Models\Model\UploadPdfsFactory');
 			$getUploads = $uploadPdfsTable->getUploadsData($id);
 			if($getUploads!=""){
-				$uid = $_SESSION['user_id'];
+				$uid = $id;
 				$curYear = date("Y");
 				$filePath = "/uploads/".$uid."/".$curYear;
 				return new JsonModel(array(

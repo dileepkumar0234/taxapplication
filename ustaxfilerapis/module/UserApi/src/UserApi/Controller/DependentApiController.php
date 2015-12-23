@@ -10,11 +10,9 @@ class DependentApiController extends AbstractRestfulController
     public function get($id)
     {	
 		header('Access-Control-Allow-Origin: *');	
-		if(isset($_SESSION['user_id']) && $_SESSION['user_id']){
-			$usId = $_SESSION['user_id'];
-		}else{
+		
 			$usId = $id;
-		}
+		
 		$dependentTable=$this->getServiceLocator()->get('Models\Model\DependentFactory');
 		$getData = $dependentTable->getData($usId);
 		$dep = array();

@@ -9,9 +9,26 @@ class ReferralFriendApiController extends AbstractRestfulController
     {
 		
     }
-    public function get($email)
+    public function get($id)
     {
-		
+		header('Access-Control-Allow-Origin: *');	
+		$refferalFriendTable=$this->getServiceLocator()->get('Models\Model\RefferalFriendsFactory');
+		$getRefferal = $refferalFriendTable->getRefferal($id);
+		$reFFeral = array();
+		if(count($getRefferal)>0){
+			foreach($getRefferal as $refD){
+				$reFFeral[]=$refD;
+			}
+			return new JsonModel(array(
+				'status'	=>	'success',
+				'reFFeral'		=>  $reFFeral,
+			));	
+		}else{
+			return new JsonModel(array(
+				'status'	=>	'Fail',
+				'reFFeral'	=>  '',
+			));	
+		}
     }
     public function create($data)
     {

@@ -12,12 +12,8 @@ class TaxPayerApiController extends AbstractRestfulController
 		header('Access-Control-Allow-Origin: *');
 		$data=array();		
 		$userTable=$this->getServiceLocator()->get('Models\Model\UserFactory');
-		if(isset($_SESSION['user_id']) && $_SESSION['user_id']!=""){
-			$uid = $_SESSION['user_id'];
-		}else{
-			$uid = $id;
-		}
-		$userData = $userTable->getUserData($uid);
+		$uid = $id;
+      	$userData = $userTable->getUserData($uid);
 		if(count($userData)!=0){
 			return new JsonModel(array(
 				'data' 		=> $userData,
@@ -34,11 +30,7 @@ class TaxPayerApiController extends AbstractRestfulController
     public function update($uid, $data)
     {
 		header('Access-Control-Allow-Origin: *');	
-		if(isset($_SESSION['user_id']) && $_SESSION['user_id']){
-			$usId = $_SESSION['user_id'];
-		}else{
-			$usId = $uid;
-		}
+		$usId = $uid;
 		$userTable=$this->getServiceLocator()->get('Models\Model\UserFactory');
 		$userDetailsTable=$this->getServiceLocator()->get('Models\Model\UserDetailsFactory');
 		$userRegistration = $userTable->updateUserData($data,$usId);

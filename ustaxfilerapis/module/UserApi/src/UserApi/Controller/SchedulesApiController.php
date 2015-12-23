@@ -10,11 +10,9 @@ class SchedulesApiController extends AbstractRestfulController
     public function get($id)
     {		
 		header('Access-Control-Allow-Origin: *');	
-		if(isset($_SESSION['user_id']) && $_SESSION['user_id']){
-			$usId = $_SESSION['user_id'];
-		}else{
+		
 			$usId = $id;
-		}
+		
 		$schedulesTimingsTable = $this->getServiceLocator()->get('Models\Model\SchedulesTimingsFactory');
 		$getData = $schedulesTimingsTable->getData($usId);
 		if($getData!=""){

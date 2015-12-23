@@ -12,11 +12,9 @@ class SpouseApiController extends AbstractRestfulController
 		header('Access-Control-Allow-Origin: *');
 		if(isset($id) && $id!=""){
 			$spouseTable = $this->getServiceLocator()->get('Models\Model\SpouseFactory');
-			if(isset($_SESSION['user_id']) && $_SESSION['user_id']){
-				$usId = $_SESSION['user_id'];
-			}else{
+			
 				$usId = $id;
-			}
+			
 			$getData = $spouseTable->getData($usId);
 			if($getData!=""){
 				return new JsonModel(array(
