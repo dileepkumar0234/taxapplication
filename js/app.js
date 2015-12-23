@@ -1,16 +1,31 @@
-var appinstal = angular.module("myapp", ['ui.router','ui.bootstrap','ngGrid']);
+var appinstal = angular.module("myapp", ['ui.router','ui.bootstrap','ngGrid','oc.lazyLoad']);
 
 
 // UTSXXXX
 
-appinstal.config(function($stateProvider, $urlRouterProvider)
+
+appinstal.config(function($stateProvider, $urlRouterProvider,$ocLazyLoadProvider)
 {
   $stateProvider
   .state('main', {
     url: '/home',
     abstract: true,
     templateUrl:'templates/main.html',
-    controller:'UmprireTaxController'
+    controller:'UmprireTaxController',
+     resolve: {
+            deps: ['$ocLazyLoad', function ($ocLazyLoad) {
+                return $ocLazyLoad.load({
+                    files: [
+                            //TODO add all the required css and js
+
+                            'js/controllers/maincontroller.js',
+                            'js/controllers/login.js',
+                            'js/services/commonservice.js',
+                            'js/commondirective.js'
+                        ]
+                });
+            }]
+        }
   })
   .state('main.home', {
     url: '',
@@ -44,44 +59,148 @@ appinstal.config(function($stateProvider, $urlRouterProvider)
     url: '/user/:id',
     abstract: true,
     controller:'userdashboard',
-    templateUrl:'templates/header.html'
+    templateUrl:'templates/header.html',
+     resolve: {
+            deps: ['$ocLazyLoad', function ($ocLazyLoad) {
+                return $ocLazyLoad.load({
+                    files: [
+                            //TODO add all the required css and js
+      
+                            'js/controllers/userdashboard.js',
+                      
+                            'js/services/commonservice.js',
+                            'js/commondirective.js'
+
+                        ]
+                });
+            }]
+        }
   })
   .state('user.user', {
     url: '/',
     controller:'userController',
     templateUrl:'templates/user.html',
+    resolve: {
+            deps: ['$ocLazyLoad', function ($ocLazyLoad) {
+                return $ocLazyLoad.load({
+                    files: [
+                            //TODO add all the required css and js
+      
+                            'js/controllers/usercontroller.js'
+
+                        ]
+                });
+            }]
+        }
   })
   .state('user.spouse', {
     url: '/spouse',
     controller:'spouseController',
     templateUrl:'templates/spouse.html',
+    resolve: {
+            deps: ['$ocLazyLoad', function ($ocLazyLoad) {
+                return $ocLazyLoad.load({
+                    files: [
+                            //TODO add all the required css and js
+      
+                            'js/controllers/spousecontroller.js'
+
+                        ]
+                });
+            }]
+        }
   })
   .state('user.dependants', {
     url: '/dependants',
 controller:'dependantController',
     templateUrl:'templates/dependents.html',
+    resolve: {
+            deps: ['$ocLazyLoad', function ($ocLazyLoad) {
+                return $ocLazyLoad.load({
+                    files: [
+                            //TODO add all the required css and js
+      
+                            'js/controllers/dependantController.js'
+
+                        ]
+                });
+            }]
+        }
   })
   .state('user.upload', {
     url: '/upload',
 controller:'uploadController',
     templateUrl:'templates/uploadTaxDoc.html',
+    resolve: {
+            deps: ['$ocLazyLoad', function ($ocLazyLoad) {
+                return $ocLazyLoad.load({
+                    files: [
+                            //TODO add all the required css and js
+      
+                            'js/controllers/uploadcontroller.js'
+
+                        ]
+                });
+            }]
+        }
   })
   .state('user.schedule', {
     url: '/schedule',
 
 controller:'scheduleController',
     templateUrl:'templates/schedule.html',
+    resolve: {
+            deps: ['$ocLazyLoad', function ($ocLazyLoad) {
+                return $ocLazyLoad.load({
+                    files: [
+                            //TODO add all the required css and js
+      
+                            'js/controllers/schedulecontroller.js'
+
+                        ]
+                });
+            }]
+        }
   })
   .state('user.change', {
     url: '/change',
 
     templateUrl:'templates/changepassword.html',
   })
+  .state('user.referals', {
+    url: '/referals',
+  controller:'referalController',
+    templateUrl:'templates/viewReferals.html',
+     resolve: {
+            deps: ['$ocLazyLoad', function ($ocLazyLoad) {
+                return $ocLazyLoad.load({
+                    files: [
+                            //TODO add all the required css and js
+      
+                            'js/controllers/ReferalController.js'
+
+                        ]
+                });
+            }]
+        }
+  })
   .state('admin', {
     url: '/admin',
     abstract: true,
       controller:'admin',
-    templateUrl:'templates/header1.html'
+    templateUrl:'templates/header1.html',
+     resolve: {
+            deps: ['$ocLazyLoad', function ($ocLazyLoad) {
+                return $ocLazyLoad.load({
+                    files: [
+                            //TODO add all the required css and js
+       'js/services/commonservice.js',
+                            'js/controllers/admin.js'
+
+                        ]
+                });
+            }]
+        }
   })
   .state('admin.user', {
     url: '/',
@@ -92,7 +211,19 @@ controller:'scheduleController',
     url: '/Agent',
     abstract: true,
       controller:'AgentController',
-    templateUrl:'templates/AgentMain.html'
+    templateUrl:'templates/AgentMain.html',
+    resolve: {
+            deps: ['$ocLazyLoad', function ($ocLazyLoad) {
+                return $ocLazyLoad.load({
+                    files: [
+                            //TODO add all the required css and js
+      
+                            'js/controllers/AgentController.js'
+
+                        ]
+                });
+            }]
+        }
   })
   .state('Agent.user', {
     url: '/',
@@ -101,11 +232,15 @@ controller:'scheduleController',
   })
   
   $urlRouterProvider.otherwise('/home');
+  $ocLazyLoadProvider.config({
+      debug: true,
+      events: true
+    });
+
 });
 
 
-
-
+ 
 
 
 
