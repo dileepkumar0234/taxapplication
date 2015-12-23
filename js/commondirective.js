@@ -1,52 +1,52 @@
 appinstal.directive('fileChange', function ($http,commonService) {
 
-    var linker = function ($scope, element, attributes) {
-      $scope.x={};
-      element.parents('form').find('button').bind('click',function(event){
+  var linker = function ($scope, element, attributes) {
+    $scope.x={};
+    element.parents('form').find('button').bind('click',function(event){
       //var files = event.target.files;
       console.log("Files:::",$scope.x);
       commonService.getData('PUT','uploadPdfs-page/'+$scope.uid,$scope.x).then(function(resp){
-console.log("success",resp);
-$scope.editMode = true;
-if(!$scope.$$phase){
-  $scope.$apply();
-}
+        console.log("success",resp);
+        $scope.editMode = true;
+        if(!$scope.$$phase){
+          $scope.$apply();
+        }
       })
      // uploadPdfs-page
-      });
-       element.bind('change', function (event) {
-        console.log(attributes.ngModel);
-        var key="hid_"+attributes.ngModel;
-            var files = event.target.files[0];
-            var form_data= new FormData();           
+   });
+    element.bind('change', function (event) {
+      console.log(attributes.ngModel);
+      var key="hid_"+attributes.ngModel;
+      var files = event.target.files[0];
+      var form_data= new FormData();           
       form_data.append("file", files) ;
       $http.post('http://localhost/umpire-tax-filler/trunk/ustaxfilerapis/uploadPdfs-page', form_data, {
- 
-    transformRequest: angular.identity,
- 
-    headers: {'Content-Type': undefined}
-})
 
-.success(function(resp){
-  console.log("Uploaded FIles",resp.file_name);
-  $scope.x[key]=resp.file_name;
+        transformRequest: angular.identity,
+
+        headers: {'Content-Type': undefined}
+      })
+
+      .success(function(resp){
+        console.log("Uploaded FIles",resp.file_name);
+        $scope.x[key]=resp.file_name;
     //file was uploaded
-})
+  })
 
-.error(function(){
+      .error(function(){
     //something went wrong 
-});
+  });
       
-            
-                   });
 
-        
-    };
+    });
 
-    return {
-        restrict: 'A',
-        link: linker
-    };
+
+  };
+
+  return {
+    restrict: 'A',
+    link: linker
+  };
 
 });
 
@@ -82,28 +82,22 @@ appinstal.directive('carouselDirective',function(){
  }
 });
 
-appinstal.directive('toggleCss',function(){
+appinstal.directive('getActiveClass',function(){
  return {
    restrict:'A',
    link:function(scope,elm,attr){
     elm.find('li').bind('click',function(e){
-      console.log($(e.currentTarget).parent());
-
-         angular.element(elm).find('li').removeClass('activeState');
-         if($(e.currentTarget).parent().attr('class')=='inner'){
-          if(e.currentTarget.tagName!='LI'){
-           angular.element(e.currentTarget).parents('li').addClass('activeState');
-         }
-        else{
-          angular.element(e.currentTarget).addClass('activeState');
-        }
-         }
-         
-    });
+      e.stopPropagation();
+      if($(this).find('ul').length==0){
+         elm.find('li').removeClass('Activated');
+    $(this).addClass('Activated');
+      }
      
 
+  });
    }
  }
+
 });
 
 appinstal.directive('validateForm',function(){
@@ -112,7 +106,7 @@ appinstal.directive('validateForm',function(){
    require:['ngModel','^form'],
    link:function(scope,elm,attr,ctrl){
 
-    
+
     ctrl[0].$setValidity('validateForm',true);
 
     ctrl[0].$parsers.unshift(function(viewValue){
