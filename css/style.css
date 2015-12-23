@@ -126,6 +126,9 @@ p.banner{
 	-o-background-size: cover;
 	background-size: cover;
 }
+.reference ul,.reference ol{
+	list-style:none;
+}
 
 .headerLine.firm_bg {
 	background: url(../images/bgTop2.jpg) center center no-repeat;
@@ -1486,4 +1489,7 @@ font-weight: bold;
     min-width: 1%;
     margin-right: 10px;
     width: auto!important;
+	}
+	.Activated{
+		background: #979FA2;
 	}
