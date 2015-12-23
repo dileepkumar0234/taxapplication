@@ -1,7 +1,7 @@
 
 <div class="right_content">
-    <h1>Schedule for an appointment<span ng-if="editMode&&userData.FilingStatusCode=='Scheduling Pending'" class="btn btn-primay" ng-click="editProfile()">Edit</span></h1>
-    <form name="scheduleForm" ng-if="!editMode">
+    <h1>Schedule for an appointment<!-- <span ng-if="editMode" class="btn btn-primay" ng-click="editProfile()">Edit</span> --></h1>
+    <form name="scheduleForm">
         <div class="col-xs-12">
             <div class="col-xs-6">
                 <div class="form-group">
@@ -65,7 +65,7 @@
 
 
     </form>
-    <div class="col-md-12 taxpayer" ng-if="editMode">
+    <!-- <div class="col-md-12 taxpayer" ng-if="editMode">
    <ul class="adminGroup col-md-6">
        <li>Scheduled Date</li>
        <li>{{scheduleInfo.schedule_dt}}</li>
@@ -74,5 +74,5 @@
       <li>Scheduled Time</li>
       <li>{{scheduleInfo.schedule_period}}</li>
  </ul>
-</div>
+</div> -->
 </div>

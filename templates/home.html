@@ -3,6 +3,7 @@
 <div ng-include="'templates/banner.html'"></div>
 
 <section>
+
     <!-- CAROUSEL -->
     <!-- FIRST BLOCK -->
 
@@ -82,21 +83,25 @@ UTS will guide you in claiming the benefits which provided by the Federal & Stat
                 </div>
                 <div class="s-12 m-12 l-5">
                     <h3> Contact form  </h3>
-                    <form class="customform" action="">
-                    <div class="s-12"><input name="" placeholder="Your name" title="Your name" type="text" /></div>
-                        <div class="s-12"><input name="" placeholder="Your e-mail" title="Your e-mail" type="text" /></div>
-                         <div class="s-12"><input name="" placeholder="Your Contact Number" title="Your Contact Number" type="text" /></div>
-                        <div class="s-12"><textarea placeholder="Your massage" name="" rows="5"></textarea></div>
-                        <div class="s-12 m-12 l-4"><button class="color-btn" type="submit">Submit Button</button></div>
+                    <uib-alert type="success" ng-if="willcontact" dismiss-on-timeout="5000">We Will Reach You Shortly.</uib-alert>
+                    <form class="customform" name="contactus">
+                    <div class="s-12">
+                    <input name="" ng-model="contactform.c_name" placeholder="Your name" title="Your name" type="text" /></div>
+                        <div class="s-12">
+                        <input name="" ng-model="contactform.c_email" placeholder="Your e-mail" title="Your e-mail" type="text" /></div>
+                         <div class="s-12">
+                         <input name="" ng-model="contactform.c_phone" placeholder="Your Contact Number" title="Your Contact Number" type="text" /></div>
+                        <div class="s-12"><textarea ng-model="contactform.c_message" placeholder="Your massage" name="" rows="5"></textarea></div>
+                        <div class="s-12 m-12 l-4"><button ng-click="contactusService(contactform)" class="color-btn" type="submit">Submit</button></div>
                     </form>
                 </div>
             </div>
         </div>
 
     </div>
-    <div class="col-md-12 clients">
+    <div class="col-md-12 clients" style="padding:0;">
     <div class='line'>
-        <h2 class="section-title">OUR CLIENTS</h2>
+       
         <img src="images/clients.jpg">
         </div>
         </div>

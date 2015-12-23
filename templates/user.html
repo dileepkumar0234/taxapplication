@@ -25,12 +25,14 @@
         <div class="col-xs-12">
             <div class="col-xs-6">
                 <div class="form-group">
+                <p class="input-group">
                     <label for="email">DOB:</label>
-                     <input type="text" class="form-control" ng-model="user.dob"  id="email"> 
-                 <!-- <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="dt" is-open="status.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+                    <!--  <input type="text" class="form-control" ng-model="user.dob"  id="email">  -->
+                  <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="user.dob" is-open="status.opened"  datepicker-options="dateOptions"  ng-required="true" close-text="Close" />
                     
                     <span class="input-group-btn" style="top:12px;">
-                <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button> -->
+                <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button> 
+                </p>
 
                 </div>
             </div>
@@ -51,7 +53,9 @@
             <div class="col-xs-6">
                 <div class="form-group">
                     <label for="email">Filing Status:</label>
-                    <input type="text" class="form-control" ng-model="user.filling_status" id="email">
+                    <!-- <input type="text" class="form-control" ng-model="user.filling_status" id="email"> -->
+                    <select class="form-control"  ng-selected="filling_status==item" ng-options="item as item for item in filing_status_type" ng-model="user.filling_status" name="category">
+                    </select>
 
                 </div>
             </div>
@@ -110,8 +114,10 @@
             </div>
             <div class="col-xs-6">
                 <div class="form-group">
-                    <label for="email">  Tax Status:</label>
-                    <input type="text" ng-model="user.tax_id_type"  class="form-control" id="email">
+                    <label for="email">  Do You have Health Insurance?:<!-- Tax Status: --></label>
+                    <!-- <input type="text" ng-model="user.tax_id_type"  class="form-control" id="email"> -->
+                    <select class="form-control"  ng-selected="user.tax_id_type==item" ng-options="item as item for item in healthInsurance" ng-model="user.tax_id_type" name="category">
+                    </select>
                 </div>
 
             </div>

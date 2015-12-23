@@ -22,8 +22,16 @@
         <div class="col-xs-12">
             <div class="col-xs-6">
                 <div class="form-group">
+                <p class="input-group">
                     <label for="email">DOB:</label>
-                    <input type="text" ng-model="spouse.dob" class="form-control" id="email">
+                  
+                  <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="spouse.dob" is-open="status.opened"  datepicker-options="dateOptions"  ng-required="true" close-text="Close" />
+                    
+                    <span class="input-group-btn" style="top:12px;">
+                <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button> 
+                </p>
+                   <!--  <label for="email">DOB:</label>
+                    <input type="text" ng-model="spouse.dob" class="form-control" id="email"> -->
                 </div>
             </div>
             <div class="col-xs-6">

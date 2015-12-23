@@ -1,7 +1,7 @@
 <div id="topbar">
 
   <p>CONTACT US: <strong>0800 200 200</strong> | <strong>contact@sampledomain.com</strong></p>
-<a ui-sref="admin.user" >Admin</a>
+<!-- <a ui-sref="admin.user" >Admin</a> -->
   <div class="right_btns" >  <a  ng-if="!userExist" ng-click="OpenLogin()" class="login_btn"><i class="fa fa-lock"> </i> Login / Sign Up</a>
   <a ng-if="userExist" ng-click="goToDashboard()" class="login_btn"><i class="fa fa-lock"> </i> Go To Dashboard</a>
   <!-- <a class="ref_frnd" ng-click="referals()"><i class="fa fa-user"></i> Referal Program</a> -->
@@ -19,7 +19,7 @@
 
       <li class="banner"><a ng-class="{'active':current=='main.home'}" ui-sref="main.home">Home</a></li>
       <li class="banner"><a ng-class="{'active':current=='main.firmProfile'}" ui-sref="main.firmProfile">Firm Profile </a></li>
-      <li class="banner" style="position:relative;"><a ng-mouseover="service_list=!service_list"  ng-class="{'active':current=='main.Service'}" ui-sref="main.Service">Our Services</a>
+      <li class="banner" style="position:relative;"><a ng-class="{'active':current=='main.Service'}" ui-sref="main.Service">Our Services</a>
           <ul style="position:absolute;top:30px;" ng-show="service_list">
             <li style="width:250px" class="banner"><a ng-class="{'active':current=='main.Service'}" ui-sref="main.Service">Indian Tax  Services</a></li>
              <li style="width:100%" class="banner"><a ng-class="{'active':current=='main.Service'}" ui-sref="main.Service">Business Tax Services</a></li>
