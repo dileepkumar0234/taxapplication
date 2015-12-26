@@ -92,15 +92,15 @@ return array(
 					),
 				),
 			),
-			'reviews' => array(
+			'get-referral' => array(
 				'type'    => 'Segment',
 				'options' => array(
-					'route'    => '/reviews[/:id]',
+					'route'    => '/get-referral[/:id]',
 					'constraints' => array(
 						'id' => '[%&@*.;a-zA-Z0-9][%&@*.;a-zA-Z0-9_-]*',
 					),
 					'defaults' => array(
-						'controller' => 'UserApi\Controller\ReviewsRatingsApi',
+						'controller' => 'UserApi\Controller\ReferralFriendApi',
 					),
 				),
 			),
