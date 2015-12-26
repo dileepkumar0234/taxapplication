@@ -7,15 +7,31 @@ class ReachApiController extends AbstractRestfulController
 {
     public function getList()
     {
-		
+		header('Access-Control-Allow-Origin: *');
+		$contactUsTable  = $this->getServiceLocator()->get('Models\Model\ContactUsFactory');
+		$list = $contactUsTable->allContacts();
+		$allContacts = array();
+		if(count($list)>0){
+			foreach($list as $contact){
+				$allContacts[] = $contact;
+			}
+			if($allContacts>0){
+				return new JsonModel(array(
+					'output' 	=> 'success',
+					'allContacts' 	=> $allContacts
+				));
+			}else{
+				return new JsonModel(array(
+					'output' 	    => 'boom',
+					'allContacts' 	=> ''
+				));
+			}
+		}
     }
     public function get($logout)
     {
 		header('Access-Control-Allow-Origin: *');
-		unset($_SESSION);
-		return new JsonModel(array(
-			'output' 	=> 'Session Expried',
-		));
+		
     }
     public function create($data)
     {
@@ -40,6 +56,8 @@ class ReachApiController extends AbstractRestfulController
 		}else{
 			$contactMessage = '';
 		}
+		$contactUsTable  = $this->getServiceLocator()->get('Models\Model\ContactUsFactory');
+		$insertedContact = $contactUsTable->inserContact($data);
 		$msg = '';
 		$msg .= '<body>';
 		$msg .='<table width="600" border="0" cellspacing="0" cellpadding="0">';

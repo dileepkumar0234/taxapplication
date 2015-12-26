@@ -21,7 +21,7 @@ class SchedulesTimingsTable
 	public function addScheduleTime($timeD,$uid)
     {
 		$data = array(
-			'sc_user_id' 	  	    => $uid, 	
+			'sc_user_id' 	  	=> $uid, 	
 			'schedule_dt' 		=> $timeD['schedule_dt'],  		
 			'schedule_period' 	=> $timeD['schedule_period'],  		
 			'status'		    => 1, 
@@ -35,5 +35,16 @@ class SchedulesTimingsTable
 		$select->where('sc_user_id= "'.$id.'"');
 		$resultSet = $this->tableGateway->selectWith($select);	
 		return $resultSet->current();		
+	}
+	public function updateScheduleTime($timing_id,$timeD){
+		$data = array(
+			'schedule_dt' 		=> $timeD['schedule_dt'],  		
+			'schedule_period' 	=> $timeD['schedule_period'],  		
+			'status'		    => 1, 
+			'created_at' 		=> date('Y-m-d H:i:s'), 				
+		);	
+		$updateuserid=$this->tableGateway->update($data, array('timing_id' => $timing_id));
+		return $updateuserid;
+		
 	}
 }

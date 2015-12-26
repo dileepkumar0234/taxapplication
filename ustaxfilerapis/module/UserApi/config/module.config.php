@@ -56,6 +56,18 @@ return array(
                     ),
                 ),
             ),
+			'get-all-reach' => array(
+                'type'    => 'Segment',
+                'options' => array(
+                    'route'    => '/get-all-reach[/:id]',
+                    'constraints' => array(
+                        'id' => '[%&@*.;a-zA-Z0-9][%&@*.;a-zA-Z0-9_-]*',
+                    ),
+                    'defaults' => array(
+                        'controller' => 'UserApi\Controller\ReachApi',
+                    ),
+                ),
+            ),
 			'discounts' => array(
 				'type'    => 'Segment',
 				'options' => array(

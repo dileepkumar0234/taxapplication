@@ -22,6 +22,8 @@ use Models\Model\AssignUserList;
 use Models\Model\AssignUserListTable;
 use Models\Model\Synopsys;
 use Models\Model\SynopsysTable;
+use Models\Model\ContactUs;
+use Models\Model\ContactUsTable;
 use Zend\Db\ResultSet\ResultSet;
 use Zend\Db\TableGateway\TableGateway;
 class Module
@@ -55,6 +57,7 @@ class Module
 				'Models\Model\ProcessingStatusFactory'	    =>'Models\Factory\Model\ProcessingStatusTableFactory',
 				'Models\Model\AssignUserListFactory'	    =>'Models\Factory\Model\AssignUserListTableFactory',
 				'Models\Model\SynopsysFactory'	            =>'Models\Factory\Model\SynopsysTableFactory',
+				'Models\Model\ContactUsFactory'	            =>'Models\Factory\Model\ContactUsTableFactory',
 			),
         );
     }

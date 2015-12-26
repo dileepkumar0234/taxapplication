@@ -38,7 +38,8 @@ class SchedulesApiController extends AbstractRestfulController
 				return new JsonModel(array(
 					'value' 	=> 1,
 					'output' 	=> 'success',
-					'uid' 	=> $usId
+					'uid' 	    => $usId,
+					'timing_id' => $insertedLastId
 				));
 			}else{
 				return new JsonModel(array(
@@ -56,8 +57,27 @@ class SchedulesApiController extends AbstractRestfulController
 		}
 		
     }
-    public function update($uid,$data)
+    public function update($timing_id,$data)
     {
+		header('Access-Control-Allow-Origin: *');
+		if(isset($_SESSION['user_id']) && $_SESSION['user_id']){
+			$usId = $_SESSION['user_id'];
+			$schedulesTimingsTable = $this->getServiceLocator()->get('Models\Model\SchedulesTimingsFactory');
+			$lastUpdated = $schedulesTimingsTable->updateScheduleTime($timing_id,$data);
+			if($lastUpdated>=0){
+				return new JsonModel(array(
+					'output' 	=> 'success',
+				));
+			}else{
+				return new JsonModel(array(
+					'output' 	=> 'boom',
+				));
+			}
+		}else{
+			return new JsonModel(array(
+				'output' 	=> 'boom',
+			));
+		}
 		
     }
     public function delete($id)

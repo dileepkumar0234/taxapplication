@@ -10,9 +10,7 @@ class DependentApiController extends AbstractRestfulController
     public function get($id)
     {	
 		header('Access-Control-Allow-Origin: *');	
-		
-			$usId = $id;
-		
+		$usId = $id;
 		$dependentTable=$this->getServiceLocator()->get('Models\Model\DependentFactory');
 		$getData = $dependentTable->getData($usId);
 		$dep = array();
@@ -33,56 +31,6 @@ class DependentApiController extends AbstractRestfulController
     }
     public function create($data)
     {
-		// $data = array();
-		// $data['dep'] = array();
-		// $data['dep'] = array(
-			// array(
-				// "first_name"=>"Dileep",
-				// "last_name" =>"DKumar",
-				// "occupation"=>"occupation",
-				// "dob"=>"dob",
-				// "address"=>"address",
-				// "phone"=>"8500222765",
-				// "mail_id"=>"abc@gmail.com",
-			// ),
-			// array(
-				// "first_name"=>"Dileep",
-				// "last_name" =>"DKumar",
-				// "occupation"=>"occupation",
-				// "dob"=>"dob",
-				// "address"=>"address",
-				// "phone"=>"8500222765",
-				// "mail_id"=>"abc@gmail.com",
-			// ),
-			// array(
-				// "first_name"=>"Dileep",
-				// "last_name" =>"DKumar",
-				// "occupation"=>"occupation",
-				// "dob"=>"dob",
-				// "address"=>"address",
-				// "phone"=>"8500222765",
-				// "mail_id"=>"abc@gmail.com",
-			// ),
-			// array(
-				// "first_name"=>"Dileep",
-				// "last_name" =>"DKumar",
-				// "occupation"=>"occupation",
-				// "dob"=>"dob",
-				// "address"=>"address",
-				// "phone"=>"8500222765",
-				// "mail_id"=>"abc@gmail.com",
-			// ),
-			// array(
-				// "first_name"=>"Dileep",
-				// "last_name" =>"DKumar",
-				// "occupation"=>"occupation",
-				// "dob"=>"dob",
-				// "address"=>"address",
-				// "phone"=>"8500222765",
-				// "mail_id"=>"abc@gmail.com",
-			// )
-		// );
-		// echo json_encode($data);exit;
 		if(isset($_SESSION['user_id']) && $_SESSION['user_id']){
 			header('Access-Control-Allow-Origin: *');
 			$dependentTable = $this->getServiceLocator()->get('Models\Model\DependentFactory');
