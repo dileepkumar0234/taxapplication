@@ -97,7 +97,7 @@ User list :
 	
 Count Of Each Proccess:
 	
-	Url      : http://localhost/code8-12-2015/ustaxfilerapis/coount-each-stages
+	Url      : http://localhost/code8-12-2015/ustaxfilerapis/count-each-stages
 	Method   : GET
 	Response : {"value":1,"output":"success","basisinfoCnt":2,"Schedulingcnt":"","interviewCnt":"",
 	"docsCnt":"","otherDocsCnt":"","preparationCnt":"","synopsisCnt":"","paymentCnt":"","reviewCnt":"",
@@ -163,11 +163,32 @@ Get Refferal friends
 	Method   : GET
 	Response : get information
 
-Get Refferal friends	
-	Url      : http://localhost/taxapplication/trunk/ustaxfilerapis/contact-us ----  User id
+Contact us 	
+	Url      : http://localhost/taxapplication/trunk/ustaxfilerapis/contact-us 
 	Method   : POST
 	DATA     : c_name:c_name,c_email:xxx@gmail.com,c_phone:8500222765,c_message:dnsubd shuas ddas
 	Response : templete
 
+Get All Contact us 	
+	Url      : http://localhost/taxapplication/trunk/ustaxfilerapis/get-all-reach 
+	Method   : GET
+	Response : {"output":"success","allContacts":[{"contact_id":"1","c_name":"","c_email":"","c_phone":"","c_message":"","c_created_at":"2015-12-26 18:39:42"},{"contact_id":"2","c_name":"c_name","c_email":"xxx@gmail.com","c_phone":"8500222765","c_message":"dnsubd shuas ddas","c_created_at":"2015-12-26 18:43:47"}]}
+
 	
+Admin Log Out: Log in required.
+	Url      : http://localhost/code8-12-2015/ustaxfilerapis/admin-logout/something
+	Method   : GET
+	Response : {"output":"Session Expried"}
 	
+Unlist Log Out: Log in required.
+	Url      : http://localhost/code8-12-2015/ustaxfilerapis/unlist-logout/something
+	Method   : GET
+	Response : {"output":"Session Expried"}	
+
+Admin Change Password : Log in required.
+	Url      : http://localhost/code8-12-2015/ustaxfilerapis/admin-change-password
+	Method   : POST
+	Data     : oldPwd=dileep&cnfPwd=dileep1
+	Response : {"value":"1","Success":"Password Successfully Updated"}
+	(Note: Here if entered old password is wrong response is)
+	Response : {"value":"0","Success":"Old Password Is Wrong."}
