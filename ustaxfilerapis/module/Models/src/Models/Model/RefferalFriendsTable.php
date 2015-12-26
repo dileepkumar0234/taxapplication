@@ -85,4 +85,11 @@ class RefferalFriendsTable
 		$resultSet = $this->tableGateway->selectWith($select);	
 		return $resultSet;			
 	}
+	public function getAllRefferal(){
+		$select = $this->tableGateway->getSql()->select();
+		$select->join('user', new Expression('referral_friends.rf_user_id=user.user_id'),array('*'),'left');
+		$select->join('user_details', new Expression('user_details.u_user_id=user.user_id'),array('*'),'left');
+		$resultSet = $this->tableGateway->selectWith($select);	
+		return $resultSet;	
+	}
 }

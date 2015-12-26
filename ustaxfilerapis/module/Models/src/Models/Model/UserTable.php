@@ -123,7 +123,7 @@ class UserTable
 	public function changepwd($userid,$pwd){
 	   $password=md5($pwd);
 	   $data = array(
-		   'password'      =>$password,
+		   'password'        =>$password,
 		   'locked_pwd'      =>$pwd,
 		);
 	   $changepassword=$this->tableGateway->update($data, array('user_id' => $userid));	   
