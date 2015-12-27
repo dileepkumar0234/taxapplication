@@ -183,7 +183,18 @@ Admin Log Out: Log in required.
 Unlist Log Out: Log in required.
 	Url      : http://localhost/code8-12-2015/ustaxfilerapis/unlist-logout/something
 	Method   : GET
-	Response : {"output":"Session Expried"}	
+	Response : {"output":"Session Expried"}
+
+Unlist Log Out: Log in required.
+	Url      : http://localhost/taxapplication/trunk/ustaxfilerapis/get-referral
+	Method   : GET
+	Response : {"output":"success","refferalContacts":[{"rf_id":"4","rf_user_id":"4","rf_on_name":"Dileep","rf_on_email":
+	"dileepkumarkonda@gmail.com","rf_on_phone":"8500222765","rf_name":"Kumar","rf_email":"dkonda@aapthitech.com",
+	"rf_phone":"8500222765","added_at":"2015-12-07 14:11:32","status":"1","user_id":"4","user_name":
+	"sarath","email":"sarath.anagha@gmail.com","password":"3bad6af0fa4b8b330d162e19938ee981",
+	"locked_pwd":"sarath","date_added":"2015-12-06 12:25:42","date_updated":"2015-12-13 16:00:36",
+	"user_type_id":"2","logged_ip":null,"user_details_id":"4","u_user_id":"4","first_name":"sarath","last_name":"chandra","occupation":"software","current_emp":"hf","dob":"16-05-1990","address":"ssss","city_name":"","state_name":"dfq","zip":"523002","apt_no":"dsad","phone":"8500222765","alterphone":"67","tax_id_type":"","dependent":"2","relation_ship":null,"ssnitin":null,"visa_type":null,"c_location":"RESOURCEON","filling_status":"2"},{"rf_id":"5","rf_user_id":"4","rf_on_name":"sss","rf_on_email":null,"rf_on_phone":null,"rf_name":null,"rf_email":null,"rf_phone":null,"added_at":null,"status":"1","user_id":"4","user_name":"sarath","email":"sarath.anagha@gmail.com","password":"3bad6af0fa4b8b330d162e19938ee981","locked_pwd":"sarath","date_added":"2015-12-06 12:25:42","date_updated":"2015-12-13 16:00:36","user_type_id":"2","logged_ip":null,"user_details_id":"4","u_user_id":"4","first_name":"sarath","last_name":"chandra","occupation":"software","current_emp":"hf","dob":"16-05-1990","address":"ssss","city_name":"","state_name":"dfq","zip":"523002","apt_no":"dsad","phone":"8500222765","alterphone":"67","tax_id_type":"","dependent":"2","relation_ship":null,"ssnitin":null,"visa_type":null,"c_location":"RESOURCEON","filling_status":"2"},{"rf_id":"6","rf_user_id":"2","rf_on_name":null,"rf_on_email":null,"rf_on_phone":null,"rf_name":null,"rf_email":null,"rf_phone":null,"added_at":null,"status":null,"user_id":null,"user_name":null,"email":null,"password":null,"locked_pwd":null,"date_added":null,"date_updated":null,"user_type_id":null,"logged_ip":null,"user_details_id":null,"u_user_id":null,"first_name":null,"last_name":null,"occupation":null,"current_emp":null,"dob":null,"address":null,"city_name":null,"state_name":null,"zip":null,"apt_no":null,"phone":null,"alterphone":null,"tax_id_type":null,"dependent":null,"relation_ship":null,"ssnitin":null,"visa_type":null,"c_location":null,"filling_status":null},{"rf_id":"7","rf_user_id":"2","rf_on_name":null,"rf_on_email":null,"rf_on_phone":null,"rf_name":null,"rf_email":null,"rf_phone":null,"added_at":null,"status":null,"user_id":null,"user_name":null,"email":null,"password":null,"locked_pwd":null,"date_added":null,"date_updated":null,"user_type_id":null,"logged_ip":null,"user_details_id":null,"u_user_id":null,"first_name":null,"last_name":null,"occupation":null,"current_emp":null,"dob":null,"address":null,"city_name":null,"state_name":null,"zip":null,"apt_no":null,"phone":null,"alterphone":null,"tax_id_type":null,"dependent":null,"relation_ship":null,"ssnitin":null,
+	"visa_type":null,"c_location":null,"filling_status":null}]}
 
 Admin Change Password : Log in required.
 	Url      : http://localhost/code8-12-2015/ustaxfilerapis/admin-change-password
@@ -192,3 +203,8 @@ Admin Change Password : Log in required.
 	Response : {"value":"1","Success":"Password Successfully Updated"}
 	(Note: Here if entered old password is wrong response is)
 	Response : {"value":"0","Success":"Old Password Is Wrong."}
+	
+unlist users each stage count 
+	Url      : http://localhost/taxapplication/trunk/ustaxfilerapis/unlist-user-count/6
+	Method   : GET
+	Response : {"toBeAssignedCnt":1,"basisinfoCnt":1,"Schedulingcnt":0,"interviewCnt":0,"docsCnt":0,"otherDocsCnt":0,"preparationCnt":0,"synopsisCnt":0,"paymentCnt":0,"reviewCnt":0,"confirmationCnt":0,"filing":0,"efiling":0,"peFiling":0}
