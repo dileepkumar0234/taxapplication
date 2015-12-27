@@ -9,6 +9,7 @@ return array(
             'AdminApi\Controller\UnlistUsersApi'      =>'AdminApi\Controller\UnlistUsersApiController',
             'AdminApi\Controller\ChangepasswordApi'   =>'AdminApi\Controller\ChangepasswordApiController',
             'AdminApi\Controller\LogoutApi'           =>'AdminApi\Controller\LogoutApiController',
+            'AdminApi\Controller\UnlistUsersCountListApi' =>'AdminApi\Controller\UnlistUsersCountListApiController',
 
 		),
     ),
@@ -24,6 +25,18 @@ return array(
                     ),
                     'defaults' => array(
                         'controller' => 'AdminApi\Controller\UserInformationApi',
+                    ),
+                ),
+            ),
+			'unlist-user-count' => array(
+                'type'    => 'Segment',
+                'options' => array(
+                    'route'    => '/unlist-user-count[/:id]',
+                    'constraints' => array(
+                        'id' => '[%&@*.;a-zA-Z0-9][%&@*.;a-zA-Z0-9_-]*',
+                    ),
+                    'defaults' => array(
+                        'controller' => 'AdminApi\Controller\UnlistUsersCountListApi',
                     ),
                 ),
             ),
