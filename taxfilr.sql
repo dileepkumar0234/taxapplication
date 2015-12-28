@@ -27,11 +27,29 @@ CREATE TABLE `assign_user_list` (
   `as_status` smallint(5) DEFAULT NULL,
   `as_crated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`as_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 /*Data for the table `assign_user_list` */
 
-insert  into `assign_user_list`(`as_id`,`unlists_u_id`,`client_id`,`as_status`,`as_crated_at`) values (1,6,8,1,'2015-12-20 20:54:45'),(2,7,9,1,'2015-12-21 02:15:03');
+insert  into `assign_user_list`(`as_id`,`unlists_u_id`,`client_id`,`as_status`,`as_crated_at`) values (1,6,8,1,'2015-12-20 20:54:45'),(2,6,9,1,'2015-12-21 02:15:03'),(3,6,5,1,'2015-12-27 17:03:50'),(4,7,4,1,'2015-12-27 17:03:54');
+
+/*Table structure for table `contact_us` */
+
+DROP TABLE IF EXISTS `contact_us`;
+
+CREATE TABLE `contact_us` (
+  `contact_id` int(11) NOT NULL AUTO_INCREMENT,
+  `c_name` varchar(60) DEFAULT NULL,
+  `c_email` varchar(50) DEFAULT NULL,
+  `c_phone` varchar(20) DEFAULT NULL,
+  `c_message` text,
+  `c_created_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`contact_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+/*Data for the table `contact_us` */
+
+insert  into `contact_us`(`contact_id`,`c_name`,`c_email`,`c_phone`,`c_message`,`c_created_at`) values (1,'','','','','2015-12-26 18:39:42'),(2,'c_name','xxx@gmail.com','8500222765','dnsubd shuas ddas','2015-12-26 18:43:47');
 
 /*Table structure for table `dependent` */
 
@@ -106,11 +124,11 @@ CREATE TABLE `referral_friends` (
   `added_at` datetime DEFAULT NULL,
   `status` smallint(5) DEFAULT NULL,
   PRIMARY KEY (`rf_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 /*Data for the table `referral_friends` */
 
-insert  into `referral_friends`(`rf_id`,`rf_user_id`,`rf_on_name`,`rf_on_email`,`rf_on_phone`,`rf_name`,`rf_email`,`rf_phone`,`added_at`,`status`) values (4,NULL,'Dileep','dileepkumarkonda@gmail.com','8500222765','Kumar','dkonda@aapthitech.com','8500222765','2015-12-07 14:11:32',1);
+insert  into `referral_friends`(`rf_id`,`rf_user_id`,`rf_on_name`,`rf_on_email`,`rf_on_phone`,`rf_name`,`rf_email`,`rf_phone`,`added_at`,`status`) values (4,4,'Dileep','dileepkumarkonda@gmail.com','8500222765','Kumar','dkonda@aapthitech.com','8500222765','2015-12-07 14:11:32',1),(5,4,'sss',NULL,NULL,NULL,NULL,NULL,NULL,NULL),(6,2,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(7,2,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
 
 /*Table structure for table `schedules_timings` */
 
