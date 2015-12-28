@@ -1,5 +1,5 @@
 appinstal.factory("commonService", function($http,$rootScope,$timeout,$state) {
-	var webServiceUrl="http://umpiretaxsolutions.com/services/";
+	var webServiceUrl="http://localhost/taxapplication/trunk/ustaxfilerapis/";
 	var user_data = {};
 	
 

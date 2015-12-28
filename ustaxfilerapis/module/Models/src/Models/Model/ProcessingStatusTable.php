@@ -49,6 +49,9 @@ class ProcessingStatusTable
 		$select = $this->tableGateway->getSql()->select();
 		$select->join('user', new Expression('processing_status.ps_user_id=user.user_id'),array('*'),'left');
 		$select->join('user_details', new Expression('user_details.u_user_id=user.user_id'),array('*'),'left');
+		$select->join('assign_user_list', new Expression('assign_user_list.client_id=processing_status.ps_user_id'),array('*'),'left');
+		$select->join(array('u' => 'user'), 'assign_user_list.unlists_u_id=u.user_id',array('unlist_id' =>new Expression('u.user_id'),'unlist_name' =>new Expression('u.user_name'),'unlist_email' =>new Expression('u.email')),'left');
+		$select->join(array('ud' => 'user_details'), new Expression('ud.u_user_id=u.user_id'),array('unlist_phone' =>new Expression('ud.phone')),'left');		
 		$select->where('processing_status.ps_state="'.$state.'"');
 		$select->group('user.user_id');
 		$resultSet = $this->tableGateway->selectWith($select);	
@@ -61,6 +64,9 @@ class ProcessingStatusTable
 		$select->join('user_details', new Expression('user_details.u_user_id=user.user_id'),array('*'),'left');
 		$select->join('spouse', new Expression('spouse.s_user_id=user.user_id'),array('*'),'left');
 		$select->join('dependent', new Expression('dependent.d_user_id=user.user_id'),array('*'),'left');
+		$select->join('assign_user_list', new Expression('assign_user_list.client_id=processing_status.ps_user_id'),array('*'),'left');
+		$select->join(array('u' => 'user'), 'assign_user_list.unlists_u_id=u.user_id',array('unlist_id' =>new Expression('u.user_id'),'unlist_name' =>new Expression('u.user_name'),'unlist_email' =>new Expression('u.email')),'left');
+		$select->join(array('ud' => 'user_details'), new Expression('ud.u_user_id=u.user_id'),array('unlist_phone' =>new Expression('ud.phone')),'left');		
 		$select->where('processing_status.ps_state="'.$state.'"');
 		$select->group('user.user_id');
 		$resultSet = $this->tableGateway->selectWith($select);	
@@ -72,6 +78,9 @@ class ProcessingStatusTable
 		$select->join('user', new Expression('processing_status.ps_user_id=user.user_id'),array('*'),'left');
 		$select->join('user_details', new Expression('user_details.u_user_id=user.user_id'),array('*'),'left');
 		$select->join('schedules_timings', new Expression('schedules_timings.sc_user_id=user.user_id'),array('*'),'left');
+		$select->join('assign_user_list', new Expression('assign_user_list.client_id=processing_status.ps_user_id'),array('*'),'left');
+		$select->join(array('u' => 'user'), 'assign_user_list.unlists_u_id=u.user_id',array('unlist_id' =>new Expression('u.user_id'),'unlist_name' =>new Expression('u.user_name'),'unlist_email' =>new Expression('u.email')),'left');
+		$select->join(array('ud' => 'user_details'), new Expression('ud.u_user_id=u.user_id'),array('unlist_phone' =>new Expression('ud.phone')),'left');		
 		$select->where('processing_status.ps_state="'.$state.'"');
 		$select->group('user.user_id');
 		$resultSet = $this->tableGateway->selectWith($select);	
@@ -82,6 +91,9 @@ class ProcessingStatusTable
 		$select = $this->tableGateway->getSql()->select();
 		$select->join('user', new Expression('processing_status.ps_user_id=user.user_id'),array('*'),'left');
 		$select->join('user_details', new Expression('user_details.u_user_id=user.user_id'),array('*'),'left');
+		$select->join('assign_user_list', new Expression('assign_user_list.client_id=processing_status.ps_user_id'),array('*'),'left');
+		$select->join(array('u' => 'user'), 'assign_user_list.unlists_u_id=u.user_id',array('unlist_id' =>new Expression('u.user_id'),'unlist_name' =>new Expression('u.user_name'),'unlist_email' =>new Expression('u.email')),'left');
+		$select->join(array('ud' => 'user_details'), new Expression('ud.u_user_id=u.user_id'),array('unlist_phone' =>new Expression('ud.phone')),'left');		
 		$select->where('processing_status.ps_state="'.$state.'"');
 		$select->group('user.user_id');
 		$resultSet = $this->tableGateway->selectWith($select);	
@@ -93,6 +105,9 @@ class ProcessingStatusTable
 		$select->join('user', new Expression('processing_status.ps_user_id=user.user_id'),array('*'),'left');
 		$select->join('user_details', new Expression('user_details.u_user_id=user.user_id'),array('*'),'left');
 		$select->join('upload_pdfs', new Expression('upload_pdfs.up_user_id=user.user_id'),array('*'),'left');
+		$select->join('assign_user_list', new Expression('assign_user_list.client_id=processing_status.ps_user_id'),array('*'),'left');
+		$select->join(array('u' => 'user'), 'assign_user_list.unlists_u_id=u.user_id',array('unlist_id' =>new Expression('u.user_id'),'unlist_name' =>new Expression('u.user_name'),'unlist_email' =>new Expression('u.email')),'left');
+		$select->join(array('ud' => 'user_details'), new Expression('ud.u_user_id=u.user_id'),array('unlist_phone' =>new Expression('ud.phone')),'left');		
 		$select->where('processing_status.ps_state="'.$state.'"');
 		$select->group('user.user_id');
 		$resultSet = $this->tableGateway->selectWith($select);	
@@ -104,6 +119,9 @@ class ProcessingStatusTable
 		$select->join('user', new Expression('processing_status.ps_user_id=user.user_id'),array('*'),'left');
 		$select->join('user_details', new Expression('user_details.u_user_id=user.user_id'),array('*'),'left');
 		$select->join('upload_pdfs', new Expression('upload_pdfs.up_user_id=user.user_id'),array('*'),'left');
+		$select->join('assign_user_list', new Expression('assign_user_list.client_id=processing_status.ps_user_id'),array('*'),'left');
+		$select->join(array('u' => 'user'), 'assign_user_list.unlists_u_id=u.user_id',array('unlist_id' =>new Expression('u.user_id'),'unlist_name' =>new Expression('u.user_name'),'unlist_email' =>new Expression('u.email')),'left');
+		$select->join(array('ud' => 'user_details'), new Expression('ud.u_user_id=u.user_id'),array('unlist_phone' =>new Expression('ud.phone')),'left');		
 		$select->where('processing_status.ps_state="'.$state.'"');
 		$select->group('user.user_id');
 		$resultSet = $this->tableGateway->selectWith($select);	
@@ -114,22 +132,28 @@ class ProcessingStatusTable
 		$select = $this->tableGateway->getSql()->select();
 		$select->join('user', new Expression('processing_status.ps_user_id=user.user_id'),array('*'),'left');
 		$select->join('user_details', new Expression('user_details.u_user_id=user.user_id'),array('*'),'left');
+		$select->join('assign_user_list', new Expression('assign_user_list.client_id=processing_status.ps_user_id'),array('*'),'left');
+		$select->join(array('u' => 'user'), 'assign_user_list.unlists_u_id=u.user_id',array('unlist_id' =>new Expression('u.user_id'),'unlist_name' =>new Expression('u.user_name'),'unlist_email' =>new Expression('u.email')),'left');
+		$select->join(array('ud' => 'user_details'), new Expression('ud.u_user_id=u.user_id'),array('unlist_phone' =>new Expression('ud.phone')),'left');		
 		$select->where('processing_status.ps_state="'.$state.'"');
 		$select->group('user.user_id');
 		$resultSet = $this->tableGateway->selectWith($select);	
 		return $resultSet;		
 	}
-	// public function getSynopsisData($state)
-    // {	
-		// $select = $this->tableGateway->getSql()->select();
-		// $select->join('user', new Expression('processing_status.ps_user_id=user.user_id'),array('*'),'left');
-		// $select->join('user_details', new Expression('user_details.u_user_id=user.user_id'),array('*'),'left');
-		// $select->join('synopsis', new Expression('synopsis.sy_user_id=user.user_id'),array('*'),'left');
-		// $select->where('processing_status.ps_state="'.$state.'"');
-		// $select->group('user.user_id');
-		// $resultSet = $this->tableGateway->selectWith($select);	
-		// return $resultSet;		
-	// }
+	public function getSynopsisData($state)
+    {	
+		$select = $this->tableGateway->getSql()->select();
+		$select->join('user', new Expression('processing_status.ps_user_id=user.user_id'),array('*'),'left');
+		$select->join('user_details', new Expression('user_details.u_user_id=user.user_id'),array('*'),'left');
+		$select->join('synopsis', new Expression('synopsis.sy_user_id=user.user_id'),array('*'),'left');
+		$select->join('assign_user_list', new Expression('assign_user_list.client_id=processing_status.ps_user_id'),array('*'),'left');
+		$select->join(array('u' => 'user'), 'assign_user_list.unlists_u_id=u.user_id',array('unlist_id' =>new Expression('u.user_id'),'unlist_name' =>new Expression('u.user_name'),'unlist_email' =>new Expression('u.email')),'left');
+		$select->join(array('ud' => 'user_details'), new Expression('ud.u_user_id=u.user_id'),array('unlist_phone' =>new Expression('ud.phone')),'left');		
+		$select->where('processing_status.ps_state="'.$state.'"');
+		$select->group('user.user_id');
+		$resultSet = $this->tableGateway->selectWith($select);	
+		return $resultSet;		
+	}
 	// public function getPaymentData($state)
     // {	
 		// $select = $this->tableGateway->getSql()->select();
