@@ -65,12 +65,11 @@ class AssignUserListTable
 		$select->join('processing_status', new Expression('assign_user_list.client_id=processing_status.ps_user_id'),array('*'),'left');
 		$select->join('user', new Expression('assign_user_list.client_id=user.user_id'),array('*'),'left');
 		$select->join('user_details', new Expression('user_details.u_user_id=user.user_id'),array('*'),'left');
-		$select->join(array('s' => 'assign_user_list'), 's.unlists_u_id=user.user_id',array('client_id' =>new Expression('user.user_id'),'client_name' =>new Expression('user.user_name'),'client_email' =>new Expression('user.email')),'left');
-		$select->join(array('ud' => 'user_details'), new Expression('ud.u_user_id=user.user_id'),array('client_phone' =>new Expression('ud.phone')),'left');		
+		$select->join(array('u' => 'user'), 'assign_user_list.unlists_u_id=u.user_id',array('unlist_id' =>new Expression('u.user_id'),'unlist_name' =>new Expression('u.user_name'),'unlist_email' =>new Expression('u.email')),'left');
+		$select->join(array('ud' => 'user_details'), new Expression('ud.u_user_id=u.user_id'),array('unlist_phone' =>new Expression('ud.phone')),'left');		
 		$select->where('assign_user_list.unlists_u_id= "'.$uid.'"');
 		$select->where('processing_status.ps_state="'.$state.'"');
 		$resultSet = $this->tableGateway->selectWith($select);	
-		echo "<pre>";print_r($resultSet);exit;
 		return $resultSet;		
 	}
 	public function getBaseInfoData($uid,$state)
@@ -81,8 +80,8 @@ class AssignUserListTable
 		$select->join('user_details', new Expression('user_details.u_user_id=user.user_id'),array('*'),'left');
 		$select->join('spouse', new Expression('spouse.s_user_id=user.user_id'),array('*'),'left');
 		$select->join('dependent', new Expression('dependent.d_user_id=user.user_id'),array('*'),'left');
-		$select->join(array('s' => 'assign_user_list','u' => 'user'), 's.client_id=u.user_id',array('client_id' =>new Expression('u.user_id'),'client_name' =>new Expression('u.user_name'),'client_email' =>new Expression('u.email')),'left');
-		$select->join(array('ud' => 'user_details'), new Expression('ud.u_user_id=u.user_id'),array('client_phone' =>new Expression('ud.phone')),'left');		
+		$select->join(array('u' => 'user'), 'assign_user_list.unlists_u_id=u.user_id',array('unlist_id' =>new Expression('u.user_id'),'unlist_name' =>new Expression('u.user_name'),'unlist_email' =>new Expression('u.email')),'left');
+		$select->join(array('ud' => 'user_details'), new Expression('ud.u_user_id=u.user_id'),array('unlist_phone' =>new Expression('ud.phone')),'left');		
 		$select->where('assign_user_list.unlists_u_id= "'.$uid.'"');
 		$select->where('processing_status.ps_state="'.$state.'"');
 		$resultSet = $this->tableGateway->selectWith($select);	
@@ -95,8 +94,8 @@ class AssignUserListTable
 		$select->join('user', new Expression('assign_user_list.client_id=user.user_id'),array('*'),'left');
 		$select->join('user_details', new Expression('user_details.u_user_id=user.user_id'),array('*'),'left');
 		$select->join('schedules_timings', new Expression('schedules_timings.sc_user_id=user.user_id'),array('*'),'left');
-		$select->join(array('s' => 'assign_user_list','u' => 'user'), 's.client_id=u.user_id',array('client_id' =>new Expression('u.user_id'),'client_name' =>new Expression('u.user_name'),'client_email' =>new Expression('u.email')),'left');
-		$select->join(array('ud' => 'user_details'), new Expression('ud.u_user_id=u.user_id'),array('client_phone' =>new Expression('ud.phone')),'left');		
+		$select->join(array('u' => 'user'), 'assign_user_list.unlists_u_id=u.user_id',array('unlist_id' =>new Expression('u.user_id'),'unlist_name' =>new Expression('u.user_name'),'unlist_email' =>new Expression('u.email')),'left');
+		$select->join(array('ud' => 'user_details'), new Expression('ud.u_user_id=u.user_id'),array('unlist_phone' =>new Expression('ud.phone')),'left');		
 		$select->where('assign_user_list.unlists_u_id= "'.$uid.'"');
 		$select->where('processing_status.ps_state="'.$state.'"');
 		$resultSet = $this->tableGateway->selectWith($select);	
@@ -109,8 +108,8 @@ class AssignUserListTable
 		$select->join('user', new Expression('assign_user_list.client_id=user.user_id'),array('*'),'left');
 		$select->join('user_details', new Expression('user_details.u_user_id=user.user_id'),array('*'),'left');
 		$select->join('upload_pdfs', new Expression('upload_pdfs.up_user_id=user.user_id'),array('*'),'left');
-		$select->join(array('s' => 'assign_user_list','u' => 'user'), 's.client_id=u.user_id',array('client_id' =>new Expression('u.user_id'),'client_name' =>new Expression('u.user_name'),'client_email' =>new Expression('u.email')),'left');
-		$select->join(array('ud' => 'user_details'), new Expression('ud.u_user_id=u.user_id'),array('client_phone' =>new Expression('ud.phone')),'left');		
+		$select->join(array('u' => 'user'), 'assign_user_list.unlists_u_id=u.user_id',array('unlist_id' =>new Expression('u.user_id'),'unlist_name' =>new Expression('u.user_name'),'unlist_email' =>new Expression('u.email')),'left');
+		$select->join(array('ud' => 'user_details'), new Expression('ud.u_user_id=u.user_id'),array('unlist_phone' =>new Expression('ud.phone')),'left');		
 		$select->where('assign_user_list.unlists_u_id= "'.$uid.'"');
 		$select->where('processing_status.ps_state="'.$state.'"');
 		$resultSet = $this->tableGateway->selectWith($select);	
@@ -123,8 +122,8 @@ class AssignUserListTable
 		$select->join('user', new Expression('assign_user_list.client_id=user.user_id'),array('*'),'left');
 		$select->join('user_details', new Expression('user_details.u_user_id=user.user_id'),array('*'),'left');
 		$select->join('upload_pdfs', new Expression('upload_pdfs.up_user_id=user.user_id'),array('*'),'left');
-		$select->join(array('s' => 'assign_user_list','u' => 'user'), 's.client_id=u.user_id',array('client_id' =>new Expression('u.user_id'),'client_name' =>new Expression('u.user_name'),'client_email' =>new Expression('u.email')),'left');
-		$select->join(array('ud' => 'user_details'), new Expression('ud.u_user_id=u.user_id'),array('client_phone' =>new Expression('ud.phone')),'left');		
+		$select->join(array('u' => 'user'), 'assign_user_list.unlists_u_id=u.user_id',array('unlist_id' =>new Expression('u.user_id'),'unlist_name' =>new Expression('u.user_name'),'unlist_email' =>new Expression('u.email')),'left');
+		$select->join(array('ud' => 'user_details'), new Expression('ud.u_user_id=u.user_id'),array('unlist_phone' =>new Expression('ud.phone')),'left');		
 		$select->where('assign_user_list.unlists_u_id= "'.$uid.'"');
 		$select->where('processing_status.ps_state="'.$state.'"');
 		$resultSet = $this->tableGateway->selectWith($select);	
@@ -136,8 +135,8 @@ class AssignUserListTable
 		$select->join('processing_status', new Expression('assign_user_list.client_id=processing_status.ps_user_id'),array('*'),'left');
 		$select->join('user', new Expression('assign_user_list.client_id=user.user_id'),array('*'),'left');
 		$select->join('user_details', new Expression('user_details.u_user_id=user.user_id'),array('*'),'left');
-		$select->join(array('s' => 'assign_user_list','u' => 'user'), 's.client_id=u.user_id',array('client_id' =>new Expression('u.user_id'),'client_name' =>new Expression('u.user_name'),'client_email' =>new Expression('u.email')),'left');
-		$select->join(array('ud' => 'user_details'), new Expression('ud.u_user_id=u.user_id'),array('client_phone' =>new Expression('ud.phone')),'left');		
+		$select->join(array('u' => 'user'), 'assign_user_list.unlists_u_id=u.user_id',array('unlist_id' =>new Expression('u.user_id'),'unlist_name' =>new Expression('u.user_name'),'unlist_email' =>new Expression('u.email')),'left');
+		$select->join(array('ud' => 'user_details'), new Expression('ud.u_user_id=u.user_id'),array('unlist_phone' =>new Expression('ud.phone')),'left');		
 		$select->where('assign_user_list.unlists_u_id= "'.$uid.'"');
 		$select->where('processing_status.ps_state="'.$state.'"');
 		$resultSet = $this->tableGateway->selectWith($select);	
@@ -149,8 +148,8 @@ class AssignUserListTable
 		$select->join('processing_status', new Expression('assign_user_list.client_id=processing_status.ps_user_id'),array('*'),'left');
 		$select->join('user', new Expression('assign_user_list.client_id=user.user_id'),array('*'),'left');
 		$select->join('user_details', new Expression('user_details.u_user_id=user.user_id'),array('*'),'left');
-		$select->join(array('s' => 'assign_user_list','u' => 'user'), 's.client_id=u.user_id',array('client_id' =>new Expression('u.user_id'),'client_name' =>new Expression('u.user_name'),'client_email' =>new Expression('u.email')),'left');
-		$select->join(array('ud' => 'user_details'), new Expression('ud.u_user_id=u.user_id'),array('client_phone' =>new Expression('ud.phone')),'left');		
+		$select->join(array('u' => 'user'), 'assign_user_list.unlists_u_id=u.user_id',array('unlist_id' =>new Expression('u.user_id'),'unlist_name' =>new Expression('u.user_name'),'unlist_email' =>new Expression('u.email')),'left');
+		$select->join(array('ud' => 'user_details'), new Expression('ud.u_user_id=u.user_id'),array('unlist_phone' =>new Expression('ud.phone')),'left');		
 		$select->where('assign_user_list.unlists_u_id= "'.$uid.'"');
 		$select->where('processing_status.ps_state="'.$state.'"');
 		$resultSet = $this->tableGateway->selectWith($select);	
