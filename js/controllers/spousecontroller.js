@@ -30,7 +30,6 @@ $scope.disabled = function(date, mode) {
 
 function getSpouseInfo(){
   commonService.getData('GET','spouse-page/'+$scope.response_user.id).then(function(resp){
-    console.log("SpouseInfo",resp);
     commonService.stopSpinner();
     if(resp.data.data==''){
      $scope.spouse = {};
@@ -53,16 +52,15 @@ function getSpouseInfo(){
 });
 }
 $scope.updatespouse = function(){
-  console.info($scope.spouse,"spouse Details");
   if($scope.spouse.dob)
 var date_to_send=$scope.spouse.dob.getDate().toString()+"-"+($scope.spouse.dob.getMonth()+1).toString()+"-"+$scope.spouse.dob.getFullYear().toString();
   else
     date_to_send="";
   $scope.spouse.dob=date_to_send;
-   console.log(date_to_send);
+
 
   commonService.getData('POST','spouse-page',$scope.spouse).then(function(resp){
-   console.log("Spouse updated:::",resp);
+      alert("Changes Been Saved");
    getSpouseInfo();
    $scope.editMode = true;
    commonService.stopSpinner();

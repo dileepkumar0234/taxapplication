@@ -1,7 +1,7 @@
 appinstal.factory("commonService", function($http,$rootScope,$timeout,$state) {
 	var webServiceUrl="http://localhost/taxapplication/trunk/ustaxfilerapis/";
 	var user_data = {};
-	var idleTimer;
+	
 
 	return {
 		getData : function(method,url,data){
@@ -27,18 +27,10 @@ appinstal.factory("commonService", function($http,$rootScope,$timeout,$state) {
 		},
 		sessionStart:function(id){
         localStorage.setItem('user',id);
-        var totalIdleTime = 5*60*1000;  
-        var x=this;
-         idleTimer = $timeout(function () {
-
-        //   x.sessionEnd(); 
-        //   alert('Your Session Expired');
-         //  x.getData('GET','logout/logout');
-         // $state.go('main.home');
-          }, totalIdleTime);
+        
          },
 		sessionEnd:function(id){
-        $timeout.cancel(idleTimer);
+      
         localStorage.removeItem('user');
 		}
 	}

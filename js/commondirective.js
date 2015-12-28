@@ -62,7 +62,7 @@ appinstal.directive('carouselDirective',function(){
        navigation: false,
        slideSpeed: 300,
        paginationSpeed: 400,
-       autoPlay: 150000,
+       autoPlay: 3000,
        addClassActive: true,
        pagination:true,
        paginationNumbers: true,
@@ -95,6 +95,9 @@ appinstal.directive('getActiveClass',function(){
      
 
   });
+    setInterval(function(){
+$('.neon-text').toggleClass('neon-text1');
+},5000000);
    }
  }
 
@@ -157,28 +160,24 @@ appinstal.directive('validateForm',function(){
 }
 });
 
-/*appinstal.directive('sessionTimeout', function() {
+appinstal.directive('sessionTimeout', function($document,$timeout,commonService,$state) {
 return {
     restrict : 'E',
-    replace : true,
-    templateUrl: 'views/shared/modules/idle/idle-modal-directive.html',
     link: function (scope,element,attrs) {
       var idleState = false;
       var idleTimer = null;
-      var totalIdleTime = 15*60*1000;
+      var totalIdleTime = 5*60*1000;
       $document.bind('mousemove click mouseup mousedown keydown keypress keyup submit change mouseenter scroll resize dblclick', function () {
 
        $timeout.cancel(idleTimer);
        idleState = false;
        idleTimer = $timeout(function () {
-           $modal.open({
-              templateUrl: 'idle-modal',
-              controller: 'IdleModalController',
-              controllerAs: 'vm',
-              windowClass: 'idle-modal',
-              keyboard: false,
-              backdrop: 'static'
-           });
+           commonService.sessionEnd(); 
+           
+          commonService.getData('GET','logout/logout');
+          alert('Your Session Expired');
+         $state.go('main.home');
+
          idleState = true; 
        }, totalIdleTime);
      });
@@ -187,4 +186,4 @@ return {
     }
     }
 
-});*/
+});

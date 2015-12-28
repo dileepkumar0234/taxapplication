@@ -11,36 +11,44 @@ quisque tempus ac eget diam et laoreet phasellus ut nisi id leo molestie. adipis
         
        <div class="container">
         <div class="row">
-        <h3 style="text-align:center;">Tax Center</h3>
-            <p>Please make sure to have information like SSN Filing Status and the Refund Amount</p>
+        <h3 style="text-align:center;"><span class="hedd">Tax Center</span></h3><br><br>
+            <p>Please make sure to have information like <strong>SSN</strong>,<strong>Filing Status</strong> and the <strong>Refund Amount.</strong></p>
 
 
 <div class="row imgc">
 
-    <div class="col-xs-4">
-       <h6>For FEDERAL TAX REFUND STATUS, Please click the below pic</h6>
+    <div class="col-md-12">
+       <h6><b>FEDERAL TAX REFUND STATUS</b>, Please click on below picture</h6>
         <a href="https://sa.www4.irs.gov/irfof/lang/en/irfofgetstatus.jsp" target="_blank"><img src="images/img1t.jpg" class="full-img">
     </a>
-  <center>  <a href="https://sa.www4.irs.gov/irfof/lang/en/irfofgetstatus.jsp" target="_blank">Click Here for More</a></center>
+
 
     </div>
-    <div class="col-xs-4">
-        <h6>For FEDERAL TAX DUE, Please click the below pic</h6>
-        <a href="https://www.eftps.gov/eftps/index.jsp" target="_blank">  <img src="images/img2t.jpg" class="full-img"></a><center>  <a href="https://www.eftps.gov/eftps/index.jsp" target="_blank">Click Here for More</a></center></div>
-    <div class="col-xs-4">
+    <div class="col-md-12">
+        <h6><b>FEDERAL TAX DUE PAYMENT</b>, Please click on below picture</h6>
+        <a href="https://www.eftps.gov/eftps/index.jsp" target="_blank">  <img src="images/eftp.jpg" class="full-img"></a></div>
+   <!--  <div class="col-xs-4">
         <h6>REFUND</h6>
         <img src="images/img3t.jpg" class="full-img">
-        <!-- <center> IT WILL COME IN TAX CENTER</center></div> -->
+        <!-- <center> IT WILL COME IN TAX CENTER</center></div> 
 
-</div>
+</div> -->
 
 
 
         </div>
 
-            <div class="row bor-over">
-                <h2 style="text-align: center;">State Refund Links</h2>
-                <div  class="col-xs-4 bord_right">
+            <div class="row col-md-12 taxpayer bor-over">
+                <span class="stateRefund" style="text-align: center;">State Refund Status</span>
+            <ul class="adminGroup col-md-5">
+               <!-- <li style="border:0;"></li>-->
+                <li style="border:0;">
+                    <select class="form-control" ng-init="selectedState = stateDetails[0]" ng-model="selectedState" ng-options="item.value for item in stateDetails" ng-change="viewPage(selectedState)">
+                    <option value="select">SELECT</option>
+                 </select>
+                 </li>
+                 </ul>
+                <!-- <div  class="col-xs-4 bord_right">
                     <h4>AL</h4>
                     <a href="https://myalabamataxes.alabama.gov/_/#1" target="_blank">https://myalabamataxes.alabama.gov/_/#1</a>
                     <h4>AR</h4>
@@ -122,7 +130,7 @@ quisque tempus ac eget diam et laoreet phasellus ut nisi id leo molestie. adipis
                     <a href="https://secure.dor.state.or.us/refund/refund.cfm" target="_blank">https://secure.dor.state.or.us/refund/refund.cfm</a>
 
 
-                </div>
+                </div> -->
 
 
             </div>

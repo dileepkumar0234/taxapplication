@@ -1,5 +1,5 @@
  angular.module("myapp").controller("logInCtrl",['$scope','$rootScope','$state','$uibModalInstance','commonService',function($scope,$rootScope,$state,$uibModalInstance,commonService) {
-  console.log("hi");
+
   $scope.loginuser = {};
   $scope.signupuser = {};
   $scope.signup=false;
@@ -8,14 +8,13 @@
   $scope.showforgot = false;
 
   $scope.toggleForgot = function(e){
-    console.log(e);
     e.preventDefault();
     $scope.showforgot = true;
   }
 
   $scope.getBack = function(userEmail){
     commonService.getData('POST','forgetpassword',{email:userEmail}).then(function(resp){
-      console.log(resp,"forgetpassword:::");
+     alert("changes been saved");
       commonService.stopSpinner();
       if(resp.data){
         $scope.showforgot = false;
@@ -29,10 +28,9 @@
 
 
   $scope.userlogin=function(loginuser){
-    console.log("login",loginuser);
     $scope.invalidCredentials = false;
     commonService.getData('POST','login',loginuser).then(function(resp){
-     console.log("resp",resp);
+    alert("changes been saved");
      commonService.stopSpinner();
      if(resp.data.status=='sucess'){
       $scope.invalidCredentials = false;
@@ -68,7 +66,7 @@
     
     if(signupuser.inputEmail){
       commonService.getData('POST','email-verified',{user_email:signupuser.inputEmail}).then(function(resp){
-       console.log("resp",resp);
+       alert("Changes Been Saved");
        commonService.stopSpinner();
        if(resp.data.output == 'exists'){
         $scope.emailExist = true;
@@ -78,7 +76,7 @@
       }
       else{
         commonService.getData('POST','registration',signupuser).then(function(resp){
-          console.log("resp",resp);
+            alert("Changes Been Saved");
           commonService.stopSpinner();
           if(resp.data.Success == 'Registration Success'){
             $uibModalInstance.dismiss('close');

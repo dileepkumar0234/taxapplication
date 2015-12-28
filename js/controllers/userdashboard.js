@@ -4,15 +4,17 @@ angular.module("myapp").controller("userdashboard",['$scope','$rootScope','$stat
      $state.go('main.home');
     return false;
   }
-  console.log($state);
+
   if($state.current.url!='/'){
     $state.go('user.user');
   }
+$scope.showProfile = false;
+    $scope.openProfile = function(){
+      $scope.showProfile = !$scope.showProfile;
+    }
 
-    
 
 
-  console.log($scope);
   $scope.response_user = $stateParams;
   $scope.upload ={};
   $scope.friend = {};
@@ -26,7 +28,6 @@ angular.module("myapp").controller("userdashboard",['$scope','$rootScope','$stat
   });
   $scope.logout = function(){
    commonService.getData('GET','logout/logout').then(function(resp){
-    console.log("logout",resp);
     commonService.sessionEnd();
     commonService.stopSpinner();
     $state.go('main.home');
@@ -38,7 +39,7 @@ $scope.referRegister = function(){
   var user_data= {rf_on_name:$scope.userData.first_name,rf_on_email:$scope.userData.email,rf_on_phone:$scope.userData.phone};
   var referal_data= angular.extend(user_data,$scope.friend);
   commonService.getData('POST','referral-friend',referal_data).then(function(resp){
-   console.log("Refered:::",resp);
+      alert("Changes Been Saved");
    commonService.stopSpinner();
 
    $scope.referalmodalInstance.dismiss('close');
@@ -55,7 +56,7 @@ $scope.referals= function(){
 }
 $scope.changePassword = function(){
   commonService.getData('POST','changepassword',$scope.change).then(function(resp){
-   console.log("reset",resp);
+      alert("Changes Been Saved");
    commonService.stopSpinner();
    if(resp.data.status.indexOf('Updated')>-1){
     $scope.wrong= false;

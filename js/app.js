@@ -230,6 +230,7 @@ controller:'scheduleController',
   
     templateUrl:'templates/Agent.html'
   })
+
   
   $urlRouterProvider.otherwise('/home');
   $ocLazyLoadProvider.config({

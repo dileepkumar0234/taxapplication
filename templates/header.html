@@ -1,12 +1,19 @@
 <div class='header1' >
-
+<session-timeout></session-timeout>
     <img src="images/logouser.png" class="logo">
     <ul >
         <li><a class="profile" href="#"><i class="fa fa-file-code-o"></i> Make Payment</span></a> </li>
-        <li><a class="profile" href="#"><i class="fa fa-file-code-o"></i> Filing Status: {{userData.FilingStatusCode}}</span></a> </li>
+        <li class="neon-text"><a class="profile" href="#"><i class="fa fa-file-code-o"></i> Filing Status: {{userData.FilingStatusCode}}</span></a> </li>
     </ul>
     <ul style="position:absolute;right:0;top:90px;">
-        <li><a class="profile" href="#"><i class="ace-icon fa fa-caret-down"></i> <span>Welcome {{userData.user_name}}</span></a> </li>
+        <li ng-click="openProfile()"><a class="profile" href="#"><i class="ace-icon fa fa-caret-down"></i> <span>Welcome {{userData.user_name}}</span></a> 
+           <ul ng-if="showProfile" style="position:absolute;right:0;top:43px;z-index: 9999;">
+            <li><a  ui-sref="user.referals"> <i class="fa fa-download"></i> View Referal List</a></li>
+           <li><a ui-sref="user.change"><i style="color:black;" class="glyphicon glyphicon-lock"></i> Change Pasword</a></li>
+           <li class="Log_out" ng-click="logout()">
+        <a><i style="color:black;" class="glyphicon glyphicon-log-out"></i></a>LOGOUT</li>
+             </ul>
+        </li>
         <li><a class="profile" href="#"><i class="fa fa-file-code-o"></i> File Number: {{userData.user_id}}</span></a> </li>
     </ul>
 </div>
@@ -29,12 +36,11 @@
         <li><a  href="#viewsummary"> <i class="fa fa-file-archive-o"></i> View Summary</a></li>
         <li><a  href="#makepayment"><i class="fa fa-cc-paypal"></i> Make Payment</a></li>
         <li><a  href="#downloadtax"> <i class="fa fa-download"></i>	Download Tax Return Copy</a></li>
-        <li><a  ui-sref="user.referals"> <i class="fa fa-download"></i> View Referal List</a></li>
+        
         <li><a  href="#downloadtax"> <i class="fa fa-download"></i> Disclaimer Agreement</a></li>
-        <li><a ui-sref="user.change"><i style="color:black;" class="glyphicon glyphicon-lock"></i> Change Pasword</a></li>
+        
         <li><a ui-sref="main.home"><i style="color:black;" class="glyphicon glyphicon-lock"></i> Go TO Home</a></li>
-        <li class="Log_out" ng-click="logout()">
-        <i style="color:black;" class="glyphicon glyphicon-log-out"></i>LOGOUT</li>
+        
     </ul>
 
     <button ng-click="referals()" class="btn btn-success" style="margin:45px;">Refer a Friend</button>

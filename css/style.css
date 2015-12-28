@@ -9,7 +9,7 @@ body{
 
 .header_top {
   background: none repeat scroll 0 0 #F0F0E9;
-  
+
 }
 h1{
 	font-family: "Roboto","sans-serif";
@@ -215,7 +215,7 @@ color:#337ab7;
 	padding:0;
 	text-transform:uppercase;
 	    font-family: "Roboto","sans-serif";
-	
+
 }
 .headerLine .header {
 padding: 0 30px !important;
@@ -576,18 +576,18 @@ textarea {
 	padding: 10px;
 	padding-right: 17px;
 	padding-left: 17px
-	
+
 }
 .forma .cBtn .clear  a, .cBtn .send a{
 	font-family: 'Roboto', 'sans-serif';
 	font-weight: 700;
-	
+
 }
 .forma .cBtn .send{
 	box-shadow: 0px 2px 0px 0px #179abf;
 	background:#1fcdff ;
 	width:120px;
-	
+
 }
 .forma .cBtn .send:hover{
 	background:#2f2f2f;
@@ -624,7 +624,7 @@ textarea {
 .cont a:hover{
 	color:#666666;
 }
- 
+
  .footer{
 	position: relative;
 	width: 100%;
@@ -692,8 +692,8 @@ color:#fff;
 
 }
 .right_icon{
- 
-	 
+
+
 	border-radius: 50%;
     color: #ffffff;
     display: block;
@@ -712,8 +712,8 @@ color:#fff;
 }
 
 .right_icon2{
- 
-	 
+
+
 	border-radius: 50%;
     color: #ffffff;
     display: block;
@@ -743,7 +743,7 @@ ul.about_list li{
 	 margin:0 0 10px 0;
 	 padding:0 0 0 20px;
 	 position:relative;
-	 
+
 }
 ul.about_list li i{
 	color: #2d7da4;
@@ -751,7 +751,7 @@ ul.about_list li i{
 	position:absolute;
 	left:0;
 	top:3px;
-	
+
 }
  .services_btncls{
 	 text-align:center;
@@ -767,7 +767,7 @@ ul.about_list li i{
   .top{
 	  position:fixed; bottom:10px; right:10px; font-size:20px; z-index:9999; display:none;
   }
-  
+
   /*login*/
 
   @charset "utf-8";
@@ -781,13 +781,9 @@ ul.about_list li i{
 	margin:0;
 }
 .main_container{
-	
 	height:450px;
-	
 	min-width:360px;
-	
 	background:#ffffff;
-	
 }
 .main_container .left_panel{
 	width:40%;
@@ -799,7 +795,7 @@ padding:10px;
 	float:left;
 	margin:0;
 	box-sizing:border-box;
-	
+
 }
 .main_container .left_panel h1 {
     font-size: 3.4em;
@@ -817,7 +813,7 @@ padding:30px;
 
 		margin:0;
 		box-sizing:border-box;
-	
+
 }
 .main_container .right_panel h2{
 	    font-family: 'PoiretOne-Regular';
@@ -836,6 +832,7 @@ padding:30px;
 .main_container .right_panel h2 span{
 	color:#999;
 }
+
 form.login{
 	width:100%;
 	margin:20px 0 0 0;
@@ -851,7 +848,7 @@ form.login p{
 	position:absolute;
 	bottom:20px;
 	width:90%;
-	
+
 }
 form.login p i{
 	position:absolute;
@@ -933,16 +930,16 @@ header ul li{
 	float:right;
 	margin:0 5px;
 	padding:0;
-	
+
 }
 header ul li a{
 	padding:10px 15px;
 	float:right;
 	color:#fff;
 	background:#60a5ce;
-	
+
 }
-header ul li a span{ 
+header ul li a span{
 	float:right;
 }
 header ul li a i{
@@ -1097,7 +1094,7 @@ font-weight:normal
 	float:left;
 	margin:0;
 	padding:0;
-	 
+
 	padding:20px;
 	box-sizing:border-box;
 }
@@ -1142,7 +1139,7 @@ margin-top: 250px;
 }
 .reference .popup_main {
 	width:100%;
-	height:700px;
+	height:500px;
 	color:white!important;
 }
 .popup_main {
@@ -1203,6 +1200,9 @@ form.signup input.submit, form.login input.submit{
 	background: #18b3e2;
 	border: none;
 
+}
+.refertxt{
+    margin-top: 10px!important;
 }
 /*.login{
 	display: none;
@@ -1443,7 +1443,7 @@ background: url("../images/animatedEllipse.gif") no-repeat center center fixed;
     pointer-events: none;
     border: none;
 }
-}
+
 .sidebar li.Log_out{
 	padding: 10px;
 }
@@ -1457,6 +1457,11 @@ background: url("../images/animatedEllipse.gif") no-repeat center center fixed;
 	padding: 20px 0;
 	border-radius: 10px;
 }
+.stateRefund{
+    padding: 15px 0;
+    font-weight: bold;
+    float: left;
+    font-size: 16px;}
 ul.adminGroup {
 list-style: none;
 margin: 0;
@@ -1493,3 +1498,77 @@ font-weight: bold;
 	.Activated{
 		background: #979FA2;
 	}
+.imgc h6{
+    font-size: 17px;
+    font-weight: normal;
+
+}
+.imgc img{
+	height:200px;
+    width: 300px;
+    margin: 8px auto;
+}
+.allDependants h1{
+	    position: relative;
+	    }
+	    .allDependants .btn-danger{
+	       position: absolute;
+    top: 0;
+    right: -36px;
+}
+.neon-text {
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  border: none;
+  /*font: normal normal bold 72px/normal  Helvetica, sans-serif;*/
+  color: rgb(64, 126, 196);
+  text-align: center;
+  -o-text-overflow: clip;
+  text-overflow: clip;
+  text-shadow: 1px 1px 0 rgb(77,162,252) , -1px -1px 0 rgb(77,162,252) , 1px -1px 0 rgb(77,162,252) , -1px 1px 0 rgb(77,162,252) , 4px 4px 8px rgb(44,88,137) , -4px 4px 8px rgb(44,88,137) , 4px -4px 8px rgb(44,88,137) , -4px -4px 8px rgb(44,88,137) ;
+  -webkit-transition: all 500ms cubic-bezier(0.42, 0, 0.58, 1);
+  -moz-transition: all 500ms cubic-bezier(0.42, 0, 0.58, 1);
+  -o-transition: all 500ms cubic-bezier(0.42, 0, 0.58, 1);
+  transition: all 500ms cubic-bezier(0.42, 0, 0.58, 1);
+}
+.neon-text1 {
+  text-shadow: 1px 1px 0 rgb(77,162,252) , -1px -1px 0 rgb(77,162,252) , 1px -1px 0 rgb(77,162,252) , -1px 1px 0 rgb(77,162,252) ;
+  -webkit-transition: all 300ms cubic-bezier(0.42, 0, 0.58, 1);
+  -moz-transition: all 300ms cubic-bezier(0.42, 0, 0.58, 1);
+  -o-transition: all 300ms cubic-bezier(0.42, 0, 0.58, 1);
+  transition: all 300ms cubic-bezier(0.42, 0, 0.58, 1);
+}
+.banner:hover ul{
+	display: block;
+}
+.banner ul{
+	display: none;
+}
+ul.servicesMenu {
+       /* width: auto; */
+    min-width: 200px;
+    position: absolute;
+    top: 30px;
+    left: 0;
+    background: #CCCED3;
+}
+.servicesMenu li.banner {
+       list-style: none;
+    padding: 5px;
+    background: url(images/sepLi.gif) no-repeat right center;
+    position: relative;
+    z-index: 1;
+}.servicesMenu li.banner a {
+      color:black;
+      padding-top:3px;
+}
+
+.servicesMenu li.banner:hover a{
+
+     background: #CCCED3;
+
+}
+.mb20{
+    margin-bottom: 20px;
+}
