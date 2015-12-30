@@ -77,7 +77,7 @@ class RegistrationApiController extends AbstractRestfulController
 				$msg .='UmpireTaxFiler';
 				$msg .='</body>';
 				$subj ='Welcome, New User.';
-				//mail($emailId,$subj,$msg);
+				mail($emailId,$subj,$msg);
 				return new JsonModel(array(
 					'Success' =>'Registration Success',
 					'UserId'	=>	$lastInsertedId,
