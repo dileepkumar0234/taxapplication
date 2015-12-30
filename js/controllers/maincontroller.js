@@ -14,36 +14,21 @@ $scope.goToDashboard = function(){
 }
  
  $rootScope.userbody ='';
-<<<<<<< .mine
-||||||| .r43
- $scope.referRegister = function (friend) {
-  console.log("friend",friend);
-=======
- $scope.referRegister = function (friend) {
->>>>>>> .r65
 
 
-<<<<<<< .mine
-||||||| .r43
-}
-
-=======
-
-}
-
->>>>>>> .r65
 $scope.checkemail = function(email){
-  //console.log("checkemail",email);
+  console.log("checkemail",email);
   
 }
 
 $scope.contactform ={};
 $scope.contactusService = function(data){
 commonService.getData('POST','contact-us',data).then(function(resp){
-    alert("Changes Been Saved");
+   console.info(resp);
    $scope.contactform ={};
    $scope.willcontact=true;
    $timeout(function(){
+    alert('We Will Reach you Shortly!');
  $scope.willcontact=false;
    },5000);
 });
@@ -68,14 +53,15 @@ $scope.referals= function(){
   $scope.referalmodalInstance = $uibModal.open({
     templateUrl: 'templates/referafriend.html',
     
-     controller:'logInCtrl',
-         size:'md',
+        controller:'logInCtrl',
+         size:'lg',
          windowClass:'animated rotateIn reference'
        }); 
 }
 
 $scope.scrollIt = function(e,id){
   e.preventDefault();
+  console.log(e.target.getAttribute('href'),id);
   $('html, body').animate({
     scrollTop: $('#'+id).offset().top
   }, 500);
@@ -105,24 +91,24 @@ $scope.moveTop = function(){
 }
 
 
-
+console.log($state.current.name);
 $scope.current=$state.current.name;
 
 $rootScope.$on('$stateChangeSuccess', 
   function(event, toState, toParams, fromState, fromParams){ 
+    console.log($state.current.name);
     $scope.current=$state.current.name;
   });
 
 $scope.OpenLogin=function($event){
       //  $event.preventDefault();
       $scope.modalInstance = $uibModal.open({
-          templateUrl: 'templates/login.html',
-         controller:'logInCtrl',
+        templateUrl: 'templates/login.html',
+          controller:'logInCtrl',
          size:'lg',
          windowClass:'animated rotateIn top_view'
        }); 
     }
-    
 
     
     $('.popup_main  ul li:first-child').click(function(){
@@ -161,7 +147,6 @@ $scope.OpenLogin=function($event){
 
 
     });
-<<<<<<< .mine
 $scope.stateDetails=[{"state":"AL","value":"Alabama","refLink":"https://myalabamataxes.alabama.gov/_/#1"},
   {"state":"AR","value":"Arkansas","refLink":"https://atap.arkansas.gov/_/#1"},
 {"state":"Ak","value":"Alaska","refLink":""},
@@ -209,61 +194,4 @@ $scope.viewPage=function(currentState){
   console.log(currentState.refLink);
   $window.open(currentState.refLink,'_blank');
 }
-||||||| .r43
-
-=======
-$scope.stateDetails=[
-    {"value":"Select the State"},
-    {"state":"AL","value":"Alabama","refLink":"https://myalabamataxes.alabama.gov/_/#1"},
-  {"state":"AR","value":"Arkansas","refLink":"https://atap.arkansas.gov/_/#1"},
-{"state":"AZ","value":"Arizona","refLink":"https://www.aztaxes.gov/Home"},
-{"state":"CA","value":"California","refLink":"https://www.ftb.ca.gov/online/refund/index.asp"},
-{"state":"CO","value":"Colorado","refLink":"https://www.colorado.gov/revenueonline/_/#2"},
-{"state":"CT","value":"Connecticut","refLink":"www.ct.gov/drs/myrefund"},
-{"state":"DE","value":"Delaware","refLink":"https://dorweb.revenue.delaware.gov/scripts/refinq/refinq.dll"},
-{"state":"FL","value":"Florida","refLink":"https://taxapps.state.fl.us/Refunds/"},
-{"state":"GA","value":"Georgia","refLink":"https://gtc.dor.ga.gov/_/#1"},
-{"state":"HI","value":"Hawaii","refLink":"https://tax.ehawaii.gov/hoihoi/refund.html"},
-{"state":"IA","value":"Iowa","refLink":"https://www.idr.iowa.gov/wheresmyrefund/"},
-{"state":"ID","value":"Idaho","refLink":"https://idahotap.gentax.com/TAP/_/"},
-{"state":"IL","value":"Illinois","refLink":"https://www.revenue.state.il.us/app/refund/index.html"},
-{"state":"IN","value":"Indiana","refLink":"https://secure.in.gov/apps/dor/tax/refund/"},
-{"state":"KS","value":"Kansas","refLink":"https://www.kdor.org/refundstatus/default.asp"},
-{"state":"LA","value":"Louisiana","refLink":"https://esweb.revenue.louisiana.gov/wheresmyrefund/"},
-{"state":"ME","value":"Maine","refLink":"https://portal.maine.gov/refundstatus/Registration.do;jsessionid=ede81f8754d50f0856586ac0f9904b3bba7df40ef2ffffea115761afbf73105c.e34Mb38PchyPbi0Lah90"},
-{"state":"MD","value":"Maryland","refLink":"https://interactive.marylandtaxes.com/INDIV/refundstatus/home.aspx"},
-{"state":"MA","value":"Massachusetts","refLink":"https://wfb.dor.state.ma.us/webfile/wsi/"},
-{"state":"MI","value":"Michigan","refLink":"http://www.michigan.gov/taxes/0,1607,7-238-43513-157514--,00.html"},
-{"state":"MN","value":"Minnesota","refLink":"https://www.mndor.state.mn.us/tp/refund/_/"},
-{"state":"MS","value":"Mississippi","refLink":"www.dor.ms.gov/inquiry"},
-{"state":"MO","value":"Missouri","refLink":"https://dors.mo.gov/tax/taxinq/welcome.jsp"},
-{"state":"MT","value":"Montana","refLink":"https://tap.dor.mt.gov/mt_xwTapRfn.aspx"},
-{"state":"NE","value":"Nebraska","refLink":""},
-{"state":"NV","value":"Nevada","refLink":"https://www.nevadatax.nv.gov/web/"},
-{"state":"NJ","value":"New Jersey","refLink":"https://www16.state.nj.us/TYTR_TGI_INQ/jsp/prompt.jsp"},
-{"state":"NM","value":"New Mexico","refLink":"http://www.tax.newmexico.gov/Individuals/individuals-where-is-my-refund.aspx"},
-{"state":"NY","value":"New York","refLink":"https://www8.tax.ny.gov/PRIS/prisStart"},
-{"state":"NC","value":"North Carolina","refLink":"https://eservices.dor.nc.gov/wheresmyrefund/SelectionServlet"},
-{"state":"ND","value":"North Dakota","refLink":"https://apps.nd.gov/tax/tap/_/"},
-{"state":"OH","value":"Ohio","refLink":"http://www.tax.ohio.gov/ohio_individual/individual/filefaster.aspx"},
-{"state":"OK","value":"Oklahoma","refLink":"http://www.ok.gov/tax/Individuals/Income_Tax/Filing_Information/How_to_Check_on_a_Refund/"},
-{"state":"PA","value":"Pennsylvania","refLink":"https://www.doreservices.state.pa.us/pitservices/wheresmyrefund.aspx"},
-{"state":"RI","value":"Rhode Island","refLink":"https://www.ri.gov/taxation/refund/"},
-{"state":"SC","value":"South Carolina","refLink":"https://www3.sctax.org/refundstatus/refund.aspx"},
-{"state":"UT","value":"Utah","refLink":"http://incometax.utah.gov/refunds/wheres-my-refund"},
-{"state":"VT","value":"Vermont","refLink":"https://secure.vermont.gov/TAX/refund/"},
-{"state":"VA","value":"Virginia","refLink":"https://www.individual.tax.virginia.gov/VTOL/IndRefundStatus.seam?CFID=10172687&CFTOKEN=24426951"},
-{"state":"WI","value":"Wisconsin","refLink":"https://ww2.revenue.wi.gov/RefundInquiry/request.html"}];
-  
-//$scope.selectedState=$scope.stateDetails[0];
-$scope.viewPage=function(currentState){
-  $window.open(currentState.refLink,'_blank');
-}
-
->>>>>>> .r65
-    // terms
-
-
-
-
   }]);

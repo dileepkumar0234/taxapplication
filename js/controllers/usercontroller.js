@@ -1,6 +1,6 @@
 
 angular.module("myapp").controller("userController", ['$scope','$rootScope','$state','$stateParams','$uibModal','commonService',function($scope,$rootScope,$state,$stateParams,$uibModal,commonService) {
-
+ console.log("sarath:::",$scope.response_user);
  $scope.relations= ['Father','Mother','Son','Daughter','others'];
  $scope.havedependants = [{name:'Yes',status:2},{name:'No',status:1}];
  $scope.healthInsurance = ['Yes','No'];
@@ -39,6 +39,7 @@ $scope.Countries=['INDIA','US','OTHER'];
 
 function getUserData(){
   commonService.getData('GET','taxpayer-page/'+$scope.response_user.id).then(function(resp){
+    console.log("SpouseInfo",resp);
     commonService.stopSpinner();
     $scope.user = resp.data.data;
     if($scope.user.dob!=""){
@@ -84,10 +85,12 @@ function getUserData(){
 }
 getUserData();
 $scope.update = function(user){
+  console.info(user);
   if(user.dob)
     var date_to_send=user.dob.getDate().toString()+"-"+(user.dob.getMonth()+1).toString()+"-"+user.dob.getFullYear().toString();
   else
     date_to_send="";
+  console.log(date_to_send);
 
   var data ={
     user_name:user.first_name,
@@ -109,9 +112,10 @@ $scope.update = function(user){
     cLocation:user.c_location,
   }
   commonService.getData('PUT','taxpayer-page/'+$scope.response_user.id,data).then(function(resp){
-      alert("Changes Been Saved");
+   console.log("User updated:::",resp);
+   alert("You Info has been Updated!");
    commonService.stopSpinner();
-   $scope.editMode = true;
+   //$scope.editMode = true;
    getUserData();
  });
 }

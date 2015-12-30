@@ -31,13 +31,7 @@ appinstal.factory("commonService", function($http,$rootScope,$timeout,$state) {
         
          },
 		sessionEnd:function(id){
-<<<<<<< .mine
       $rootScope.loggedIn = false;
-||||||| .r37
-        $timeout.cancel(idleTimer);
-=======
-      
->>>>>>> .r65
         localStorage.removeItem('user');
 		}
 	}

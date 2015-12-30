@@ -41,7 +41,9 @@ $scope.disabled = function(date, mode) {
 
 function getSchedule(){
   commonService.getData('GET','schedules-page/'+$scope.response_user.id).then(function(resp){
-       $scope.scheduleInfo= resp.data.data;
+    console.log("schedule::",resp);
+
+    $scope.scheduleInfo= resp.data.data;
     if($scope.scheduleInfo.schedule_dt!=""){
       var x= $scope.scheduleInfo.schedule_dt.split('-');
       if(x[1].length==1){
@@ -64,11 +66,12 @@ $scope.ScheduleDT = function(){
   var date= x.getDate();
   var year = x.getFullYear();
   var final_date= date+"-"+month+"-"+year;
-
+  console.log(final_date,$scope.scheduling);
   commonService.getData('POST','schedules-page',{schedule_dt:final_date,schedule_period:$scope.scheduling.schedule_period}).then(function(resp){
-      alert("Changes Been Saved");
+    console.log("schedule::",resp);
     getSchedule();
     $scope.editMode = true;
+    alert("You Info has been Updated!");
 
     commonService.stopSpinner();
   });

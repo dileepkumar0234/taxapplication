@@ -1,5 +1,5 @@
  angular.module("myapp").controller("logInCtrl",['$scope','$rootScope','$state','$uibModalInstance','commonService','$timeout',function($scope,$rootScope,$state,$uibModalInstance,commonService,$timeout) {
-
+  console.log("hi");
   $scope.loginuser = {};
   $scope.signupuser = {};
   $scope.signup=false;
@@ -8,13 +8,14 @@
   $scope.showforgot = false;
 
   $scope.toggleForgot = function(e){
+    console.log(e);
     e.preventDefault();
     $scope.showforgot = true;
   }
 
   $scope.getBack = function(userEmail){
     commonService.getData('POST','forgetpassword',{email:userEmail}).then(function(resp){
-     alert("changes been saved");
+      console.log(resp,"forgetpassword:::");
       commonService.stopSpinner();
       if(resp.data){
         $scope.showforgot = false;
@@ -25,9 +26,9 @@
     });
 
   }
-  $scope.close = function(){
-      $uibModalInstance.dismiss('close');
-    }
+  $scope.close=function(){
+    $uibModalInstance.dismiss('close');
+  }
   $scope.friend={};
   console.log(localStorage.getItem('user'));
   $rootScope.userData={};
@@ -57,9 +58,10 @@ $uibModalInstance.dismiss('close');
 }
 
   $scope.userlogin=function(loginuser){
+    console.log("login",loginuser);
     $scope.invalidCredentials = false;
     commonService.getData('POST','login',loginuser).then(function(resp){
-    alert("changes been saved");
+     console.log("resp",resp);
      commonService.stopSpinner();
      if(resp.data.status=='sucess'){
       $scope.invalidCredentials = false;
@@ -95,7 +97,7 @@ $uibModalInstance.dismiss('close');
     
     if(signupuser.inputEmail){
       commonService.getData('POST','email-verified',{user_email:signupuser.inputEmail}).then(function(resp){
-       alert("Changes Been Saved");
+       console.log("resp",resp);
        commonService.stopSpinner();
        if(resp.data.output == 'exists'){
         $scope.emailExist = true;
@@ -105,9 +107,10 @@ $uibModalInstance.dismiss('close');
       }
       else{
         commonService.getData('POST','registration',signupuser).then(function(resp){
-            alert("Changes Been Saved");
+          console.log("resp",resp);
           commonService.stopSpinner();
           if(resp.data.Success == 'Registration Success'){
+            alert("You Have successfully Regisered!");
             $uibModalInstance.dismiss('close');
             $scope.signupuser = {};
             $scope.successRegistr = true;

@@ -25,7 +25,7 @@ $scope.dateOptions = {
   startingDay: 1
 };
 $scope.open = function($event,ind) {
-
+  console.log($scope.status);
   $scope.status[ind].opened = true;
 };
 $scope.today = function() {
@@ -46,6 +46,7 @@ $scope.disabled = function(date, mode) {
 
 $scope.getDependants = function(){
  commonService.getData('GET','dependent-page/'+$scope.response_user.id).then(function(resp){
+   console.log("Dependants are::::",resp);
    commonService.stopSpinner();
    if(resp.data.dep.length==0){
     $scope.dependants=[];
@@ -56,6 +57,7 @@ $scope.getDependants = function(){
 $scope.status=[];
        $scope.dependants = resp.data.dep;
        angular.forEach($scope.dependants,function(val,key){
+        console.log($scope.status);
         $scope.status.push({opened: false});
               if(val.dob!=""){
       var x= val.dob.split('-');
@@ -84,14 +86,16 @@ $scope.UpdateDependants = function(){
 var date_to_send=val.dob.getDate().toString()+"-"+(val.dob.getMonth()+1).toString()+"-"+val.dob.getFullYear().toString();
   else
     date_to_send="";
+   console.log(date_to_send);
    val.dob=date_to_send;
  }
  });
 
-
+ console.log($scope.dependants);
 
   commonService.getData('POST','dependent-page',{dep:$scope.dependants}).then(function(resp){
-      alert("Changes Been Saved");
+   console.log("post",resp);
+   alert("You Info has been Updated!");
    commonService.stopSpinner();
    $scope.editMode = true;
    $scope.getDependants();
@@ -104,6 +108,7 @@ $scope.dependants.splice(index,1);
   }
   else{
     commonService.getData('DELETE','dependent-page/'+item.dependent_id).then(function(resp){
+    console.log("Dependant deleted:::",resp);
     commonService.stopSpinner();
     $scope.getDependants();
    
