@@ -1,5 +1,5 @@
  angular.module("myapp").controller("logInCtrl",['$scope','$rootScope','$state','$uibModalInstance','commonService','$timeout',function($scope,$rootScope,$state,$uibModalInstance,commonService,$timeout) {
-  console.log("hi");
+  
   $scope.loginuser = {};
   $scope.signupuser = {};
   $scope.signup=false;
@@ -8,14 +8,14 @@
   $scope.showforgot = false;
 
   $scope.toggleForgot = function(e){
-    console.log(e);
+    
     e.preventDefault();
     $scope.showforgot = true;
   }
 
   $scope.getBack = function(userEmail){
     commonService.getData('POST','forgetpassword',{email:userEmail}).then(function(resp){
-      console.log(resp,"forgetpassword:::");
+      
       commonService.stopSpinner();
       if(resp.data){
         $scope.showforgot = false;
@@ -30,7 +30,7 @@
     $uibModalInstance.dismiss('close');
   }
   $scope.friend={};
-  console.log(localStorage.getItem('user'));
+ 
   $rootScope.userData={};
   var id=localStorage.getItem('user');
   commonService.getData('GET','taxpayer-page/'+id).then(function(resp){
@@ -44,7 +44,7 @@
    var user_data= {rf_on_name:$scope.userData.first_name,rf_on_email:$scope.userData.email,rf_on_phone:$scope.userData.phone};
   var referal_data= angular.extend(user_data,$scope.friend);
   commonService.getData('POST','referral-friend',referal_data).then(function(resp){
-   console.log("Refered:::",resp);
+  
    commonService.stopSpinner();
    $timeout(function(){
  alert("Your Firend has been Refered");
@@ -58,10 +58,10 @@ $uibModalInstance.dismiss('close');
 }
 
   $scope.userlogin=function(loginuser){
-    console.log("login",loginuser);
+   
     $scope.invalidCredentials = false;
     commonService.getData('POST','login',loginuser).then(function(resp){
-     console.log("resp",resp);
+    
      commonService.stopSpinner();
      if(resp.data.status=='sucess'){
       $scope.invalidCredentials = false;
@@ -97,7 +97,7 @@ $uibModalInstance.dismiss('close');
     
     if(signupuser.inputEmail){
       commonService.getData('POST','email-verified',{user_email:signupuser.inputEmail}).then(function(resp){
-       console.log("resp",resp);
+       
        commonService.stopSpinner();
        if(resp.data.output == 'exists'){
         $scope.emailExist = true;
@@ -107,7 +107,7 @@ $uibModalInstance.dismiss('close');
       }
       else{
         commonService.getData('POST','registration',signupuser).then(function(resp){
-          console.log("resp",resp);
+         
           commonService.stopSpinner();
           if(resp.data.Success == 'Registration Success'){
             alert("You Have successfully Regisered!");

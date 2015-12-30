@@ -17,14 +17,14 @@ $scope.goToDashboard = function(){
 
 
 $scope.checkemail = function(email){
-  console.log("checkemail",email);
+  
   
 }
 
 $scope.contactform ={};
 $scope.contactusService = function(data){
 commonService.getData('POST','contact-us',data).then(function(resp){
-   console.info(resp);
+  
    $scope.contactform ={};
    $scope.willcontact=true;
    $timeout(function(){
@@ -61,7 +61,7 @@ $scope.referals= function(){
 
 $scope.scrollIt = function(e,id){
   e.preventDefault();
-  console.log(e.target.getAttribute('href'),id);
+ 
   $('html, body').animate({
     scrollTop: $('#'+id).offset().top
   }, 500);
@@ -91,12 +91,11 @@ $scope.moveTop = function(){
 }
 
 
-console.log($state.current.name);
 $scope.current=$state.current.name;
 
 $rootScope.$on('$stateChangeSuccess', 
   function(event, toState, toParams, fromState, fromParams){ 
-    console.log($state.current.name);
+   
     $scope.current=$state.current.name;
   });
 
@@ -191,7 +190,6 @@ $scope.stateDetails=[{"state":"AL","value":"Alabama","refLink":"https://myalabam
   
 //$scope.selectedState=$scope.stateDetails[0];
 $scope.viewPage=function(currentState){
-  console.log(currentState.refLink);
   $window.open(currentState.refLink,'_blank');
 }
   }]);

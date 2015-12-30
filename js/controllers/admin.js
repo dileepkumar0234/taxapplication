@@ -15,7 +15,7 @@ angular.module("myapp").controller("admin",['$scope','$rootScope','$state','$uib
 	};
 
 	commonService.getData('GET','user-list').then(function(resp){
-		console.log("user Data::",resp);
+		
 		$scope.totalCount= resp.data.success.length;
 		$scope.allUsers=resp.data.success;
 		
@@ -23,12 +23,12 @@ angular.module("myapp").controller("admin",['$scope','$rootScope','$state','$uib
 });
 
 	commonService.getData('GET','count-each-stages').then(function(resp){
-		console.log("count Data::",resp);
+		
 		$scope.count= resp.data;
 		commonService.stopSpinner();
 	});
 	commonService.getData('GET','get-unlists/1').then(function(resp){
-		console.log("Unlist Members::",resp);
+		
 		$scope.UnListMembers = resp.data.UnListUser;
 	});
 
@@ -37,7 +37,7 @@ angular.module("myapp").controller("admin",['$scope','$rootScope','$state','$uib
 
 	
 	$scope.assignedChange = function(item,row){
-console.info("Unlist Change:",item,row);
+
 $scope.optionSelected = item;
 $scope.user_id_selected=row.entity.user_id;
 
@@ -46,19 +46,19 @@ $scope.user_id_selected=row.entity.user_id;
 	$scope.assignConfirm = function(){
 
 		commonService.getData('POST','assign-user',{unlists_u_id:$scope.optionSelected.user_id,client_id:$scope.user_id_selected}).then(function(resp){
-		console.log("Assign check::",resp);
+		
 		$state.reload();
 		
 	       });
 	}
 
 	$scope.uploadSynopsys = function(event){
-			console.log(event);
+			
 	var files = event.target.files[0];
       var form_data= new FormData();           
       form_data.append("file", files) ;
       commonService.getData('PUT','uploadPdfs-page/'+$scope.user_id,form_data).then(function(resp){
-        console.log("Synopsys",resp);
+        
       })
 	}
 
@@ -72,7 +72,7 @@ $scope.user_id_selected=row.entity.user_id;
 		$scope.home_banner = true;
 		$scope.userSelected = false;
 		commonService.getData('GET','get-processing-info/'+i).then(function(resp){
-			console.log("To Be assigned::",resp);
+			
 			if(i==0){
 				$scope.x=[];
 				$scope.allUsers=resp.data.list;
@@ -114,7 +114,7 @@ $scope.user_id_selected=row.entity.user_id;
 	}
 
 	$scope.foo = function(resp){
-		console.log(resp);
+		
 		if(resp.client_name!=null){
 			$scope.AlreadyAssigned = false;
 		}
@@ -128,14 +128,14 @@ $scope.user_id_selected=row.entity.user_id;
 	}
 
 	$scope.getCurrentInfo = function(index){
-		console.log(index);
+		
 		angular.forEach($scope.user_details_tabs,function(val,key){
 			if(key==index){
-				console.log(val);
+				
 				val.show = true;
 				if(index==0){
 				commonService.getData('GET','taxpayer-page/'+$scope.user_id).then(function(resp){
-					console.log("Tax payer",resp.data.data);
+					
 					$scope.PayerInfo= resp.data.data;
 					
 					if($scope.PayerInfo.dob!=""){
@@ -155,13 +155,13 @@ $scope.user_id_selected=row.entity.user_id;
 				}
 				else if(index==1){
 					commonService.getData('GET','spouse-page?id='+$scope.user_id).then(function(resp){
-					console.log("Spouse Info payer",resp.data.data);
+					
 					$scope.SpouseInfo= resp.data.data;
 					commonService.stopSpinner();
 
 				    });
 				    commonService.getData('GET','dependent-page?id='+$scope.user_id).then(function(resp){
-					console.log("Dependants Info payer",resp.data.dep);
+					
 					$scope.dependants= resp.data.dep;
 					commonService.stopSpinner();
 
@@ -169,14 +169,14 @@ $scope.user_id_selected=row.entity.user_id;
 				}
 				else if(index==2){
 					commonService.getData('GET','schedules-page?id='+$scope.user_id).then(function(resp){
-                    console.log("schedule::",resp);
+                    
                     $scope.scheduleInfo=resp.data.data;
                     commonService.stopSpinner();
                      });
 				}
 				else if(index==3){
 					commonService.getData('GET','uploadPdfs-page?id='+$scope.user_id).then(function(resp){
-                    console.log("Uploads::",resp);
+                 
                     $scope.file_path=resp.data.file_path;
                     $scope.uploads=resp.data.data;
                     commonService.stopSpinner();
@@ -196,7 +196,7 @@ $scope.user_id_selected=row.entity.user_id;
 			}
 
 		});
-		console.info($scope.user_details_tabs);
+		
 	}
 
 	$scope.home_banner = true;
@@ -228,13 +228,13 @@ $scope.user_id_selected=row.entity.user_id;
     {id: 12, text: 'Filing Docs Sent'}
     ];
 $scope.changeState = function(index){
-	console.info($scope.states[index]);
+	
 	if($scope.states[index].checked==true)
 		$scope.selectedState = $scope.states[index].id+1;
 }
 $scope.updateStatus = function(){
             commonService.getData('PUT','update-process/'+$scope.user_id,{ps_state:$scope.selectedState}).then(function(resp){
-                    console.log("status::",resp);
+                   
                     /*$scope.file_path=resp.data.file_path;
                     $scope.uploads=resp.data.data;*/
                     commonService.stopSpinner();

@@ -4,9 +4,9 @@ appinstal.directive('fileChange', function ($http,commonService) {
     $scope.x={};
     element.parents('form').find('button').bind('click',function(event){
       //var files = event.target.files;
-      console.log("Files:::",$scope.x);
+      //console.log("Files:::",$scope.x);
       commonService.getData('PUT','uploadPdfs-page/'+$scope.uid,$scope.x).then(function(resp){
-        console.log("success",resp);
+        //console.log("success",resp);
         $scope.editMode = true;
         if(!$scope.$$phase){
           $scope.$apply();
@@ -15,7 +15,7 @@ appinstal.directive('fileChange', function ($http,commonService) {
      // uploadPdfs-page
    });
     element.bind('change', function (event) {
-      console.log(attributes.ngModel);
+      //console.log(attributes.ngModel);
       var key="hid_"+attributes.ngModel;
       var files = event.target.files[0];
       var form_data= new FormData();           
@@ -28,7 +28,7 @@ appinstal.directive('fileChange', function ($http,commonService) {
       })
 
       .success(function(resp){
-        console.log("Uploaded FIles",resp.file_name);
+        //console.log("Uploaded FIles",resp.file_name);
         $scope.x[key]=resp.file_name;
     //file was uploaded
   })
@@ -72,7 +72,7 @@ appinstal.directive('carouselDirective',function(){
      var totalItems = $('.item').length;
 
      $('.prev').on("click",function(){
-      console.log($(this).index());
+      //console.log($(this).index());
       var currentIndex = $(this).index();
       $("#"+attr.id).trigger('owl.goTo',currentIndex);
     });
@@ -113,17 +113,17 @@ appinstal.directive('validateForm',function(){
     ctrl[0].$setValidity('validateForm',true);
 
     ctrl[0].$parsers.unshift(function(viewValue){
-     console.log(viewValue);
+     //console.log(viewValue);
      if(viewValue!=''){
 
       if(attr.validateForm!=''){
-        console.log(ctrl[1].password.$viewValue,ctrl[0].$viewValue)
+        //console.log(ctrl[1].password.$viewValue,ctrl[0].$viewValue)
         if(ctrl[1].password.$viewValue!=ctrl[0].$viewValue){
-          console.log('Yes');
+          //console.log('Yes');
           ctrl[0].$setValidity('validateForm',false);
         }
         else{
-          console.log('no');
+          //console.log('no');
           ctrl[0].$setValidity('validateForm',true);
         }
       }
@@ -142,7 +142,7 @@ appinstal.directive('validateForm',function(){
  });
 
     if(attr.validateForm!=''){
-      console.log(ctrl[1].password.$viewValue)
+      //console.log(ctrl[1].password.$viewValue)
       if(ctrl[1].password.$viewValue!=ctrl[0].$viewValue){
        ctrl[0].$setValidity('validateForm',true);
      }
@@ -151,7 +151,7 @@ appinstal.directive('validateForm',function(){
      }
    }
    elm.parents('form').find('input[type="submit"]').bind("click",function(){
-    console.log('In',ctrl);
+    //console.log('In',ctrl);
     if(!ctrl[0].$viewValue){
       ctrl[0].$setValidity('validateForm',false);
     }

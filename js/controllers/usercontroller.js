@@ -1,14 +1,14 @@
 
 angular.module("myapp").controller("userController", ['$scope','$rootScope','$state','$stateParams','$uibModal','commonService',function($scope,$rootScope,$state,$stateParams,$uibModal,commonService) {
- console.log("sarath:::",$scope.response_user);
+ //console.log("sarath:::",$scope.response_user);
  $scope.relations= ['Father','Mother','Son','Daughter','others'];
  $scope.havedependants = [{name:'Yes',status:2},{name:'No',status:1}];
  $scope.healthInsurance = ['Yes','No'];
  $scope.dependantData= ['Yes','No'];
- $scope.filing_status_type =['Single','Married Jointly','Married Seperately'];
+ $scope.filing_status_type =['Single','Married  Jointly','Married Seperately'];
 
  $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
-
+ $scope.Countries =['INDIA','US','OTHER'];
  $scope.format = $scope.formats[0];
  $scope.status = {
   opened: false
@@ -39,7 +39,7 @@ $scope.Countries=['INDIA','US','OTHER'];
 
 function getUserData(){
   commonService.getData('GET','taxpayer-page/'+$scope.response_user.id).then(function(resp){
-    console.log("SpouseInfo",resp);
+    //console.log("SpouseInfo",resp);
     commonService.stopSpinner();
     $scope.user = resp.data.data;
     if($scope.user.dob!=""){
@@ -85,12 +85,12 @@ function getUserData(){
 }
 getUserData();
 $scope.update = function(user){
-  console.info(user);
+  //console.info(user);
   if(user.dob)
     var date_to_send=user.dob.getDate().toString()+"-"+(user.dob.getMonth()+1).toString()+"-"+user.dob.getFullYear().toString();
   else
     date_to_send="";
-  console.log(date_to_send);
+  //console.log(date_to_send);
 
   var data ={
     user_name:user.first_name,
@@ -110,9 +110,11 @@ $scope.update = function(user){
     c_e:user.current_emp,
     tax_id:user.tax_id_type,
     cLocation:user.c_location,
+    country_name:user.country_name,
+    ssnitin:user.ssnitin
   }
   commonService.getData('PUT','taxpayer-page/'+$scope.response_user.id,data).then(function(resp){
-   console.log("User updated:::",resp);
+   //console.log("User updated:::",resp);
    alert("You Info has been Updated!");
    commonService.stopSpinner();
    //$scope.editMode = true;

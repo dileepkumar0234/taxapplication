@@ -14,7 +14,7 @@ angular.module("myapp").controller("AgentController",['$scope','$rootScope','$st
 	};
 
 	commonService.getData('GET','user-list').then(function(resp){
-		console.log("user Data::",resp);
+		
 		$scope.totalCount= resp.data.success.length;
 		$scope.allUsers=resp.data.success;
 		
@@ -22,7 +22,7 @@ angular.module("myapp").controller("AgentController",['$scope','$rootScope','$st
 	});
 
 	commonService.getData('GET','count-each-stages').then(function(resp){
-		console.log("count Data::",resp);
+		
 		$scope.count= resp.data;
 		commonService.stopSpinner();
 	});
@@ -46,7 +46,7 @@ angular.module("myapp").controller("AgentController",['$scope','$rootScope','$st
 	}
 
 	$scope.foo = function(resp){
-		console.log(resp);
+		
 		$scope.userSelected = true;
 		$scope.home_banner = true;
 		$scope.user_id=resp.entity.user_id;
@@ -54,14 +54,14 @@ angular.module("myapp").controller("AgentController",['$scope','$rootScope','$st
 	}
 
 	$scope.getCurrentInfo = function(index){
-		console.log(index);
+		
 		angular.forEach($scope.user_details_tabs,function(val,key){
 			if(key==index){
-				console.log(val);
+			
 				val.show = true;
 				if(index==0){
 					commonService.getData('GET','taxpayer-page?id='+$scope.user_id).then(function(resp){
-						console.log("Tax payer",resp.data.data);
+						
 						$scope.PayerInfo= resp.data.data;
 						commonService.stopSpinner();
 
@@ -69,13 +69,13 @@ angular.module("myapp").controller("AgentController",['$scope','$rootScope','$st
 				}
 				else if(index==1){
 					commonService.getData('GET','spouse-page?id='+$scope.user_id).then(function(resp){
-						console.log("Spouse Info payer",resp.data.data);
+						
 						$scope.SpouseInfo= resp.data.data;
 						commonService.stopSpinner();
 
 					});
 					commonService.getData('GET','dependent-page?id='+$scope.user_id).then(function(resp){
-						console.log("Dependants Info payer",resp.data.dep);
+						
 						$scope.dependants= resp.data.dep;
 						commonService.stopSpinner();
 
@@ -83,14 +83,14 @@ angular.module("myapp").controller("AgentController",['$scope','$rootScope','$st
 				}
 				else if(index==2){
 					commonService.getData('GET','schedules-page?id='+$scope.user_id).then(function(resp){
-						console.log("schedule::",resp);
+						
 						$scope.scheduleInfo=resp.data.data;
 						commonService.stopSpinner();
 					});
 				}
 				else if(index==3){
 					commonService.getData('GET','uploadPdfs-page?id='+$scope.user_id).then(function(resp){
-						console.log("Uploads::",resp);
+						
 						$scope.file_path=resp.data.file_path;
 						$scope.uploads=resp.data.data;
 						commonService.stopSpinner();
@@ -107,7 +107,6 @@ angular.module("myapp").controller("AgentController",['$scope','$rootScope','$st
 			}
 
 		});
-console.info($scope.user_details_tabs);
 }
 
 $scope.home_banner = true;
@@ -138,13 +137,13 @@ $scope.states = [
 {id: 12, text: 'Filing Docs Sent'}
 ];
 $scope.changeState = function(index){
-	console.info($scope.states[index]);
+	
 	if($scope.states[index].checked==true)
 		$scope.selectedState = $scope.states[index].id+1;
 }
 $scope.updateStatus = function(){
 	commonService.getData('PUT','update-process/'+$scope.user_id,{ps_state:$scope.selectedState}).then(function(resp){
-		console.log("status::",resp);
+		
                     /*$scope.file_path=resp.data.file_path;
                     $scope.uploads=resp.data.data;*/
                     commonService.stopSpinner();
