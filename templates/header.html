@@ -1,11 +1,31 @@
 <div class='header1' >
+<<<<<<< .mine
+<session-timeout ng-if="loggedIn"></session-timeout>
+||||||| .r44
+
+=======
 <session-timeout></session-timeout>
+>>>>>>> .r69
     <img src="images/logouser.png" class="logo">
     <ul >
         <li><a class="profile" href="#"><i class="fa fa-file-code-o"></i> Make Payment</span></a> </li>
         <li class="neon-text"><a class="profile" href="#"><i class="fa fa-file-code-o"></i> Filing Status: {{userData.FilingStatusCode}}</span></a> </li>
     </ul>
     <ul style="position:absolute;right:0;top:90px;">
+<<<<<<< .mine
+        <li ng-click="openProfile()"><a class="profile" href="#"><i class="ace-icon fa fa-caret-down"></i> <span>Welcome {{userData.user_name}}</span></a> 
+           <ul ng-if="showProfile" style="position:absolute;right:0;top:43px;z-index: 9999;">
+            <!-- <li><a  ui-sref="user.referals"> <i class="fa fa-download"></i> View Referal List</a></li>
+           <li><a ui-sref="user.change"><i style="color:black;" class="glyphicon glyphicon-lock"></i> Change Pasword</a></li>
+           <li class="Log_out" ng-click="logout()">
+        <a><i style="color:black;" class="fa fa-hand-o-right"></i>LOGOUT</a></li> -->
+             </ul>
+        </li>
+        <li><a class="profile" href="#"><i class="fa fa-file-code-o"></i> File Number: {{userData.unique_code}}</span></a> </li>
+||||||| .r44
+        <li><a class="profile" href="#"><i class="ace-icon fa fa-caret-down"></i> <span>Welcome {{userData.user_name}}</span></a> </li>
+        <li><a class="profile" href="#"><i class="fa fa-file-code-o"></i> File Number: {{userData.user_id}}</span></a> </li>
+=======
         <li ng-click="openProfile()"><a class="profile" href="#"><i class="ace-icon fa fa-caret-down"></i> <span>Welcome {{userData.user_name}}</span></a> 
            <ul ng-if="showProfile" style="position:absolute;right:0;top:43px;z-index: 9999;">
             <li><a  ui-sref="user.referals"> <i class="fa fa-download"></i> View Referal List</a></li>
@@ -15,6 +35,7 @@
              </ul>
         </li>
         <li><a class="profile" href="#"><i class="fa fa-file-code-o"></i> File Number: {{userData.user_id}}</span></a> </li>
+>>>>>>> .r69
     </ul>
 </div>
 
@@ -24,7 +45,7 @@
         <li><a  ui-sref="user.user" class="active"><i class="fa fa-product-hunt"></i> Profile Information <i class="fa fa-chevron-circle-down"></i>  </a>
             <ul class="inner">
                 <li><a  ui-sref="user.user"><i class="fa fa-chevron-circle-right"></i> Tax Payer Info  </a></li>
-                <li><a  ui-sref="user.spouse"><i class="fa fa-chevron-circle-right"></i> Spouse Info </a></li>
+                <li><a  ui-sref="user.spouse"><i class="fa fa-chevron-circle-right"></i> Spouse & Other Info </a></li>
                 <li><a  ui-sref="user.dependants"><i class="fa fa-chevron-circle-right"></i> Dependants (If any) </a></li>
 
             </ul>
@@ -34,13 +55,30 @@
         <li><a  ui-sref="user.schedule"><i class="fa fa-sticky-note"></i> Schedule For Tax Notes</a></li>
         <li><a  ui-sref="user.upload"><i class="fa fa-upload"></i> Upload Tax Documents</a></li>
         <li><a  href="#viewsummary"> <i class="fa fa-file-archive-o"></i> View Summary</a></li>
-        <li><a  href="#makepayment"><i class="fa fa-cc-paypal"></i> Make Payment</a></li>
-        <li><a  href="#downloadtax"> <i class="fa fa-download"></i>	Download Tax Return Copy</a></li>
+        <li class="inactive"> <a  href="#makepayment"><i class="fa fa-cc-paypal"></i> Make Payment</a></li>
+        <li class="inactive"> <a  href="#downloadtax"> <i class="fa fa-download"></i>	Download Tax Return Copy</a></li>
         
+        <li> <a  href="templates/disclaimer.html" target="_blank"> <i class="fa fa-download"></i> Disclaimer Agreement</a></li>
+        
+        <li><a ui-sref="main.home"><i style="color:black;" class="glyphicon glyphicon-lock"></i> Go TO Home</a></li>
+        
+<<<<<<< .mine
+           <li><a ui-sref="user.change"><i style="color:black;" class="glyphicon glyphicon-lock"></i> Change Pasword</a></li>
+           <li class="Log_out" ng-click="logout()">
+        <a><i style="color:black;" class="fa fa-hand-o-right"></i>LOGOUT</a></li>
+        
+||||||| .r44
+        <li><a  href="#downloadtax"> <i class="fa fa-download"></i> Disclaimer Agreement</a></li>
+        <li><a ui-sref="user.change"><i style="color:black;" class="glyphicon glyphicon-lock"></i> Change Pasword</a></li>
+        <li><a ui-sref="main.home"><i style="color:black;" class="glyphicon glyphicon-lock"></i> Go TO Home</a></li>
+        <li class="Log_out" ng-click="logout()">
+        <i style="color:black;" class="glyphicon glyphicon-log-out"></i>LOGOUT</li>
+=======
         <li><a  href="#downloadtax"> <i class="fa fa-download"></i> Disclaimer Agreement</a></li>
         
         <li><a ui-sref="main.home"><i style="color:black;" class="glyphicon glyphicon-lock"></i> Go TO Home</a></li>
         
+>>>>>>> .r69
     </ul>
 
     <button ng-click="referals()" class="btn btn-success" style="margin:45px;">Refer a Friend</button>
