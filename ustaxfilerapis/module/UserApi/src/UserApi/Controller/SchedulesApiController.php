@@ -33,6 +33,7 @@ class SchedulesApiController extends AbstractRestfulController
 		if(isset($_SESSION['user_id']) && $_SESSION['user_id']){
 			$usId = $_SESSION['user_id'];
 			$schedulesTimingsTable = $this->getServiceLocator()->get('Models\Model\SchedulesTimingsFactory');
+			$deleSchStatus = $schedulesTimingsTable->deleteScH($usId);
 			$insertedLastId = $schedulesTimingsTable->addScheduleTime($data,$usId);
 			if($insertedLastId>=0){
 				return new JsonModel(array(
