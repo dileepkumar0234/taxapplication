@@ -26,11 +26,18 @@ appinstal.factory("commonService", function($http,$rootScope,$timeout,$state) {
 			$rootScope.processing = ''; 
 		},
 		sessionStart:function(id){
+			$rootScope.loggedIn = true;
         localStorage.setItem('user',id);
         
          },
 		sessionEnd:function(id){
+<<<<<<< .mine
+      $rootScope.loggedIn = false;
+||||||| .r37
+        $timeout.cancel(idleTimer);
+=======
       
+>>>>>>> .r65
         localStorage.removeItem('user');
 		}
 	}
