@@ -2,7 +2,12 @@ var appinstal = angular.module("myapp", ['ui.router','ui.bootstrap','ngGrid','oc
 
 
 // UTSXXXX
-
+appinstal.run(function($rootScope){
+$rootScope.$on('$stateChangeStart', 
+function(event, toState, toParams, fromState, fromParams){ 
+  // console.log(localStorage.getItem('user'));
+})
+});
 
 appinstal.config(function($stateProvider, $urlRouterProvider,$ocLazyLoadProvider)
 {
@@ -237,6 +242,7 @@ controller:'scheduleController',
       debug: true,
       events: true
     });
+
 
 });
 

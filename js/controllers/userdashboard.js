@@ -14,7 +14,6 @@ $scope.showProfile = false;
     }
 
 
-
   $scope.response_user = $stateParams;
   $scope.upload ={};
   $scope.friend = {};
@@ -34,7 +33,6 @@ $scope.showProfile = false;
   });
  }
  
-
 $scope.referRegister = function(){
   var user_data= {rf_on_name:$scope.userData.first_name,rf_on_email:$scope.userData.email,rf_on_phone:$scope.userData.phone};
   var referal_data= angular.extend(user_data,$scope.friend);
@@ -54,6 +52,9 @@ $scope.referals= function(){
          windowClass:'animated rotateIn reference'
        }); 
 }
+ $scope.close = function(){
+      $uibModalInstance.dismiss('close');
+    }
 $scope.changePassword = function(){
   commonService.getData('POST','changepassword',$scope.change).then(function(resp){
       alert("Changes Been Saved");

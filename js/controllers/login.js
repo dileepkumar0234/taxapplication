@@ -1,4 +1,4 @@
- angular.module("myapp").controller("logInCtrl",['$scope','$rootScope','$state','$uibModalInstance','commonService',function($scope,$rootScope,$state,$uibModalInstance,commonService) {
+ angular.module("myapp").controller("logInCtrl",['$scope','$rootScope','$state','$uibModalInstance','commonService','$timeout',function($scope,$rootScope,$state,$uibModalInstance,commonService,$timeout) {
 
   $scope.loginuser = {};
   $scope.signupuser = {};
@@ -25,7 +25,36 @@
     });
 
   }
+  $scope.close = function(){
+      $uibModalInstance.dismiss('close');
+    }
+  $scope.friend={};
+  console.log(localStorage.getItem('user'));
+  $rootScope.userData={};
+  var id=localStorage.getItem('user');
+  commonService.getData('GET','taxpayer-page/'+id).then(function(resp){
+    $rootScope.userData= resp.data.data;
+    });
+ $scope.referRegister = function (friend) {
+  
+  
 
+     
+   var user_data= {rf_on_name:$scope.userData.first_name,rf_on_email:$scope.userData.email,rf_on_phone:$scope.userData.phone};
+  var referal_data= angular.extend(user_data,$scope.friend);
+  commonService.getData('POST','referral-friend',referal_data).then(function(resp){
+   console.log("Refered:::",resp);
+   commonService.stopSpinner();
+   $timeout(function(){
+ alert("Your Firend has been Refered");
+$uibModalInstance.dismiss('close');
+},2000);
+  
+  
+ });
+
+
+}
 
   $scope.userlogin=function(loginuser){
     $scope.invalidCredentials = false;

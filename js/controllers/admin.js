@@ -137,6 +137,7 @@ $scope.user_id_selected=row.entity.user_id;
 				commonService.getData('GET','taxpayer-page/'+$scope.user_id).then(function(resp){
 					console.log("Tax payer",resp.data.data);
 					$scope.PayerInfo= resp.data.data;
+					
 					if($scope.PayerInfo.dob!=""){
       var x= $scope.PayerInfo.dob.split('-');
       if(x[1].length==1){
