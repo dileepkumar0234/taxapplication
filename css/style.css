@@ -8,16 +8,8 @@ body{
 }
 
 .header_top {
-<<<<<<< .mine
     background: none repeat scroll 0 0 #F0F0E9;
 
-||||||| .r38
-  background: none repeat scroll 0 0 #F0F0E9;
-  
-=======
-  background: none repeat scroll 0 0 #F0F0E9;
-
->>>>>>> .r61
 }
 h1{
     font-family: "Roboto","sans-serif";
@@ -218,28 +210,12 @@ transform: perspective(1300px) rotateX(0deg);
     color:#337ab7;
 }
 .box h2{
-<<<<<<< .mine
     font:bold 14px Arial, Helvetica, sans-serif;
     margin:5px 0 5px 0;
     padding:0;
     text-transform:uppercase;
     font-family: "Roboto","sans-serif";
 
-||||||| .r38
-	font:bold 14px Arial, Helvetica, sans-serif;
-	margin:5px 0 5px 0;
-	padding:0;
-	text-transform:uppercase;
-	    font-family: "Roboto","sans-serif";
-	
-=======
-	font:bold 14px Arial, Helvetica, sans-serif;
-	margin:5px 0 5px 0;
-	padding:0;
-	text-transform:uppercase;
-	    font-family: "Roboto","sans-serif";
-
->>>>>>> .r61
 }
 .headerLine .header {
     padding: 0 30px !important;
@@ -595,61 +571,23 @@ textarea {
     padding-right: 10px;
 }
 .forma .cBtn .clear , .cBtn .send{
-<<<<<<< .mine
     margin-bottom: 0;
     margin-top: 4px;
     padding: 10px;
     padding-right: 17px;
     padding-left: 17px
 
-||||||| .r38
-	margin-bottom: 0;
-	margin-top: 4px;
-	padding: 10px;
-	padding-right: 17px;
-	padding-left: 17px
-	
-=======
-	margin-bottom: 0;
-	margin-top: 4px;
-	padding: 10px;
-	padding-right: 17px;
-	padding-left: 17px
-
->>>>>>> .r61
 }
 .forma .cBtn .clear  a, .cBtn .send a{
-<<<<<<< .mine
     font-family: 'Roboto', 'sans-serif';
     font-weight: 700;
 
-||||||| .r38
-	font-family: 'Roboto', 'sans-serif';
-	font-weight: 700;
-	
-=======
-	font-family: 'Roboto', 'sans-serif';
-	font-weight: 700;
-
->>>>>>> .r61
 }
 .forma .cBtn .send{
-<<<<<<< .mine
     box-shadow: 0px 2px 0px 0px #179abf;
     background:#1fcdff ;
     width:120px;
 
-||||||| .r38
-	box-shadow: 0px 2px 0px 0px #179abf;
-	background:#1fcdff ;
-	width:120px;
-	
-=======
-	box-shadow: 0px 2px 0px 0px #179abf;
-	background:#1fcdff ;
-	width:120px;
-
->>>>>>> .r61
 }
 .forma .cBtn .send:hover{
     background:#2f2f2f;
@@ -686,7 +624,6 @@ textarea {
 .cont a:hover{
     color:#666666;
 }
-<<<<<<< .mine
 
 .footer{
     position: relative;
@@ -700,35 +637,6 @@ textarea {
     background-size: cover;
     z-index: 2;
     margin-top: -150px;
-||||||| .r38
- 
- .footer{
-	position: relative;
-	width: 100%;
-	overflow: hidden;
-	height:280px;
-	background:#000;
-	-webkit-background-size: cover;
-	-moz-background-size: cover;
-	-o-background-size: cover;
-	background-size: cover;
-	 z-index: 2;
-	 margin-top: -150px;
-=======
-
- .footer{
-	position: relative;
-	width: 100%;
-	overflow: hidden;
-	height:280px;
-	background:#000;
-	-webkit-background-size: cover;
-	-moz-background-size: cover;
-	-o-background-size: cover;
-	background-size: cover;
-	 z-index: 2;
-	 margin-top: -150px;
->>>>>>> .r61
 }
 .footer:after{
     content: "";
@@ -784,19 +692,9 @@ textarea {
 
 }
 .right_icon{
-<<<<<<< .mine
 
 
     border-radius: 50%;
-||||||| .r38
- 
-	 
-	border-radius: 50%;
-=======
-
-
-	border-radius: 50%;
->>>>>>> .r61
     color: #ffffff;
     display: block;
     height: 24px;
@@ -814,19 +712,9 @@ textarea {
 }
 
 .right_icon2{
-<<<<<<< .mine
 
 
     border-radius: 50%;
-||||||| .r38
- 
-	 
-	border-radius: 50%;
-=======
-
-
-	border-radius: 50%;
->>>>>>> .r61
     color: #ffffff;
     display: block;
     height: 24px;
@@ -852,48 +740,19 @@ ul.about_list{
     float: left;
 }
 ul.about_list li{
-<<<<<<< .mine
     margin:0 0 10px 0;
     padding:0 0 0 20px;
     position:relative;
 
-||||||| .r38
-	 margin:0 0 10px 0;
-	 padding:0 0 0 20px;
-	 position:relative;
-	 
-=======
-	 margin:0 0 10px 0;
-	 padding:0 0 0 20px;
-	 position:relative;
-
->>>>>>> .r61
 }
 ul.about_list li i{
-<<<<<<< .mine
     color: #2d7da4;
     font-size:15px;
     position:absolute;
     left:0;
     top:3px;
 
-||||||| .r38
-	color: #2d7da4;
-	font-size:15px;
-	position:absolute;
-	left:0;
-	top:3px;
-	
-=======
-	color: #2d7da4;
-	font-size:15px;
-	position:absolute;
-	left:0;
-	top:3px;
-
->>>>>>> .r61
 }
-<<<<<<< .mine
 .services_btncls{
     text-align:center;
     margin:0 0 20px 0;
@@ -908,41 +767,6 @@ ul.about_list li i{
 .top{
     position:fixed; bottom:10px; right:10px; font-size:20px; z-index:9999; display:none;
 }
-||||||| .r38
- .services_btncls{
-	 text-align:center;
-	 margin:0 0 20px 0;
-	 padding:0;
- }
-  .services_btncls a{
-	  margin:0 5px;
-  }
-  .services_hedd{
-	  padding:8px 20px;
-  }
-  .top{
-	  position:fixed; bottom:10px; right:10px; font-size:20px; z-index:9999; display:none;
-  }
-  
-  /*login*/
-=======
- .services_btncls{
-	 text-align:center;
-	 margin:0 0 20px 0;
-	 padding:0;
- }
-  .services_btncls a{
-	  margin:0 5px;
-  }
-  .services_hedd{
-	  padding:8px 20px;
-  }
-  .top{
-	  position:fixed; bottom:10px; right:10px; font-size:20px; z-index:9999; display:none;
-  }
-
-  /*login*/
->>>>>>> .r61
 
 /*login*/
 
@@ -957,51 +781,21 @@ ul.about_list li i{
     margin:0;
 }
 .main_container{
-<<<<<<< .mine
     height:450px;
     min-width:360px;
     background:#ffffff;
-||||||| .r38
-	
-	height:450px;
-	
-	min-width:360px;
-	
-	background:#ffffff;
-	
-=======
-	height:450px;
-	min-width:360px;
-	background:#ffffff;
->>>>>>> .r61
 }
 .main_container .left_panel{
     width:40%;
     height:450px;
 
 
-<<<<<<< .mine
     padding:10px;
     background:#44c7f4;
     float:left;
     margin:0;
     box-sizing:border-box;
 
-||||||| .r38
-padding:10px;
-	background:#44c7f4;
-	float:left;
-	margin:0;
-	box-sizing:border-box;
-	
-=======
-padding:10px;
-	background:#44c7f4;
-	float:left;
-	margin:0;
-	box-sizing:border-box;
-
->>>>>>> .r61
 }
 .main_container .left_panel h1 {
     font-size: 3.4em;
@@ -1017,19 +811,9 @@ padding:10px;
     float:left;
     padding:30px;
 
-<<<<<<< .mine
     margin:0;
     box-sizing:border-box;
 
-||||||| .r38
-		margin:0;
-		box-sizing:border-box;
-	
-=======
-		margin:0;
-		box-sizing:border-box;
-
->>>>>>> .r61
 }
 .main_container .right_panel h2{
     font-family: 'PoiretOne-Regular';
@@ -1061,25 +845,11 @@ form.login p{
     margin:0 0 30px 0;
     position:relative;
 }form.login p.sigin_btn{
-<<<<<<< .mine
      position:absolute;
      bottom:20px;
      width:90%;
 
  }
-||||||| .r38
-	position:absolute;
-	bottom:20px;
-	width:90%;
-	
-}
-=======
-	position:absolute;
-	bottom:20px;
-	width:90%;
-
-}
->>>>>>> .r61
 form.login p i{
     position:absolute;
     right:2px;
@@ -1157,54 +927,20 @@ header ul{
     list-style:none;
 }
 header ul li{
-<<<<<<< .mine
     float:right;
     margin:0 5px;
     padding:0;
 
-||||||| .r38
-	float:right;
-	margin:0 5px;
-	padding:0;
-	
-=======
-	float:right;
-	margin:0 5px;
-	padding:0;
-
->>>>>>> .r61
 }
 header ul li a{
-<<<<<<< .mine
     padding:10px 15px;
     float:right;
     color:#fff;
     background:#60a5ce;
 
-||||||| .r38
-	padding:10px 15px;
-	float:right;
-	color:#fff;
-	background:#60a5ce;
-	
-=======
-	padding:10px 15px;
-	float:right;
-	color:#fff;
-	background:#60a5ce;
-
->>>>>>> .r61
 }
-<<<<<<< .mine
 header ul li a span{
     float:right;
-||||||| .r38
-header ul li a span{ 
-	float:right;
-=======
-header ul li a span{
-	float:right;
->>>>>>> .r61
 }
 header ul li a i{
     float:right;
@@ -1355,28 +1091,12 @@ header ul li a:hover{
     display: block;
 }
 .right_conetent{
-<<<<<<< .mine
     float:left;
     margin:0;
     padding:0;
 
     padding:20px;
     box-sizing:border-box;
-||||||| .r38
-	float:left;
-	margin:0;
-	padding:0;
-	 
-	padding:20px;
-	box-sizing:border-box;
-=======
-	float:left;
-	margin:0;
-	padding:0;
-
-	padding:20px;
-	box-sizing:border-box;
->>>>>>> .r61
 }
 .admin{
     float:left;
@@ -1418,19 +1138,9 @@ h1.mar_top {
     height:254px;
 }
 .reference .popup_main {
-<<<<<<< .mine
     width:100%;
     height:500px;
     color:white!important;
-||||||| .r38
-	width:100%;
-	height:700px;
-	color:white!important;
-=======
-	width:100%;
-	height:500px;
-	color:white!important;
->>>>>>> .r61
 }
 .popup_main {
 
@@ -1784,7 +1494,6 @@ div.adminGroup{
     min-width: 1%;
     margin-right: 10px;
     width: auto!important;
-<<<<<<< .mine
 }
 .Activated{
     background: #979FA2;
@@ -1862,87 +1571,4 @@ ul.servicesMenu {
 }
 .mb20{
     margin-bottom: 20px;
-}||||||| .r38
-	}
-	.Activated{
-		background: #979FA2;
-	}
-=======
-	}
-	.Activated{
-		background: #979FA2;
-	}
-.imgc h6{
-    font-size: 17px;
-    font-weight: normal;
-
 }
-.imgc img{
-	height:200px;
-    width: 300px;
-    margin: 8px auto;
-}
-.allDependants h1{
-	    position: relative;
-	    }
-	    .allDependants .btn-danger{
-	       position: absolute;
-    top: 0;
-    right: -36px;
-}
-.neon-text {
-  -webkit-box-sizing: content-box;
-  -moz-box-sizing: content-box;
-  box-sizing: content-box;
-  border: none;
-  /*font: normal normal bold 72px/normal  Helvetica, sans-serif;*/
-  color: rgb(64, 126, 196);
-  text-align: center;
-  -o-text-overflow: clip;
-  text-overflow: clip;
-  text-shadow: 1px 1px 0 rgb(77,162,252) , -1px -1px 0 rgb(77,162,252) , 1px -1px 0 rgb(77,162,252) , -1px 1px 0 rgb(77,162,252) , 4px 4px 8px rgb(44,88,137) , -4px 4px 8px rgb(44,88,137) , 4px -4px 8px rgb(44,88,137) , -4px -4px 8px rgb(44,88,137) ;
-  -webkit-transition: all 500ms cubic-bezier(0.42, 0, 0.58, 1);
-  -moz-transition: all 500ms cubic-bezier(0.42, 0, 0.58, 1);
-  -o-transition: all 500ms cubic-bezier(0.42, 0, 0.58, 1);
-  transition: all 500ms cubic-bezier(0.42, 0, 0.58, 1);
-}
-.neon-text1 {
-  text-shadow: 1px 1px 0 rgb(77,162,252) , -1px -1px 0 rgb(77,162,252) , 1px -1px 0 rgb(77,162,252) , -1px 1px 0 rgb(77,162,252) ;
-  -webkit-transition: all 300ms cubic-bezier(0.42, 0, 0.58, 1);
-  -moz-transition: all 300ms cubic-bezier(0.42, 0, 0.58, 1);
-  -o-transition: all 300ms cubic-bezier(0.42, 0, 0.58, 1);
-  transition: all 300ms cubic-bezier(0.42, 0, 0.58, 1);
-}
-.banner:hover ul{
-	display: block;
-}
-.banner ul{
-	display: none;
-}
-ul.servicesMenu {
-       /* width: auto; */
-    min-width: 200px;
-    position: absolute;
-    top: 30px;
-    left: 0;
-    background: #CCCED3;
-}
-.servicesMenu li.banner {
-       list-style: none;
-    padding: 5px;
-    background: url(images/sepLi.gif) no-repeat right center;
-    position: relative;
-    z-index: 1;
-}.servicesMenu li.banner a {
-      color:black;
-      padding-top:3px;
-}
-
-.servicesMenu li.banner:hover a{
-
-     background: #CCCED3;
-
-}
-.mb20{
-    margin-bottom: 20px;
-}>>>>>>> .r61
