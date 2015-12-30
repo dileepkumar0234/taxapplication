@@ -47,4 +47,8 @@ class SchedulesTimingsTable
 		return $updateuserid;
 		
 	}
+	public function deleteScH($timing_id){
+		$row=$this->tableGateway->delete(array('(timing_id IN ('.$timing_id.'))'));
+		return $row;		
+	}
 }
