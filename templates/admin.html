@@ -60,13 +60,14 @@
        <li>{{PayerInfo.first_name | uppercase }}</li>
    </ul>
    <ul class="adminGroup col-md-6">
-       <li>Last Name</li>
-       <li>{{PayerInfo.last_name | uppercase }}</li>
-   </ul>
-   <ul class="adminGroup col-md-6">
        <li>EMail</li>
        <li>{{PayerInfo.email | uppercase }}</li>
    </ul>
+   <ul class="adminGroup col-md-6">
+       <li>Last Name</li>
+       <li>{{PayerInfo.last_name | uppercase }}</li>
+   </ul>
+   
    <ul class="adminGroup col-md-6">
        <li>Mobile</li>
        <li>{{PayerInfo.phone | uppercase }}</li>
@@ -198,7 +199,7 @@
 </div>
 
 <div class="col-md-12 taxpayer" style="overflow:scroll;height:450px;" ng-if="user_details_tabs[5].show">
-  <div for="email" class="adminGroup">File Number <label for="email">XXXXXXXXXX</label></div> 
+  <div for="email" class="adminGroup">File Number <label for="email">{{PayerInfo.unique_code}}</label></div> 
   <div ng-repeat="role in states" class="adminGroup">
       <input type="checkbox"  ng-change="changeState($index)" ng-model="role.checked"> {{role.text}}
   </div>

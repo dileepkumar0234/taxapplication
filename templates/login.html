@@ -1,5 +1,22 @@
-<div class="popup_main">
 
+<style>
+ .btnClose{
+     color: #fff;
+     font-weight: normal;
+     text-shadow: none;
+     font-size: 20px;
+     opacity: 1;
+ }
+    .closeBox{
+        float: left;
+        width: 100%;
+        position: absolute;
+        top: 9px;
+        right: 18px;
+    }
+</style>
+<div class="popup_main">
+<div class="closeBox"><span class="close btnClose" ng-click="close();">X</span></div>
  <ul>
 
    <li ng-click="signup=!signup;" ng-class="{'active':!signup}">Login</li>

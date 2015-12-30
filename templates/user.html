@@ -28,7 +28,7 @@
                 <p class="input-group">
                     <label for="email">DOB:</label>
                     <!--  <input type="text" class="form-control" ng-model="user.dob"  id="email">  -->
-                  <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="user.dob" is-open="status.opened"  datepicker-options="dateOptions"  ng-required="true" close-text="Close" />
+                  <input ng-class="{'error':taxpayer.dob.$invalid$&&taxpayer.dob.$dirty}" name="dob" type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="user.dob" is-open="status.opened"  datepicker-options="dateOptions"  ng-required="true" close-text="Close" />
                     
                     <span class="input-group-btn" style="top:12px;">
                 <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button> 
@@ -157,7 +157,22 @@
                     <input type="text" ng-model="user.state_name"  class="form-control" id="email">
                 </div>
             </div>
+
+            <div class="col-xs-6" ng-if="!editMode">
+                <div class="form-group"  >
+                    <label for="email">SSN</label>
+                    <input type="text" ng-model="user.ssnitin" placeholder="XXX-XX-XXXX" class="form-control" id="email">
+                </div>
+            </div>
+            <div class="col-xs-6"  ng-if="!editMode">
+                <div class="form-group" >
+                    <label for="email">Country</label>
+                    <select  ng-model="user.relation_ship"  ng-selected="user.relation_ship==item" ng-options="item as item for item in Countries" class="form-control" id="email">
+                     </select>
+                </div>
+            </div>
             
+           
             <div class="col-xs-12" ng-if="editMode">
                 <div class="form-group">
                     <label for="email"> Address</label>
@@ -170,7 +185,7 @@ ng-if="user.filling_status=='1'"
             <div class="col-lg-12"  >
 
                 <button style="margin-left:10px;" ng-click="update(user);" class="btn btn-success pull-right" type="submit">SUBMIT</button>
-                <button class="btn btn-warning  pull-right" ng-click="reset();" type="reset">RESET</button>
+               <!--  <button class="btn btn-warning  pull-right" ng-click="reset();" type="reset">RESET</button> -->
             </div>
         </div>
 
