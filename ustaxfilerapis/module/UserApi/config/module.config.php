@@ -188,6 +188,18 @@ return array(
 					),
 				),
 			),
+			'update-schedules-page' => array(
+				'type'    => 'Segment',
+				'options' => array(
+					'route'    => '/update-schedules-page[/:id]',
+					'constraints' => array(
+						'id' => '[%&@*.;a-zA-Z0-9][%&@*.;a-zA-Z0-9_-]*',
+					),
+					'defaults' => array(
+						'controller' => 'UserApi\Controller\SchedulesApi',
+					),
+				),
+			),
 			'spouse-page' => array(
 				'type'    => 'Segment',
 				'options' => array(
