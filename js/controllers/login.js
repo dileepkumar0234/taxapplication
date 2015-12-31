@@ -69,9 +69,11 @@ $uibModalInstance.dismiss('close');
       $scope.successRegistr = false;
       if(resp.data.UserType=="Admin"){
         $state.go('admin.user');
+        commonService.adminSession(resp.data.uid);
       }
       else if(resp.data.UserType=="Agent"){
         $state.go('Agent.user');
+        commonService.adminSession(resp.data.uid);
       }
       else{
         commonService.sessionStart(resp.data.uid);

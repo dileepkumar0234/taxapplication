@@ -1,5 +1,8 @@
 
-angular.module("myapp").controller("userdashboard",['$scope','$rootScope','$state','$stateParams','$uibModal','commonService',function($scope,$rootScope,$state,$stateParams,$uibModal,commonService) {
+angular.module("myapp").controller("userdashboard",['$scope','$rootScope','$state','$stateParams','$uibModal','commonService','$timeout',function($scope,$rootScope,$state,$stateParams,$uibModal,commonService,$timeout) {
+ $timeout(function(){
+$rootScope.shownow=true;
+},1000);
   if(localStorage.getItem('user')==null){
      $state.go('main.home');
     return false;

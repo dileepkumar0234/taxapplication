@@ -1,5 +1,8 @@
 angular.module("myapp").controller("UmprireTaxController",['$scope','$rootScope','$state','$uibModal','commonService','$timeout','$window',function($scope,$rootScope,$state,$uibModal,commonService,$timeout,$window) {
 
+$timeout(function(){
+$rootScope.shownow=true;
+},1000);
 $scope.service_list= false;
 $scope.friend ={};
 if (localStorage.getItem("user") === null) {
@@ -55,7 +58,7 @@ $scope.referals= function(){
     
         controller:'logInCtrl',
          size:'lg',
-         windowClass:'animated rotateIn reference'
+         windowClass:'animated  reference'
        }); 
 }
 
@@ -105,7 +108,7 @@ $scope.OpenLogin=function($event){
         templateUrl: 'templates/login.html',
           controller:'logInCtrl',
          size:'lg',
-         windowClass:'animated rotateIn top_view'
+         windowClass:'animated  top_view'
        }); 
     }
 
@@ -146,7 +149,9 @@ $scope.OpenLogin=function($event){
 
 
     });
-$scope.stateDetails=[{"state":"AL","value":"Alabama","refLink":"https://myalabamataxes.alabama.gov/_/#1"},
+$scope.stateDetails=[
+{"state":"","value":"Select an option","refLink":""},
+{"state":"AL","value":"Alabama","refLink":"https://myalabamataxes.alabama.gov/_/#1"},
   {"state":"AR","value":"Arkansas","refLink":"https://atap.arkansas.gov/_/#1"},
 {"state":"Ak","value":"Alaska","refLink":""},
 {"state":"AZ","value":"Arizona","refLink":"https://www.aztaxes.gov/Home"},
@@ -190,6 +195,7 @@ $scope.stateDetails=[{"state":"AL","value":"Alabama","refLink":"https://myalabam
   
 //$scope.selectedState=$scope.stateDetails[0];
 $scope.viewPage=function(currentState){
+  if(currentState.refLink!='')
   $window.open(currentState.refLink,'_blank');
 }
   }]);

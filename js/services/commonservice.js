@@ -30,6 +30,13 @@ appinstal.factory("commonService", function($http,$rootScope,$timeout,$state) {
         localStorage.setItem('user',id);
         
          },
+         adminSession:function(id){
+         	localStorage.setItem('admin',id);
+
+         },
+         adminSessionEnd:function(){
+           localStorage.removeItem('admin');
+         },
 		sessionEnd:function(id){
       $rootScope.loggedIn = false;
         localStorage.removeItem('user');

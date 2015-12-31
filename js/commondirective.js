@@ -53,19 +53,22 @@ appinstal.directive('fileChange', function ($http,commonService) {
 
 
 
+
 appinstal.directive('carouselDirective',function(){
  return {
    restrict:'A',
    link:function(scope,elm,attr){
-
+    
      $("#"+attr.id).owlCarousel({
        navigation: false,
-       slideSpeed: 300,
+       slideSpeed: 2000,
        paginationSpeed: 400,
-       autoPlay: 3000,
+       autoPlay: 4000,
        addClassActive: true,
        pagination:true,
        paginationNumbers: true,
+       
+       stopOnHover:true,
     // transitionStyle: "fade",
     singleItem: true
   });
@@ -77,6 +80,12 @@ appinstal.directive('carouselDirective',function(){
       $("#"+attr.id).trigger('owl.goTo',currentIndex);
     });
 
+   /*  $('.owl-item').hover(function(){
+        $("#"+attr.id).trigger('autoplay.stop.owl')
+     },function(){
+ $("#"+attr.id).trigger('play.owl.autoplay')
+     });*/
+
 
    }
  }
@@ -86,6 +95,7 @@ appinstal.directive('getActiveClass',function(){
  return {
    restrict:'A',
    link:function(scope,elm,attr){
+
     elm.find('li').bind('click',function(e){
       e.stopPropagation();
       if($(this).find('ul').length==0){

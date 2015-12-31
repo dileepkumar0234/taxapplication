@@ -1,8 +1,12 @@
-angular.module("myapp").controller("admin",['$scope','$rootScope','$state','$uibModal','commonService',function($scope,$rootScope,$state,$uibModal,commonService) {
+angular.module("myapp").controller("admin",['$scope','$rootScope','$state','$uibModal','commonService','$timeout',function($scope,$rootScope,$state,$uibModal,commonService,$timeout) {
+	
+$timeout(function(){
+$rootScope.shownow=true;
+},1000);
 	$scope.AlreadyAssigned = true;
 	$scope.coldefs=[{field: 'user_name', displayName: 'Client Name'},
 			{field:'email', width:200,displayName:'Email id',cellTemplate: '<div  ng-click="foo(row)" ng-bind="row.getProperty(col.field)"></div>'},
-		{field:'phone', displayName:'Phone num'},
+			{field:'ssnitin', displayName:'SSN'},
 		{field:'user_id', displayName:'File Number'},
 		{field:'user_id', displayName:'Payment Info'},
 		{field:'client_name', displayName:'Assigned'}
@@ -33,7 +37,12 @@ angular.module("myapp").controller("admin",['$scope','$rootScope','$state','$uib
 	});
 
 
-
+$scope.logout = function(){
+	commonService.adminSessionEnd();
+	commonService.getData('GET','admin-logout/something').then(function(resp){
+		  $state.go('main.home');
+	});
+}
 
 	
 	$scope.assignedChange = function(item,row){
@@ -88,7 +97,7 @@ $scope.user_id_selected=row.entity.user_id;
 				});
 				$scope.coldefs=[{field: 'user_name', displayName: 'Client Name'},
 			{field:'email', width:200,displayName:'Email id',cellTemplate: '<div  ng-click="foo(row)" ng-bind="row.getProperty(col.field)"></div>'},
-		{field:'phone', displayName:'Phone num'},
+		{field:'ssnitin', displayName:'SSN'},
 		{field:'user_id', displayName:'File Number'},
 		{field:'user_id', displayName:'Payment Info'},
 		{field:'client_name', displayName:'Assigned',cellTemplate:"<select ng-change='assignedChange(x[row.rowIndex],row)' ng-model='x[row.rowIndex]' ng-options='item.user_name  for item in UnListMembers'></select><button ng-click='assignConfirm();'>Assign</button>"
@@ -101,7 +110,7 @@ $scope.user_id_selected=row.entity.user_id;
 				$scope.allUsers=resp.data.list;
 				$scope.coldefs=[{field: 'user_name', displayName: 'Client Name'},
 			{field:'email', width:200,displayName:'Email id',cellTemplate: '<div  ng-click="foo(row)" ng-bind="row.getProperty(col.field)"></div>'},
-		{field:'phone', displayName:'Phone num'},
+			{field:'ssnitin', displayName:'SSN'},
 		{field:'user_id', displayName:'File Number'},
 		{field:'user_id', displayName:'Payment Info'},
 		{field:'client_name', displayName:'Assigned'}
@@ -138,7 +147,7 @@ $scope.user_id_selected=row.entity.user_id;
 					
 					$scope.PayerInfo= resp.data.data;
 					
-					if($scope.PayerInfo.dob!=""){
+					if($scope.PayerInfo.dob!=null&&$scope.PayerInfo.dob!=''){
       var x= $scope.PayerInfo.dob.split('-');
       if(x[1].length==1){
         x[1]="0"+parseInt(x[1]-1)
@@ -146,7 +155,7 @@ $scope.user_id_selected=row.entity.user_id;
       else{
         x[1]=parseInt(x[1]-1)
       }
-      $scope.PayerInfo.dob=new Date(x[2],x[1],x[0]);
+      $scope.PayerInfo.dob=x[0]+"/"+x[1]+"/"+x[2];
 
       }
 					commonService.stopSpinner();
@@ -205,12 +214,12 @@ $scope.user_id_selected=row.entity.user_id;
 	$scope.user_details_tabs =[
 	{label:'Basic Info',show:false},
 	{label:'Other info',show:false},
-	{label:'Scheduling Time',show:false},
+	{label:'Schedule Time',show:false},
 	{label:'Download documents',show:false},
 	{label:'Upload documents',show:false},
-	{label:'File no',show:false},
-	{label:'Payment info',show:false},
-	{label:'Assigned To',show:false}
+	{label:'File Status',show:false},
+	{label:'Payment info',show:false}//,
+	//{label:'Assigned To',show:false}
 	];
    $scope.states = [
     {id: 0, text: 'Basic Info Pending'},
