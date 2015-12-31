@@ -138,7 +138,7 @@ p.banner{
     background-size: cover;
 }
 .headerLine.servics_bg {
-    background: url(../images/bgTop3.jpg) center center no-repeat;
+    background: url(../img/first.jpg) center center no-repeat;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -1571,4 +1571,55 @@ ul.servicesMenu {
 }
 .mb20{
     margin-bottom: 20px;
+}
+
+.nav2 ul li {
+    position: relative;
+}
+
+.nav2 ul li ul{
+    position: absolute;
+    top: 26px;
+    left: 0px;
+    width: 160px;
+    display: none;
+
+
+}
+.nav2 ul li ul li {
+float: left;
+    width: 100%;
+}
+.nav2 ul li ul li a {
+    white-space: nowrap;
+    background: #ccc;
+    border-radius: 0;
+    float: left;
+    width: 100%;
+    border-bottom: 1px solid #000;
+
+
+}
+.nav2 ul li:hover > ul{
+
+    display: block;
+}
+.nav2 ul li ul li ul{
+    left: 160px;
+    top:0px;
+    display: none;
+}
+#its ul{
+    display: none;
+}
+#its a:hover+ul{
+    display: block;
+}
+.loadImg{
+        margin: auto;
+    top: 50%;
+    left: 0;
+    right: 0;
+    position: absolute;
+    transform: translate(-50%, -50%);
 }

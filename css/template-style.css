@@ -40,7 +40,7 @@ a.color-btn:hover, form.customform button.color-btn:hover {
 	padding:  0;
 	height:40px;
 	color: #fff;
-	position: relative;
+	position: fixed;
 	z-index: 9999;
 	 
 	
