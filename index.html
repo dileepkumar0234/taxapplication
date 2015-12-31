@@ -13,6 +13,7 @@
   <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800&subset=latin,latin-ext' rel='stylesheet' type='text/css'> 
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+   <link href="css/animate.min.css" rel="stylesheet">
   <link href="css/newstyle.css" rel="stylesheet">
   <script src="js/jquery.min.js"></script>
   <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,700|Open+Sans:700' rel='stylesheet' type='text/css'> 
@@ -20,6 +21,7 @@
   <link href="css/uicss.css" rel="stylesheet">
   <script src="js/angular.min.js"></script>
   <script type="text/javascript" src="js/ng-grid.min.js"></script>
+  <script type="text/javascript" src="js/owl.carousel.js"></script>
   <!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-route.js"></script>-->
   <script type="text/javascript" src="https://cdn.jsdelivr.net/ngstorage/0.3.6/ngStorage.min.js"></script>
   <script src="js/angular-ui-router.min.js"></script>
@@ -32,21 +34,14 @@
         <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
         <![endif]-->
       </head>
-      <body ng-class="userbody" class="size-1140" ng-app="myapp">
+      <body  ng-class="userbody" ng-mousedown="removeright($event)" class="size-1140" ng-app="myapp">
+  
         <!-- TOP NAV WITH LOGO -->
-
-        <div  ng-class="processing" ui-view></div>
-        <footer class="col-md-12" ng-if="userbody!='userbody'">
-         <div class="line">
-           <p style="text-align:center;">
-             <a class="pull-left" href="templates/privacy.html" target="_blank">Privacy Policy</a>
-             Copyright 2015, UMPIRE TAX SOLUTIONS,LLC
-             <a class="pull-right" href="templates/disclaimer.html" target="_blank">Disclaimer Agreement</a>
-           </p>
-         </div>
-       </footer>
-       <!-- <div ng-inclu[de="'templates/footer.html'"></div> -->
-       <script type="text/javascript" src="js/owl.carousel.js"></script>
+<img ng-hide="shownow" class="loadImg" src="images/animatedEllipse.gif">
+        <div  ng-class="processing" ng-show="shownow" ui-view></div>
+        
+        <div ng-show="shownow"  ng-include="'templates/footer.html'"></div> 
+       
 
        
      </body>
