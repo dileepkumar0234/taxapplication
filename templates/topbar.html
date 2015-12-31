@@ -17,10 +17,19 @@
     <ul>
       <li class="banner"><a ng-class="{'active':current=='main.home'}" ui-sref="main.home">Home</a></li>
       <li class="banner"><a ng-class="{'active':current=='main.firmProfile'}" ui-sref="main.firmProfile">Firm Profile </a></li>
-      <li class="banner" style="position:relative;"><a ng-class="{'active':current=='main.Service'}" ui-sref="main.Service">Our Services</a>
-          <ul class="servicesMenu" style="position:absolute;top:25px;" >
-            <li class="banner"><a ui-sref="main.Service">US Tax Services</a></li>
-             <li style="width:100%" class="banner"><a ui-sref="main.Service">Indian Tax Services</a></li>
+      <li class="banner" ><a ng-class="{'active':current=='main.Service'}" ui-sref="main.Service">Our Services</a>
+          <ul >
+            <li class="banner"><a ui-sref="main.Service">US Tax Services </a>
+             
+            </li>
+             <li style="width:100%" id="its" class="banner"><a ui-sref="main.Service">Indian Tax Services</a>
+
+               <ul >
+                 <li class="banner"><a ui-sref="main.Service">22222 </a> </li>
+                 <li style="width:100%" class="banner"><a ui-sref="main.Service">22222</a></li>
+               </ul>
+
+             </li>
           </ul>
       </li>
       <li><a ui-sref="main.tax_center" ng-class="{'active':current=='main.tax_center'}" >Tax Center</a></li>

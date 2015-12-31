@@ -3,8 +3,9 @@
 <div class="sidebar">
 
     <ul get-active-class>
-        <li><a  ng-click="RefreshGrid($event,0)"><i class="fa fa-upload"></i>To be Assigned({{count.toBeAssignedCnt}}) </a></li>
+        
         <li><a  ng-click="RefreshGrid($event,'total')"><i class="fa fa-upload"></i> All Records({{totalCount}}) </a></li>
+        <li><a  ng-click="RefreshGrid($event,0)"><i class="fa fa-upload"></i>To be Assigned({{count.toBeAssignedCnt}}) </a></li>
         <li><a  ng-click="RefreshGrid($event)"><i class="fa fa-upload"></i> To be Allocated(X) </a></li>
         <li><a  ng-click="RefreshGrid($event,1)" class="active"><i class="fa fa-product-hunt"></i>Basic Info Pending({{count.basisinfoCnt}}) <i class="fa fa-chevron-circle-down"></i>  </a>
             
@@ -23,6 +24,7 @@
         <li><a  ng-click="RefreshGrid($event,11)"> <i class="fa fa-download"></i> Filing Pending({{count.filing}})</a></li>
         <li><a  ng-click="RefreshGrid($event,12)"> <i class="fa fa-download"></i>  E – Filing Complete({{count.filing}})</a></li>
         <li><a ng-click="RefreshGrid($event,13)"> <i class="fa fa-download"></i>  Filing Docs Sent (x)</a></li>
+        <li><a ng-click="logout()"> <i class="fa fa-download"></i>  Log Out</a></li>
     </ul>
 
     

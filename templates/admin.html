@@ -96,6 +96,14 @@
        <li>Occupation</li>
        <li>{{PayerInfo.occupation | uppercase}}</li>
    </ul>
+   <ul class="adminGroup col-md-6">
+       <li>SSN </li>
+       <li>{{PayerInfo.ssnitin | uppercase}}</li>
+   </ul>
+   <ul class="adminGroup col-md-6">
+       <li>Filing Status </li>
+       <li>{{PayerInfo.filling_status | uppercase}}</li>
+   </ul>
 </div>
 
 <div class="col-md-12 taxpayer" style="overflow:scroll;height:450px;" ng-if="user_details_tabs[1].show">
@@ -151,11 +159,11 @@
 
 <div class="col-md-12 taxpayer" ng-if="user_details_tabs[2].show">
    <ul class="adminGroup col-md-6">
-       <li>Scheduled Date</li>
+       <li>Schedule Date</li>
        <li>{{scheduleInfo.schedule_dt | uppercase }}</li>
   </ul>
    <ul class="adminGroup col-md-6">
-      <li>Scheduled Time</li>
+      <li>Schedule Time</li>
       <li>{{scheduleInfo.schedule_period | uppercase }}</li>
  </ul>
 </div>
@@ -198,7 +206,7 @@
 </div>
 
 <div class="col-md-12 taxpayer" style="overflow:scroll;height:450px;" ng-if="user_details_tabs[5].show">
-  <div for="email" class="adminGroup">File Number <label for="email">XXXXXXXXXX</label></div> 
+  <div for="email" class="adminGroup">File Number <label for="email">{{PayerInfo.unique_code}}</label></div> 
   <div ng-repeat="role in states" class="adminGroup">
       <input type="checkbox"  ng-change="changeState($index)" ng-model="role.checked"> {{role.text}}
   </div>
