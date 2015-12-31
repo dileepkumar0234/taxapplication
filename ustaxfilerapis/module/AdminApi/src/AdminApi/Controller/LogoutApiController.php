@@ -1,5 +1,5 @@
 <?php
-namespace UserApi\Controller;
+namespace AdminApi\Controller;
 use Zend\Mvc\Controller\AbstractRestfulController;
 use Zend\View\Model\JsonModel;
 use Zend\Session\Container;
