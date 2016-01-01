@@ -1,6 +1,6 @@
 /*
 SQLyog Community v11.52 (64 bit)
-MySQL - 5.6.17 : Database - taxfiler
+MySQL - 5.5.45-cll-lve : Database - taxfiler
 *********************************************************************
 */
 
@@ -27,11 +27,25 @@ CREATE TABLE `assign_user_list` (
   `as_status` smallint(5) DEFAULT NULL,
   `as_crated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`as_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 /*Data for the table `assign_user_list` */
 
-insert  into `assign_user_list`(`as_id`,`unlists_u_id`,`client_id`,`as_status`,`as_crated_at`) values (1,6,8,1,'2015-12-20 20:54:45'),(2,6,9,1,'2015-12-21 02:15:03'),(3,6,5,1,'2015-12-27 17:03:50'),(4,7,4,1,'2015-12-27 17:03:54');
+/*Table structure for table `comments` */
+
+DROP TABLE IF EXISTS `comments`;
+
+CREATE TABLE `comments` (
+  `comment_id` int(10) NOT NULL AUTO_INCREMENT,
+  `cmt_user_id` bigint(11) DEFAULT NULL,
+  `comment` text,
+  `cmt_status` smallint(5) DEFAULT NULL,
+  `cmt_created_at` datetime DEFAULT NULL,
+  `cmt_updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`comment_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+/*Data for the table `comments` */
 
 /*Table structure for table `contact_us` */
 
@@ -45,11 +59,11 @@ CREATE TABLE `contact_us` (
   `c_message` text,
   `c_created_at` datetime DEFAULT NULL,
   PRIMARY KEY (`contact_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 /*Data for the table `contact_us` */
 
-insert  into `contact_us`(`contact_id`,`c_name`,`c_email`,`c_phone`,`c_message`,`c_created_at`) values (1,'','','','','2015-12-26 18:39:42'),(2,'c_name','xxx@gmail.com','8500222765','dnsubd shuas ddas','2015-12-26 18:43:47');
+insert  into `contact_us`(`contact_id`,`c_name`,`c_email`,`c_phone`,`c_message`,`c_created_at`) values (3,'','','','','2016-01-01 19:49:38');
 
 /*Table structure for table `dependent` */
 
@@ -70,7 +84,7 @@ CREATE TABLE `dependent` (
   `added_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`dependent_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
 
 /*Data for the table `dependent` */
 
@@ -102,11 +116,11 @@ CREATE TABLE `processing_status` (
   `ps_added_at` datetime DEFAULT NULL,
   `ps_updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`ps_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
 
 /*Data for the table `processing_status` */
 
-insert  into `processing_status`(`ps_id`,`ps_user_id`,`ps_state`,`ps_added_at`,`ps_updated_at`) values (1,4,2,'2015-12-16 07:58:33','2015-12-18 01:11:05'),(2,5,1,'2015-12-16 08:00:50',NULL),(3,8,0,'2015-12-21 00:59:02',NULL),(4,9,0,'2015-12-21 00:59:05',NULL);
+insert  into `processing_status`(`ps_id`,`ps_user_id`,`ps_state`,`ps_added_at`,`ps_updated_at`) values (1,4,2,'2015-12-16 07:58:33','2015-12-18 01:11:05'),(13,22,0,'2015-12-30 20:47:37',NULL),(14,23,0,'2015-12-30 20:48:06',NULL),(15,24,0,'2015-12-31 06:27:50',NULL),(16,25,0,'2016-01-01 00:53:04',NULL);
 
 /*Table structure for table `referral_friends` */
 
@@ -124,11 +138,11 @@ CREATE TABLE `referral_friends` (
   `added_at` datetime DEFAULT NULL,
   `status` smallint(5) DEFAULT NULL,
   PRIMARY KEY (`rf_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 /*Data for the table `referral_friends` */
 
-insert  into `referral_friends`(`rf_id`,`rf_user_id`,`rf_on_name`,`rf_on_email`,`rf_on_phone`,`rf_name`,`rf_email`,`rf_phone`,`added_at`,`status`) values (4,4,'Dileep','dileepkumarkonda@gmail.com','8500222765','Kumar','dkonda@aapthitech.com','8500222765','2015-12-07 14:11:32',1),(5,4,'sss',NULL,NULL,NULL,NULL,NULL,NULL,NULL),(6,2,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(7,2,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
+insert  into `referral_friends`(`rf_id`,`rf_user_id`,`rf_on_name`,`rf_on_email`,`rf_on_phone`,`rf_name`,`rf_email`,`rf_phone`,`added_at`,`status`) values (4,4,'Dileep','dileepkumarkonda@gmail.com','8500222765','Kumar','dkonda@aapthitech.com','8500222765','2015-12-07 14:11:32',1),(5,22,'Rajesh','rjshkmr527@gmail.com','9032233681','Bharath','bharathreddy0208@gmail.com','9985884449','2016-01-01 10:34:56',1);
 
 /*Table structure for table `schedules_timings` */
 
@@ -139,15 +153,16 @@ CREATE TABLE `schedules_timings` (
   `sc_user_id` int(50) DEFAULT NULL,
   `schedule_dt` varchar(50) DEFAULT NULL,
   `schedule_period` varchar(50) DEFAULT NULL,
+  `user_status` smallint(5) DEFAULT NULL,
   `status` smallint(5) DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`timing_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 /*Data for the table `schedules_timings` */
 
-insert  into `schedules_timings`(`timing_id`,`sc_user_id`,`schedule_dt`,`schedule_period`,`status`,`created_at`,`updated_at`) values (3,1,'2015-12-02 23:48:17','12',1,'2015-12-02 19:18:36',NULL),(4,1,'2015-12-02 23:48:17','121',1,'2015-12-02 19:19:49',NULL),(5,4,'5551210  ','121',1,'2015-12-06 12:59:01',NULL);
+insert  into `schedules_timings`(`timing_id`,`sc_user_id`,`schedule_dt`,`schedule_period`,`user_status`,`status`,`created_at`,`updated_at`) values (3,1,'2015-12-02 23:48:17','12',NULL,1,'2015-12-02 19:18:36',NULL),(4,1,'2015-12-02 23:48:17','121',NULL,1,'2015-12-02 19:19:49',NULL),(5,4,'5551210  ','121',NULL,1,'2015-12-06 12:59:01',NULL),(6,23,'1-1-2016','10:00 Am - 10:30 Am',NULL,1,'2015-12-30 21:15:03',NULL),(7,22,'2-3-2016',NULL,NULL,1,'2016-01-01 10:54:55',NULL);
 
 /*Table structure for table `spouse` */
 
@@ -218,6 +233,7 @@ DROP TABLE IF EXISTS `user`;
 
 CREATE TABLE `user` (
   `user_id` int(11) NOT NULL AUTO_INCREMENT,
+  `unique_code` varchar(150) DEFAULT NULL,
   `user_name` varchar(100) DEFAULT NULL,
   `email` varchar(50) DEFAULT NULL,
   `password` varchar(50) DEFAULT NULL,
@@ -228,11 +244,11 @@ CREATE TABLE `user` (
   `logged_ip` varchar(50) DEFAULT NULL,
   `status` tinyint(4) DEFAULT NULL COMMENT '0-active 1-deactive',
   PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=latin1;
 
 /*Data for the table `user` */
 
-insert  into `user`(`user_id`,`user_name`,`email`,`password`,`locked_pwd`,`date_added`,`date_updated`,`user_type_id`,`logged_ip`,`status`) values (1,'Dileep','dkonda@aapthitech.com','ea452f3b31ac158c119a0b295740d63e','dileep','2015-11-26 20:09:37','2015-12-12 07:07:28',1,'127.0.0.1',1),(4,'sarath','sarath.anagha@gmail.com','3bad6af0fa4b8b330d162e19938ee981','sarath','2015-12-06 12:25:42','2015-12-13 16:00:36',2,NULL,1),(5,'Hello','xyz@gmail.com','6451d62c34ba801398a21df221f675b6','sarath2@S','2015-12-13 06:25:47','2015-12-13 08:02:01',2,NULL,1),(6,'Unlist1','abc@gmail.com','ea452f3b31ac158c119a0b295740d63e','dileep','2015-12-04 00:53:10','2015-12-21 00:53:25',3,'127.0.0.1',1),(7,'Unlist','def@gmail.com','ea452f3b31ac158c119a0b295740d63e','dileep','2015-12-21 00:54:27','2015-12-21 00:54:31',3,'127.0.0.1',1),(8,'NewUser','hij@gmail.com','ea452f3b31ac158c119a0b295740d63e','dileep','2015-12-05 00:55:26','2015-12-21 00:55:33',2,NULL,1),(9,'NewUser2','klm@gmail.com','ea452f3b31ac158c119a0b295740d63e','dileep','2015-12-21 00:55:55','2015-12-21 00:55:59',2,'',1);
+insert  into `user`(`user_id`,`unique_code`,`user_name`,`email`,`password`,`locked_pwd`,`date_added`,`date_updated`,`user_type_id`,`logged_ip`,`status`) values (1,'UTS0001','Dileep','admin@gmail.com','ea452f3b31ac158c119a0b295740d63e','dileep','2015-11-26 20:09:37','2015-12-12 07:07:28',1,'127.0.0.1',1),(4,'UTS0004','sarath','sarath.anagha@gmail.com','b59c67bf196a4758191e42f76670ceba','sarath','2015-12-06 12:25:42','2015-12-13 16:00:36',2,NULL,1),(22,'UTS0022','Rajesh','rjshkmr527@gmail.com','f258b0ca9f2d9e4bb95b94fa4c126067','Rajesh@68','2015-12-30 20:47:37','2015-12-30 20:47:37',2,NULL,1),(23,'UTS0023','dileep','dileepkumarkonda@gmail.com','32ed54151873fc4799f2082693621d8c','Dileep@12','2015-12-30 20:48:06','2015-12-30 20:48:06',2,NULL,1),(24,'UTS0024','Sai','saikiran.thanda@gmail.com','dc8a32dac24456eb9ce91814c164a5c0','Saikiran@28','2015-12-31 06:27:50','2015-12-31 06:27:50',2,NULL,1),(25,'UTS0025','sarath','ramu.anagha@gmail.com','f25e8cda3120bb743e188aa2ee45e198','sarath2@S','2016-01-01 00:53:04','2016-01-01 00:54:29',2,NULL,1),(26,'UTS0026','Unlist1','abc@gmail.com','b59c67bf196a4758191e42f76670ceba','1111','2016-01-02 00:21:37','2016-01-02 00:21:40',3,NULL,1),(27,'UTS0027','Unlist2','def@gmail.com','b59c67bf196a4758191e42f76670ceba','1111','2016-01-02 00:22:42','2016-01-02 00:22:45',3,NULL,1);
 
 /*Table structure for table `user_details` */
 
@@ -249,6 +265,7 @@ CREATE TABLE `user_details` (
   `address` text,
   `city_name` varchar(50) DEFAULT NULL,
   `state_name` varchar(50) DEFAULT NULL,
+  `country_name` varchar(100) DEFAULT NULL,
   `zip` varchar(10) DEFAULT NULL,
   `apt_no` varchar(50) DEFAULT NULL,
   `phone` varchar(20) DEFAULT NULL,
@@ -260,15 +277,15 @@ CREATE TABLE `user_details` (
   `ssnitin` varchar(10) DEFAULT NULL,
   `visa_type` varchar(15) DEFAULT NULL,
   `c_location` varchar(10) DEFAULT NULL,
-  `filling_status` varchar(10) DEFAULT NULL,
+  `filling_status` varchar(50) DEFAULT NULL,
   `date_added` datetime DEFAULT NULL,
   `date_updated` datetime DEFAULT NULL,
   PRIMARY KEY (`user_details_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=latin1;
 
 /*Data for the table `user_details` */
 
-insert  into `user_details`(`user_details_id`,`u_user_id`,`first_name`,`last_name`,`occupation`,`current_emp`,`dob`,`address`,`city_name`,`state_name`,`zip`,`apt_no`,`phone`,`alterphone`,`status`,`tax_id_type`,`dependent`,`relation_ship`,`ssnitin`,`visa_type`,`c_location`,`filling_status`,`date_added`,`date_updated`) values (1,1,'Dileep','Kumar','occupation','Aapthi','986256','Address','City name','state name','500049','78787','8500222765','8500222765',1,'1855','1','rq','s2-s3-s4','1','EEE','2','2015-11-26 20:09:37','2015-12-12 07:07:28'),(4,4,'sarath','chandra','software','hf','16-05-1990','ssss','','dfq','523002','dsad','8500222765','67',1,'','2',NULL,NULL,NULL,'RESOURCEON','2','2015-12-06 12:25:42','2015-12-13 16:00:36'),(5,5,'Hello','World','software','zczxczc','cxzczxc','','','','czxczc','','7799802044','zczczc',1,'','Yes',NULL,NULL,NULL,'sadsadasd','zxczxczxc','2015-12-13 06:25:47','2015-12-13 08:02:02'),(6,6,'Unlist1',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'8500222765','8500222765',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(7,7,'Unlist2',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'8500222765','8500222765',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(8,8,'NewUser1',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'8500222765','8500222765',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(9,9,'NewUser2',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'8500222765','8500222765',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
+insert  into `user_details`(`user_details_id`,`u_user_id`,`first_name`,`last_name`,`occupation`,`current_emp`,`dob`,`address`,`city_name`,`state_name`,`country_name`,`zip`,`apt_no`,`phone`,`alterphone`,`status`,`tax_id_type`,`dependent`,`relation_ship`,`ssnitin`,`visa_type`,`c_location`,`filling_status`,`date_added`,`date_updated`) values (1,1,'Dileep','Kumar','occupation','Aapthi','986256','Address','City name','state name',NULL,'500049','78787','8500222765','8500222765',1,'1855','1','rq','s2-s3-s4','1','EEE','2','2015-11-26 20:09:37','2015-12-12 07:07:28'),(4,4,'sarath','chandra','software','hf','16-05-1990','ssss','','dfq',NULL,'523002','dsad','8500222765','67',1,'','2',NULL,NULL,NULL,'RESOURCEON','2','2015-12-06 12:25:42','2015-12-13 16:00:36'),(18,22,'Rajesh','Kalya','TA',NULL,'','','','','',NULL,'','9032233681',NULL,1,NULL,NULL,NULL,'','',NULL,NULL,'2015-12-30 20:47:37','2015-12-30 20:47:37'),(19,23,'dileep','kumar','software',NULL,'','','','','',NULL,'','8500222765',NULL,1,NULL,NULL,NULL,'','',NULL,NULL,'2015-12-30 20:48:06','2015-12-30 20:48:06'),(20,24,'Sai','Kiran','Business',NULL,'','','','','',NULL,'','9908256701',NULL,1,NULL,NULL,NULL,'','',NULL,NULL,'2015-12-31 06:27:50','2015-12-31 06:27:50'),(21,25,'sarath','chandra','software','resource o','5-2-2016','sss,hyderabad,523001,telangana','hyderabad','telangana','INDIA','523001','sss','7799802045','7799802045',1,'Yes','2',NULL,'222-22-222','','resource o','Single','2016-01-01 00:53:04','2016-01-01 00:54:29'),(22,26,'Unlist1',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2016-01-02 00:24:05',NULL),(23,27,'Unlist2',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2016-01-02 00:24:01',NULL);
 
 /*Table structure for table `user_type` */
 
