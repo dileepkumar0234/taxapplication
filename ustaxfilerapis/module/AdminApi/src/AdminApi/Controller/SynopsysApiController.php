@@ -36,15 +36,11 @@ class SynopsysApiController extends AbstractRestfulController
 	}
     public function create($data)
     {
-					
-    }
-    public function update($u_id,$data)
-    {
 		header('Access-Control-Allow-Origin: *');
 		if(isset($_SESSION['user_id']) && $_SESSION['user_id']!=""){
-			$uid = $_SESSION['user_id'];
+			$u_id = $_POST['uid'];
 			$curYear = date("Y");
-			$path = "./synopsys/".$u_id."/".$curYear;			
+			$path = "./synopsys/".$u_id."/".$curYear;	
 			if(isset($_FILES) && $_FILES['file']!=""){
 				$pathN = '/synopsys/'.$u_id.'/'.$curYear.'/'.$_FILES['file']['name'];				
 				if(!is_dir($path)) mkdir($path,0777, true);
@@ -76,7 +72,11 @@ class SynopsysApiController extends AbstractRestfulController
 				'status' 	=> 'Logged Required',
 			));
 			
-		}
+		}			
+    }
+    public function update($u_id,$data)
+    {
+		
 	}		
     public function delete($id)
     {
