@@ -680,3 +680,7 @@ article .head_process{
 .mt20{
     margin-top: 20px;
 }
+.innerBanner{
+    font-size: 11px!important;
+    padding-left: 20px!important;
+}
