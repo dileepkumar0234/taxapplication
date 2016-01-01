@@ -185,7 +185,8 @@ Unlist Log Out: Log in required.
 	Method   : GET
 	Response : {"output":"Session Expried"}
 
-Unlist Log Out: Log in required.
+Get Refferal friends	
+
 	Url      : http://localhost/taxapplication/trunk/ustaxfilerapis/get-referral
 	Method   : GET
 	Response : {"output":"success","refferalContacts":[{"rf_id":"4","rf_user_id":"4","rf_on_name":"Dileep","rf_on_email":
