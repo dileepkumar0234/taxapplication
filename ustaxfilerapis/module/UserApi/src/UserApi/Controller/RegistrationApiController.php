@@ -95,7 +95,7 @@ class RegistrationApiController extends AbstractRestfulController
 				$msg .='<br/><br/>';
 				$msg .='Best Regards,<br/>';
 				$msg .='Umpire Tax solutions, LLC <br/>';
-				$msg .='USA: 620-620-7935 <br/>';
+				$msg .='USA: 620-680-1040 <br/>';
 				$msg .='INDIA: 720-754-3882<br/>';
 				$msg .='EMAIL: Hello@umpiretaxsolutions.com <br/>';
 				$msg .='</body>';
