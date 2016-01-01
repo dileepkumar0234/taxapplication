@@ -80,6 +80,18 @@ $scope.changePassword = function(){
 });
 }
 
+commonService.getData('GET','get-user-synopsy/'+$scope.uid).then(function(resp){
 
+console.log(resp);    //resp.data.data no data found
+if(typeof resp.data.data == 'string'){
+$scope.yes=no;
+}
+else{
+  $scope.synopsys_file=resp.data.data.synopsys_file;
+  $scope.file_path= resp.data.file_path;
+  $scope.yes=true;
+}
+
+});
 
 }]);
