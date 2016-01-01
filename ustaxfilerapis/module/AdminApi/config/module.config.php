@@ -11,13 +11,26 @@ return array(
             'AdminApi\Controller\LogoutApi'           =>'AdminApi\Controller\LogoutApiController',
             'AdminApi\Controller\UnlistUsersCountListApi' =>'AdminApi\Controller\UnlistUsersCountListApiController',
             'AdminApi\Controller\UnlistUsersListApi' =>'AdminApi\Controller\UnlistUsersListApiController',
+            'AdminApi\Controller\CommentsApi' =>'AdminApi\Controller\CommentsApiController',
 
 		),
     ),
     // The following section is new` and should be added to your file
     'router' => array(
         'routes' => array(		
-            'user-list' => array(
+            'comments-list' => array(
+                'type'    => 'Segment',
+                'options' => array(
+                    'route'    => '/comments-list[/:id]',
+                    'constraints' => array(
+                        'id' => '[%&@*.;a-zA-Z0-9][%&@*.;a-zA-Z0-9_-]*',
+                    ),
+                    'defaults' => array(
+                        'controller' => 'AdminApi\Controller\CommentsApi',
+                    ),
+                ),
+            ),
+			'user-list' => array(
                 'type'    => 'Segment',
                 'options' => array(
                     'route'    => '/user-list[/:id]',

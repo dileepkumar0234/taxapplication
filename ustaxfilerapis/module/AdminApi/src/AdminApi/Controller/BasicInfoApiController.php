@@ -162,9 +162,12 @@ class BasicInfoApiController extends AbstractRestfulController
     {
 		header('Access-Control-Allow-Origin: *');
 		$processStatusTable = $this->getServiceLocator()->get('Models\Model\ProcessingStatusFactory');
+		$commentsTable = $this->getServiceLocator()->get('Models\Model\CommentsFactory');
 		$st = $status['ps_state'];
-		$updateProcessStatus = $processStatusTable->updateProcess($uid,$st);
+		$comment = $status['comment'];
+		$updateProcessStatus = $processStatusTable->updateProcess($uid,$st);		
 		if($updateProcessStatus>0){
+			$insertComment = $commentsTable->addComment($uid,$comment);
 			return new JsonModel(array(
 				'output'   => 'success',
 				'success'  => true

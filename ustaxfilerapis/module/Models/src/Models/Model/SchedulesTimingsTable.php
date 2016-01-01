@@ -33,18 +33,24 @@ class SchedulesTimingsTable
 	public function getData($id){
 		$select = $this->tableGateway->getSql()->select();	
 		$select->where('sc_user_id= "'.$id.'"');
+		$select->where('status= "2"');
 		$resultSet = $this->tableGateway->selectWith($select);	
 		return $resultSet->current();		
 	}
-	public function updateScheduleTime($timing_id,$timeD){
-		$data = array(
-			'schedule_dt' 		=> $timeD['schedule_dt'],  		
-			'schedule_period' 	=> $timeD['schedule_period'],  		
-			'status'		    => 1, 
-			'created_at' 		=> date('Y-m-d H:i:s'), 				
+	public function getTotalData($id){
+		$select = $this->tableGateway->getSql()->select();	
+		$select->where('sc_user_id= "'.$id.'"');
+		$select->order('timing_id DESC');
+		$resultSet = $this->tableGateway->selectWith($select);	
+		return $resultSet;		
+	}
+	public function updateScheduleTime($uid){
+		$data = array( 		
+			'user_status'		    => 2, 
+			'updated_at' 		    => date('Y-m-d H:i:s')				
 		);	
-		$updateuserid=$this->tableGateway->update($data, array('timing_id' => $timing_id));
-		return $updateuserid;
+		$updatedstatus=$this->tableGateway->update($data, array('(sc_user_id IN('.$uid.'))'));
+		return $updatedstatus;
 		
 	}
 	public function deleteScH($uid){

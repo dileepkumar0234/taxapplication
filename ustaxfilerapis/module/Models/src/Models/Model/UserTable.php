@@ -170,5 +170,12 @@ class UserTable
 		$updateuserid=$this->tableGateway->update($data, array('user_id' => $uid));
 		return $updateuserid;	
     }
-	
+	public function getUserDataInfo($user_id){        
+		$select = $this->tableGateway->getSql()->select();
+		$select->join('user_details', new Expression('user_details.u_user_id=user.user_id'),array('*'),'left');	
+		$select->where('user.user_id="'.$user_id.'"');                                         
+		$select->where('user.status="1"');                                         
+		$resultSet = $this->tableGateway->selectWith($select);			
+		return $resultSet->current();
+    }
 }
