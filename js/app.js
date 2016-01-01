@@ -203,8 +203,9 @@ controller:'scheduleController',
                 return $ocLazyLoad.load({
                     files: [
                             //TODO add all the required css and js
-       'js/services/commonservice.js',
-                            'js/controllers/admin.js'
+                             'js/services/commonservice.js',
+                            'js/controllers/admin.js',
+                            'js/commondirective.js'
 
                         ]
                 });
@@ -227,7 +228,8 @@ controller:'scheduleController',
                     files: [
                             //TODO add all the required css and js
       
-                            'js/controllers/AgentController.js'
+                            'js/controllers/AgentController.js',
+                            'js/commondirective.js'
 
                         ]
                 });
@@ -248,6 +250,23 @@ controller:'scheduleController',
 
 
 });
+
+appinstal.directive('ngRightClick', function($parse) {
+    return {
+        restrict: 'A',
+        link: function(scope, element, attrs) {
+        // console.info('hi');
+        element.bind('contextmenu', function(event) {
+
+            scope.$apply(function() {
+            //  if(Object.keys(localStorage).indexOf('admin')==-1)
+              //  event.preventDefault();
+                
+            });
+        });
+          }
+        }
+}); 
 
 
  

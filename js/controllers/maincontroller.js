@@ -57,7 +57,7 @@ $scope.referals= function(){
     templateUrl: 'templates/referafriend.html',
     
         controller:'logInCtrl',
-         size:'lg',
+         size:'md',
          windowClass:'animated  reference'
        }); 
 }

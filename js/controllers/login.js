@@ -18,6 +18,10 @@
       
       commonService.stopSpinner();
       if(resp.data){
+        if(resp.data.output=='No Data Found'){
+          alert('wrong E-mail');
+          return false;
+        }
         $scope.showforgot = false;
         $scope.resetdone = true;
 

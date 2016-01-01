@@ -20,7 +20,7 @@ appinstal.directive('fileChange', function ($http,commonService) {
       var files = event.target.files[0];
       var form_data= new FormData();           
       form_data.append("file", files) ;
-      $http.post('http://localhost/umpire-tax-filler/trunk/ustaxfilerapis/uploadPdfs-page', form_data, {
+      $http.post('http://localhost/taxapplication/trunk/ustaxfilerapis/uploadPdfs-page', form_data, {
 
         transformRequest: angular.identity,
 
@@ -52,6 +52,31 @@ appinstal.directive('fileChange', function ($http,commonService) {
 
 
 
+appinstal.directive('fileModel', ['$parse','$http', function ($parse,$http) {
+    return {
+        restrict: 'A',
+        link: function(scope, element, attrs) {
+          console.log(scope);
+          element.bind('change', function (event) {
+           // var key="hid_"+attributes.ngModel;
+            var files = event.target.files[0];
+             scope.form_data= new FormData();           
+            scope.form_data.append("file", files) ;
+
+        });
+          angular.element('#uploadsynopsys').bind('click', function (event) {
+          $http.put('http://localhost/taxapplication/trunk/ustaxfilerapis/upload-synopsys/'+scope.user_id, scope.form_data, {
+            transformRequest: angular.identity,
+            headers: {'Content-Type': undefined}
+        })
+        .success(function(resp){console.log(resp);
+        })
+        .error(function(){
+        });
+          });
+    }
+  }
+}]);
 
 
 appinstal.directive('carouselDirective',function(){
@@ -176,7 +201,7 @@ return {
     link: function (scope,element,attrs) {
       var idleState = false;
       var idleTimer = null;
-      var totalIdleTime = 5*60*1000;
+      var totalIdleTime = 15*60*1000;
       $document.bind('mousemove click mouseup mousedown keydown keypress keyup submit change mouseenter scroll resize dblclick', function () {
 
        $timeout.cancel(idleTimer);

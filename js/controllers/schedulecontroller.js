@@ -66,8 +66,8 @@ $scope.ScheduleDT = function(){
   var date= x.getDate();
   var year = x.getFullYear();
   var final_date= date+"-"+month+"-"+year;
-  //console.log(final_date,$scope.scheduling);
-  commonService.getData('POST','schedules-page',{schedule_dt:final_date,schedule_period:$scope.scheduling.schedule_period}).then(function(resp){
+  //console.log(final_date,$scope.scheduleInfo);
+  commonService.getData('POST','schedules-page',{schedule_dt:final_date,schedule_period:$scope.scheduleInfo.schedule_period}).then(function(resp){
     //console.log("schedule::",resp);
     getSchedule();
     $scope.editMode = true;
@@ -87,8 +87,8 @@ $scope.reset = function(){
   $scope.editMode = true;
 }
 $scope.setTime = function(ind){
-  if(item.indexOf('select')>-1){
-     //$scope.scheduling.schedule_period = '';
+  if(ind.indexOf('select')>-1){
+     $scope.scheduling.schedule_period = '';
   }
  
 }
