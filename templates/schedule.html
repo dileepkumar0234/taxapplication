@@ -24,7 +24,7 @@
         <div class="col-xs-6">
                 <div class="form-group">
                     <label for="email">Time(All Timings are in CST)</label><br>
-                    <select style="color:black;" name="time" ng-change="setTime(item)" ng-model="scheduleInfo.schedule_period" ng-selected="scheduleInfo.schedule_period==item" ng-options="item as item for item in scheduletimings">
+                    <select style="color:black;" name="time" ng-change="setTime(scheduleInfo.schedule_period)" ng-model="scheduleInfo.schedule_period" ng-selected="scheduleInfo.schedule_period==item" ng-options="item as item for item in scheduletimings">
                     </select>
                     <!-- <p ng-repeat="item in scheduletimings">
                     <input ng-click="setTime($index)" ng-model="s" type="radio" class="form-control pull-left radiotype" name="time_dt">

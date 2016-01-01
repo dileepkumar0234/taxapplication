@@ -16,7 +16,7 @@
     }
 </style>
 <div class="popup_main">
-<div class="closeBox"><span class="close btnClose" ng-click="close();">X</span></div>
+<div class="closeBox"><span style="color:white;opacity:1;" class="close btnClose" ng-click="close();">X</span></div>
  <ul>
 
    <li ng-click="signup=!signup;" ng-class="{'active':!signup}">Login</li>
@@ -78,11 +78,11 @@ By clicking Submit, you agree to our <a href="templates/terms.html" target="_bla
 
 <form class="login" name="forgot" ng-if="!signup&&showforgot">
   <div  class="row">
-    <div class="col-xs-12"><input type="text" name="email" ng-model="userEmail" placeholder="Email-Address">
+    <div class="col-xs-12"><input type="text" validate-form ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/" ng-class="{'error':forgot.email.$invalid}" name="email" ng-model="userEmail" placeholder="Email-Address">
     </div>
 
     
-    <div class="col-xs-12"><input type="submit" ng-click="getBack(userEmail)" class="submit pull-right" value="submit">
+    <div class="col-xs-12"><input type="submit" ng-disabled="forgot.email.$invalid" ng-click="getBack(userEmail)" class="submit pull-right" value="submit">
     </div>
   </div>
 </form>
