@@ -51,7 +51,9 @@ $scope.getDependants = function(){
    if(resp.data.dep.length==0){
     $scope.dependants=[];
     var new_one = createDependant();
+    $scope.status=[];
     $scope.dependants.push(new_one);
+    $scope.status.push({opened: false});
     }
     else{
 $scope.status=[];
