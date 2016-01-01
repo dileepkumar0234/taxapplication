@@ -15,7 +15,7 @@ $scope.dateOptions = {
 };
 
 $scope.scheduling={};
-$scope.scheduletimings =['10:00 Am - 10:30 Am','10:30 Am - 11:00 Am','11:00 Am - 11:30 Am',
+$scope.scheduletimings =['select an opton','10:00 Am - 10:30 Am','10:30 Am - 11:00 Am','11:00 Am - 11:30 Am',
 '11:30 Am - 12:00 pm','12:00 pm - 1:00 pm','1:00 pm - 2:00 pm',
 '2:00 pm - 2:30 pm','2:30 pm - 3:00 pm','3:00 pm - 3:30 pm',
 '3:30 pm - 4:00 pm','4:00 pm - 4:30 pm','4:30 pm - 5:30 pm',
@@ -87,7 +87,10 @@ $scope.reset = function(){
   $scope.editMode = true;
 }
 $scope.setTime = function(ind){
-  $scope.scheduling.schedule_period = $scope.scheduletimings[ind];
+  if(item.indexOf('select')>-1){
+     //$scope.scheduling.schedule_period = '';
+  }
+ 
 }
 
 }]);
