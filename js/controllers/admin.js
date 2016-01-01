@@ -146,6 +146,7 @@ $scope.user_id_selected=row.entity.user_id;
 				commonService.getData('GET','taxpayer-page/'+$scope.user_id).then(function(resp){
 					
 					$scope.PayerInfo= resp.data.data;
+					$scope.PayerInfo.ps_state=$scope.states[Number($scope.PayerInfo.ps_state)];
 					
 					if($scope.PayerInfo.dob!=null&&$scope.PayerInfo.dob!=''){
       var x= $scope.PayerInfo.dob.split('-');
@@ -222,31 +223,52 @@ $scope.user_id_selected=row.entity.user_id;
 	//{label:'Assigned To',show:false}
 	];
    $scope.states = [
-    {id: 0, text: 'Basic Info Pending'},
-    {id: 1, text: 'Scheduling Pending'},
-    {id: 2, text: 'Interview Pending'},
-    {id: 3, text: 'Docs Upload Pending'},
-    {id: 4, text: 'Other Docs Upload Pending'},
-    {id: 5, text: 'Preparation Pending'},
-    {id: 6, text: 'Synopsys Pending'},
-    {id: 7, text: 'Payment Pending'},
-    {id: 8, text: 'Review Pending'},
-    {id: 9, text: 'Confirmation Pending'},
-    {id: 10, text: 'Filing Pending'},
-    {id: 11, text: 'E-Filing Complete'},
-    {id: 12, text: 'Filing Docs Sent'}
+   {id: -1, text: 'Select an option'},
+    {id: 0, text: 'To Be Assigned'},
+    {id: 1, text: 'Basic Info Pending'},
+    {id: 2, text: 'Scheduling Pending'},
+    {id: 3, text: 'Interview Pending'},
+    {id: 4, text: 'Docs Upload Pending'},
+    {id: 5, text: 'Other Docs Upload Pending'},
+    {id: 6, text: 'Preparation Pending'},
+    {id: 7, text: 'Synopsys Pending'},
+    {id: 8, text: 'Payment Pending'},
+    {id: 9, text: 'Review Pending'},
+    {id: 10, text: 'Confirmation Pending'},
+    {id: 11, text: 'Filing Pending'},
+    {id: 12, text: 'E-Filing Complete'},
+    {id: 13, text: 'Filing Docs Sent'}
     ];
 $scope.changeState = function(index){
-	
-	if($scope.states[index].checked==true)
-		$scope.selectedState = $scope.states[index].id+1;
+	if(index.id!=-1){
+		$scope.selectedState = index.id;
+	}
+	/*if($scope.states[index].checked==true)
+		$scope.selectedState = $scope.states[index].id+1;*/
 }
 $scope.updateStatus = function(){
             commonService.getData('PUT','update-process/'+$scope.user_id,{ps_state:$scope.selectedState}).then(function(resp){
+                   $state.reload();
                    
-                    /*$scope.file_path=resp.data.file_path;
-                    $scope.uploads=resp.data.data;*/
                     commonService.stopSpinner();
+                     });
+}
+
+$scope.inquires = function(e){
+	e.preventDefault();
+ commonService.getData('GET','get-all-reach').then(function(resp){
+ 	$scope.userSelected = false;
+                   //console.log(resp);                   
+                    commonService.stopSpinner();
+                    $scope.allUsers=resp.data.allContacts;
+				$scope.coldefs=[{field: 'c_name', displayName: 'Client Name'},
+			
+		{field:'c_phone', displayName:'Phone Number'},
+		{field:'c_email', displayName:'E-Mail'},
+		{field:'c_message', displayName:'Message'}
+		];
+			
+
                      });
 }
 }]);
