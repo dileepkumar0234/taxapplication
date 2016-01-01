@@ -60,16 +60,19 @@ appinstal.directive('fileModel', ['$parse','$http', function ($parse,$http) {
           element.bind('change', function (event) {
            // var key="hid_"+attributes.ngModel;
             var files = event.target.files[0];
-             scope.form_data= new FormData();           
+             scope.form_data= new FormData(); 
+             scope.form_data.append("uid", scope.user_id);          
             scope.form_data.append("file", files) ;
 
         });
           angular.element('#uploadsynopsys').bind('click', function (event) {
-          $http.put('http://localhost/taxapplication/trunk/ustaxfilerapis/upload-synopsys/'+scope.user_id, scope.form_data, {
+          $http.post('http://localhost/taxapplication/trunk/ustaxfilerapis/upload-synopsys', scope.form_data, {
             transformRequest: angular.identity,
             headers: {'Content-Type': undefined}
         })
-        .success(function(resp){console.log(resp);
+        .success(function(resp){
+          //console.log(resp);
+          alert('File Uploaded Successfully!');
         })
         .error(function(){
         });
