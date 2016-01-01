@@ -34,7 +34,7 @@ class ProcessingStatusTable
 			'ps_state' 		           => $st,  		
 			'ps_updated_at'	  	       => date('Y-m-d H:i:s'), 	
 		);	
-		$updateuserid=$this->tableGateway->update($data, array('ps_user_id' => $uid));
+		$updateuserid=$this->tableGateway->update($data, array('ps_user_id' => $uid));		
 		return $updateuserid;		
     }
 	public function getcntOfeach($state)
