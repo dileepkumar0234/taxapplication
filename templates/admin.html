@@ -15,7 +15,7 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><a href="#">All Clinets</a></li>
+        <li><a href="#" ng-click="RefreshGrid($event,'total')">All Clinets</a></li>
         
         
     </ul>
@@ -29,7 +29,7 @@
     <li><a href="#">Payments</a></li>
     <li><a href="#"> Referrals  </a></li>
     <li><a href="#">Emails  </a></li>
-    <li><a href="#">  Want us to call?</a></li>
+    <li><a href="#" ng-click="inquires($event)">  Want us to call?</a></li>
 </ul>
 </div><!-- /.navbar-collapse -->
 </div><!-- /.container-fluid -->
@@ -206,11 +206,27 @@
 </div>
 
 <div class="col-md-12 taxpayer" style="overflow:scroll;height:450px;" ng-if="user_details_tabs[5].show">
-  <div for="email" class="adminGroup">File Number <label for="email">{{PayerInfo.unique_code}}</label></div> 
-  <div ng-repeat="role in states" class="adminGroup">
-      <input type="checkbox"  ng-change="changeState($index)" ng-model="role.checked"> {{role.text}}
-  </div>
-  <button class="btn btn-primary" ng-click="updateStatus()">Push to State</button>
+  <ul class="adminGroup col-md-6"><li>File Number:</li><li> <label for="email">{{PayerInfo.unique_code}}</label></li></ul>
+  
+     <!--  <input type="checkbox" ng-repeat="role in states"  ng-change="changeState($index)" ng-model="role.checked"> {{role.text}} -->
+    
+    <ul class="adminGroup col-md-6"> <li>File Status:</li>
+     <li><select style="color:black;" ng-options="item.text for item in states" ng-model="PayerInfo.ps_state"  ng-change="changeState(PayerInfo.ps_state)">
+  </select>
+  </li>
+  </ul>
+  
+    <ul class="adminGroup col-md-6">
+    <li class="uploadAdmin">Comments:</li>
+    <li class="uploadAdmin"> <input  type="text" name="fname" ng-model="comment" class="form-control" id="email"></li>
+    
+</ul>
+<ul class="adminGroup col-md-6">
+<li class="uploadAdmin">
+<button class="btn btn-primary" ng-click="updateStatus()">Push to State</button>
+</li>
+  </ul>
+  
 </div>
 
 <div class="col-md-12" ng-if="user_details_tabs[6].show">
