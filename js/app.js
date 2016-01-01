@@ -176,6 +176,11 @@ controller:'scheduleController',
 
     templateUrl:'templates/changepassword.html',
   })
+  .state('user.Summary', {
+    url: '/Summary',
+
+    templateUrl:'templates/Summary.html',
+  })
   .state('user.referals', {
     url: '/referals',
   controller:'referalController',
