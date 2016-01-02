@@ -9,7 +9,8 @@ $rootScope.shownow=true;
   }
   //console.log($state);
   if($state.current.url!='/'){
-    $state.go('user.user');
+    //$state.go('user.user');
+   $state.go('user.home');
   }
 $scope.showProfile = false;
     $scope.openProfile = function(){

@@ -75,6 +75,8 @@ $scope.editProfile =function(){
 $scope.editMode = false;
 }
 $scope.reset = function(){
-  $scope.editMode = true;
+  //$scope.editMode = true;
+  getSpouseInfo();
+
 }
 }]);

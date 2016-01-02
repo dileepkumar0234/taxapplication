@@ -10,7 +10,22 @@ angular.module("myapp").controller("admin",['$scope','$rootScope','$state','$uib
 	}
 	$scope.cols=[];
 	$scope.searchColText={};
+    $scope.getTotalReferals = function(e){
+      e.preventDefault();
+      commonService.getData('GET','get-referral').then(function(resp){
 
+			//console.info(resp.data.refferalContacts);
+	$scope.coldefs=[{field: 'rf_name', displayName: 'Client Name'},
+	{field:'rf_email', width:200,displayName:'Client Email id'},
+	{field:'rf_phone', displayName:'Phone Number'},
+	{field:'rf_on_name', displayName:'Refered Name'},
+	{field:'rf_on_email', displayName:'Refered Email id'},
+	{field:'rf_on_phone', displayName:'Refered Phone'}
+	];
+	$scope.allUsers = resp.data.refferalContacts;
+			commonService.stopSpinner();
+		});
+    };
 	$scope.AlreadyAssigned = true;
 	$scope.coldefs=[{field: 'user_name', displayName: 'Client Name'},
 	{field:'email', width:200,displayName:'Email id',cellTemplate: '<div  ng-click="foo(row)" ng-bind="row.getProperty(col.field)"></div>'},

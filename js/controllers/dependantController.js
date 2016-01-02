@@ -1,5 +1,5 @@
 angular.module("myapp").controller("dependantController", ['$scope','$rootScope','$state','$stateParams','$uibModal','commonService',function($scope,$rootScope,$state,$stateParams,$uibModal,commonService) {
- $scope.relations= ['Father','Mother','Son','Daughter','others'];
+ $scope.relations= ['Aunt','Brother','Daughter','Father','Mother','Nephew','Niece','Son','Sister','Uncle','others'];
 
 function createDependant(){
   var new_dependant = {
@@ -99,13 +99,13 @@ var date_to_send=val.dob.getDate().toString()+"-"+(val.dob.getMonth()+1).toStrin
    
    alert("You Info has been Updated!");
    commonService.stopSpinner();
-   $scope.editMode = true;
+  // $scope.editMode = true;
    $scope.getDependants();
  });
 }
 
 $scope.DeleteDependant = function(item,index){
-  if(item.dependent_id==''){
+  if(item.dependent_id=='' || !item.dependent_id){
 $scope.dependants.splice(index,1);
   }
   else{
@@ -128,6 +128,7 @@ $scope.editProfile =function(){
 $scope.editMode = false;
 }
 $scope.reset = function(){
-  $scope.editMode = true;
+  //$scope.editMode = true;
+  $scope.getDependants();
 }
 }]);

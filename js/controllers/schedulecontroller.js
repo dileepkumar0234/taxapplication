@@ -15,11 +15,11 @@ $scope.dateOptions = {
 };
 
 $scope.scheduling={};
-$scope.scheduletimings =['select an opton','10:00 Am - 10:30 Am','10:30 Am - 11:00 Am','11:00 Am - 11:30 Am',
-'11:30 Am - 12:00 pm','12:00 pm - 1:00 pm','1:00 pm - 2:00 pm',
-'2:00 pm - 2:30 pm','2:30 pm - 3:00 pm','3:00 pm - 3:30 pm',
-'3:30 pm - 4:00 pm','4:00 pm - 4:30 pm','4:30 pm - 5:30 pm',
-'5:30 pm - 6:00 pm'
+$scope.scheduletimings =['select an option','9:00 am','9:30 am','10:00 am',
+'10:30 am','11:00 am','11:30 am',
+'12:00 pm','12:30 pm','1:00 pm',
+'1:30 pm','2:00 pm','2:30 pm',
+'3:00 pm','3:30 pm','4:00 pm','4:30 pm','5:00 pm','5:30 pm','6:00 pm','6:30 pm'
 ];
 
 $scope.open = function($event) {
@@ -58,6 +58,16 @@ function getSchedule(){
     commonService.stopSpinner();
   });
 }
+
+$scope.Edit = function(){
+ // console.log('im in');
+  getSchedule();
+  $scope.editMode = true;
+}
+$scope.newDate = function(dt){
+//console.log($scope.dt,dt);
+$scope.dt=dt;
+}
 $scope.ScheduleDT = function(){
 
 
@@ -70,7 +80,7 @@ $scope.ScheduleDT = function(){
   commonService.getData('POST','schedules-page',{schedule_dt:final_date,schedule_period:$scope.scheduleInfo.schedule_period}).then(function(resp){
     //console.log("schedule::",resp);
     getSchedule();
-    $scope.editMode = true;
+    $scope.editMode = false;
     alert("You Info has been Updated!");
 
     commonService.stopSpinner();
@@ -83,9 +93,7 @@ $scope.editMode = true;
 $scope.editProfile =function(){
 $scope.editMode = false;
 }
-$scope.reset = function(){
-  $scope.editMode = true;
-}
+
 $scope.setTime = function(ind){
   if(ind.indexOf('select')>-1){
      $scope.scheduling.schedule_period = '';

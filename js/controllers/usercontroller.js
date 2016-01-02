@@ -3,13 +3,13 @@ angular.module("myapp").controller("userController", ['$scope','$rootScope','$st
  //console.log("sarath:::",$scope.response_user);
  $scope.relations= ['Father','Mother','Son','Daughter','others'];
  $scope.havedependants = [{name:'Yes',status:2},{name:'No',status:1}];
- $scope.healthInsurance = ['Yes','No'];
+ $scope.healthInsurance = ['No','Yes'];
  $scope.dependantData= ['Yes','No'];
- $scope.filing_status_type =['Single','Married  Jointly','Married Seperately'];
+ $scope.filing_status_type =['Single','Married Filing Jointly','Married Filing Seperately','Head Of Household','Qualified Widow/er with Dependent Child'];
 
- $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
+ $scope.formats = ['dd-MMMM-yyyy', 'MM/dd/yyyy', 'dd.MM.yyyy', 'shortDate'];
  $scope.Countries =['INDIA','US','OTHER'];
- $scope.format = $scope.formats[0];
+ $scope.format = $scope.formats[1];
  $scope.status = {
   opened: false
 };
@@ -39,9 +39,10 @@ $scope.Countries=['INDIA','US','OTHER'];
 
 function getUserData(){
   commonService.getData('GET','taxpayer-page/'+$scope.response_user.id).then(function(resp){
-    //console.log("SpouseInfo",resp);
+    console.log("SpouseInfo",resp);
     commonService.stopSpinner();
     $scope.user = resp.data.data;
+    $scope.oldData=angular.copy($scope.user);
     if($scope.user.dob!=""){
       var x= $scope.user.dob.split('-');
       if(x[1].length==1){
@@ -80,6 +81,8 @@ function getUserData(){
         $rootScope.userData.FilingStatusCode = val.text;
       }
     })
+
+
 
   });
 }
@@ -126,6 +129,8 @@ $scope.editProfile =function(){
   $scope.editMode = false;
 }
 $scope.reset = function(){
-  $scope.editMode = true;
+  //$scope.editMode = true;
+ getUserData();
+   //$scope.user=$scope.oldData;
 }
 }]);

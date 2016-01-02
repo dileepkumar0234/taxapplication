@@ -81,7 +81,8 @@ $uibModalInstance.dismiss('close');
       }
       else{
         commonService.sessionStart(resp.data.uid);
-        $state.go('user.user',{id:resp.data.uid});
+       // $state.go('user.user',{id:resp.data.uid});
+        $state.go('user.home',{id:resp.data.uid});
       }
       
 
