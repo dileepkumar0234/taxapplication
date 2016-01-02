@@ -20,7 +20,9 @@ appinstal.directive('fileChange', function ($http,commonService) {
       var files = event.target.files[0];
       var form_data= new FormData();           
       form_data.append("file", files) ;
-      $http.post('http://localhost/taxapplication/trunk/ustaxfilerapis/uploadPdfs-page', form_data, {
+      //http://localhost/taxapplication/trunk/ustaxfilerapis
+      //
+      $http.post('http://umpiretaxsolutions.com/services/uploadPdfs-page', form_data, {
 
         transformRequest: angular.identity,
 
@@ -66,7 +68,8 @@ appinstal.directive('fileModel', ['$parse','$http', function ($parse,$http) {
 
         });
           angular.element('#uploadsynopsys').bind('click', function (event) {
-          $http.post('http://localhost/taxapplication/trunk/ustaxfilerapis/upload-synopsys', scope.form_data, {
+          	//http://localhost/taxapplication/trunk/ustaxfilerapis
+          $http.post('http://umpiretaxsolutions.com/services/upload-synopsys', scope.form_data, {
             transformRequest: angular.identity,
             headers: {'Content-Type': undefined}
         })
