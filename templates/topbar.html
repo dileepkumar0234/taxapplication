@@ -18,21 +18,21 @@
       <li class="banner"><a ng-class="{'active':current=='main.home'}" ui-sref="main.home">Home</a></li>
       <li class="banner"><a ng-class="{'active':current=='main.firmProfile'}" ui-sref="main.firmProfile">Firm Profile </a></li>
       <li class="banner" ><a ng-class="{'active':current=='main.Service'}" ui-sref="main.Service">Our Services</a>
-         <!--  <ul >
-            <li class="banner"><a ui-sref="main.Service">US Tax Services </a>
-             
-            </li>
-             <li style="width:100%" id="its" class="banner"><a ui-sref="main.Service">Indian Tax Services</a>
-
-               <ul >
-                 <li class="banner"><a ui-sref="main.Service">22222 </a> </li>
-                 <li style="width:100%" class="banner"><a ui-sref="main.Service">22222</a></li>
-               </ul>
-
-             </li>
-          </ul> -->
+          <ul>
+            <li class="banner"><a ui-sref="main.Service">US Tax Services </a></li>
+                  <li class="innerNav"><a href="#inServices" ng-click="scrollIt($event,'inServices')" class="innerBanner">Individual Services </a></li>
+                  <li class="innerNav"><a href="#bServices" ng-click="scrollIt($event,'bServices')" class="innerBanner">Business Services </a> </li>
+             <li><a ui-sref="main.Service">Indian Tax Services</a></li>
+                     <li class="innerNav1"><a href="#advisoryTax" ng-click="scrollIt($event,'advisoryTax')" class="innerBanner">Advisory on Taxation </a> </li>
+                     <li class="innerNav1"><a href="#auditTaxation" ng-click="scrollIt($event,'auditTaxation')"class="innerBanner">Audit and Certification </a> </li>
+                     <li class="innerNav1"><a href="#others" ng-click="scrollIt($event,'others')" class="innerBanner">Service Tax VAT & others</a> </li>
+               <!--<ul>-->
+                 <!--<li class="banner"><a ui-sref="main.Service">22222 </a> </li>-->
+                 <!--<li style="width:100%" class="banner"><a ui-sref="main.Service">22222</a></li>-->
+               <!--</ul>-->
+          </ul>
       </li>
-      <li><a ui-sref="main.tax_center" ng-class="{'active':current=='main.tax_center'}" >Tax Center</a></li>
+      <li class="banner"><a ui-sref="main.tax_center" ng-class="{'active':current=='main.tax_center'}" >Tax Center</a></li>
       <li class="banner"><a ui-sref="main.carriers" ng-class="{'active':current=='main.carriers'}">Careers</a></li>
       <li class="banner"><a ng-class="{'active':current=='main.contactUs'}" ui-sref="main.contactUs">Contact Us</a></li>
     </ul>

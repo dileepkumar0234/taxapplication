@@ -1,10 +1,12 @@
 <div class="right_content">
 <div class="col-md-6 taxpayer">
-<h1>Your Referal List</h1><br>
+<h1>Your Referral List</h1><br>
    <ul class="adminGroup col-md-12">
-       <li ng-repeat="friend in referalsList">
+       <!-- <li ng-repeat="friend in referalsList">
        	{{friend.rf_name}}
-       </li>
+       </li> -->
+       <h4 style="color:black;" ng-if="notfound">No Records Found!</h4>
+       <div ng-if="!notfound" style="padding:0;" class="col-md-12 gridStyle" ng-grid="gridOptions"></div>
    </ul>
    </div>
    </div>
