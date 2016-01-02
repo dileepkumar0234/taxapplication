@@ -76,7 +76,7 @@ appinstal.config(function($stateProvider, $urlRouterProvider,$ocLazyLoadProvider
                             //TODO add all the required css and js
       
                             'js/controllers/userdashboard.js',
-                      
+                             'js/controllers/usercontroller.js',
                             'js/services/commonservice.js',
                             'js/commondirective.js'
 
@@ -85,8 +85,13 @@ appinstal.config(function($stateProvider, $urlRouterProvider,$ocLazyLoadProvider
             }]
         }
   })
-  .state('user.user', {
+  .state('user.home', {
     url: '/',
+    controller:'userController',
+    templateUrl:'templates/userhome.html'
+  })
+  .state('user.user', {
+    url: '/main',
     controller:'userController',
     templateUrl:'templates/user.html',
     resolve: {
@@ -100,8 +105,7 @@ appinstal.config(function($stateProvider, $urlRouterProvider,$ocLazyLoadProvider
                         ]
                 });
             }]
-        }
-  })
+        } })
   .state('user.spouse', {
     url: '/spouse',
     controller:'spouseController',
