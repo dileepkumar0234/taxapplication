@@ -167,7 +167,10 @@ class BasicInfoApiController extends AbstractRestfulController
 		$comment = $status['comment'];
 		$updateProcessStatus = $processStatusTable->updateProcess($uid,$st);		
 		if($updateProcessStatus>0){
-			$insertComment = $commentsTable->addComment($uid,$comment);
+			if(isset($_SESSION['user_id']) && $_SESSION['user_id']){
+				$commttedBy = $_SESSION['user_id'];
+			}
+			$insertComment = $commentsTable->addComment($uid,$commttedBy,$comment);
 			return new JsonModel(array(
 				'output'   => 'success',
 				'success'  => true

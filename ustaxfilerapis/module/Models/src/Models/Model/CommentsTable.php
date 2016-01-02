@@ -18,9 +18,10 @@ class CommentsTable
         $this->tableGateway = $tableGateway;
 		$this->select = new Select();
     }
-	public function addComment($uid,$comment){        
+	public function addComment($uid,$commttedBy,$comment){        
         $data = array(        
                'cmt_user_id'  => $uid, 
+               'cmt_by'       => $commttedBy, 
                'comment'      => $comment, 
                'cmt_status'   => 1, 
                'cmt_created_at' => date('Y-m-d H:i:s')
@@ -30,6 +31,8 @@ class CommentsTable
 	}
 	public function getComments($id){
 		$select = $this->tableGateway->getSql()->select();
+		$select->join('user', new Expression('comments.cmt_by=user.user_id'),array('*'),'left');
+		$select->join('user_details', new Expression('user_details.u_user_id=user.user_id'),array('*'),'left');
 		$select->where('cmt_user_id= "'.$id.'"');
 		$select->where('cmt_status= "1"');
 		$resultSet = $this->tableGateway->selectWith($select);	
