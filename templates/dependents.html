@@ -1,6 +1,6 @@
 <div class="right_content">
     <h1>Dependents Info (If any) <span ng-if="editMode&&user.filling_status=='1'" class="btn btn-primay" ng-click="editProfile()">Edit</span></h1>
-    <p>Note: If the Dependent doesn’t hold either SSN/ITIN please upload  Passport Scan copy</p>
+    
     <form ng-class="{'feel_form':editMode}">
     <div ng-repeat="item in dependants" class="allDependants"> 
     <h1>Dependent-{{$index+1}}<button ng-if="$index!=0;" class='btn btn-danger' ng-click="DeleteDependant(item,$index)">X</button></h1>    
@@ -76,6 +76,7 @@
 </div>
 <!--ng-if="user.filling_status=='1'"-->
         <div class="col-lg-12" >
+        <p class="note">Note: If the Dependent doesn’t hold either SSN/ITIN please upload  Passport Scan copy</p>
 <button ng-if="dependants.length<5" style="margin-left:10px;" ng-click="addMore()" class="btn btn-success pull-left" type="submit">Add More Dependants</button>
             <button style="margin-left:10px;" ng-click="UpdateDependants()" class="btn btn-success pull-right" type="submit">SUBMIT</button>
             <button class="btn btn-warning  pull-right" ng-click="reset();" type="reset">EDIT</button>
