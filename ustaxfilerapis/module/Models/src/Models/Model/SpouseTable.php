@@ -45,6 +45,16 @@ class SpouseTable
 		}else{
 			$inputTelephone ='';
 		}
+		if(isset($users['visa_type']) && $users['visa_type']!=''){
+			$visa_type = $users['visa_type'];
+		}else{
+			$visa_type ='';
+		}
+		if(isset($users['ssn']) && $users['ssn']!=''){
+			$ssn = $users['ssn'];
+		}else{
+			$ssn ='';
+		}
 		if(isset($_SESSION['user_id']) && $_SESSION['user_id']!=""){
 			$userId = $_SESSION['user_id'];
 		}else{
@@ -57,6 +67,8 @@ class SpouseTable
 			'occupation' 	    => 	$occupation,			
 			'dob'	      	 	=> 	$dob,
 			'phone'	      	 	=> 	$inputTelephone,
+			'visa_type'	      	 	=> 	$visa_type,
+			'ssn'	      	 	=> 	$ssn,
 			'status'			=>	1,			  	
 		);
 		if(isset($users['spouse_id']) && $users['spouse_id']!=""){
