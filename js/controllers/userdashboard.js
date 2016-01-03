@@ -85,7 +85,7 @@ commonService.getData('GET','get-user-synopsy/'+$scope.uid).then(function(resp){
 
 console.log(resp);    //resp.data.data no data found
 if(typeof resp.data.data == 'string'){
-$scope.yes=no;
+$scope.yes=false;
 }
 else{
   $scope.synopsys_file=resp.data.data.synopsys_file;
