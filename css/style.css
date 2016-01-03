@@ -904,7 +904,7 @@ form#signup p.sigin_btn{
 body{
     margin:0;
     padding:0;
-    background:url(../images/leftpanel_bg.jpg) repeat-y 0 0;
+   /* background:url(../images/leftpanel_bg.jpg) repeat-y 0 0;*/
     font-family: 'Roboto', sans-serif;
 }
 header{
