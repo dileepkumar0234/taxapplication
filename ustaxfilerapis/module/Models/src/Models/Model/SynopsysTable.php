@@ -33,6 +33,6 @@ class SynopsysTable
 		$select = $this->tableGateway->getSql()->select();
 		$select->where('synopsys_user_id= "'.$uid.'"');
 		$resultSet = $this->tableGateway->selectWith($select);	
-		return $resultSet->current();			
+		return $resultSet;			
 	}
 }
