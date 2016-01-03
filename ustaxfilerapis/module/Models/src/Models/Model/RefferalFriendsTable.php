@@ -50,6 +50,11 @@ class RefferalFriendsTable
 		}else{
 			$rf_phone ='';
 		}
+		if(isset($rf['rf_comment']) && $rf['rf_comment']!=''){
+			$rf_comment = $rf['rf_comment'];
+		}else{
+			$rf_comment ='';
+		}
 		$data = array(
 			'rf_user_id'             => $uid,
 			'rf_on_name' 	  	  => $rf_on_name,				
@@ -58,6 +63,7 @@ class RefferalFriendsTable
 			'rf_name'  	          => $rf_name,  	
 			'rf_email' 	          => $rf_email,   
 			'rf_phone'	  	      => $rf_phone, 	
+			'rf_comment'	  	  => $rf_comment, 	
 			'added_at' 		      => date('Y-m-d H:i:s'), 			
 			'status' 		      => 1, 			
 		);	
