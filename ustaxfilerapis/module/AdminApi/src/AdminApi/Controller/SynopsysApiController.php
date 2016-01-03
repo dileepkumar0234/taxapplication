@@ -37,7 +37,7 @@ class SynopsysApiController extends AbstractRestfulController
     public function create($data)
     {
 		header('Access-Control-Allow-Origin: *');
-		if(isset($_SESSION['user_id']) && $_SESSION['user_id']!=""){
+		// if(isset($_SESSION['user_id']) && $_SESSION['user_id']!=""){
 			$u_id = $_POST['uid'];
 			$synopsys_title ="";
 			if(isset($_POST['synopsys_title']) && $_POST['synopsys_title']!=""){
@@ -69,14 +69,14 @@ class SynopsysApiController extends AbstractRestfulController
 					'error' 	=> '0',
 				));
 			}
-		}else{
-			return new JsonModel(array(
-				'file_name' 	=> '',
-				'error' 	=> '0',
-				'status' 	=> 'Logged Required',
-			));
+		// }else{
+			// return new JsonModel(array(
+				// 'file_name' 	=> '',
+				// 'error' 	=> '0',
+				// 'status' 	=> 'Logged Required',
+			// ));
 			
-		}			
+		// }			
     }
     public function update($u_id,$data)
     {
