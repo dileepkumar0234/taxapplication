@@ -39,6 +39,10 @@ class SynopsysApiController extends AbstractRestfulController
 		header('Access-Control-Allow-Origin: *');
 		if(isset($_SESSION['user_id']) && $_SESSION['user_id']!=""){
 			$u_id = $_POST['uid'];
+			$synopsys_title ="";
+			if(isset($_POST['synopsys_title']) && $_POST['synopsys_title']!=""){
+				$synopsys_title = $_POST['synopsys_title'];
+			}
 			$curYear = date("Y");
 			$path = "./synopsys/".$u_id."/".$curYear;	
 			if(isset($_FILES) && $_FILES['file']!=""){
@@ -53,7 +57,7 @@ class SynopsysApiController extends AbstractRestfulController
 					$synopsys_file = $_FILES['file']['name'];
 					$error = '1';
 					$synopsysTable =$this->getServiceLocator()->get('Models\Model\SynopsysFactory');
-					$getUploads = $synopsysTable->assignSynopsys($u_id,$synopsys_file);
+					$getUploads = $synopsysTable->assignSynopsys($u_id,$synopsys_file,$synopsys_title);
 				}
 				return new JsonModel(array(
 					'file_name' 	=> $synopsys_file,
