@@ -87,7 +87,7 @@ class RefferalFriendsTable
 	public function getRefferal($id){
 		$select = $this->tableGateway->getSql()->select();
 		$select->where('rf_user_id= "'.$id.'"');
-		$select->group('rf_user_id');
+		// $select->group('rf_user_id');
 		$resultSet = $this->tableGateway->selectWith($select);	
 		return $resultSet;			
 	}
