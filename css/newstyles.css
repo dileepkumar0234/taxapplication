@@ -1,3 +1,7 @@
 .inactive{
 	pointer-events:none;
 }
+.note{float: left;
+    width: 100%;
+    margin-left: 13px;
+    margin-top: 10px;}
