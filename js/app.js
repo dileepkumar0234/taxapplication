@@ -12,7 +12,9 @@ function(event, toState, toParams, fromState, fromParams){
 
 })
 });
-
+var webServiceUrl="http://localhost/taxapplication/trunk/ustaxfilerapis/";
+  // var webServiceUrl="http://umpiretaxsolutions.com/services/";
+appinstal.constant('webServiceUrl',webServiceUrl);
 appinstal.config(function($stateProvider, $urlRouterProvider,$ocLazyLoadProvider)
 {
   $stateProvider

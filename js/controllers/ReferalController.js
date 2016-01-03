@@ -6,14 +6,15 @@ $scope.gridOptions = {
 		multiSelect:false,
 		//	jqueryUITheme: true,
 			columnDefs: 'coldefs'//,
-			//filterOptions:  $scope.filterOptions
+			//filterOptions:  $scope.filterOptions 
 		};
 
 $scope.coldefs=[
     {displayName:'S.NO', cellTemplate: '<div class="ngCellText" data-ng-class="col.colIndex()"><span>{{row.rowIndex + 1}}</span></div>'},
 	{field:'rf_name', displayName:'Name'},
 	{field:'rf_email', displayName:'Email id'},
-	{field:'rf_phone', displayName:'Phone Number'}
+	{field:'rf_phone', displayName:'Phone Number'},
+	{field:'rf_comment', displayName:'Comment'}
 	];
     
 

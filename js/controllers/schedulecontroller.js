@@ -2,15 +2,15 @@
 angular.module("myapp").controller("scheduleController",['$scope','$rootScope','$state','$stateParams','$uibModal','commonService',function($scope,$rootScope,$state,$stateParams,$uibModal,commonService) {
  
 
-$scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
+$scope.formats = ['dd-MMMM-yyyy', 'MM/dd/yyyy', 'dd.MM.yyyy', 'shortDate'];
 
-$scope.format = $scope.formats[0];
+$scope.format = $scope.formats[1];
 $scope.status = {
   opened: false
 };
 $scope.maxDate = new Date(2020, 5, 22);
 $scope.dateOptions = {
-  formatYear: 'yy',
+  formatYear: 'yyyy',
   startingDay: 1
 };
 
@@ -44,7 +44,7 @@ function getSchedule(){
     //console.log("schedule::",resp);
 
     $scope.scheduleInfo= resp.data.data;
-    if($scope.scheduleInfo.schedule_dt!=""){
+    if($scope.scheduleInfo!='' && $scope.scheduleInfo.schedule_dt!=""){
       var x= $scope.scheduleInfo.schedule_dt.split('-');
       if(x[1].length==1){
         x[1]="0"+parseInt(x[1]-1)
@@ -69,7 +69,7 @@ $scope.newDate = function(dt){
 $scope.dt=dt;
 }
 $scope.ScheduleDT = function(){
-
+//console.log($scope.scheduling.schedule_period);
 
   var x= new Date($scope.dt);
   var month = x.getMonth()+1;
@@ -96,7 +96,10 @@ $scope.editMode = false;
 
 $scope.setTime = function(ind){
   if(ind.indexOf('select')>-1){
-     $scope.scheduling.schedule_period = '';
+     $scope.scheduleInfo.schedule_period = '';
+  }
+  else{
+    $scope.scheduleInfo.schedule_period =ind;
   }
  
 }

@@ -1,11 +1,10 @@
-appinstal.factory("commonService", function($http,$rootScope,$timeout,$state) {
-	var webServiceUrl="http://localhost/taxapplication/trunk/ustaxfilerapis/";
-	// var webServiceUrl="http://umpiretaxsolutions.com/services/";
+appinstal.factory("commonService", function($http,$rootScope,$timeout,$state,webServiceUrl) {
+	
 	var user_data = {};
 	
 
 	return {
-		getData : function(method,url,data){
+		getData : function(method,url,data,headers){
            this.showProgress();
 			return $http({
 				method: method,

@@ -1,28 +1,16 @@
-appinstal.directive('fileChange', function ($http,commonService) {
+appinstal.directive('fileChange', function ($http,commonService,webServiceUrl) {
 
   var linker = function ($scope, element, attributes) {
-    $scope.x={};
-    element.parents('form').find('button').bind('click',function(event){
-      //var files = event.target.files;
-      //console.log("Files:::",$scope.x);
-      commonService.getData('PUT','uploadPdfs-page/'+$scope.uid,$scope.x).then(function(resp){
-        //console.log("success",resp);
-        $scope.editMode = true;
-        if(!$scope.$$phase){
-          $scope.$apply();
-        }
-      })
-     // uploadPdfs-page
-   });
+   
+  
     element.bind('change', function (event) {
       //console.log(attributes.ngModel);
       var key="hid_"+attributes.ngModel;
       var files = event.target.files[0];
       var form_data= new FormData();           
       form_data.append("file", files) ;
-      //http://localhost/taxapplication/trunk/ustaxfilerapis
-      //
-      $http.post('http://umpiretaxsolutions.com/services/uploadPdfs-page', form_data, {
+      
+      $http.post(webServiceUrl+'uploadPdfs-page', form_data, {
 
         transformRequest: angular.identity,
 
@@ -32,7 +20,7 @@ appinstal.directive('fileChange', function ($http,commonService) {
       .success(function(resp){
         //console.log("Uploaded FIles",resp.file_name);
         $scope.x[key]=resp.file_name;
-    //file was uploaded
+ 
   })
 
       .error(function(){
@@ -63,13 +51,14 @@ appinstal.directive('fileModel', ['$parse','$http', function ($parse,$http) {
            // var key="hid_"+attributes.ngModel;
             var files = event.target.files[0];
              scope.form_data= new FormData(); 
-             scope.form_data.append("uid", scope.user_id);          
+             scope.form_data.append("uid", scope.user_id);  
+             scope.form_data.append("synopsys_title", scope.synopsys_title);         
             scope.form_data.append("file", files) ;
 
         });
           angular.element('#uploadsynopsys').bind('click', function (event) {
-          	//http://localhost/taxapplication/trunk/ustaxfilerapis
-          $http.post('http://umpiretaxsolutions.com/services/upload-synopsys', scope.form_data, {
+            
+          $http.post(webServiceUrl+'upload-synopsys', scope.form_data, {
             transformRequest: angular.identity,
             headers: {'Content-Type': undefined}
         })

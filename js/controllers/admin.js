@@ -20,7 +20,8 @@ angular.module("myapp").controller("admin",['$scope','$rootScope','$state','$uib
 	{field:'rf_phone', displayName:'Phone Number'},
 	{field:'rf_on_name', displayName:'Refered Name'},
 	{field:'rf_on_email', displayName:'Refered Email id'},
-	{field:'rf_on_phone', displayName:'Refered Phone'}
+	{field:'rf_on_phone', displayName:'Refered Phone'},
+	{field:'rf_comment', displayName:'Description'}
 	];
 	$scope.allUsers = resp.data.refferalContacts;
 			commonService.stopSpinner();
@@ -191,8 +192,10 @@ $scope.foo = function(resp){
 	$scope.userSelected = true;
 	$scope.home_banner = true;
 	$scope.user_id=resp.entity.user_id;
+	$scope.getComments();
 	$scope.getCurrentInfo(0);
 }
+$scope.userstatus ={};
 
 $scope.getCurrentInfo = function(index){
 
@@ -304,8 +307,17 @@ $scope.user_details_tabs =[
 	/*if($scope.states[index].checked==true)
 	$scope.selectedState = $scope.states[index].id+1;*/
 }
+
+$scope.getComments = function(){
+ commonService.getData('GET','comments-list/'+$scope.user_id).then(function(resp){
+		$scope.TotalComments = resp.data.data;
+		commonService.stopSpinner();
+	});
+};
+
 $scope.updateStatus = function(){
-	commonService.getData('PUT','update-process/'+$scope.user_id,{ps_state:$scope.selectedState}).then(function(resp){
+	commonService.getData('PUT','update-process/'+$scope.user_id,
+		{ps_state:$scope.selectedState,comment:$scope.userstatus.comment}).then(function(resp){
 		$state.reload();
 
 		commonService.stopSpinner();

@@ -88,7 +88,7 @@ if(typeof resp.data.data == 'string'){
 $scope.yes=false;
 }
 else{
-  $scope.synopsys_file=resp.data.data.synopsys_file;
+  $scope.synopsys_file=resp.data.data;
   $scope.file_path= resp.data.file_path;
   $scope.yes=true;
 }
