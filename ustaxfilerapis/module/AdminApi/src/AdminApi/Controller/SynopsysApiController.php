@@ -14,13 +14,24 @@ class SynopsysApiController extends AbstractRestfulController
 		if(isset($_SESSION['user_id']) && $_SESSION['user_id']!=""){
 			$synopsysTable =$this->getServiceLocator()->get('Models\Model\SynopsysFactory');
 			$getUploads = $synopsysTable->getSynopsys($id);
-			if($getUploads!=""){
+			$upData ='';
+			if(count($getUploads)>0){
 				$curYear = date("Y");
 				$filePath = "/synopsys/".$id."/".$curYear;
-				return new JsonModel(array(
-					'file_path' 	=> $filePath,
-					'data' 	  => $getUploads,
-				));
+				foreach($getUploads as $uploads){
+					$upData[]= $uploads;		
+				}
+				if(count($upData)>0){
+					return new JsonModel(array(
+						'file_path' => $filePath,
+						'data' 	    => $upData,
+					));
+				}else{
+					return new JsonModel(array(
+						'file_path'  => '',
+						'data' 	     => '',
+					));
+				}
 			}else{
 				return new JsonModel(array(
 					'file_path' 	=> '',
