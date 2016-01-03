@@ -10,7 +10,7 @@
             </div>
             <div class="col-xs-6">
                 <div class="form-group">
-                    <label for="email">1099 int / div/ b<!-- 1099-int --></label>
+                    <label for="email">1099 INT / DIV/ B / MISC<!-- 1099-int --></label>
                     <input type="file" file-change ng-model="p1099int"  class="form-control" id="email">
                 </div>
 
@@ -22,13 +22,13 @@
         <div class="col-xs-12">
             <div class="col-xs-6">
                 <div class="form-group">
-                    <label for="email">Hsa / 5498 <!-- Hsa --></label>
+                    <label for="email">HSA / 5498 <!-- Hsa --></label>
                     <input type="file" file-change  ng-model="Hsa" class="form-control" id="email">
                 </div>
             </div>
             <div class="col-xs-6">
                 <div class="form-group">
-                    <label for="email">Ira/1099r<!-- Ira --></label>
+                    <label for="email">IRA / 1099-R <!-- Ira --></label>
                     <input type="file" file-change ng-model="Ira"  class="form-control" id="email">
                 </div>
 
@@ -60,7 +60,31 @@
 
     </form>
 
-    <div ng-if="editMode" class="col-md-12 taxpayer" >
+<div ng-if="editMode" class="col-md-12 taxpayer" >
+  <ul class="adminGroup col-md-6">
+   <li>w2</li>
+   <li>{{x.hid_w_2}}</li>
+</ul>
+<ul class="adminGroup col-md-6">
+   <li>healthcard</li>
+   <li>{{x.hid_health_card}}</li>
+</ul>
+<ul class="adminGroup col-md-6">
+   <li>hsa</li>
+   <li>{{x.hid_Hsa}}</li>
+</ul>
+<ul class="adminGroup col-md-6">
+   <li>ira</li>
+    <li>{{x.hid_Ira}}</li>
+</ul>
+<ul class="adminGroup col-md-6">
+   <li>1099Int</li>
+    <li>{{x.hid_p1099int}}</li>
+</ul>
+
+</div>
+
+    <!-- <div ng-if="editMode" class="col-md-12 taxpayer" >
   <ul class="adminGroup col-md-6">
    <li>w2</li>
    <li><a  download href="ustaxfilerapis{{file_path}}/{{uploads.w2pdf}}">Download</a></li>
@@ -82,5 +106,5 @@
    <li><a download href="ustaxfilerapis{{file_path}}/{{uploads.p1099Int}}">Download</a></li>
 </ul>
 
-</div>
+</div> -->
 </div>

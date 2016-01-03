@@ -7,8 +7,8 @@
                 <div class="form-group">
                 <p class="input-group">
                     <label for="email">Date</label>
-                    <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="dt" ng-change="newDate(dt)" is-open="status.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
-                    
+                    <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="dt" ng-change="newDate(dt)" is-open="status.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions"  ng-required="true" close-text="Close" />
+                    <!-- date-disabled="disabled(date, mode)" -->
                     <span class="input-group-btn" style="top:12px;">
                 <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
 
@@ -69,7 +69,7 @@
     </form>
      <div ng-if="!editMode" class="col-md-12 taxpayer" ng-if="editMode">
    <ul class="adminGroup col-md-12">
-       <li>Your appointment has been scheduled on {{dt | date:'mediumDate'}}
+       <li>Your appointment has been scheduled on {{dt | date:'mediumDate'}} @ {{scheduleInfo.schedule_period}} CST
 <p style="margin-top:10px;">Note: &nbsp;&nbsp;&nbsp;If you want to Reschedule click on edit option</p>
        </li>
        

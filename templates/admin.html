@@ -159,35 +159,37 @@
 </div>
 
 <div class="col-md-12 taxpayer" ng-if="user_details_tabs[2].show">
+ <div ng-repeat="item in scheduleInfo">
    <ul class="adminGroup col-md-6">
        <li>Schedule Date</li>
-       <li>{{scheduleInfo.schedule_dt | uppercase }}</li>
+       <li>{{item.schedule_dt | uppercase }}</li>
   </ul>
    <ul class="adminGroup col-md-6">
       <li>Schedule Time</li>
-      <li>{{scheduleInfo.schedule_period | uppercase }}</li>
+      <li>{{item.schedule_period | uppercase }}</li>
  </ul>
+ </div>
 </div>
 
 <div class="col-md-12 taxpayer" ng-if="user_details_tabs[3].show">
   <ul class="adminGroup col-md-6">
-   <li>w2</li>
+   <li>W-2</li>
    <li><a  href="ustaxfilerapis{{file_path}}/{{uploads.w2pdf}}">Download</a></li>
 </ul>
 <ul class="adminGroup col-md-6">
-   <li>healthcard</li>
+   <li>Other Misc Docs</li>
    <li><a href="ustaxfilerapis{{file_path}}/{{uploads.healthcard}}">Download</a></li>
 </ul>
 <ul class="adminGroup col-md-6">
-   <li>hsa</li>
+   <li>HSA / 5498</li>
    <li><a href="ustaxfilerapis{{file_path}}/{{uploads.hsa}}">Download</a></li>
 </ul>
 <ul class="adminGroup col-md-6">
-   <li>ira</li>
+   <li>IRA / 1099-R </li>
    <li><a href="ustaxfilerapis{{file_path}}/{{uploads.ira}}">Download</a></li>
 </ul>
 <ul class="adminGroup col-md-6">
-   <li>1099Int</li>
+   <li>1099 INT / DIV/ B / MISC</li>
    <li><a href="ustaxfilerapis{{file_path}}/{{uploads.p1099Int}}">Download</a></li>
 </ul>
 
@@ -195,6 +197,11 @@
 
 
 <div class="col-md-12 taxpayer" ng-if="user_details_tabs[4].show">
+<ul class="adminGroup col-md-6">
+    <li class="uploadAdmin">Title</li>
+    <li class="uploadAdmin"> <input  type="text" name="synopsys_title"  ng-model="synopsys_title" class="form-control" id="email"></li>
+    
+</ul>
   <ul class="adminGroup col-md-6">
     <li class="uploadAdmin">Upload Synopsys</li>
     <li class="uploadAdmin"> <input  type="file" name="fname"  file-model="myFile" class="form-control" id="email"></li>
@@ -207,27 +214,35 @@
 </div>
 
 <div class="col-md-12 taxpayer" style="overflow:scroll;height:450px;" ng-if="user_details_tabs[5].show">
-  <ul class="adminGroup col-md-6"><li>File Number:</li><li> <label for="email">{{PayerInfo.unique_code}}</label></li></ul>
+  <ul class="adminGroup col-md-12"><li>File Number:</li><li> <label for="email">{{PayerInfo.unique_code}}</label></li></ul>
   
      <!--  <input type="checkbox" ng-repeat="role in states"  ng-change="changeState($index)" ng-model="role.checked"> {{role.text}} -->
     
-    <ul class="adminGroup col-md-6"> <li>File Status:</li>
+    <ul class="adminGroup col-md-12"> <li>File Status:</li>
+
      <li><select style="color:black;" ng-options="item.text for item in states" ng-model="PayerInfo.ps_state"  ng-change="changeState(PayerInfo.ps_state)">
   </select>
   </li>
   </ul>
   
-    <ul class="adminGroup col-md-6">
+    <ul class="adminGroup col-md-12">
     <li class="uploadAdmin">Comments:</li>
-    <li class="uploadAdmin"> <input  type="text" name="fname" ng-model="comment" class="form-control" id="email"></li>
+    <li class="uploadAdmin"> <input  type="text" name="fname" ng-model="userstatus.comment" class="form-control" id="email"></li>
     
 </ul>
 <ul class="adminGroup col-md-6">
 <li class="uploadAdmin">
 <button class="btn btn-primary" ng-click="updateStatus()">Push to State</button>
 </li>
+
   </ul>
-  
+  <ul class="adminGroup col-md-12">
+  <li><h2>Comments:</h2></li>
+  </ul>
+  <ul class="adminGroup col-md-12" ng-repeat="item in TotalComments">
+   <li>{{item.first_name}}</li>
+  <li>{{item.comment}}</li>
+  </ul>
 </div>
 
 <div class="col-md-12" ng-if="user_details_tabs[6].show">

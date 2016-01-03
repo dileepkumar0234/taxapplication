@@ -43,8 +43,8 @@
       <p style="color:red;font-weight:bold;margin-top:-10px;" ng-show="emailExist">E-mail already Exist</p>
     </div>
 
-    <div class="col-xs-12"><input type="password" ng-pattern="/^((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{6,20})$/" ng-class="{'error':signupform.password.$invalid}" validate-form  name="password" ng-model="signupuser.userpwd" placeholder="Password">
-    <p style="color:white;font-style:italic;">* Password Must contains at least one Uppercase letter, one Number and one Special Charecter</p>
+    <div class="col-xs-12"><input type="password" ng-pattern="/^((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%&*]).{6,20})$/" ng-class="{'error':signupform.password.$invalid}" validate-form  name="password" ng-model="signupuser.userpwd" placeholder="Password">
+    <p style="color:white;font-style:italic;">* Password Must contains at least one Uppercase letter, one Number and one Special Character(@,#,$,%,&,*)</p>
     </div>
 
  <div class="col-xs-12"><input type="password" ng-pattern="/^((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{6,20})$/" ng-class="{'error':signupform.confirmpassword.$invalid}" validate-form = "signupuser.userpwd"   name="confirmpassword" ng-model="confirmPassword" placeholder="Confirm Password">
