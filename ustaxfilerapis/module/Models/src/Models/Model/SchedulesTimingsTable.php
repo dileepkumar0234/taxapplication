@@ -24,6 +24,7 @@ class SchedulesTimingsTable
 			'sc_user_id' 	  	=> $uid, 	
 			'schedule_dt' 		=> $timeD['schedule_dt'],  		
 			'schedule_period' 	=> $timeD['schedule_period'],  		
+			'user_status' 	    => 1,  		
 			'status'		    => 1, 
 			'created_at' 		=> date('Y-m-d H:i:s'), 				
 		);
@@ -33,7 +34,7 @@ class SchedulesTimingsTable
 	public function getData($id){
 		$select = $this->tableGateway->getSql()->select();	
 		$select->where('sc_user_id= "'.$id.'"');
-		$select->where('status= "2"');
+		$select->where('user_status= "1"');
 		$resultSet = $this->tableGateway->selectWith($select);	
 		return $resultSet->current();		
 	}
