@@ -18,10 +18,11 @@ class SynopsysTable
         $this->tableGateway = $tableGateway;
 		$this->select = new Select();
     }
-	public function assignSynopsys($uid,$synopsys_file){        
+	public function assignSynopsys($uid,$synopsys_file,$synopsys_title){        
         $data = array(        
                'synopsys_user_id'    => $uid, 
                'synopsys_file'       => $synopsys_file, 
+               'synopsys_title'       => $synopsys_title, 
                'synopsys_status'     => 1, 
                'synopsys_created_at' => date('Y-m-d H:i:s')
        );   
