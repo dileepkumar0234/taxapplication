@@ -14,14 +14,12 @@ function createDependant(){
   return new_dependant;
 
 }
-
-$scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
-
-$scope.format = $scope.formats[0];
+  $scope.formats = ['dd-MMMM-yyyy', 'MM/dd/yyyy', 'dd.MM.yyyy', 'shortDate'];
+$scope.format = $scope.formats[1];
 
 $scope.maxDate = new Date(2020, 5, 22);
 $scope.dateOptions = {
-  formatYear: 'yy',
+  formatYear: 'yyyy',
   startingDay: 1
 };
 $scope.open = function($event,ind) {
@@ -80,8 +78,11 @@ $scope.status=[];
 $scope.getDependants();
 
 
-$scope.UpdateDependants = function(){
- 
+$scope.UpdateDependants = function(dependent_form){
+ if(dependent_form.$invalid==true){
+  alert('Please Fill the Form');
+  return false;
+ }
   angular.forEach($scope.dependants,function(val,key){
               if(val.dob!=""){
   if(val.dob)

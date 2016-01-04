@@ -1437,8 +1437,8 @@ if ( typeof Object.create !== "function" ) {
 		jsonSuccess 			: false,
 
 		dragBeforeAnimFinish 	: true,
-		mouseDrag 				: true,
-		touchDrag 				: true,
+		//mouseDrag 				: true,
+		//touchDrag 				: true,
 
 		addClassActive 			: false,
 		transitionStyle 		: false,

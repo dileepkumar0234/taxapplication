@@ -186,6 +186,12 @@ appinstal.directive('validateForm',function(){
       ctrl[0].$setValidity('validateForm',false);
     }
   });
+   elm.parents('form').find('button').bind("click",function(){
+    //console.log('In',ctrl);
+    if(!ctrl[0].$viewValue){
+      ctrl[0].$setValidity('validateForm',false);
+    }
+  });
  }
 }
 });

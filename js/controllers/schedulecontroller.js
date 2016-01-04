@@ -39,9 +39,23 @@ $scope.disabled = function(date, mode) {
   return ( mode === 'day' && ( date.getDay() === 0 || date.getDay() === 6 ) );
 };
 
-function getSchedule(){
+function getSchedule(val){
   commonService.getData('GET','schedules-page/'+$scope.response_user.id).then(function(resp){
     //console.log("schedule::",resp);
+
+if(resp.data.data==""&&!val){
+$scope.editMode = true;
+$scope.scheduleInfo={};
+  return false;
+
+}
+else if(val){
+  $scope.editMode = true;
+}
+else{
+  $scope.editMode = false;
+}
+
 
     $scope.scheduleInfo= resp.data.data;
     if($scope.scheduleInfo!='' && $scope.scheduleInfo.schedule_dt!=""){
@@ -61,7 +75,7 @@ function getSchedule(){
 
 $scope.Edit = function(){
  // console.log('im in');
-  getSchedule();
+  getSchedule('s');
   $scope.editMode = true;
 }
 $scope.newDate = function(dt){
@@ -80,7 +94,7 @@ $scope.ScheduleDT = function(){
   commonService.getData('POST','schedules-page',{schedule_dt:final_date,schedule_period:$scope.scheduleInfo.schedule_period}).then(function(resp){
     //console.log("schedule::",resp);
     getSchedule();
-    $scope.editMode = false;
+   // $scope.editMode = false;
     alert("You Info has been Updated!");
 
     commonService.stopSpinner();
@@ -89,7 +103,7 @@ $scope.ScheduleDT = function(){
 getSchedule();
 
 
-$scope.editMode = true;
+//$scope.editMode = true;
 $scope.editProfile =function(){
 $scope.editMode = false;
 }

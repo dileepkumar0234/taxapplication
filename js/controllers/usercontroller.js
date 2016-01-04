@@ -15,7 +15,7 @@ angular.module("myapp").controller("userController", ['$scope','$rootScope','$st
 };
 $scope.maxDate = new Date(2020, 5, 22);
 $scope.dateOptions = {
-  formatYear: 'yy',
+  formatYear: 'yyyy',
   startingDay: 1
 };
 $scope.open = function($event) {
@@ -87,7 +87,11 @@ function getUserData(){
   });
 }
 getUserData();
-$scope.update = function(user){
+$scope.update = function(form,user){
+  if(form.$invalid==true){
+    alert('Please Fill the Form');
+    return false;
+  }
   //console.info(user);
   if(user.dob)
     var date_to_send=user.dob.getDate().toString()+"-"+(user.dob.getMonth()+1).toString()+"-"+user.dob.getFullYear().toString();

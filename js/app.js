@@ -270,8 +270,8 @@ appinstal.directive('ngRightClick', function($parse) {
         element.bind('contextmenu', function(event) {
 
             scope.$apply(function() {
-            //  if(Object.keys(localStorage).indexOf('admin')==-1)
-              //  event.preventDefault();
+              if(Object.keys(localStorage).indexOf('admin')==-1)
+                event.preventDefault();
                 
             });
         });

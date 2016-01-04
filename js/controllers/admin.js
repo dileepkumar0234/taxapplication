@@ -10,23 +10,23 @@ angular.module("myapp").controller("admin",['$scope','$rootScope','$state','$uib
 	}
 	$scope.cols=[];
 	$scope.searchColText={};
-    $scope.getTotalReferals = function(e){
-      e.preventDefault();
-      commonService.getData('GET','get-referral').then(function(resp){
+	$scope.getTotalReferals = function(e){
+		e.preventDefault();
+		commonService.getData('GET','get-referral').then(function(resp){
 
 			//console.info(resp.data.refferalContacts);
-	$scope.coldefs=[{field: 'rf_name', displayName: 'Client Name'},
-	{field:'rf_email', width:200,displayName:'Client Email id'},
-	{field:'rf_phone', displayName:'Phone Number'},
-	{field:'rf_on_name', displayName:'Refered Name'},
-	{field:'rf_on_email', displayName:'Refered Email id'},
-	{field:'rf_on_phone', displayName:'Refered Phone'},
-	{field:'rf_comment', displayName:'Description'}
-	];
-	$scope.allUsers = resp.data.refferalContacts;
+			$scope.coldefs=[{field: 'rf_name', displayName: 'Client Name'},
+			{field:'rf_email', width:200,displayName:'Client Email id'},
+			{field:'rf_phone', displayName:'Phone Number'},
+			{field:'rf_on_name', displayName:'Refered Name'},
+			{field:'rf_on_email', displayName:'Refered Email id'},
+			{field:'rf_on_phone', displayName:'Refered Phone'},
+			{field:'rf_comment', displayName:'Description'}
+			];
+			$scope.allUsers = resp.data.refferalContacts;
 			commonService.stopSpinner();
 		});
-    };
+	};
 	$scope.AlreadyAssigned = true;
 	$scope.coldefs=[{field: 'user_name', displayName: 'Client Name'},
 	{field:'email', width:200,displayName:'Email id',cellTemplate: '<div  ng-click="foo(row)" ng-bind="row.getProperty(col.field)"></div>'},
@@ -43,7 +43,7 @@ angular.module("myapp").controller("admin",['$scope','$rootScope','$state','$uib
 	}
 	$scope.$watch('searchColText.search',function(val){
 		
-$scope.searchColText.search = val;
+		$scope.searchColText.search = val;
 	},true);
 	$scope.SearchCategory = function(){
 		$scope.sortedList=[];
@@ -51,13 +51,24 @@ $scope.searchColText.search = val;
 		angular.forEach($scope.orgData,function(item,i){
 			//console.info(item,$scope.selectedCol);
 			if(item[$scope.selectedCol]!=null){
-				
-				if(item[$scope.selectedCol].toLowerCase()==$scope.searchColText.search.toLowerCase() ){
-					$scope.sortedList.push($scope.orgData[i]);
-				} 
-				else{
-					count=count+1;
+				if($scope.selectedCol=='ssnitin'){
+                   if(item[$scope.selectedCol].toLowerCase().indexOf($scope.searchColText.search.toLowerCase())>-1 ){
+						$scope.sortedList.push($scope.orgData[i]);
+					} 
+					else{
+						count=count+1;
+					}
 				}
+				else{
+					if(item[$scope.selectedCol].toLowerCase()==$scope.searchColText.search.toLowerCase() ){
+						$scope.sortedList.push($scope.orgData[i]);
+					} 
+					else{
+						count=count+1;
+					}
+				}
+				
+				
 			}
 
 
@@ -66,7 +77,7 @@ $scope.searchColText.search = val;
 		if(count==$scope.orgData.length)
 			$scope.allUsers=$scope.orgData;
 		else
-		$scope.allUsers=$scope.sortedList;
+			$scope.allUsers=$scope.sortedList;
 	}
 
 	$scope.gridOptions = { 
@@ -207,7 +218,13 @@ $scope.getCurrentInfo = function(index){
 				commonService.getData('GET','taxpayer-page/'+$scope.user_id).then(function(resp){
 					
 					$scope.PayerInfo= resp.data.data;
-					$scope.PayerInfo.ps_state=$scope.states[Number($scope.PayerInfo.ps_state)];
+					angular.forEach($scope.states,function(val,key){
+						if(val.id==Number($scope.PayerInfo.ps_state)){
+							$scope.PayerInfo.ps_state=val;	
+						}
+
+
+					});
 					
 					if($scope.PayerInfo.dob!=null&&$scope.PayerInfo.dob!=''){
 						var x= $scope.PayerInfo.dob.split('-');
@@ -251,6 +268,16 @@ $scope.getCurrentInfo = function(index){
 					$scope.file_path=resp.data.file_path;
 					$scope.uploads=resp.data.data;
 					commonService.stopSpinner();
+				});
+			}
+			else if(index==4){
+				commonService.getData('GET','get-user-synopsy/'+$scope.user_id).then(function(resp){
+
+					$scope.synopsys_file=resp.data.data;
+					$scope.file_path= resp.data.file_path;
+
+
+
 				});
 			}
 			else if(index==5){
@@ -309,7 +336,7 @@ $scope.user_details_tabs =[
 }
 
 $scope.getComments = function(){
- commonService.getData('GET','comments-list/'+$scope.user_id).then(function(resp){
+	commonService.getData('GET','comments-list/'+$scope.user_id).then(function(resp){
 		$scope.TotalComments = resp.data.data;
 		commonService.stopSpinner();
 	});
@@ -318,16 +345,16 @@ $scope.getComments = function(){
 $scope.updateStatus = function(){
 	commonService.getData('PUT','update-process/'+$scope.user_id,
 		{ps_state:$scope.selectedState,comment:$scope.userstatus.comment}).then(function(resp){
-		$state.reload();
+			$state.reload();
 
-		commonService.stopSpinner();
-	});
-}
+			commonService.stopSpinner();
+		});
+	}
 
-$scope.inquires = function(e){
-	e.preventDefault();
-	commonService.getData('GET','get-all-reach').then(function(resp){
-		$scope.userSelected = false;
+	$scope.inquires = function(e){
+		e.preventDefault();
+		commonService.getData('GET','get-all-reach').then(function(resp){
+			$scope.userSelected = false;
                    //console.log(resp);                   
                    commonService.stopSpinner();
                    $scope.allUsers=resp.data.allContacts;
@@ -340,5 +367,5 @@ $scope.inquires = function(e){
 
 
                });
-}
+	}
 }]);

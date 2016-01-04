@@ -1,14 +1,13 @@
 
 angular.module("myapp").controller("spouseController", ['$scope','$rootScope','$state','$stateParams','$uibModal','commonService',function($scope,$rootScope,$state,$stateParams,$uibModal,commonService) {
- $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
-
-$scope.format = $scope.formats[0];
+  $scope.formats = ['dd-MMMM-yyyy', 'MM/dd/yyyy', 'dd.MM.yyyy', 'shortDate'];
+$scope.format = $scope.formats[1];
 $scope.status = {
   opened: false
 };
 $scope.maxDate = new Date(2020, 5, 22);
 $scope.dateOptions = {
-  formatYear: 'yy',
+  formatYear: 'yyyy',
   startingDay: 1
 };
 $scope.open = function($event) {
@@ -52,7 +51,11 @@ function getSpouseInfo(){
 
 });
 }
-$scope.updatespouse = function(){
+$scope.updatespouse = function(spouseForm){
+   if(spouseForm.$invalid){
+    alert('Please Fill the Form');
+      return false;
+    }
   //console.info($scope.spouse,"spouse Details");
   if($scope.spouse.dob)
 var date_to_send=$scope.spouse.dob.getDate().toString()+"-"+($scope.spouse.dob.getMonth()+1).toString()+"-"+$scope.spouse.dob.getFullYear().toString();
@@ -65,7 +68,7 @@ var date_to_send=$scope.spouse.dob.getDate().toString()+"-"+($scope.spouse.dob.g
    //console.log("Spouse updated:::",resp);
    alert("You Info has been Updated!");
    getSpouseInfo();
-   $scope.editMode = true;
+   //$scope.editMode = true;
    commonService.stopSpinner();
  });
 }
