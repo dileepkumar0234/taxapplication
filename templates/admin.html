@@ -65,6 +65,30 @@
        <li>{{PayerInfo.last_name | uppercase }}</li>
    </ul>
    <ul class="adminGroup col-md-6">
+       <li>SSN </li>
+       <li>{{PayerInfo.ssnitin | uppercase}}</li>
+   </ul>
+   <ul class="adminGroup col-md-6">
+       <li>Occupation</li>
+       <li>{{PayerInfo.occupation | uppercase}}</li>
+   </ul>
+   <ul class="adminGroup col-md-6">
+       <li>Date Of Birth</li>
+       <li>{{PayerInfo.dob | uppercase}}</li>
+   </ul>
+    <ul class="adminGroup col-md-6">
+       <li>Filing Status </li>
+       <li>{{PayerInfo.filling_status | uppercase}}</li>
+   </ul>
+   <ul ng-if="PayerInfo.dependent=='2'" class="adminGroup col-md-6">
+       <li>Dependents: </li>
+       <li>YES</li>
+   </ul>
+   <ul ng-if="PayerInfo.dependent=='1'" class="adminGroup col-md-6">
+       <li>Dependents: </li>
+       <li>NO</li>
+   </ul>
+   <ul class="adminGroup col-md-6">
        <li>EMail</li>
        <li>{{PayerInfo.email | uppercase }}</li>
    </ul>
@@ -72,15 +96,44 @@
        <li>Mobile</li>
        <li>{{PayerInfo.phone | uppercase }}</li>
    </ul>
-   <ul class="adminGroup col-md-6">
-       <li>Address</li>
-       <li>{{PayerInfo.address | uppercase }}</li>
-   </ul>
+ 
    
    <ul class="adminGroup col-md-6">
        <li>Alternative Number</li>
        <li>{{PayerInfo.alterphone | uppercase }}</li>
    </ul>
+     <ul class="adminGroup col-md-6">
+       <li>Address</li>
+      <!--  <li>{{PayerInfo.address | uppercase }}</li> -->
+       <li>{{PayerInfo.apt_no | uppercase }}</li>
+   </ul>
+   <ul class="adminGroup col-md-6">
+       <li>City</li>
+     
+       <li>{{PayerInfo.city_name | uppercase }}</li>
+   </ul>
+   <ul class="adminGroup col-md-6">
+       <li>State</li>
+     
+       <li>{{PayerInfo.state_name | uppercase }}</li>
+   </ul>
+   <ul class="adminGroup col-md-6">
+       <li>Country</li>
+      
+       <li>{{PayerInfo.country_name | uppercase }}</li>
+   </ul>
+    <ul class="adminGroup col-md-6">
+       <li>ZIP</li>
+      
+       <li>{{PayerInfo.zip | uppercase }}</li>
+   </ul>
+   <!--tax_id_type  -->
+<ul class="adminGroup col-md-6">
+       <li>Health Insurance:</li>
+      
+       <li>{{PayerInfo.tax_id_type | uppercase }}</li>
+   </ul>
+
    <ul class="adminGroup col-md-6">
        <li>Client Location</li>
        <li>{{PayerInfo.c_location | uppercase }}</li>
@@ -89,22 +142,9 @@
        <li>Current Employer</li>
        <li>{{PayerInfo.current_emp | uppercase }}</li>
    </ul>
-   <ul class="adminGroup col-md-6">
-       <li>Date Of Birth</li>
-       <li>{{PayerInfo.dob | uppercase}}</li>
-   </ul>
-   <ul class="adminGroup col-md-6">
-       <li>Occupation</li>
-       <li>{{PayerInfo.occupation | uppercase}}</li>
-   </ul>
-   <ul class="adminGroup col-md-6">
-       <li>SSN </li>
-       <li>{{PayerInfo.ssnitin | uppercase}}</li>
-   </ul>
-   <ul class="adminGroup col-md-6">
-       <li>Filing Status </li>
-       <li>{{PayerInfo.filling_status | uppercase}}</li>
-   </ul>
+   
+   
+  
 </div>
 
 <div class="col-md-12 taxpayer" style="overflow:scroll;height:450px;" ng-if="user_details_tabs[1].show">
@@ -119,18 +159,28 @@
           <li>Last Name</li>
           <li>{{SpouseInfo.last_name | uppercase }}</li>
       </ul>
-     <ul class="adminGroup col-md-6">
-          <li>Mobile</li>
-          <li>{{SpouseInfo.phone | uppercase }}</li>
+      <ul class="adminGroup col-md-6">
+          <li>SSN</li>
+          <li>{{SpouseInfo.ssn | uppercase }}</li>
       </ul>
-     <ul class="adminGroup col-md-6">
+      <ul class="adminGroup col-md-6">
        <li>Occupation</li>
        <li>{{SpouseInfo.occupation | uppercase }}</li>
    </ul>
+     
+     
   <ul class="adminGroup col-md-6">
        <li>Date Of Birth</li>
        <li>{{SpouseInfo.dob | uppercase }}</li>
    </ul>
+   <ul class="adminGroup col-md-6">
+          <li>Visa Type</li>
+          <li>{{SpouseInfo.visa_type | uppercase }}</li>
+      </ul>
+     <!--  <ul class="adminGroup col-md-6">
+          <li>Mobile</li>
+          <li>{{SpouseInfo.phone | uppercase }}</li>
+      </ul> -->
 </div>
 
 <div class="col-md-6" ng-repeat="dependantInfo in dependants">
@@ -144,15 +194,20 @@
       <li>{{dependantInfo.last_name | uppercase }}</li>
   </ul>
   <ul class="adminGroup col-md-12">
+      <li>SSN</li>
+      <li>{{dependantInfo.address | uppercase }}</li>
+  </ul>
+  <ul class="adminGroup col-md-12">
+      <li>DOB</li>
+      <li>{{dependantInfo.dob | uppercase }}</li>
+  </ul>
+  <ul class="adminGroup col-md-12">
       <li>Relationship</li>
       <li>{{dependantInfo.occupation | uppercase }}</li>
   </ul>
-  <ul class="adminGroup col-md-12">
-   <li>Address</li>
-   <li>{{dependantInfo.address | uppercase }}</li>
-</ul>
+  
 <ul class="adminGroup col-md-12">
-   <li>E-Mail</li>
+   <li>Visa Type:</li>
    <li>{{dependantInfo.mail_id | uppercase}}</li>
 </ul>
 </div>
@@ -211,6 +266,18 @@
     
     <li class="uploadAdmin"><button  type="submit"  id="uploadsynopsys" class="btn btn-primary" id="email">UPLOAD</li>
 </ul>
+
+<h2 style="color:black;">Previous Tax Summary:</h2>
+
+    <div  class="col-md-12 taxpayer" >
+  <ul class="adminGroup col-md-12" ng-repeat="item in synopsys_file">
+   <li>{{item.synopsys_title}}</li>
+   <li><a  download href="ustaxfilerapis{{file_path}}/{{item.synopsys_file}}">View Tax Summary</a></li>
+   
+</ul>
+
+
+</div>
 </div>
 
 <div class="col-md-12 taxpayer" style="overflow:scroll;height:450px;" ng-if="user_details_tabs[5].show">
@@ -240,7 +307,7 @@
   <li><h2>Comments:</h2></li>
   </ul>
   <ul class="adminGroup col-md-12" ng-repeat="item in TotalComments">
-   <li>{{item.first_name}}</li>
+   <li>{{item.first_name}} @ {{item.cmt_created_at}}</li>
   <li>{{item.comment}}</li>
   </ul>
 </div>

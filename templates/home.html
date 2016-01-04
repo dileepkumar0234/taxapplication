@@ -96,15 +96,15 @@
                             <input name="" ng-model="contactform.c_name" placeholder="Your Name" title="Your name"
                                    type="text"/></div>
                         <div class="s-12">
-                            <input name="" ng-model="contactform.c_email" placeholder="Your E-mail" title="Your e-mail"
+                            <input name="email" ng-class="{'error':contactus.email.$invalid}" validate-form ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/" ng-model="contactform.c_email" placeholder="Your E-mail" title="Your e-mail"
                                    type="text"/></div>
                         <div class="s-12">
-                            <input name="" ng-model="contactform.c_phone" placeholder="Your Contact Number"
+                            <input name="phone" ng-class="{'error':contactus.phone.$invalid}" validate-form ng-pattern="/^[1-9]{1}[0-9]{9}$/" ng-model="contactform.c_phone" placeholder="Your Contact Number"
                                    title="Your Contact Number" type="text"/></div>
                         <div class="s-12"><textarea ng-model="contactform.c_message" placeholder="Your Message" name=""
                                                     rows="5"></textarea></div>
                         <div class="s-12 m-12 l-4">
-                            <button ng-click="contactusService(contactform)" class="color-btn" type="submit">Submit
+                            <button ng-click="contactusService(contactus,contactform)" class="color-btn" type="submit">Submit
                             </button>
                         </div>
                     </form>
