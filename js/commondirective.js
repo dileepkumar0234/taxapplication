@@ -223,3 +223,45 @@ return {
     }
 
 });
+
+appinstal.directive('ssnFormat', function($document,$timeout,commonService,$state) {
+return {
+    restrict : 'A',
+    require:'ngModel',
+    scope:{
+       ngModel:'=' 
+    },
+    link: function (scope,element,attrs,ctrl) {
+      ctrl.$parsers.push(function(value,old) {
+        console.log(value,value.length,old);
+        if(value.length==9){
+
+var indices = [];
+for(var i=0; i<value.length;i++) {
+    if (value[i] === "-") indices.push(i);
+}
+console.log(indices.length);
+if(indices.length==0){
+    var x = value.slice(0,3);
+          var y=value.slice(3,5);
+          var z= value.slice(5,9);
+          console.log(x+'-'+y+'-'+z,scope,ctrl);
+          scope.ngModel = x+'-'+y+'-'+z;
+          if(!scope.$$phase)
+            scope.$apply();
+        //  return x+'-'+y+'-'+z;
+}
+        
+        }
+        else{
+          console.log('hi');
+scope.ngModel=value.replace(/-/g,'');
+        }
+       });
+    }
+    }
+
+});
+
+
+
