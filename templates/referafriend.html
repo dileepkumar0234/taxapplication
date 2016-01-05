@@ -7,26 +7,26 @@
     <form class="signup refertxt" name="friendReference">
         <div class="row">
             <div class="col-xs-6">
-                <input type="text" name="fname" ng-model="userData.first_name"
+                <input type="text" disabled name="fname" ng-model="userData.first_name"
                                          placeholder="Your Name ">
             </div>
 
-            <div class="col-xs-6"><input type="text" ng-model="userData.email" placeholder="Your Email Id">
+            <div class="col-xs-6"><input  disabled type="text" ng-model="userData.email" placeholder="Your Email Id">
             </div>
 
         </div>
 
         <div class="row">
-            <div class="col-xs-12"><input type="text" ng-model="userData.phone" placeholder="Your Telephone number">
+            <div class="col-xs-12"><input disabled type="text" ng-model="userData.phone" placeholder="Your Telephone number">
             </div>
 
             <div class="col-xs-12"><input type="text" ng-model="friend.rf_name" placeholder="Name of your friend">
             </div>
 
 
-            <div class="col-xs-12"><input type="text" ng-model="friend.rf_email" placeholder="Friend's Email id">
+            <div class="col-xs-12"><input type="text" name="email" validate-form ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/" ng-class="{'error':friendReference.email.$invalid}" ng-model="friend.rf_email" placeholder="Friend's Email id">
             </div>
-            <div class="col-xs-12"><input type="text" ng-model="friend.rf_phone"
+            <div class="col-xs-12"><input type="text" name="phone" validate-form ng-pattern="/^[1-9]{1}[0-9]{9}$/" ng-class="{'error':friendReference.phone.$invalid}" ng-model="friend.rf_phone"
                                           placeholder="Friend's Telephone Number">
             </div>
             <div class="col-xs-12"><textarea type="text" ng-model="friend.rf_comment"
@@ -35,7 +35,7 @@
             </div>
 
 
-            <div class="col-xs-12"><input type="submit" ng-click="referRegister()" class="submit">
+            <div class="col-xs-12"><input type="submit" ng-click="referRegister(friendReference)" class="submit">
             </div>
         </div>
     </form>
