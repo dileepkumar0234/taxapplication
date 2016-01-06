@@ -223,8 +223,50 @@ return {
     }
 
 });
+appinstal.directive('ssnFormat', function() {
 
-appinstal.directive('ssnFormat', function($document,$timeout,commonService,$state) {
+return {
+    require: 'ngModel',
+    link: function (scope, elem, attr, ctrl) {
+    var SSN_REGEXP = /^(?!000)(?!666)(?!9)\d{3}[- ]?(?!00)\d{2}[- ]?(?!0000)\d{4}$/;
+    var ssnPattern = {
+        3: '-',
+        5: '-'
+    };
+        var formatSSN = function () {
+            var sTempString = ctrl.$viewValue;
+            sTempString = sTempString.replace(/\-/g, '');
+            var numbers = sTempString;
+            var temp = '';
+            for (var i = 0; i < numbers.length; i++) {
+                temp += (ssnPattern[i] || '') + numbers[i];
+            }
+            ctrl.$viewValue = temp;
+
+            // this is what was missing 
+            scope.$apply(function(){
+                 elem.val(ctrl.$viewValue);
+            });
+        };
+        ctrl.$parsers.unshift(function (viewValue) {
+            // test and set the validity after update.
+            var valid = SSN_REGEXP.test(viewValue);
+            ctrl.$setValidity('ssnValid', valid);
+            return viewValue;
+        });
+        // This runs when we update the text field
+        ctrl.$parsers.push(function (viewValue) {
+
+            var valid = SSN_REGEXP.test(viewValue);
+            ctrl.$setValidity('ssnValid', valid);
+            return viewValue;
+        });
+        elem.bind('keyup', formatSSN);
+
+       }
+    };
+});
+/*appinstal.directive('ssnFormat', function($document,$timeout,commonService,$state) {
 return {
     restrict : 'A',
     require:'ngModel',
@@ -261,7 +303,7 @@ scope.ngModel=value.replace(/-/g,'');
     }
     }
 
-});
+});*/
 
 
 
