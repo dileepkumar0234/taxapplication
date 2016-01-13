@@ -1256,6 +1256,8 @@ img.logo{
     margin:0;
     padding:0;
     list-style:none;
+        position: relative;
+    z-index: 9999999999;
 }
 .header1 ul li{
     float:right;
@@ -1584,6 +1586,17 @@ ul.servicesMenu {
     width: 200px;
 
 }
+
+.nav2 ul li ul li ul{
+    float: left;
+    width: 100%;
+    clear: left;
+    position: initial;
+}
+
+.nav2 ul li ul li ul li a{
+    padding-left:25px !important;
+}
 .nav2 ul li ul li {
 float: left;
     width: 100%;
@@ -1621,9 +1634,103 @@ float: left;
     position: absolute;
     transform: translate(-50%, -50%);
 }
-.innerNav{
+/*.innerNav{
     display: none!important;
 }
 .innerNav1{
     display: none!important;;
+}*/
+.modal-open .modal .modal-dialog{
+    margin: 18% auto;
+    width:630px;
+}
+
+.modal-dialog .modal-body{
+padding: 32px;
+}
+.modal-content .modal-title{
+    text-align: center;
+}
+.modal-content .modal-title span {
+    float: left;
+    width: 100%;
+}
+.mainpopCEstimate{
+    list-style: none;
+}
+.flog_num {
+    color:#16b1df;
+}
+.officeTimmings{
+    float: left;
+    width: 30%;
+}
+.officeTimmings p{
+    top:inherit !important;
+    margin: 0px !important;
+}
+.officeTimmings span{
+    color:#16b1df;
+}
+
+.cust_pop{
+    position: fixed;
+    right: -99px;
+    z-index: 9999999;
+    top: 152px;
+    transition: all 1s ease-in-out;
+    cursor: pointer;
+}
+
+.cust_pop:hover{
+    right:0px;
+    transition: all 1s ease-in-out;
+}
+.cust{
+    border-radius: 100%;
+    float: left;
+
+    padding: 10px;
+}
+
+.cust_pop a{
+    float: left;
+}
+
+.cust_pop >div{
+    background-color: #fff;
+    margin-top: 17px;
+    padding: 5px;
+}
+.cust_pop >div a{
+    float: left;
+    clear: left;
+    text-decoration: none;
+    padding: 5px;
+    margin-top: 5px;
+    padding: 0;
+}
+
+.nav_drop {
+    float: right;
+    clear: right;
+}
+.nav_drop li{
+        float: left !important;
+    clear: left;
+    margin: 0px !important;
+    width: 100%
+}
+
+.nav_drop li a{
+    float: left !important;
+     width: 100%;
+}
+.subservice{
+    display: none;
+}
+.Contacts{
+        width: 40%;
+    float: left;
+
 }

@@ -221,7 +221,12 @@ ul.chevron .submenu > a:after, ul.chevron .sub-submenu > a:after,ul.chevron .asi
 }
 .margin {margin:0 -0.625em;}
 .line {clear:left;}
-.line .line {padding:0;}
+.line .line {
+    padding: 0;
+    position: absolute;
+    bottom: -185px;
+    left: 33%;
+}
 .hide-l {display:none;}
 .box {
   background:none repeat scroll 0 0 #fff;

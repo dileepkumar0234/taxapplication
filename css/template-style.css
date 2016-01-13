@@ -38,7 +38,7 @@ a.color-btn:hover, form.customform button.color-btn:hover {
 	 float:left;
 	 width:100%;
 	padding:  0;
-	height:40px;
+	padding: 8px 0px;
 	color: #fff;
 	position: fixed;
 	z-index: 9999;
@@ -75,7 +75,7 @@ a.color-btn:hover, form.customform button.color-btn:hover {
 }
 .right_btns{
 	float: right;
-	margin-right: 20px;
+	margin-right: 10px;
 }
 
 #topbar a:hover, #topbar a:hover i{
@@ -135,10 +135,10 @@ p.logo strong {
 }
 #carousel .text {
 	position: absolute;
-	bottom: 30px;
+    top: 243px;
 	z-index: 10;
 	/*left:30px;*/
-	left:43%;
+    left: 28%;
 }
 .item {
 	overflow: hidden;

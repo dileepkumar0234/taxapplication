@@ -16,6 +16,8 @@ header{
 	background:#00283a;
 }
 footer{
+	    position: absolute;
+    bottom: 0;
 		width:100%;
 	float:left;
 	margin:0 0 0px 0;
