@@ -81,7 +81,7 @@ class RegistrationApiController extends AbstractRestfulController
 				document and give us the confirmation.</td></tr>';
 				$msg .='<tr><td>&nbsp;&nbsp;&nbsp;&nbsp; After confirmation your return will be E-filed or Paper filed accordingly.</td></tr>';
 				$msg .='<tr><td>&nbsp;</td></tr>';
-				$msg .='<tr><td>Please do write to us at Hello@umpiretaxsolutions.com or please feel free to call us at 620-620-7935.</td></tr>';
+				$msg .='<tr><td>Please do write to us at Hello@umpiretaxsolutions.com or please feel free to call us at 828-548-6793.</td></tr>';
 				$msg .='<tr><td>Wishing you a very Triumphant New Year 2016, we sincerely thank you again for this opportunity given
 				to us to serve for tax planning & filing needs.</td></tr>';
 				$msg .='<tr><td>We wish to have a long relationship.</td></tr>';
@@ -93,11 +93,10 @@ class RegistrationApiController extends AbstractRestfulController
 				$msg .='</tr>'; 
 				$msg .='</table>';
 				$msg .='<br/><br/>';
-				$msg .='Best Regards,<br/>';
+				$msg .='Warm Regards,<br/>';
 				$msg .='Umpire Tax solutions, LLC <br/>';
-				$msg .='USA: 620-680-1040 <br/>';
-				$msg .='INDIA: 720-754-3882<br/>';
-				$msg .='EMAIL: Hello@umpiretaxsolutions.com <br/>';
+				$msg .='USA: 828-548-6793 <br/>';
+				$msg .='INDIA: +91-720-754-3882<br/>';
 				$msg .='</body>';
 				$subj ='Welcome, To Umpire Tax solutions.';
 				mail($emailId, $subj, $msg, $headers);
