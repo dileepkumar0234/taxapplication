@@ -1,9 +1,151 @@
+
+<style type="text/css">
+
+
+    #ut_footercontainer {
+        float: left;
+        width: auto;
+    }
+    .ut-footer-spliter-leftside-ul {
+        display: block;
+        clear: both;
+        float: left;
+        padding: 0 30px 0px 0px;
+        border-right: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    .ut-footer-spliter-rightside-ul {
+        display: block;
+        float: left;
+        padding: 0 0px 0px 0px;
+        margin-left: 30px;
+        width: 100px;
+    }
+    .ut-footer-spliter-leftside-ul li,.ut-footer-spliter-rightside-ul li {
+        margin: 0px 0px 10px 0px;
+    }
+    .ut-footer-bg{
+        height: auto;
+        overflow: hidden;
+        clear: both;
+    }
+    .ut-footer-bg ul{
+        list-style: none;
+    }
+    .ut-footer-bg a {
+        color: #999;
+        text-decoration: underline;
+    }
+    .ut-footer-bg .ut-footer-services-div {
+        float: left;
+        font-family: Roboto,Arial;
+    }
+    .ut-footer-servicelink-div-services {
+        float: left;
+        margin: 0px 25px 0px 0px;
+    }
+    .ut-footer-servicelink-div-services li.first {
+        margin: 0px 14px 14px 0px;
+        font-size: 14px;
+    }
+    .first {
+        border-top: dotted 0px #ccc;
+    }
+    .ut-footer-bg .ut-footer-servicelink-div-services  li {
+        margin: 0px 14px 10px 0px;
+    }
+    .ut-footer-payment-container {
+        float: right;
+    }
+    .ut-footer-payment-heading {
+        width: 365px;
+        float: left;
+        clear: both;
+        color: #fff;
+        font-size: 14px;
+    }
+    .ut-footer-topcontent-div {
+        float: left;
+        width: 100%;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    .ut-footer-copyrights {
+        clear: both;
+        float: left;
+        margin: 0 auto;
+        width: 100%;
+        height: 40px;
+        margin-top: 10px;
+    }
+    .ut-footer-copyrights .ut-footer-copy-ul {
+        color: #ccc;
+        float: left;
+        list-style: none;
+        padding: 0;
+    }
+    .ut-footer-copyrights .ut-footer-copy-policy {
+        float: right;
+        list-style: none;
+
+    }
+    .ut-footer-copyrights .ut-footer-copy-policy li {
+        color: #ccc;
+        float: left;
+        padding: 0px 15px 0px 15px;
+        border-right: solid 1px rgba(255, 255, 255, 0.2);
+    }
+    .ut-footer-copyrights .ut-footer-copy-policy li:last-child {
+        border: 0px;
+        padding-right: 0px;
+    }
+</style>
+
 <footer class="col-md-12" ng-if="userbody!='userbody'">
-         <div class="line">
-           <p style="text-align:center;">
-             <a class="pull-left" href="templates/privacy.html" target="_blank">Privacy Policy</a>
-             Copyright 2015, UMPIRE TAX SOLUTIONS,LLC
-             <a class="pull-right" href="templates/disclaimer.html" target="_blank">Disclaimer Agreement</a>
-           </p>
-         </div>
+    <div class="container">
+    <div class="ut-footer-bg">
+        <div class="ut-footer-topcontent-div">
+            <div id="ut_footercontainer">
+                <ul class="ut-footer-spliter-leftside-ul">
+                    <li><a ui-sref="main.home">Home</a></li>
+                    <li><a ui-sref="main.firmProfile">Firm Profile</a></li>
+                    <li><a ui-sref="main.tax_center">Tax Center</a></li>
+                </ul>
+                <ul class="ut-footer-spliter-rightside-ul">
+                    <li><a ui-sref="main.carriers" >Carrers</a></li>
+                    <li><a ui-sref="main.contactUs">ContactUs</a></li>
+                </ul>
+            </div>
+
+            <div class="ut-footer-services-div">
+                <ul class="ut-footer-servicelink-div-services">
+                    <li class="first"><a ui-sref="main.Service">Our Services</a></li>
+                   <!--  <li><a ui-sref="main.Service">US Tax Services</a></li>
+                    <li><a ui-sref="main.Service">Indian Tax Services</a></li> -->
+                    <!-- <li><a href="#"> 1040/A/EZ </a></li>
+                    <li><a href="#">1040-NR/EZ</a></li>
+                    <li><a href="#">1040X</a></li>
+                    <li><a href="#">W-7/ITIN</a></li>
+                    <li><a href="#"> W-4 </a></li>
+                    <li><a href="#">FBAR & FFA </a></li>-->
+                </ul>
+            </div>
+
+
+            <div class="ut-footer-payment-container">
+                <div class="ut-footer-payment-heading"><img src="images/clients.jpg"></div>
+            </div>
+        </div>
+
+
+        <div class="ut-footer-copyrights">
+            <div class="ut-footer-copyrights-elements">
+                <ul class="ut-footer-copy-ul">
+                    <li>Copyright 2015, UMPIRE TAX SOLUTIONS,LLC.</li></ul>
+                <ul class="ut-footer-copy-policy" style="position:relative;">
+                    <li><a href="templates/paymentrefund.html" target="_blank">Payment T&C Refund Policy</a></li>
+                    <li><a href="templates/privacy.html" target="_blank">Privacy Policy</a></li>
+                    <li><a href="templates/terms.html" target="_blank">Terms &amp; Conditions</a></li>
+                </ul></div>
+        </div>
+    </div>
+    </div>
        </footer>

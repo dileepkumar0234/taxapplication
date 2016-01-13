@@ -1,4 +1,31 @@
 angular.module("myapp").controller("UmprireTaxController",['$scope','$rootScope','$state','$uibModal','commonService','$timeout','$window',function($scope,$rootScope,$state,$uibModal,commonService,$timeout,$window) {
+  $scope.oneAtATime = true;
+
+
+  $scope.status = {
+    isFirstOpen: false,
+    isFirstDisabled: false
+  };
+
+   $scope.mainmodalInstance = $uibModal.open({
+     // animation: $scope.animationsEnabled,
+      templateUrl: 'myModalContent.html',
+      scope:$scope,
+      windowClass:'mainpop'
+     // controller: 'ModalInstanceCtrl',
+      //size: size,
+      
+    });
+
+    $scope.ok = function () {
+    $scope.mainmodalInstance.close();
+  };
+
+  $scope.cancel = function () {
+    $scope.mainmodalInstance.dismiss('cancel');
+  };
+
+
 
   $timeout(function(){
     $rootScope.shownow=true;

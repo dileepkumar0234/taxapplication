@@ -2,7 +2,8 @@
     
 <h1>View Tax Summary</h1>
     <div  class="col-md-12 taxpayer" >
-  <ul class="adminGroup col-md-12" ng-repeat="item in synopsys_file">
+    <h1 ng-if="synopsys_file.length==0">No Records Found!</h1>
+  <ul ng-if="synopsys_file.length>0" class="adminGroup col-md-12" ng-repeat="item in synopsys_file">
    <li>{{item.synopsys_title}}</li>
    <li ng-if="yes"><a  download href="ustaxfilerapis{{file_path}}/{{item.synopsys_file}}">View Tax Summary</a></li>
    

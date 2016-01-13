@@ -62,7 +62,8 @@ $uibModalInstance.dismiss('close');
 }
 
   $scope.userlogin=function(loginuser){
-   
+
+     
     $scope.invalidCredentials = false;
     commonService.getData('POST','login',loginuser).then(function(resp){
     

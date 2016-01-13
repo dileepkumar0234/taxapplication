@@ -3,10 +3,10 @@
 </div>
 <div class="container">
   <div class="row  animated bounceInLeft">
-    <h3 style="text-align:center;">Individual Services</h3>
+    <h3 style="text-align:center;" id="inServices">Individual Services</h3>
     <p style="text-align:center;">Our firm provides outstanding services to our clients because of our dedication to the four underlying principles of professionalism, responsiveness, quality and commitment.</p>
     <p class="services_btncls">
-     <a  href="#1" ng-click="scrollIt($event,'1')" class="btn btn-primary" > 1040/A/EZ </a> 
+     <a  href="#1" ng-click="scrollIt($event,'1')" class="btn btn-primary" > 1040/A/EZ </a>
      <a href="#2" ng-click="scrollIt($event,'2')" class="btn btn-success">1040-NR/EZ</a>
      <a href="#3" ng-click="scrollIt($event,'3')" class="btn btn-info">1040X</a> 
      <a  href="#4" ng-click="scrollIt($event,'4')" class="btn btn-warning">W-7/ITIN</a>
@@ -59,7 +59,7 @@
         <li> <i class="fa fa-check-square-o" style="color:#5bc0de;"></i> <strong> How you can benefit</strong></li>
         <li> <i class="fa fa-check-square-o" style="color:#5bc0de;"></i> <strong> Information you need</strong></li>
         <li> <i class="fa fa-check-square-o" style="color:#5bc0de;"></i> <strong> Time limitations for filing</strong></li>
-         <p>For More Info You Can <a href="https://www.irs.gov/Help-&-Resources/Tools-&-FAQs/FAQs-for-Individuals/Frequently-Asked-Tax-Questions-&-Answers/IRS-Procedures/Amended-Returns-&-Form-1040X/Amended-Returns-&-Form-1040X">CLICK HERE</a> </p>
+         <p>For More Info You Can <a href="https://www.irs.gov/Help-&-Resources/Tools-&-FAQs/FAQs-for-Individuals/Frequently-Asked-Tax-Questions-&-Answers/IRS-Procedures/Amended-Returns-&-Form-1040X/Amended-Returns-&-Form-1040X" target="_blank">CLICK HERE</a> </p>
   
       </ul>
     </div>
@@ -108,18 +108,23 @@
       </ul>
     </div>
 
-    <h3 style="text-align:center;">Business Services</h3>
-    <h4 class="btn-info  services_hedd">
-      <div class="container">BUSINESS </div>
-    </h4>
+    <h3 style="text-align:center;" id="bServices">Business Services</h3>
+    <!--<h4 class="btn-info  services_hedd">-->
+      <!--<div class="container">BUSINESS </div>-->
+    <!--</h4>-->
     <div class="container">
-      <ul class="about_list">
-        <li> <i class="fa fa-check-square-o" style="color:#5bc0de;"></i> CORPORATE</li>
-        <li> <i class="fa fa-check-square-o" style="color:#5bc0de;"></i> PARTNERSHIP</li>
-        <li> <i class="fa fa-check-square-o" style="color:#5bc0de;"></i> OTHER â€“ EIN ETCâ€¦</li>
-      </ul>
+      <!--<ul class="about_list">-->
+        <!--<li> <i class="fa fa-check-square-o" style="color:#5bc0de;"></i> CORPORATE</li>-->
+        <!--<li> <i class="fa fa-check-square-o" style="color:#5bc0de;"></i> PARTNERSHIP</li>-->
+        <!--<li> <i class="fa fa-check-square-o" style="color:#5bc0de;"></i> OTHER â€“ EIN ETCâ€¦</li>-->
+      <!--</ul>-->
+        <p class="services_btncls">
+        <a href="#B1" ng-click="scrollIt($event,'B1')" class="btn btn-primary" > CORPORATE </a>
+        <a href="#B2" ng-click="scrollIt($event,'B2')" class="btn btn-success">PARTNERSHIP</a>
+        <a href="#B3" ng-click="scrollIt($event,'B3')" class="btn btn-info">EIN & OTHER SERVICES</a>
+        </p>
     </div>
-    <h4 class="btn-primary  services_hedd">
+    <h4 class="btn-primary  services_hedd" id="B1">
       <div class="container">Corporate</div>
     </h4>
     <div class="container">
@@ -134,7 +139,7 @@
         </li>
       </ul>
     </div>
-    <h4 class="btn-success services_hedd">
+    <h4 class="btn-success services_hedd" id="B2">
       <div class="container">Partnership </div>
     </h4>
     <div class="container">
@@ -153,7 +158,13 @@
 
         <div>
             <h3 style="text-align:center;">Indian Services</h3>
-            <h4 class="btn-warning services_hedd">
+            <!--<p class="services_btncls">-->
+                <!--<a href="#i1" ng-click="scrollIt($event,'i1')" class="btn btn-warning" > ADVISORY ON TAXATION </a>-->
+                <!--<a href="#i2" ng-click="scrollIt($event,'i2')" class="btn btn-primary">AUDIT AND CERTIFICATION</a>-->
+                <!--<a href="#i3" ng-click="scrollIt($event,'i3')" class="btn btn-info">SERVICE TAX,VAT & CENTRAL EXCIS</a>-->
+            <!--</p>-->
+
+            <h4 class="btn-warning services_hedd" id="advisoryTax">
                 <div class="container">Advisory on Taxation </div>
             </h4>
             <div class="container">
@@ -240,7 +251,7 @@
 
 
 
-            <h4 class="btn-primary  services_hedd">
+            <h4 class="btn-primary  services_hedd" id="auditTaxation">
                 <div class="container">Audit And Certification</div>
             </h4>
             <div class="container">
@@ -286,7 +297,7 @@ July.</li>
             </div>
 
 
-            <h4 class="btn-info  services_hedd">
+            <h4 class="btn-info  services_hedd" id="others">
                 <div class="container">SERVICE TAX,VAT & CENTRAL EXCISE</div>
             </h4>
             <div class="container">

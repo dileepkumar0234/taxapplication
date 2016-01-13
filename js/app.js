@@ -12,8 +12,8 @@ function(event, toState, toParams, fromState, fromParams){
 
 })
 });
-// var webServiceUrl="http://localhost/taxapplication/trunk/ustaxfilerapis/";
-var webServiceUrl="https://www.umpiretaxsolutions.com/services/";
+ var webServiceUrl="http://localhost/taxapplication/trunk/ustaxfilerapis/";
+//var webServiceUrl="https://www.umpiretaxsolutions.com/services/";
 appinstal.constant('webServiceUrl',webServiceUrl);
 appinstal.config(function($stateProvider, $urlRouterProvider,$ocLazyLoadProvider)
 {
@@ -187,6 +187,11 @@ controller:'scheduleController',
 
     templateUrl:'templates/Summary.html',
   })
+  .state('user.payment', {
+    url: '/payment',
+
+    templateUrl:'templates/payment.html',
+  })
   .state('user.referals', {
     url: '/referals',
   controller:'referalController',
@@ -262,27 +267,46 @@ controller:'scheduleController',
 
 });
 
-appinstal.directive('ngRightClick', function($parse) {
+appinstal.directive('ngRightClick', function($parse,$timeout) {
     return {
         restrict: 'A',
         link: function(scope, element, attrs) {
-        // console.info('hi');
+         console.info('hi');
         element.bind('contextmenu', function(event) {
 
             scope.$apply(function() {
               if(Object.keys(localStorage).indexOf('admin')==-1){
-                
+                 event.preventDefault();
               }
-              //  event.preventDefault();
+              
                 
             });
         });
-          }
+         
+
         }
+      }
 }); 
 
+appinstal.directive('navIt', function($parse,$timeout) {
+return {
+        restrict: 'A',
+        link: function(scope, element, attrs) {
 
- 
+          $timeout(function(){
+             
+element.bind('click',function(){
+   $('.subservice').hide();
+element.next().show();
+});
+},2000)
+        
+     }
+   }
+          
+      
+
+ }); 
 
 
 

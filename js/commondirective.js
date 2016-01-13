@@ -1,9 +1,20 @@
-appinstal.directive('fileChange', function ($http,commonService,webServiceUrl) {
+appinstal.directive('fileChange', function ($http,commonService,webServiceUrl,$timeout) {
 
   var linker = function ($scope, element, attributes) {
    
   
     element.bind('change', function (event) {
+      
+        $scope.uploading.update= true;
+        $scope.$apply();
+      $timeout(function(){
+$scope.uploading.update= false;
+$scope.$apply();
+      },5000)
+      
+      
+
+      
       //console.log(attributes.ngModel);
       var key="hid_"+attributes.ngModel;
       var files = event.target.files[0];

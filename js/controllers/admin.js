@@ -52,7 +52,7 @@ angular.module("myapp").controller("admin",['$scope','$rootScope','$state','$uib
 			//console.info(item,$scope.selectedCol);
 			if(item[$scope.selectedCol]!=null){
 				if($scope.selectedCol=='ssnitin'){
-                   if(item[$scope.selectedCol].toLowerCase().indexOf($scope.searchColText.search.toLowerCase())>-1 ){
+                   if(item[$scope.selectedCol].toLowerCase().indexOf('-'+$scope.searchColText.search.toLowerCase())>-1 ){
 						$scope.sortedList.push($scope.orgData[i]);
 					} 
 					else{
@@ -229,12 +229,12 @@ $scope.getCurrentInfo = function(index){
 					if($scope.PayerInfo.dob!=null&&$scope.PayerInfo.dob!=''){
 						var x= $scope.PayerInfo.dob.split('-');
 						if(x[1].length==1){
-							x[1]="0"+parseInt(x[1]-1)
+							x[1]="0"+parseInt(x[1])
 						}
 						else{
-							x[1]=parseInt(x[1]-1)
+							x[1]=parseInt(x[1])
 						}
-						$scope.PayerInfo.dob=x[0]+"/"+x[1]+"/"+x[2];
+						$scope.PayerInfo.dob=x[1]+"/"+x[0]+"/"+x[2];
 
 					}
 					commonService.stopSpinner();
@@ -246,12 +246,38 @@ $scope.getCurrentInfo = function(index){
 					
 					$scope.SpouseInfo= resp.data.data;
 					commonService.stopSpinner();
+                      if($scope.SpouseInfo.dob!=null&&$scope.SpouseInfo.dob!=''){
+						var x= $scope.SpouseInfo.dob.split('-');
+						if(x[1].length==1){
+							x[1]="0"+parseInt(x[1])
+						}
+						else{
+							x[1]=parseInt(x[1])
+						}
+						$scope.SpouseInfo.dob=x[1]+"/"+x[0]+"/"+x[2];
+
+					}
+
 
 				});
 				commonService.getData('GET','dependent-page?id='+$scope.user_id).then(function(resp){
 					
 					$scope.dependants= resp.data.dep;
 					commonService.stopSpinner();
+angular.forEach($scope.dependants,function(val,key){
+					if(val.dob!=null&&val.dob!=''){
+						var x= val.dob.split('-');
+						if(x[1].length==1){
+							x[1]="0"+parseInt(x[1])
+						}
+						else{
+							x[1]=parseInt(x[1])
+						}
+						val.dob=x[1]+"/"+x[0]+"/"+x[2];
+
+					}
+				});
+
 
 				});	
 			}

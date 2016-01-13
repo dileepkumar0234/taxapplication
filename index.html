@@ -42,7 +42,42 @@
         
         <div ng-show="shownow"  ng-include="'templates/footer.html'"></div> 
        
+<script type="text/ng-template" id="myModalContent.html">
 
+    <span style="color:white;opacity:1; padding:8px;" ng-click="ok();" class="close btnClose">X</span>
+        <div class="modal-header btn-info" >
+            <h4 class="modal-title">UMPIRE TAX SOLUTONS, LLC<span>Enduring Solutions To The Taxing Problems</span></h4></br>
+        </div>
+        <div class="modal-body">
+            <ul class="mainpopCEstimate">
+                <li>
+                    <i class="fa fa-check-square-o" style="color:#337ab7;"></i>Get Register on or before January 30 2016 and avail <span class="btn-info per">10% discount</span> on your Fee payment.
+                </li>
+                <li>
+                    <i class="fa fa-check-square-o" style="color:#337ab7;"></i> Get FREE Tax Estimates
+                </li>
+                <li>
+                    <i class="fa fa-check-square-o" style="color:#337ab7;"></i> Refer Friends – Earn Referral bonus and Exciting Gifts
+                </li>
+            </ul>
+            
+        </div>
+       
+       
+    </script>
+<div class="cust_pop"  ng-if="userbody==''">
+    <img src="img/cust.png" class="cust">
+    <div class="pull-left">
+    <a ui-sref="main.referalProgram">
+        Refer a Friend
+    </a>
+        <a ui-sref="main.contactUs">
+        Contact us
+            </a>
+    </div>
+
+
+</div>
        
      </body>
      </html>
