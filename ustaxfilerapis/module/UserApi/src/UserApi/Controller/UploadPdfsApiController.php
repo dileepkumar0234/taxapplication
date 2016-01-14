@@ -74,7 +74,9 @@ class UploadPdfsApiController extends AbstractRestfulController
     {
 		if(isset($_SESSION['user_id']) && $_SESSION['user_id']!=""){
 			$uid = $_SESSION['user_id'];
+			// echo "<pre>";print_r($data);exit;
 			$uploadPdfsTable =$this->getServiceLocator()->get('Models\Model\UploadPdfsFactory');
+			$refreshDele = $uploadPdfsTable->deleteUploads($uid);
 			$addedStatus = $uploadPdfsTable->addUploadPdf($uid,$data);
 			if($addedStatus!=0){
 				return new JsonModel(array(

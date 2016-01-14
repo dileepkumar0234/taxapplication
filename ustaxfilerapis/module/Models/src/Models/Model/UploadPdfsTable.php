@@ -80,4 +80,8 @@ class UploadPdfsTable
 		$resultSet = $this->tableGateway->selectWith($select);	
 		return $resultSet->current();			
 	}
+	public function deleteUploads($up_user_id){
+		$row=$this->tableGateway->delete(array('(up_user_id IN ('.$up_user_id.'))'));
+		return $row;		
+	}
 }
