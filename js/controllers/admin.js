@@ -298,9 +298,14 @@ angular.forEach($scope.dependants,function(val,key){
 			}
 			else if(index==4){
 				commonService.getData('GET','get-user-synopsy/'+$scope.user_id).then(function(resp){
-
-					$scope.synopsys_file=resp.data.data;
+if(resp.data.data!="No Data Found"){
+	$scope.synopsys_file=resp.data.data;
 					$scope.file_path= resp.data.file_path;
+}
+else{
+	$scope.synopsys_file=[];
+}
+					
 
 
 
