@@ -20,17 +20,18 @@ class UploadPdfsTable
     }
 	public function addUploadPdf($uid,$fileName)
     {
+    	
 		if(isset($fileName['hid_w_2']) && $fileName['hid_w_2']!=""){
 			$hid_w_2 = $fileName['hid_w_2'];
 			
 		}else{
 			$hid_w_2 ='';
 		}
-		if(isset($fileName['hid_p1099_int']) && $fileName['hid_p1099_int']!=""){
-			$hid_p1099_int = $fileName['hid_p1099_int'];
+		if(isset($fileName['hid_p1099int']) && $fileName['hid_p1099int']!=""){
+			$hid_p1099int = $fileName['hid_p1099int'];
 			
 		}else{
-			$hid_p1099_int ='';
+			$hid_p1099int ='';
 		}
 		if(isset($fileName['hid_Hsa']) && $fileName['hid_Hsa']!=""){
 			$hid_Hsa = $fileName['hid_Hsa'];
@@ -54,7 +55,7 @@ class UploadPdfsTable
 		$data = array(
 			'up_user_id' 	  	    => $uid, 	
 			'w2pdf' 		    => $hid_w_2,  		
-			'p1099Int' 		    => $hid_p1099_int,  		
+			'p1099Int' 		    => $hid_p1099int,  		
 			'hsa' 		        => $hid_Hsa,  		
 			'ira' 		        => $hid_Ira,  		
 			'healthcard' 		=> $hid_health_card,  		
@@ -62,6 +63,7 @@ class UploadPdfsTable
 			'status'		    => 1, 
 			'created_at' 		=> date('Y-m-d H:i:s')				
 		);
+		
 		$this->tableGateway->insert($data);	
 		return $this->tableGateway->lastInsertValue;
     }
