@@ -6,7 +6,7 @@ angular.module("myapp").controller("UmprireTaxController",['$scope','$rootScope'
     isFirstOpen: false,
     isFirstDisabled: false
   };
-
+ 
    $scope.mainmodalInstance = $uibModal.open({
      // animation: $scope.animationsEnabled,
       templateUrl: 'myModalContent.html',
