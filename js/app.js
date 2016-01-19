@@ -12,8 +12,8 @@ function(event, toState, toParams, fromState, fromParams){
 
 })
 });
- var webServiceUrl="http://localhost/taxapplication/trunk/ustaxfilerapis/";
-//var webServiceUrl="https://www.umpiretaxsolutions.com/services/";
+ //var webServiceUrl="http://localhost/taxapplication/trunk/ustaxfilerapis/";
+var webServiceUrl="https://www.umpiretaxsolutions.com/services/";
 appinstal.constant('webServiceUrl',webServiceUrl);
 appinstal.config(function($stateProvider, $urlRouterProvider,$ocLazyLoadProvider)
 {
@@ -297,7 +297,7 @@ appinstal.directive('ngRightClick', function($parse,$timeout) {
 
             scope.$apply(function() {
               if(Object.keys(localStorage).indexOf('admin')==-1){
-                // event.preventDefault();
+                 event.preventDefault();
               }
               
                 
