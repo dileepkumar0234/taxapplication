@@ -53,7 +53,7 @@ $scope.$apply();
 
 
 
-appinstal.directive('fileModel', ['$parse','$http', function ($parse,$http) {
+appinstal.directive('fileModel', ['$parse','$http','$state', function ($parse,$http,$state) {
     return {
         restrict: 'A',
         link: function(scope, element, attrs) {
@@ -75,7 +75,9 @@ appinstal.directive('fileModel', ['$parse','$http', function ($parse,$http) {
         })
         .success(function(resp){
           //console.log(resp);
+
           alert('File Uploaded Successfully!');
+          $state.reload();
         })
         .error(function(){
         });
