@@ -294,7 +294,7 @@
 <h2 style="color:black;">Previous Tax Summary:</h2>
 
     <div  class="col-md-12 taxpayer" >
-  <ul class="adminGroup col-md-12" ng-repeat="item in synopsys_file">
+  <ul class="adminGroup col-md-12" ng-repeat="item in synopsys_file track by $index">
    <li>{{item.synopsys_title}}</li>
    <!-- <li><a  download href="ustaxfilerapis{{file_path}}/{{item.synopsys_file}}">View Tax Summary</a></li> --><li><a  download href="services{{file_path}}/{{item.synopsys_file}}">View Tax Summary</a></li>
    
