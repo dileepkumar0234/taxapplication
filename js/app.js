@@ -87,6 +87,27 @@ appinstal.config(function($stateProvider, $urlRouterProvider,$ocLazyLoadProvider
             }]
         }
   })
+  /*.state('payment', {
+    url: '/payment/:id',
+    abstract: true,
+    controller:'userdashboard',
+    templateUrl:'templates/header.html',
+     resolve: {
+            deps: ['$ocLazyLoad', function ($ocLazyLoad) {
+                return $ocLazyLoad.load({
+                    files: [
+                            //TODO add all the required css and js
+      
+                            'js/controllers/userdashboard.js',
+                             'js/controllers/usercontroller.js',
+                            'js/services/commonservice.js',
+                            'js/commondirective.js'
+
+                        ]
+                });
+            }]
+        }
+  })*/
   .state('user.home', {
     url: '/',
     controller:'userController',
@@ -276,7 +297,7 @@ appinstal.directive('ngRightClick', function($parse,$timeout) {
 
             scope.$apply(function() {
               if(Object.keys(localStorage).indexOf('admin')==-1){
-                 event.preventDefault();
+                // event.preventDefault();
               }
               
                 

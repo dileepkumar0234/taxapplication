@@ -16,7 +16,7 @@ $scope.$apply();
 
       
       //console.log(attributes.ngModel);
-      var key="hid_"+attributes.ngModel;
+      var key=attributes.ngModel;
       var files = event.target.files[0];
       var form_data= new FormData();           
       form_data.append("file", files) ;
