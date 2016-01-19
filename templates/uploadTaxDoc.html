@@ -6,13 +6,13 @@
             <div class="col-xs-6">
                 <div class="form-group">
                     <label for="email">W-2</label>
-                    <input type="file" file-change ng-model="w_2"  class="form-control" id="email">
+                    <input type="file" file-change ng-model="hid_w_2"  class="form-control" id="email">
                 </div>
             </div>
             <div class="col-xs-6">
                 <div class="form-group">
                     <label for="email">1099 INT / DIV/ B / MISC<!-- 1099-int --></label>
-                    <input type="file" file-change ng-model="p1099int"  class="form-control" id="email">
+                    <input type="file" file-change ng-model="hid_p1099int"  class="form-control" id="email">
                 </div>
 
             </div>
@@ -24,13 +24,13 @@
             <div class="col-xs-6">
                 <div class="form-group">
                     <label for="email">HSA / 5498 <!-- Hsa --></label>
-                    <input type="file" file-change  ng-model="Hsa" class="form-control" id="email">
+                    <input type="file" file-change  ng-model="hid_Hsa" class="form-control" id="email">
                 </div>
             </div>
             <div class="col-xs-6">
                 <div class="form-group">
                     <label for="email">IRA / 1099-R <!-- Ira --></label>
-                    <input type="file" file-change ng-model="Ira"  class="form-control" id="email">
+                    <input type="file" file-change ng-model="hid_Ira"  class="form-control" id="email">
                 </div>
 
             </div>
@@ -43,7 +43,7 @@
             <div class="col-xs-6">
                 <div class="form-group">
                     <label for="email">Other Misc Docs<!-- Health Card --></label>
-                    <input type="file" file-change  ng-model="health_card" class="form-control" id="email">
+                    <input type="file" file-change  ng-model="hid_health_card" class="form-control" id="email">
                 </div>
             </div>
             
@@ -61,7 +61,7 @@
 
     </form>
 
-<div ng-if="editMode&&submitted" class="col-md-12 taxpayer" >
+<!-- <div ng-if="editMode&&submitted" class="col-md-12 taxpayer" >
   <ul class="adminGroup col-md-6">
    <li>w2</li>
    <li>{{x.hid_w_2}}</li>
@@ -87,7 +87,7 @@
             <button style="margin-left:10px;"  disabled ng-click="uploadDocuments()" class="btn btn-success pull-right" type="submit">SUBMIT</button>
             <button class="btn btn-warning  pull-right" ng-click="editProfile()" type="reset">EDIT</button>
         </div>
-</div>
+</div> -->
 
 <div ng-if="editMode" class="col-md-12 taxpayer" >
   <ul class="adminGroup col-md-6">
