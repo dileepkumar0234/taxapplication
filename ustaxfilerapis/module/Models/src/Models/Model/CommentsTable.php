@@ -35,6 +35,7 @@ class CommentsTable
 		$select->join('user_details', new Expression('user_details.u_user_id=user.user_id'),array('*'),'left');
 		$select->where('cmt_user_id= "'.$id.'"');
 		$select->where('cmt_status= "1"');
+		$select->order('comments.comment_id DESC');
 		$resultSet = $this->tableGateway->selectWith($select);	
 		return $resultSet;		
 	}	

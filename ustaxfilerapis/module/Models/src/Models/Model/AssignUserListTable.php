@@ -69,6 +69,7 @@ class AssignUserListTable
 		$select->join(array('ud' => 'user_details'), new Expression('ud.u_user_id=u.user_id'),array('unlist_phone' =>new Expression('ud.phone')),'left');		
 		$select->where('assign_user_list.unlists_u_id= "'.$uid.'"');
 		$select->where('processing_status.ps_state="'.$state.'"');
+		$select->order('user.user_id DESC');
 		$resultSet = $this->tableGateway->selectWith($select);	
 		return $resultSet;		
 	}
@@ -84,6 +85,7 @@ class AssignUserListTable
 		$select->join(array('ud' => 'user_details'), new Expression('ud.u_user_id=u.user_id'),array('unlist_phone' =>new Expression('ud.phone')),'left');		
 		$select->where('assign_user_list.unlists_u_id= "'.$uid.'"');
 		$select->where('processing_status.ps_state="'.$state.'"');
+		$select->order('user.user_id DESC');
 		$resultSet = $this->tableGateway->selectWith($select);	
 		return $resultSet;		
 	}
@@ -98,6 +100,7 @@ class AssignUserListTable
 		$select->join(array('ud' => 'user_details'), new Expression('ud.u_user_id=u.user_id'),array('unlist_phone' =>new Expression('ud.phone')),'left');		
 		$select->where('assign_user_list.unlists_u_id= "'.$uid.'"');
 		$select->where('processing_status.ps_state="'.$state.'"');
+		$select->order('user.user_id DESC');
 		$resultSet = $this->tableGateway->selectWith($select);	
 		return $resultSet;		
 	}
@@ -112,6 +115,7 @@ class AssignUserListTable
 		$select->join(array('ud' => 'user_details'), new Expression('ud.u_user_id=u.user_id'),array('unlist_phone' =>new Expression('ud.phone')),'left');		
 		$select->where('assign_user_list.unlists_u_id= "'.$uid.'"');
 		$select->where('processing_status.ps_state="'.$state.'"');
+		$select->order('user.user_id DESC');
 		$resultSet = $this->tableGateway->selectWith($select);	
 		return $resultSet;		
 	}
@@ -126,6 +130,7 @@ class AssignUserListTable
 		$select->join(array('ud' => 'user_details'), new Expression('ud.u_user_id=u.user_id'),array('unlist_phone' =>new Expression('ud.phone')),'left');		
 		$select->where('assign_user_list.unlists_u_id= "'.$uid.'"');
 		$select->where('processing_status.ps_state="'.$state.'"');
+		$select->order('user.user_id DESC');
 		$resultSet = $this->tableGateway->selectWith($select);	
 		return $resultSet;		
 	}
@@ -139,6 +144,7 @@ class AssignUserListTable
 		$select->join(array('ud' => 'user_details'), new Expression('ud.u_user_id=u.user_id'),array('unlist_phone' =>new Expression('ud.phone')),'left');		
 		$select->where('assign_user_list.unlists_u_id= "'.$uid.'"');
 		$select->where('processing_status.ps_state="'.$state.'"');
+		$select->order('user.user_id DESC');
 		$resultSet = $this->tableGateway->selectWith($select);	
 		return $resultSet;		
 	}
@@ -152,7 +158,8 @@ class AssignUserListTable
 		$select->join(array('ud' => 'user_details'), new Expression('ud.u_user_id=u.user_id'),array('unlist_phone' =>new Expression('ud.phone')),'left');		
 		$select->where('assign_user_list.unlists_u_id= "'.$uid.'"');
 		$select->where('processing_status.ps_state="'.$state.'"');
-		$resultSet = $this->tableGateway->selectWith($select);	
+		$select->order('assign_user_list.unlists_u_id DESC');
+		$select->order('user.user_id DESC');	
 		return $resultSet;		
 	}
 }

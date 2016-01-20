@@ -69,6 +69,7 @@ class ProcessingStatusTable
 		$select->join(array('ud' => 'user_details'), new Expression('ud.u_user_id=u.user_id'),array('unlist_phone' =>new Expression('ud.phone')),'left');		
 		$select->where('processing_status.ps_state="'.$state.'"');
 		$select->group('user.user_id');
+		$select->order('user.user_id DESC');
 		$resultSet = $this->tableGateway->selectWith($select);	
 		return $resultSet;		
 	}
@@ -83,6 +84,7 @@ class ProcessingStatusTable
 		$select->join(array('ud' => 'user_details'), new Expression('ud.u_user_id=u.user_id'),array('unlist_phone' =>new Expression('ud.phone')),'left');		
 		$select->where('processing_status.ps_state="'.$state.'"');
 		$select->group('user.user_id');
+		$select->order('user.user_id DESC');
 		$resultSet = $this->tableGateway->selectWith($select);	
 		return $resultSet;		
 	}
@@ -96,6 +98,7 @@ class ProcessingStatusTable
 		$select->join(array('ud' => 'user_details'), new Expression('ud.u_user_id=u.user_id'),array('unlist_phone' =>new Expression('ud.phone')),'left');		
 		$select->where('processing_status.ps_state="'.$state.'"');
 		$select->group('user.user_id');
+		$select->order('user.user_id DESC');
 		$resultSet = $this->tableGateway->selectWith($select);	
 		return $resultSet;		
 	}
@@ -110,6 +113,7 @@ class ProcessingStatusTable
 		$select->join(array('ud' => 'user_details'), new Expression('ud.u_user_id=u.user_id'),array('unlist_phone' =>new Expression('ud.phone')),'left');		
 		$select->where('processing_status.ps_state="'.$state.'"');
 		$select->group('user.user_id');
+		$select->order('user.user_id DESC');
 		$resultSet = $this->tableGateway->selectWith($select);	
 		return $resultSet;		
 	}
@@ -124,6 +128,7 @@ class ProcessingStatusTable
 		$select->join(array('ud' => 'user_details'), new Expression('ud.u_user_id=u.user_id'),array('unlist_phone' =>new Expression('ud.phone')),'left');		
 		$select->where('processing_status.ps_state="'.$state.'"');
 		$select->group('user.user_id');
+		$select->order('user.user_id DESC');
 		$resultSet = $this->tableGateway->selectWith($select);	
 		return $resultSet;		
 	}
@@ -137,6 +142,7 @@ class ProcessingStatusTable
 		$select->join(array('ud' => 'user_details'), new Expression('ud.u_user_id=u.user_id'),array('unlist_phone' =>new Expression('ud.phone')),'left');		
 		$select->where('processing_status.ps_state="'.$state.'"');
 		$select->group('user.user_id');
+		$select->order('user.user_id DESC');
 		$resultSet = $this->tableGateway->selectWith($select);	
 		return $resultSet;		
 	}
@@ -151,18 +157,19 @@ class ProcessingStatusTable
 		$select->join(array('ud' => 'user_details'), new Expression('ud.u_user_id=u.user_id'),array('unlist_phone' =>new Expression('ud.phone')),'left');		
 		$select->where('processing_status.ps_state="'.$state.'"');
 		$select->group('user.user_id');
+		$select->order('user.user_id DESC');
 		$resultSet = $this->tableGateway->selectWith($select);	
 		return $resultSet;		
 	}
-	// public function getPaymentData($state)
-    // {	
-		// $select = $this->tableGateway->getSql()->select();
-		// $select->join('user', new Expression('processing_status.ps_user_id=user.user_id'),array('*'),'left');
-		// $select->join('user_details', new Expression('user_details.u_user_id=user.user_id'),array('*'),'left');
-		// $select->join('payments', new Expression('payments.p_user_id=user.user_id'),array('*'),'left');
-		// $select->where('processing_status.ps_state="'.$state.'"');
-		// $select->group('user.user_id');
-		// $resultSet = $this->tableGateway->selectWith($select);	
-		// return $resultSet;		
-	// }
+	public function getPaymentData($state)
+    {	
+		$select = $this->tableGateway->getSql()->select();
+		$select->join('user', new Expression('processing_status.ps_user_id=user.user_id'),array('*'),'left');
+		$select->join('user_details', new Expression('user_details.u_user_id=user.user_id'),array('*'),'left');
+		$select->join('payments', new Expression('payments.p_user_id=user.user_id'),array('*'),'left');
+		$select->where('processing_status.ps_state="'.$state.'"');
+		$select->group('user.user_id');
+		$resultSet = $this->tableGateway->selectWith($select);	
+		return $resultSet;		
+	}
 }
