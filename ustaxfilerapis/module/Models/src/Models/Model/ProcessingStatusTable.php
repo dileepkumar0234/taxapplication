@@ -29,7 +29,13 @@ class ProcessingStatusTable
 		return $this->tableGateway->lastInsertValue;		
     }
 	public function updateProcess($uid,$st)
-    {		
+    {	
+		if(isset($st) && $st!=""){
+			
+			$st = $st;
+		}else{
+			$st = 0;
+		}
 		$data = array(
 			'ps_state' 		           => $st,  		
 			'ps_updated_at'	  	       => date('Y-m-d H:i:s'), 	
