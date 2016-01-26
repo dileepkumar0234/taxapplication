@@ -75,7 +75,7 @@ class ProcessingStatusTable
 		$select->join(array('ud' => 'user_details'), new Expression('ud.u_user_id=u.user_id'),array('unlist_phone' =>new Expression('ud.phone')),'left');		
 		$select->where('processing_status.ps_state="'.$state.'"');
 		$select->group('user.user_id');
-		$select->order('user.user_id DESC');
+		$select->order('processing_status.ps_updated_at DESC');
 		$resultSet = $this->tableGateway->selectWith($select);	
 		return $resultSet;		
 	}
@@ -90,7 +90,7 @@ class ProcessingStatusTable
 		$select->join(array('ud' => 'user_details'), new Expression('ud.u_user_id=u.user_id'),array('unlist_phone' =>new Expression('ud.phone')),'left');		
 		$select->where('processing_status.ps_state="'.$state.'"');
 		$select->group('user.user_id');
-		$select->order('user.user_id DESC');
+		$select->order('processing_status.ps_updated_at DESC');
 		$resultSet = $this->tableGateway->selectWith($select);	
 		return $resultSet;		
 	}
@@ -104,7 +104,7 @@ class ProcessingStatusTable
 		$select->join(array('ud' => 'user_details'), new Expression('ud.u_user_id=u.user_id'),array('unlist_phone' =>new Expression('ud.phone')),'left');		
 		$select->where('processing_status.ps_state="'.$state.'"');
 		$select->group('user.user_id');
-		$select->order('user.user_id DESC');
+		$select->order('processing_status.ps_updated_at DESC');
 		$resultSet = $this->tableGateway->selectWith($select);	
 		return $resultSet;		
 	}
@@ -119,7 +119,7 @@ class ProcessingStatusTable
 		$select->join(array('ud' => 'user_details'), new Expression('ud.u_user_id=u.user_id'),array('unlist_phone' =>new Expression('ud.phone')),'left');		
 		$select->where('processing_status.ps_state="'.$state.'"');
 		$select->group('user.user_id');
-		$select->order('user.user_id DESC');
+		$select->order('processing_status.ps_updated_at DESC');
 		$resultSet = $this->tableGateway->selectWith($select);	
 		return $resultSet;		
 	}
@@ -134,7 +134,7 @@ class ProcessingStatusTable
 		$select->join(array('ud' => 'user_details'), new Expression('ud.u_user_id=u.user_id'),array('unlist_phone' =>new Expression('ud.phone')),'left');		
 		$select->where('processing_status.ps_state="'.$state.'"');
 		$select->group('user.user_id');
-		$select->order('user.user_id DESC');
+		$select->order('processing_status.ps_updated_at DESC');
 		$resultSet = $this->tableGateway->selectWith($select);	
 		return $resultSet;		
 	}
@@ -148,7 +148,7 @@ class ProcessingStatusTable
 		$select->join(array('ud' => 'user_details'), new Expression('ud.u_user_id=u.user_id'),array('unlist_phone' =>new Expression('ud.phone')),'left');		
 		$select->where('processing_status.ps_state="'.$state.'"');
 		$select->group('user.user_id');
-		$select->order('user.user_id DESC');
+		$select->order('processing_status.ps_updated_at DESC');
 		$resultSet = $this->tableGateway->selectWith($select);	
 		return $resultSet;		
 	}
@@ -163,7 +163,7 @@ class ProcessingStatusTable
 		$select->join(array('ud' => 'user_details'), new Expression('ud.u_user_id=u.user_id'),array('unlist_phone' =>new Expression('ud.phone')),'left');		
 		$select->where('processing_status.ps_state="'.$state.'"');
 		$select->group('user.user_id');
-		$select->order('user.user_id DESC');
+		$select->order('processing_status.ps_updated_at DESC');
 		$resultSet = $this->tableGateway->selectWith($select);	
 		return $resultSet;		
 	}
@@ -174,7 +174,7 @@ class ProcessingStatusTable
 		$select->join('user_details', new Expression('user_details.u_user_id=user.user_id'),array('*'),'left');
 		$select->join('payments', new Expression('payments.p_user_id=user.user_id'),array('*'),'left');
 		$select->where('processing_status.ps_state="'.$state.'"');
-		$select->group('user.user_id');
+		$select->order('processing_status.ps_updated_at DESC');
 		$resultSet = $this->tableGateway->selectWith($select);	
 		return $resultSet;		
 	}
