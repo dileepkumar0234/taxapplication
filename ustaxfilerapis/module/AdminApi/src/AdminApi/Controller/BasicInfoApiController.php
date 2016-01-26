@@ -130,10 +130,10 @@ class BasicInfoApiController extends AbstractRestfulController
 			$getData = $processStatusTable->getOtherDocsData($id);
 		}else if($id=='6'){
 			$getData = $processStatusTable->getPreparationData($id);
+		}else if($id=='7'){
+			$getData = $processStatusTable->getSynopsisData($id);
 		}
-		// else if($id=='7'){
-			// $getData = $processStatusTable->getSynopsisData($id);
-		// }else if($id=='8'){
+		//else if($id=='8'){
 			// $getData = $processStatusTable->getPaymentData($id);
 		// }
 		$list =array();
