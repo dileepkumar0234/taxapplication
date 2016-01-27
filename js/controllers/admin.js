@@ -374,6 +374,8 @@ $scope.getComments = function(){
 };
 
 $scope.updateStatus = function(){
+	if(!$scope.selectedState)
+		$scope.selectedState = $scope.PayerInfo.ps_state.id;
 	commonService.getData('PUT','update-process/'+$scope.user_id,
 		{ps_state:$scope.selectedState,comment:$scope.userstatus.comment}).then(function(resp){
 			$state.reload();
