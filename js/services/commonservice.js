@@ -8,7 +8,7 @@ appinstal.factory("commonService", function($http,$rootScope,$timeout,$state,web
            this.showProgress();
            console.log(localStorage.getItem('user'),url,$state);
 
-           if($state.current.name.indexOf('user')>-1&&url.indexOf(localStorage.getItem('user'))==-1){
+           if(localStorage.getItem('user')!=null&&$state.current.name.indexOf('user')>-1&&url.indexOf(localStorage.getItem('user'))==-1){
             alert('Service Not Available!');
             this.sessionEnd();
             $state.go('main.home');
