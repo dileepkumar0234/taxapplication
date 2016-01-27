@@ -6,7 +6,7 @@ appinstal.factory("commonService", function($http,$rootScope,$timeout,$state,web
 	return {
 		getData : function(method,url,data,headers){
            this.showProgress();
-           console.log(localStorage.getItem('user'),url,$state);
+           // console.log(localStorage.getItem('user'),url,$state);
 
            if(localStorage.getItem('user')!=null&&$state.current.name.indexOf('user')>-1&&url.indexOf(localStorage.getItem('user'))==-1){
             alert('Service Not Available!');
