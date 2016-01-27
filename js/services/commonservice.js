@@ -6,6 +6,15 @@ appinstal.factory("commonService", function($http,$rootScope,$timeout,$state,web
 	return {
 		getData : function(method,url,data,headers){
            this.showProgress();
+           console.log(localStorage.getItem('user'),url,$state);
+
+           if($state.current.name.indexOf('user')>-1&&url.indexOf(localStorage.getItem('user'))==-1){
+            alert('Service Not Available!');
+            this.sessionEnd();
+            $state.go('main.home');
+           	return false;
+
+           }
 			return $http({
 				method: method,
 				url: webServiceUrl+url,
