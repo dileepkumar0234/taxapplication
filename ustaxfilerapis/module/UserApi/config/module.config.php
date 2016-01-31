@@ -15,6 +15,7 @@ return array(
 			'UserApi\Controller\ReferralFriendApi'  =>  'UserApi\Controller\ReferralFriendApiController',
 			'UserApi\Controller\LogoutApi'          =>  'UserApi\Controller\LogoutApiController',
 			'UserApi\Controller\ReachApi'           =>  'UserApi\Controller\ReachApiController',
+			'UserApi\Controller\PaymentApi'         =>  'UserApi\Controller\PaymentApiController',
         ),
     ),
     // The following section is new` and should be added to your file
@@ -137,6 +138,18 @@ return array(
 					),
 					'defaults' => array(
 						'controller' => 'UserApi\Controller\DependentApi',
+					),
+				),
+			),
+			'payments' => array(
+				'type'    => 'Segment',
+				'options' => array(
+					'route'    => '/payments[/:id]',
+					'constraints' => array(
+						'id' => '[%&@*.;a-zA-Z0-9][%&@*.;a-zA-Z0-9_-]*',
+					),
+					'defaults' => array(
+						'controller' => 'UserApi\Controller\PaymentApi',
 					),
 				),
 			),
