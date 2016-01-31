@@ -1,6 +1,6 @@
 /*
 SQLyog Community v11.52 (64 bit)
-MySQL - 5.5.45-cll-lve : Database - taxfiler
+MySQL - 5.6.17 : Database - taxfiler
 *********************************************************************
 */
 
@@ -27,7 +27,7 @@ CREATE TABLE `assign_user_list` (
   `as_status` smallint(5) DEFAULT NULL,
   `as_crated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`as_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 /*Data for the table `assign_user_list` */
 
@@ -38,6 +38,7 @@ DROP TABLE IF EXISTS `comments`;
 CREATE TABLE `comments` (
   `comment_id` int(10) NOT NULL AUTO_INCREMENT,
   `cmt_user_id` bigint(11) DEFAULT NULL,
+  `cmt_by` bigint(11) DEFAULT NULL,
   `comment` text,
   `cmt_status` smallint(5) DEFAULT NULL,
   `cmt_created_at` datetime DEFAULT NULL,
@@ -84,7 +85,7 @@ CREATE TABLE `dependent` (
   `added_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`dependent_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
 /*Data for the table `dependent` */
 
@@ -104,6 +105,23 @@ CREATE TABLE `forgetpassword` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 /*Data for the table `forgetpassword` */
+
+/*Table structure for table `payments` */
+
+DROP TABLE IF EXISTS `payments`;
+
+CREATE TABLE `payments` (
+  `payment_id` int(11) NOT NULL AUTO_INCREMENT,
+  `p_user_id` int(10) DEFAULT NULL,
+  `amount` varchar(200) DEFAULT NULL,
+  `txnt_id` varchar(150) DEFAULT NULL,
+  `payment_status` smallint(5) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`payment_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+/*Data for the table `payments` */
 
 /*Table structure for table `processing_status` */
 
@@ -135,6 +153,7 @@ CREATE TABLE `referral_friends` (
   `rf_name` varchar(50) DEFAULT NULL,
   `rf_email` varchar(50) DEFAULT NULL,
   `rf_phone` varchar(50) DEFAULT NULL,
+  `rf_comment` text,
   `added_at` datetime DEFAULT NULL,
   `status` smallint(5) DEFAULT NULL,
   PRIMARY KEY (`rf_id`)
@@ -142,7 +161,7 @@ CREATE TABLE `referral_friends` (
 
 /*Data for the table `referral_friends` */
 
-insert  into `referral_friends`(`rf_id`,`rf_user_id`,`rf_on_name`,`rf_on_email`,`rf_on_phone`,`rf_name`,`rf_email`,`rf_phone`,`added_at`,`status`) values (4,4,'Dileep','dileepkumarkonda@gmail.com','8500222765','Kumar','dkonda@aapthitech.com','8500222765','2015-12-07 14:11:32',1),(5,22,'Rajesh','rjshkmr527@gmail.com','9032233681','Bharath','bharathreddy0208@gmail.com','9985884449','2016-01-01 10:34:56',1);
+insert  into `referral_friends`(`rf_id`,`rf_user_id`,`rf_on_name`,`rf_on_email`,`rf_on_phone`,`rf_name`,`rf_email`,`rf_phone`,`rf_comment`,`added_at`,`status`) values (4,4,'Dileep','dileepkumarkonda@gmail.com','8500222765','Kumar','dkonda@aapthitech.com','8500222765',NULL,'2015-12-07 14:11:32',1),(5,22,'Rajesh','rjshkmr527@gmail.com','9032233681','Bharath','bharathreddy0208@gmail.com','9985884449',NULL,'2016-01-01 10:34:56',1);
 
 /*Table structure for table `schedules_timings` */
 
@@ -175,6 +194,8 @@ CREATE TABLE `spouse` (
   `last_name` varchar(50) DEFAULT NULL,
   `dob` varchar(50) DEFAULT NULL,
   `occupation` varchar(50) DEFAULT NULL,
+  `ssn` varchar(100) DEFAULT NULL,
+  `visa_type` varchar(100) DEFAULT NULL,
   `phone` varchar(50) DEFAULT NULL,
   `status` smallint(2) DEFAULT NULL,
   `added_at` datetime DEFAULT NULL,
@@ -184,7 +205,7 @@ CREATE TABLE `spouse` (
 
 /*Data for the table `spouse` */
 
-insert  into `spouse`(`spouse_id`,`s_user_id`,`first_name`,`last_name`,`dob`,`occupation`,`phone`,`status`,`added_at`,`updated_at`) values (5,1,'Devi','Raj','04011988','Software Engineer','9989500502',1,'2015-12-09 22:39:50','2015-12-12 07:07:34'),(8,4,'Anagha','sarath','27-11-1990','software','7799802045',1,'2015-12-13 06:08:32','2015-12-13 06:23:12'),(9,5,'','','','','',1,'2015-12-13 08:05:18',NULL);
+insert  into `spouse`(`spouse_id`,`s_user_id`,`first_name`,`last_name`,`dob`,`occupation`,`ssn`,`visa_type`,`phone`,`status`,`added_at`,`updated_at`) values (5,1,'Devi','Raj','04011988','Software Engineer',NULL,NULL,'9989500502',1,'2015-12-09 22:39:50','2015-12-12 07:07:34'),(8,4,'Anagha','sarath','27-11-1990','software',NULL,NULL,'7799802045',1,'2015-12-13 06:08:32','2015-12-13 06:23:12'),(9,5,'','','','',NULL,NULL,'',1,'2015-12-13 08:05:18',NULL);
 
 /*Table structure for table `synopsys` */
 
@@ -193,6 +214,7 @@ DROP TABLE IF EXISTS `synopsys`;
 CREATE TABLE `synopsys` (
   `synopsys_id` int(10) NOT NULL AUTO_INCREMENT,
   `synopsys_user_id` int(11) DEFAULT NULL,
+  `synopsys_title` varchar(150) DEFAULT NULL,
   `synopsys_file` varchar(50) DEFAULT NULL,
   `synopsys_status` smallint(5) DEFAULT NULL,
   `synopsys_created_at` datetime DEFAULT NULL,
@@ -202,7 +224,7 @@ CREATE TABLE `synopsys` (
 
 /*Data for the table `synopsys` */
 
-insert  into `synopsys`(`synopsys_id`,`synopsys_user_id`,`synopsys_file`,`synopsys_status`,`synopsys_created_at`,`synopsys_updated_at`) values (1,9,'sxxx.pdf',1,'2015-12-21 03:42:07','2015-12-21 03:42:11');
+insert  into `synopsys`(`synopsys_id`,`synopsys_user_id`,`synopsys_title`,`synopsys_file`,`synopsys_status`,`synopsys_created_at`,`synopsys_updated_at`) values (1,9,NULL,'sxxx.pdf',1,'2015-12-21 03:42:07','2015-12-21 03:42:11');
 
 /*Table structure for table `upload_pdfs` */
 
@@ -248,7 +270,7 @@ CREATE TABLE `user` (
 
 /*Data for the table `user` */
 
-insert  into `user`(`user_id`,`unique_code`,`user_name`,`email`,`password`,`locked_pwd`,`date_added`,`date_updated`,`user_type_id`,`logged_ip`,`status`) values (1,'UTS0001','Dileep','admin@gmail.com','ea452f3b31ac158c119a0b295740d63e','dileep','2015-11-26 20:09:37','2015-12-12 07:07:28',1,'127.0.0.1',1),(4,'UTS0004','sarath','sarath.anagha@gmail.com','b59c67bf196a4758191e42f76670ceba','sarath','2015-12-06 12:25:42','2015-12-13 16:00:36',2,NULL,1),(22,'UTS0022','Rajesh','rjshkmr527@gmail.com','f258b0ca9f2d9e4bb95b94fa4c126067','Rajesh@68','2015-12-30 20:47:37','2015-12-30 20:47:37',2,NULL,1),(23,'UTS0023','dileep','dileepkumarkonda@gmail.com','32ed54151873fc4799f2082693621d8c','Dileep@12','2015-12-30 20:48:06','2015-12-30 20:48:06',2,NULL,1),(24,'UTS0024','Sai','saikiran.thanda@gmail.com','dc8a32dac24456eb9ce91814c164a5c0','Saikiran@28','2015-12-31 06:27:50','2015-12-31 06:27:50',2,NULL,1),(25,'UTS0025','sarath','ramu.anagha@gmail.com','f25e8cda3120bb743e188aa2ee45e198','sarath2@S','2016-01-01 00:53:04','2016-01-01 00:54:29',2,NULL,1),(26,'UTS0026','Unlist1','abc@gmail.com','b59c67bf196a4758191e42f76670ceba','1111','2016-01-02 00:21:37','2016-01-02 00:21:40',3,NULL,1),(27,'UTS0027','Unlist2','def@gmail.com','b59c67bf196a4758191e42f76670ceba','1111','2016-01-02 00:22:42','2016-01-02 00:22:45',3,NULL,1);
+insert  into `user`(`user_id`,`unique_code`,`user_name`,`email`,`password`,`locked_pwd`,`date_added`,`date_updated`,`user_type_id`,`logged_ip`,`status`) values (1,'UTS0001','Dileep','admin@gmail.com','ea452f3b31ac158c119a0b295740d63e','dileep','2015-11-26 20:09:37','2015-12-12 07:07:28',1,'127.0.0.1',1),(4,'UTS0004','sarath','sarath.anagha@gmail.com','6451d62c34ba801398a21df221f675b6','sarath','2015-12-06 12:25:42','2015-12-13 16:00:36',2,NULL,1),(22,'UTS0022','Rajesh','rjshkmr527@gmail.com','f258b0ca9f2d9e4bb95b94fa4c126067','Rajesh@68','2015-12-30 20:47:37','2015-12-30 20:47:37',2,NULL,1),(23,'UTS0023','dileep','dileepkumarkonda@gmail.com','32ed54151873fc4799f2082693621d8c','Dileep@12','2015-12-30 20:48:06','2015-12-30 20:48:06',2,NULL,1),(24,'UTS0024','Sai','saikiran.thanda@gmail.com','dc8a32dac24456eb9ce91814c164a5c0','Saikiran@28','2015-12-31 06:27:50','2015-12-31 06:27:50',2,NULL,1),(25,'UTS0025','sarath','ramu.anagha@gmail.com','f25e8cda3120bb743e188aa2ee45e198','sarath2@S','2016-01-01 00:53:04','2016-01-01 00:54:29',2,NULL,1),(26,'UTS0026','Unlist1','abc@gmail.com','b59c67bf196a4758191e42f76670ceba','1111','2016-01-02 00:21:37','2016-01-02 00:21:40',3,NULL,1),(27,'UTS0027','Unlist2','def@gmail.com','b59c67bf196a4758191e42f76670ceba','1111','2016-01-02 00:22:42','2016-01-02 00:22:45',3,NULL,1);
 
 /*Table structure for table `user_details` */
 
