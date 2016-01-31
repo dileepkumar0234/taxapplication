@@ -219,3 +219,10 @@ Get Comments
 	Url      : http://localhost/taxapplication/trunk/ustaxfilerapis/comments-list/4 --- user_id
 	Method   : GET
 	Response : {"value":1,"output":"success","list":[{"as_id":"3","unlists_u_id":"6","client_id":"5","as_status":"1","as_crated_at":"2015-12-27 17:03:50","ps_id":"2","ps_user_id":"5","ps_state":"1","ps_added_at":"2015-12-16 08:00:50","ps_updated_at":null,"user_id":"5","user_name":"Hello","email":"xyz@gmail.com","password":"6451d62c34ba801398a21df221f675b6","locked_pwd":"sarath2@S","date_added":"2015-12-13 06:25:47","date_updated":"2015-12-13 08:02:02","user_type_id":"2","logged_ip":null,"status":null,"user_details_id":"5","u_user_id":"5","first_name":null,"last_name":null,"occupation":null,"current_emp":"zczxczc","dob":null,"address":null,"city_name":"","state_name":"","zip":"czxczc","apt_no":"","phone":null,"alterphone":"zczczc","tax_id_type":"","dependent":"Yes","relation_ship":null,"ssnitin":null,"visa_type":null,"c_location":"sadsadasd","filling_status":"zxczxczxc","spouse_id":"9","s_user_id":"5","added_at":null,"updated_at":null,"dependent_id":null,"d_user_id":null,"mail_id":null,"current_year":null,"unlist_id":"6","unlist_name":"Unlist1","unlist_email":"abc@gmail.com","unlist_phone":"8500222765"}]}
+	
+	
+Payment 	 : Log in required.
+	Url      : http://localhost/taxapplication/trunk/ustaxfilerapis/payments
+	Method   : POST
+	Data     : p_user_id=23&amount=100
+	Response : {"output":"success",status:"Payment Successfully."}
