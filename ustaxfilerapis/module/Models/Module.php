@@ -26,6 +26,8 @@ use Models\Model\ContactUs;
 use Models\Model\ContactUsTable;
 use Models\Model\Comments;
 use Models\Model\CommentsTable;
+use Models\Model\Payment;
+use Models\Model\PaymentTable;
 use Zend\Db\ResultSet\ResultSet;
 use Zend\Db\TableGateway\TableGateway;
 class Module
@@ -61,6 +63,7 @@ class Module
 				'Models\Model\SynopsysFactory'	            =>'Models\Factory\Model\SynopsysTableFactory',
 				'Models\Model\ContactUsFactory'	            =>'Models\Factory\Model\ContactUsTableFactory',
 				'Models\Model\CommentsFactory'	            =>'Models\Factory\Model\CommentsTableFactory',
+				'Models\Model\PaymentFactory'	            =>'Models\Factory\Model\PaymentTableFactory',
 			),
         );
     }
