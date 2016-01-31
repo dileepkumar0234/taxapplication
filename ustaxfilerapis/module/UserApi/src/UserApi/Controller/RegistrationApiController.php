@@ -99,7 +99,7 @@ class RegistrationApiController extends AbstractRestfulController
 				$msg .='INDIA: +91-720-754-3882<br/>';
 				$msg .='</body>';
 				$subj ='Welcome, To Umpire Tax solutions.';
-				mail($emailId, $subj, $msg, $headers);
+				// mail($emailId, $subj, $msg, $headers);
 				return new JsonModel(array(
 					'Success' =>'Registration Success',
 					'UserId'	=>	$lastInsertedId,
