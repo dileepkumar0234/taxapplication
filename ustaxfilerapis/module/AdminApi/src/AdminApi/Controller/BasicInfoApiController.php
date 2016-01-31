@@ -20,9 +20,11 @@ class BasicInfoApiController extends AbstractRestfulController
 		$paymentCnt = $processStatusTable->getcntOfeach('8');
 		$reviewCnt = $processStatusTable->getcntOfeach('9');
 		$confirmationCnt = $processStatusTable->getcntOfeach('10');
-		$filing = $processStatusTable->getcntOfeach('11');
-		$eFiling = $processStatusTable->getcntOfeach('12');
-		$peFiling = $processStatusTable->getcntOfeach('13');
+		$eFiling = $processStatusTable->getcntOfeach('11');
+		$paperFiling = $processStatusTable->getcntOfeach('12');
+		$eCompleteFiling = $processStatusTable->getcntOfeach('13');
+		$docSentFiling = $processStatusTable->getcntOfeach('14');
+		$cancelFiling = $processStatusTable->getcntOfeach('15');
 		if(isset($toBeAssignedCnt) && $toBeAssignedCnt>0){
 			$toBeAssignedCnt = $toBeAssignedCnt;
 		}else{
@@ -73,24 +75,32 @@ class BasicInfoApiController extends AbstractRestfulController
 		}else{
 			$reviewCnt = 0;
 		}
-		if(isset($filing) && $confirmationCnt>0){
+		if(isset($confirmationCnt) && $confirmationCnt>0){
 			$confirmationCnt = $confirmationCnt;
 		}else{
 			$confirmationCnt = 0;
 		}
-		if(isset($filing) && $filing>0){
-			$filing = $filing;
+		if(isset($eFiling) && $eFiling>0){
+			$eFiling = $eFiling;
 		}else{
-			$filing = 0;
+			$eFiling = 0;
 		}
-		if(isset($efiling) && $efiling>0){
-			$efiling = $efiling;
+		if(isset($paperFiling) && $paperFiling>0){
+			$paperFiling = $paperFiling;
 		}else{
-			$efiling = 0;
-		}if(isset($peFiling) && $peFiling>0){
-			$peFiling = $peFiling;
+			$paperFiling = 0;
+		}if(isset($eCompleteFiling) && $eCompleteFiling>0){
+			$eCompleteFiling = $eCompleteFiling;
 		}else{
-			$peFiling = 0;
+			$eCompleteFiling = 0;
+		}if(isset($docSentFiling) && $docSentFiling>0){
+			$docSentFiling = $docSentFiling;
+		}else{
+			$docSentFiling = 0;
+		}if(isset($cancelFiling) && $cancelFiling>0){
+			$cancelFiling = $cancelFiling;
+		}else{
+			$cancelFiling = 0;
 		}
 		return new JsonModel(array(
 			'value'  => 1,
@@ -106,9 +116,11 @@ class BasicInfoApiController extends AbstractRestfulController
 			'paymentCnt' 	 => $paymentCnt,
 			'reviewCnt' 	 => $reviewCnt,
 			'confirmationCnt' 	 => $confirmationCnt,
-			'filing' 	 => $filing,
-			'efiling' 	 => $efiling,
-			'peFiling' 	 => $peFiling
+			'eFiling' 	 => $eFiling,
+			'paperFiling' 	 => $paperFiling,
+			'eCompleteFiling' 	 => $eCompleteFiling,
+			'docSentFiling' 	 => $docSentFiling,
+			'cancelFiling' 	 => $cancelFiling
 		));
 	}
     public function get($id)
@@ -145,6 +157,10 @@ class BasicInfoApiController extends AbstractRestfulController
 		}else if($id=='12'){
 			$getData = $processStatusTable->getBaseInfoData($id);
 		}else if($id=='13'){
+			$getData = $processStatusTable->getBaseInfoData($id);
+		}else if($id=='14'){
+			$getData = $processStatusTable->getBaseInfoData($id);
+		}else if($id=='15'){
 			$getData = $processStatusTable->getBaseInfoData($id);
 		}
 		$list =array();
