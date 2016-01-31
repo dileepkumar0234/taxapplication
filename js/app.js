@@ -297,7 +297,7 @@ appinstal.directive('ngRightClick', function($parse,$timeout) {
 
             scope.$apply(function() {
               if(Object.keys(localStorage).indexOf('admin')==-1){
-                 event.preventDefault();
+                // event.preventDefault();
               }
               
                 

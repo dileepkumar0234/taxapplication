@@ -66,7 +66,7 @@ $scope.referals= function(){
     scope:$scope,
          //   controller:'logInCtrl',
          size:'lg',
-         windowClass:'animated rotateIn reference'
+         windowClass:'animated rotateIn top_view reference'
        }); 
 }
 $scope.changePassword = function(){

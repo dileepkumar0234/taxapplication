@@ -1,16 +1,16 @@
 appinstal.directive('fileChange', function ($http,commonService,webServiceUrl,$timeout) {
 
   var linker = function ($scope, element, attributes) {
-   
-  
+
+
     element.bind('change', function (event) {
-      
-        $scope.uploading.update= true;
-        $scope.$apply();
+
+      $scope.uploading.update= true;
+      $scope.$apply();
       $timeout(function(){
-$scope.uploading.update= false;
-$scope.$apply();
-      },5000)
+        $scope.uploading.update= false;
+        $scope.$apply();
+      },10000)
       
       
 
@@ -18,8 +18,9 @@ $scope.$apply();
       //console.log(attributes.ngModel);
       var key=attributes.ngModel;
       var files = event.target.files[0];
-      var form_data= new FormData();           
+      var form_data= new FormData();        
       form_data.append("file", files) ;
+      
       
       $http.post(webServiceUrl+'uploadPdfs-page', form_data, {
 
@@ -31,8 +32,8 @@ $scope.$apply();
       .success(function(resp){
         //console.log("Uploaded FIles",resp.file_name);
         $scope.x[key]=resp.file_name;
- 
-  })
+
+      })
 
       .error(function(){
     //something went wrong 
@@ -54,24 +55,24 @@ $scope.$apply();
 
 
 appinstal.directive('fileModel', ['$parse','$http','$state', function ($parse,$http,$state) {
-    return {
-        restrict: 'A',
-        link: function(scope, element, attrs) {
-          console.log(scope);
-          element.bind('change', function (event) {
+  return {
+    restrict: 'A',
+    link: function(scope, element, attrs) {
+      console.log(scope);
+      element.bind('change', function (event) {
            // var key="hid_"+attributes.ngModel;
-            var files = event.target.files[0];
-             scope.form_data= new FormData(); 
-             scope.form_data.append("uid", scope.user_id);  
-             scope.form_data.append("synopsys_title", scope.synopsys_title);         
-            scope.form_data.append("file", files) ;
+           var files = event.target.files[0];
+           scope.form_data= new FormData(); 
+           scope.form_data.append("uid", scope.user_id);  
+           scope.form_data.append("synopsys_title", scope.synopsys_title);         
+           scope.form_data.append("file", files) ;
 
-        });
-          angular.element('#uploadsynopsys').bind('click', function (event) {
-            
-          $http.post(webServiceUrl+'upload-synopsys', scope.form_data, {
-            transformRequest: angular.identity,
-            headers: {'Content-Type': undefined}
+         });
+      angular.element('#uploadsynopsys').bind('click', function (event) {
+
+        $http.post(webServiceUrl+'upload-synopsys', scope.form_data, {
+          transformRequest: angular.identity,
+          headers: {'Content-Type': undefined}
         })
         .success(function(resp){
           //console.log(resp);
@@ -81,7 +82,7 @@ appinstal.directive('fileModel', ['$parse','$http','$state', function ($parse,$h
         })
         .error(function(){
         });
-          });
+      });
     }
   }
 }]);
@@ -91,7 +92,7 @@ appinstal.directive('carouselDirective',function(){
  return {
    restrict:'A',
    link:function(scope,elm,attr){
-    
+
      $("#"+attr.id).owlCarousel({
        navigation: false,
        slideSpeed: 2000,
@@ -117,11 +118,11 @@ appinstal.directive('carouselDirective',function(){
         $("#"+attr.id).trigger('autoplay.stop.owl')
      },function(){
  $("#"+attr.id).trigger('play.owl.autoplay')
-     });*/
+});*/
 
 
-   }
- }
+}
+}
 });
 
 appinstal.directive('getActiveClass',function(){
@@ -132,17 +133,17 @@ appinstal.directive('getActiveClass',function(){
     elm.find('li').bind('click',function(e){
       e.stopPropagation();
       if($(this).find('ul').length==0){
-         elm.find('li').removeClass('Activated');
-    $(this).addClass('Activated');
-      }
+       elm.find('li').removeClass('Activated');
+       $(this).addClass('Activated');
+     }
      
 
-  });
+   });
     setInterval(function(){
-$('.neon-text').toggleClass('neon-text1');
-},5000000);
-   }
- }
+      $('.neon-text').toggleClass('neon-text1');
+    },5000000);
+  }
+}
 
 });
 
@@ -210,7 +211,7 @@ appinstal.directive('validateForm',function(){
 });
 
 appinstal.directive('sessionTimeout', function($document,$timeout,commonService,$state) {
-return {
+  return {
     restrict : 'E',
     link: function (scope,element,attrs) {
       var idleState = false;
@@ -221,10 +222,10 @@ return {
        $timeout.cancel(idleTimer);
        idleState = false;
        idleTimer = $timeout(function () {
-           commonService.sessionEnd(); 
-           
-          commonService.getData('GET','logout/logout');
-          alert('Your Session Expired');
+         commonService.sessionEnd(); 
+
+         commonService.getData('GET','logout/logout');
+         alert('Your Session Expired');
          $state.go('main.home');
 
          idleState = true; 
@@ -233,52 +234,52 @@ return {
       $document.trigger("mousemove");
 
     }
-    }
+  }
 
 });
 appinstal.directive('ssnFormat', function() {
 
-return {
+  return {
     require: 'ngModel',
     link: function (scope, elem, attr, ctrl) {
-    var SSN_REGEXP = /^(?!000)(?!666)(?!9)\d{3}[- ]?(?!00)\d{2}[- ]?(?!0000)\d{4}$/;
-    var ssnPattern = {
+      var SSN_REGEXP = /^(?!000)(?!666)(?!9)\d{3}[- ]?(?!00)\d{2}[- ]?(?!0000)\d{4}$/;
+      var ssnPattern = {
         3: '-',
         5: '-'
-    };
-        var formatSSN = function () {
-            var sTempString = ctrl.$viewValue;
-            sTempString = sTempString.replace(/\-/g, '');
-            var numbers = sTempString;
-            var temp = '';
-            for (var i = 0; i < numbers.length; i++) {
-                temp += (ssnPattern[i] || '') + numbers[i];
-            }
-            ctrl.$viewValue = temp;
+      };
+      var formatSSN = function () {
+        var sTempString = ctrl.$viewValue;
+        sTempString = sTempString.replace(/\-/g, '');
+        var numbers = sTempString;
+        var temp = '';
+        for (var i = 0; i < numbers.length; i++) {
+          temp += (ssnPattern[i] || '') + numbers[i];
+        }
+        ctrl.$viewValue = temp;
 
             // this is what was missing 
             scope.$apply(function(){
-                 elem.val(ctrl.$viewValue);
-            });
-        };
-        ctrl.$parsers.unshift(function (viewValue) {
+             elem.val(ctrl.$viewValue);
+           });
+          };
+          ctrl.$parsers.unshift(function (viewValue) {
             // test and set the validity after update.
             var valid = SSN_REGEXP.test(viewValue);
             ctrl.$setValidity('ssnValid', valid);
             return viewValue;
-        });
+          });
         // This runs when we update the text field
         ctrl.$parsers.push(function (viewValue) {
 
-            var valid = SSN_REGEXP.test(viewValue);
-            ctrl.$setValidity('ssnValid', valid);
-            return viewValue;
+          var valid = SSN_REGEXP.test(viewValue);
+          ctrl.$setValidity('ssnValid', valid);
+          return viewValue;
         });
         elem.bind('keyup', formatSSN);
 
-       }
+      }
     };
-});
+  });
 /*appinstal.directive('ssnFormat', function($document,$timeout,commonService,$state) {
 return {
     restrict : 'A',
@@ -316,7 +317,7 @@ scope.ngModel=value.replace(/-/g,'');
     }
     }
 
-});*/
+  });*/
 
 
 

@@ -82,12 +82,17 @@ angular.module("myapp").controller("UmprireTaxController",['$scope','$rootScope'
 
 
 $scope.referals= function(){
+  if(localStorage.getItem('user')==null){
+    alert('Please login to Refer!');
+    return false;
+  }
+    
   $scope.referalmodalInstance = $uibModal.open({
     templateUrl: 'templates/referafriend.html',
     
     controller:'logInCtrl',
     size:'md',
-    windowClass:'animated  reference'
+    windowClass:'animated  top_view reference'
   }); 
 }
 

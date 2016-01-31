@@ -13,8 +13,6 @@ angular.module("myapp").controller("admin",['$scope','$rootScope','$state','$uib
 	$scope.getTotalReferals = function(e){
 		e.preventDefault();
 		commonService.getData('GET','get-referral').then(function(resp){
-
-			//console.info(resp.data.refferalContacts);
 			$scope.coldefs=[{field: 'rf_name', displayName: 'Client Name'},
 			{field:'rf_email', width:200,displayName:'Client Email id'},
 			{field:'rf_phone', displayName:'Phone Number'},
@@ -79,11 +77,33 @@ angular.module("myapp").controller("admin",['$scope','$rootScope','$state','$uib
 		else
 			$scope.allUsers=$scope.sortedList;
 	}
+	 $scope.setPagingData = function(data, page, pageSize){
+        $scope.myData = data;
+        if (!$scope.$$phase) {
+            $scope.$apply();
+        }
+    };
+     $scope.pagingOptions = {
+    
+      pageSizes: [1,2,3],
+      pageSize: 1,
+     
+      currentPage: 1
+ }; 
+      $scope.$watch('pagingOptions', function (newVal, oldVal) {
+        if (newVal !== oldVal || newVal.currentPage !== oldVal.currentPage) {
+          $scope.getPagedDataAsync($scope.pagingOptions.pageSize, $scope.pagingOptions.currentPage, $scope.filterOptions.filterText);
+        }
+    }, true);
 
+//$scope.getPagedDataAsync($scope.pagingOptions.pageSize, $scope.pagingOptions.currentPage); 
 	$scope.gridOptions = { 
 		enableFiltering: true,
 		data: 'allUsers',
 		multiSelect:false,
+		showFooter: true,
+		enablePaging:true,
+		pagingOptions: $scope.pagingOptions,
 		//	jqueryUITheme: true,
 			columnDefs: 'coldefs'//,
 			//filterOptions:  $scope.filterOptions
@@ -354,9 +374,11 @@ $scope.user_details_tabs =[
 	{id: 8, text: 'Payment Pending'},
 	{id: 9, text: 'Review Pending'},
 	{id: 10, text: 'Confirmation Pending'},
-	{id: 11, text: 'Filing Pending'},
-	{id: 12, text: 'E-Filing Complete'},
-	{id: 13, text: 'Filing Docs Sent'}
+	{id: 11, text: 'E-Filing Pending'},
+	{id: 12, text: 'Paper-Filing Pending'},
+	{id: 13, text: 'E-Filing Complete'},
+	{id: 14, text: 'Filing Docs Sent'},
+	{id: 15, text: 'Cancel Filing'}
 	];
 	$scope.changeState = function(index){
 		if(index.id!=-1){

@@ -6,15 +6,18 @@ appinstal.factory("commonService", function($http,$rootScope,$timeout,$state,web
 	return {
 		getData : function(method,url,data,headers){
            this.showProgress();
-           // console.log(localStorage.getItem('user'),url,$state);
+            console.log('sarath:::',url,localStorage.getItem('user'),url,$state.current.name);
+            if(localStorage.getItem('type')=='Admin'){
 
-           if(localStorage.getItem('user')!=null&&$state.current.name.indexOf('user')>-1&&url.indexOf(localStorage.getItem('user'))==-1){
+            }
+
+            else if(url.indexOf('logout')==-1&&method=='GET'&&$state.current.name.indexOf('user')>-1&&url.indexOf(localStorage.getItem('user'))==-1){
             alert('Service Not Available!');
             this.sessionEnd();
             $state.go('main.home');
-           	return false;
-
-           }
+           	return false;	
+            }
+           
 			return $http({
 				method: method,
 				url: webServiceUrl+url,
@@ -34,13 +37,15 @@ appinstal.factory("commonService", function($http,$rootScope,$timeout,$state,web
 		stopSpinner: function(){
 			$rootScope.processing = ''; 
 		},
-		sessionStart:function(id){
+		sessionStart:function(id,type){
 			$rootScope.loggedIn = true;
         localStorage.setItem('user',id);
+        localStorage.setItem('type',type);
         
          },
-         adminSession:function(id){
+         adminSession:function(id,type){
          	localStorage.setItem('admin',id);
+         	localStorage.setItem('type',type);
 
          },
          adminSessionEnd:function(){
