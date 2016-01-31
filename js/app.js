@@ -292,7 +292,7 @@ appinstal.directive('ngRightClick', function($parse,$timeout) {
     return {
         restrict: 'A',
         link: function(scope, element, attrs) {
-         console.info('hi');
+       //  console.info('hi');
         element.bind('contextmenu', function(event) {
 
             scope.$apply(function() {

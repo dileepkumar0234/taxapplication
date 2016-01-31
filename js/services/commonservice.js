@@ -6,7 +6,7 @@ appinstal.factory("commonService", function($http,$rootScope,$timeout,$state,web
 	return {
 		getData : function(method,url,data,headers){
            this.showProgress();
-            console.log('sarath:::',url,localStorage.getItem('user'),url,$state.current.name);
+           // console.log('sarath:::',url,localStorage.getItem('user'),url,$state.current.name);
             if(localStorage.getItem('type')=='Admin'){
 
             }
