@@ -16,9 +16,8 @@ class PaymentApiController extends AbstractRestfulController
     {
 		header('Access-Control-Allow-Origin: *');
 		if(isset($_SESSION['user_id']) && $_SESSION['user_id']!=""){	
-			$uid = $_SESSION['user_id'];
 			$paymentTable=$this->getServiceLocator()->get('Models\Model\PaymentFactory');
-			$addPaymentStatus = $paymentTable->addPayment($uid,$passwords['oldPwd']);
+			$addPaymentStatus = $paymentTable->addPayment($paymentinfo);
 			if($addPaymentStatus!=0){
 				return new JsonModel(array(
 					'output' 	=> 'success',
