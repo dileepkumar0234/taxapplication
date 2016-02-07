@@ -26,6 +26,11 @@ class ReachApiController extends AbstractRestfulController
 					'allContacts' 	=> ''
 				));
 			}
+		}else{
+			return new JsonModel(array(
+				'output' 	    => 'boom',
+				'allContacts' 	=> ''
+			));
 		}
     }
     public function get($logout)
