@@ -38,7 +38,7 @@ class PaymentTable
 		if(isset($payment['payment_status']) && $payment['payment_status']!=""){
 			$payment_status = $payment['payment_status'];			
 		}else{
-			$payment_status = 0;			
+			$payment_status = 1;			
 		}
 		$data = array(
 			'p_user_id' 	  	       => $p_user_id,				
