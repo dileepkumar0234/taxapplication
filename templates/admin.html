@@ -46,7 +46,7 @@
 
 </div>
 <div ng-if="home_banner&&allUsers==''" class="col-md-12"><h1>No Records Found</h1></div>
-<div ng-if="home_banner&&allUsers!=''&&!userSelected" style="padding:0;" class="col-md-12 gridStyle" ng-grid="gridOptions"></div>
+<div ng-if="home_banner&&allUsers!=''&&!userSelected" style="padding:0;height:700px;" class="col-md-12 gridStyle" ng-grid="gridOptions"></div>
 <div ng-if="home_banner&&userSelected">
  <div class="col-md-12" style="margin-top:20px;padding:0;">
    <div class="col-md-1 adminstates"   ng-click="getCurrentInfo($index)" ng-repeat="item in user_details_tabs"> <button  class="btn btn-primary">{{item.label}}</button></div>
