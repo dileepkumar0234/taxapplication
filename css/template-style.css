@@ -134,11 +134,16 @@ p.logo strong {
 	position: relative;
 }
 #carousel .text {
-	position: absolute;
+	/*position: absolute;
     top: 243px;
 	z-index: 10;
 	/*left:30px;*/
-    left: 28%;
+    /*left: 28%;*/
+     position: absolute;
+    top: 500px;
+    z-index: 10;
+    left: 30px;
+    left: 42%;
 }
 .item {
 	overflow: hidden;

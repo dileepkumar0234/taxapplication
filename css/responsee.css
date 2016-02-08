@@ -223,9 +223,9 @@ ul.chevron .submenu > a:after, ul.chevron .sub-submenu > a:after,ul.chevron .asi
 .line {clear:left;}
 .line .line {
     padding: 0;
-    position: absolute;
+    /*position: absolute;
     bottom: -185px;
-    left: 33%;
+    left: 33%;*/
 }
 .hide-l {display:none;}
 .box {

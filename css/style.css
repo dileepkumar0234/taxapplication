@@ -1643,7 +1643,7 @@ float: left;
     display: none!important;;
 }*/
 .modal-open .modal .modal-dialog{
-    margin: 18% auto;
+     margin-top: 18%;
     width:630px;
 }
 
@@ -1746,4 +1746,7 @@ padding: 32px;
 .ngGroupPanel{
    width: 1037px!important;
     height: 30px!important;  
+}
+.deactivate{
+    pointer-events:none;
 }

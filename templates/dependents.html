@@ -1,5 +1,5 @@
 <div class="right_content">
-    <h1>Dependents Info (If any) <span ng-if="editMode&&user.filling_status=='1'" class="btn btn-primay" ng-click="editProfile()">Edit</span></h1>
+    <h1>Dependents Info <span ng-if="editMode&&user.filling_status=='1'" class="btn btn-primay" ng-click="editProfile()">Edit</span></h1>
     
     <form name="dependent_form" ng-class="{'feel_form':userData.ps_state>2}">
     <div ng-repeat="item in dependants" class="allDependants"> 

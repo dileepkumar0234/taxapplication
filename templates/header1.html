@@ -15,17 +15,18 @@
         <li><a  ng-click="RefreshGrid($event,2)"><i class="fa fa-upload"></i> Scheduling Pending({{count.Schedulingcnt}}) </a></li>
         <li><a  ng-click="RefreshGrid($event,3)"><i class="fa fa-sticky-note"></i> Interview Pending({{count.interviewCnt}})</a></li>
         <li><a  ng-click="RefreshGrid($event,4)"> <i class="fa fa-file-archive-o"></i> Documents Upload Pending( {{count.docsCnt}})</a></li>
-        <li><a ng-click="RefreshGrid($event,5)"><i class="fa fa-cc-paypal"></i> Other Documents Upload Pending(  {{count.otherDocsCnt}})</a></li>
+        <li><a ng-click="RefreshGrid($event,5)"><i class="fa fa-cc-paypal"></i> Other Docs Pending(  {{count.otherDocsCnt}})</a></li>
         <li><a ng-click="RefreshGrid($event,6)"> <i class="fa fa-download"></i>	Preparation Pending({{count.preparationCnt}})</a></li>
         <li><a  ng-click="RefreshGrid($event,7)"> <i class="fa fa-download"></i> Synopsys Pending({{count.synopsisCnt}})</a></li>
         <li><a  ng-click="RefreshGrid($event,8)"> <i class="fa fa-download"></i> Payment Pending({{count.paymentCnt}})</a></li>
-        <li><a  ng-click="RefreshGrid($event,9)"> <i class="fa fa-download"></i> Review Pending({{count.reviewCnt}})</a></li>
-        <li><a  ng-click="RefreshGrid($event,10)"> <i class="fa fa-download"></i> Confirmation Pending({{count.confirmationCnt}})</a></li>
+        <li><a  ng-click="RefreshGrid($event,9)"> <i class="fa fa-download"></i> Review Upload Pending({{count.reviewCnt}})</a></li>
+        <li><a  ng-click="RefreshGrid($event,10)"> <i class="fa fa-download"></i> 
+            Review Confirmation Pending({{count.confirmationCnt}})</a></li>
         <li><a  ng-click="RefreshGrid($event,11)"> <i class="fa fa-download"></i>E-Filing Pending({{count.eFiling}})</a></li>
         <li><a  ng-click="RefreshGrid($event,12)"> <i class="fa fa-download"></i>P-Filing Pending({{count.paperFiling}})</a></li>
         <li><a  ng-click="RefreshGrid($event,13)"> <i class="fa fa-download"></i>  E – Filing Complete({{count.eCompleteFiling}})</a></li>
-        <li><a ng-click="RefreshGrid($event,14)"> <i class="fa fa-download"></i>  Filing Docs Sent ({{count.docSentFiling}})</a></li>
-         <li><a ng-click="RefreshGrid($event,15)"> <i class="fa fa-download"></i>  Cancel Filing ({{count.cancelFiling}})</a></li>
+        <li><a ng-click="RefreshGrid($event,14)"> <i class="fa fa-download"></i> P- Filing Docs Sent ({{count.docSentFiling}})</a></li>
+         <li><a ng-click="RefreshGrid($event,15)"> <i class="fa fa-download"></i>  Files Cancelled ({{count.cancelFiling}})</a></li>
        <!--  <li><a ng-click="logout()"> <i class="fa fa-download"></i>  Log Out</a></li> -->
     </ul>
 

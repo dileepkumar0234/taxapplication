@@ -1,5 +1,5 @@
 
-angular.module("myapp").controller("userController", ['$scope','$rootScope','$state','$stateParams','$uibModal','commonService',function($scope,$rootScope,$state,$stateParams,$uibModal,commonService) {
+angular.module("myapp").controller("userController", ['$scope','$rootScope','$state','$stateParams','$uibModal','commonService','States',function($scope,$rootScope,$state,$stateParams,$uibModal,commonService,States) {
  //console.log("sarath:::",$scope.response_user);
  $scope.relations= ['Father','Mother','Son','Daughter','others'];
  $scope.havedependants = [{name:'Yes',status:2},{name:'No',status:1}];
@@ -57,24 +57,7 @@ function getUserData(){
 
     $scope.user.dependent=Number($scope.user.dependent)
     $rootScope.userData= resp.data.data;
-    $scope.states = [
-    {id: 0, text: 'To be assigned'},
-    {id: 1, text: 'Basic Info Pending'},
-    {id: 2, text: 'Scheduling Pending'},
-    {id: 3, text: 'Interview Pending'},
-    {id: 4, text: 'Docs Upload Pending'},
-    {id: 5, text: 'Other Docs Upload Pending'},
-    {id: 6, text: 'Preparation Pending'},
-    {id: 7, text: 'Synopsys Pending'},
-    {id: 8, text: 'Payment Pending'},
-    {id: 9, text: 'Review Pending'},
-    {id: 10, text: 'Confirmation Pending'},
-    {id: 11, text: 'E-Filing Pending'},
-  {id: 12, text: 'Paper-Filing Pending'},
-  {id: 13, text: 'E-Filing Complete'},
-  {id: 14, text: 'Filing Docs Sent'},
-  {id: 15, text: 'Cancel Filing'}
-    ];
+    $scope.states = States;
 
     
 

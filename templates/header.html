@@ -2,7 +2,8 @@
 <session-timeout></session-timeout>
     <img src="images/logouser.png" class="logo">
     <ul >
-        <li><a class="profile" ui-sref="user.payment"><i class="fa fa-file-code-o"></i> Make Payment</span></a> </li>
+
+        <li ng-class="{'deactivate':userData.ps_state<6 || userData.ps_state>8}"><a class="profile" ui-sref="user.payment"><i class="fa fa-file-code-o"></i> Make Payment</span></a> </li>
         <li class="neon-text"><a class="profile" href="#"><i class="fa fa-file-code-o"></i> Filing Status: {{userData.FilingStatusCode}}</span></a> </li>
     </ul>
     <ul style="position:absolute;right:0;top:90px;">
@@ -35,7 +36,7 @@
         <li><a  ui-sref="user.schedule"><i class="fa fa-sticky-note"></i> Schedule For Tax Notes</a></li>
         <li><a  ui-sref="user.upload"><i class="fa fa-upload"></i> Upload Tax Documents</a></li>
         <li><a  ui-sref="user.Summary"> <i class="fa fa-file-archive-o"></i> View Tax Summary</a></li>
-        <li><a  ui-sref="user.payment"><i class="fa fa-cc-paypal"></i> Make Payment</a></li>
+        <li ng-class="{'deactivate':userData.ps_state<6 || userData.ps_state>8}"><a  ui-sref="user.payment"><i class="fa fa-cc-paypal"></i> Make Payment</a></li>
         <li><a  href="#downloadtax"> <i class="fa fa-download"></i>	Download Tax Return Copy</a></li>
         
         <li><a  href="templates/disclaimer.html" target="_blank"> <i class="fa fa-hand-o-right"></i> Disclaimer Agreement</a></li>
