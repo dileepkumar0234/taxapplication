@@ -4,7 +4,7 @@ appinstal.factory("commonService", function($http,$rootScope) {
 
 	return {
 		getData : function(method,url,data){
-console.log(this);
+//console.log(this);
 			return $http({
 				method: method,
 				url: webServiceUrl+url,

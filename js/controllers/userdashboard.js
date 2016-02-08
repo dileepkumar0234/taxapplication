@@ -87,7 +87,7 @@ $scope.changePassword = function(){
 
 commonService.getData('GET','get-user-synopsy/'+$scope.uid).then(function(resp){
 
-console.log(resp);    //resp.data.data no data found
+//console.log(resp);    //resp.data.data no data found
 if(typeof resp.data.data == 'string'){
 $scope.yes=false;
 }
@@ -98,5 +98,15 @@ else{
 }
 
 });
+
+$scope.update = function(taxpayer,user){
+  commonService.getData('POST','payments',{p_user_id:taxpayer.ps_user_id,amount:taxpayer.amount}).then(function(resp){
+     if(resp.data.output=='success'){
+      
+        $("#paymentStatus").submit();
+
+     }
+  });
+}
 
 }]);

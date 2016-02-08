@@ -11,7 +11,11 @@ appinstal.factory("commonService", function($http,$rootScope,$timeout,$state,web
 
             }
 
-            else if(url.indexOf('logout')==-1&&method=='GET'&&$state.current.name.indexOf('user')>-1&&url.indexOf(localStorage.getItem('user'))==-1){
+            else if(url.indexOf('logout')==-1 && 
+            	method=='GET' && 
+            	$state.current.name.indexOf('user')>-1 && 
+            	url.indexOf(localStorage.getItem('user'))==-1) 
+            {
             alert('Service Not Available!');
             this.sessionEnd();
             $state.go('main.home');

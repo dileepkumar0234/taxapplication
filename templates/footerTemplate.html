@@ -1,0 +1,17 @@
+<div ng-show="showFooter" class="ngFooterPanel" ng-class="{'ui-widget-content': jqueryUITheme, 'ui-corner-bottom': jqueryUITheme}" style="width: 1037px;height: 55px;">
+    <div class="ngTotalSelectContainer" >
+        <div class="ngFooterTotalItems" ng-class="{'ngNoMultiSelect': !multiSelect}" >
+            <span class="ngLabel">{{i18n.ngTotalItemsLabel}} {{maxRows()}}</span>
+        </div>
+        
+    </div>
+    <div class="ngPagerContainer" style="float: right; margin-top: 10px;" ng-show="enablePaging" ng-class="{'ngNoMultiSelect': !multiSelect}">
+        
+        <div style="float:left; margin-right: 10px; line-height:25px;" class="ngPagerControl" style="float: left; min-width: 135px;">
+            <button class="ngPagerButton" ng-click="pageBackward()" ng-disabled="cantPageBackward()" title="{{i18n.ngPagerPrevTitle}}"><div class="ngPagerFirstTriangle ngPagerPrevTriangle"></div></button>
+            <input class="ngPagerCurrent" min="1" max="{{maxPages()}}" type="number" style="width:50px; height: 24px; margin-top: 1px; padding: 0 4px;" ng-model="pagingOptions.currentPage"/>
+            <button class="ngPagerButton" ng-click="pageForward()" ng-disabled="cantPageForward()" title="{{i18n.ngPagerNextTitle}}"><div class="ngPagerLastTriangle ngPagerNextTriangle"></div></button>
+           
+        </div>
+    </div>
+</div>

@@ -52,7 +52,8 @@ function getSpouseInfo(){
 });
 }
 $scope.updatespouse = function(spouseForm){
-   if(spouseForm.$invalid){
+ // console.log(spouseForm);
+   if(spouseForm.$error.hasOwnProperty('ssnValid')==true){
     alert('Please Fill the Form');
       return false;
     }

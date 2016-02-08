@@ -1,7 +1,7 @@
 <div class="right_content">
     <h1>Dependents Info (If any) <span ng-if="editMode&&user.filling_status=='1'" class="btn btn-primay" ng-click="editProfile()">Edit</span></h1>
     
-    <form name="dependent_form" ng-class="{'feel_form':editMode}">
+    <form name="dependent_form" ng-class="{'feel_form':userData.ps_state>2}">
     <div ng-repeat="item in dependants" class="allDependants"> 
     <h1>Dependent-{{$index+1}}<button ng-if="$index!=0;" class='btn btn-danger' ng-click="DeleteDependant(item,$index)">X</button></h1>    
         <div class="col-xs-12">
@@ -26,7 +26,7 @@
         <div class="col-xs-6">
                 <div class="form-group">
                     <label for="email">SSN:</label>
-                    <input type="text" name="ssn{{$index}}" validate-form ng-pattern="/^[0-9]{3}\-[0-9]{2}\-[0-9]{4}$/" ng-class="{'error':dependent_form.ssn{{$index}}.$invalid}" maxlength="11" ssn-format ng-model="item.address" class="form-control" id="email">
+                    <input type="text" name="ssn{{$index}}" validate-form ng-pattern="/^[0-9]{3}\-[0-9]{2}\-[0-9]{4}$/" ng-class="{'error':dependent_form.ssn{{$index}}.$invalid || item.address==''}" maxlength="11" ssn-format ng-model="item.address" class="form-control" id="email">
                 </div>
             </div>
             <div class="col-xs-6">
@@ -78,9 +78,9 @@
 <!--ng-if="user.filling_status=='1'"-->
         <div class="col-lg-12" >
         <p class="note">Note: If the Dependent doesn’t hold either SSN/ITIN please upload  Passport Scan copy</p>
-<button ng-if="dependants.length<5" style="margin-left:10px;" ng-click="addMore()" class="btn btn-success pull-left" type="submit">Add More Dependants</button>
-            <button style="margin-left:10px;" ng-click="UpdateDependants(dependent_form)" class="btn btn-success pull-right" type="submit">SUBMIT</button>
-            <button class="btn btn-warning  pull-right" ng-click="reset();" type="reset">EDIT</button>
+<button ng-if="dependants.length<5 && userData.ps_state<=2" style="margin-left:10px;" ng-click="addMore()" class="btn btn-success pull-left" type="submit">Add More Dependants</button>
+            <button ng-if="userData.ps_state<=2" style="margin-left:10px;" ng-click="UpdateDependants(dependent_form)" class="btn btn-success pull-right" type="submit">SUBMIT</button>
+            <button ng-if="userData.ps_state<=2" class="btn btn-warning  pull-right" ng-click="reset();" type="reset">EDIT</button>
         </div>
 <!-- <p style="text-align: center">Note: Here User  should be able to Update the Basic Info</p> -->
 

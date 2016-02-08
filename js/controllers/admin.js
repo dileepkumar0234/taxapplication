@@ -10,47 +10,67 @@ angular.module("myapp").controller("admin",['$scope','$rootScope','$state','$uib
 	}
 	$scope.cols=[];
 	$scope.searchColText={};
-	$scope.getTotalReferals = function(e){
+	$scope.uploading={};
+	$scope.pagingOptions = {
+		pageSizes: [10,20,50],
+		pageSize: 20,
+		currentPage: 1
+	};
+	$scope.getTotalReferals = function(e){	
+		
 		e.preventDefault();
+		$scope.home_banner = true;
+		$scope.userSelected = false;
 		commonService.getData('GET','get-referral').then(function(resp){
-			$scope.coldefs=[{field: 'rf_name', displayName: 'Client Name'},
-			{field:'rf_email', width:200,displayName:'Client Email id'},
-			{field:'rf_phone', displayName:'Phone Number'},
-			{field:'rf_on_name', displayName:'Refered Name'},
-			{field:'rf_on_email', displayName:'Refered Email id'},
-			{field:'rf_on_phone', displayName:'Refered Phone'},
-			{field:'rf_comment', displayName:'Description'}
+			$scope.coldefs=[
+			{displayName:'S.NO', width:50,cellTemplate: '<div class="ngCellText" data-ng-class="col.colIndex()"><span>{{row.rowIndex + 1}}</span></div>'},
+			
+			{field: 'rf_name', width:200,displayName: 'Client Name',resizable:true},
+			{field:'rf_email', width:200,displayName:'Client Email id',resizable:true},
+			{field:'rf_phone', width:'*', displayName:'Phone Number',resizable:true},
+			{field:'rf_on_name', width:'*', displayName:'Refered Name',resizable:true},
+			{field:'rf_on_email', width:'*', displayName:'Refered Email id',resizable:true},
+			{field:'rf_on_phone',width:'*', displayName:'Refered Phone',resizable:true},
+			{field:'rf_comment', width:'**',displayName:'Description',resizable:true}
 			];
 			$scope.allUsers = resp.data.refferalContacts;
+			$scope.pagingOptions.currentPage= 1;
+			if(!$scope.$$phase)
+				$scope.$apply();
+			$scope.backupCopy = angular.copy($scope.allUsers);
+			$scope.setPagingData($scope.allUsers,$scope.pagingOptions.currentPage,$scope.pagingOptions.pageSize);
+			
 			commonService.stopSpinner();
 		});
-	};
-	$scope.AlreadyAssigned = true;
-	$scope.coldefs=[{field: 'user_name', displayName: 'Client Name'},
-	{field:'email', width:200,displayName:'Email id',cellTemplate: '<div  ng-click="foo(row)" ng-bind="row.getProperty(col.field)"></div>'},
-	{field:'ssnitin', displayName:'SSN'},
-	{field:'user_id', displayName:'File Number'},
-	{field:'user_id', displayName:'Payment Info'},
-	{field:'client_name', displayName:'Assigned'}
-	];
-	$scope.cols=['user_name','email','ssnitin','user_id'];
-	$scope.selectedCol=$scope.cols[2];
-	$scope.getSortMethod = function(val){
-		
-		$scope.selectedCol=val;
-	}
-	$scope.$watch('searchColText.search',function(val){
-		
-		$scope.searchColText.search = val;
-	},true);
-	$scope.SearchCategory = function(){
-		$scope.sortedList=[];
-		var count=0;
-		angular.forEach($scope.orgData,function(item,i){
+};
+$scope.AlreadyAssigned = true;
+$scope.coldefs=[{field: 'user_name', displayName: 'Client Name'},
+{field:'email', width:200,displayName:'Email id',cellTemplate: '<div  ng-click="foo(row)" ng-bind="row.getProperty(col.field)"></div>'},
+{field:'ssnitin', displayName:'SSN'},
+{field:'user_id', displayName:'File Number'},
+{field:'user_id', displayName:'Payment Info'},
+{field:'client_name', displayName:'Assigned'}
+];
+$scope.cols=['first_name','last_name','email','phone','unique_code'];
+$scope.selectedCol=$scope.cols[2];
+$scope.getSortMethod = function(val){
+	
+	$scope.selectedCol=val;
+}
+$scope.$watch('searchColText.search',function(val){
+	
+	$scope.searchColText.search = val;
+},true);
+$scope.SearchCategory = function(){
+	$scope.home_banner = true;
+	$scope.userSelected = false;
+	$scope.sortedList=[];
+	var count=0;
+	angular.forEach($scope.orgData,function(item,i){
 			//console.info(item,$scope.selectedCol);
 			if(item[$scope.selectedCol]!=null){
 				if($scope.selectedCol=='ssnitin'){
-                   if(item[$scope.selectedCol].toLowerCase().indexOf('-'+$scope.searchColText.search.toLowerCase())>-1 ){
+					if(item[$scope.selectedCol].toLowerCase().indexOf('-'+$scope.searchColText.search.toLowerCase())>-1 ){
 						$scope.sortedList.push($scope.orgData[i]);
 					} 
 					else{
@@ -71,39 +91,40 @@ angular.module("myapp").controller("admin",['$scope','$rootScope','$state','$uib
 
 
 		});
-		
-		if(count==$scope.orgData.length)
-			$scope.allUsers=$scope.orgData;
-		else
-			$scope.allUsers=$scope.sortedList;
+	
+	if(count==$scope.orgData.length)
+		$scope.allUsers=[];
+	else
+		$scope.allUsers=$scope.sortedList;
+	//console.log($scope.allUsers);
+}
+$scope.setPagingData = function(data, page, pageSize){
+	var data = $scope.backupCopy;
+	var pagedData = data.slice((page - 1) * pageSize, page * pageSize);
+	$scope.allUsers = pagedData;
+	$scope.totalServerItems = $scope.backupCopy.length;
+	if (!$scope.$$phase) {
+		$scope.$apply();
 	}
-	 $scope.setPagingData = function(data, page, pageSize){
-        $scope.myData = data;
-        if (!$scope.$$phase) {
-            $scope.$apply();
-        }
-    };
-     $scope.pagingOptions = {
-    
-      pageSizes: [1,2,3],
-      pageSize: 1,
-     
-      currentPage: 1
- }; 
-      $scope.$watch('pagingOptions', function (newVal, oldVal) {
-        if (newVal !== oldVal || newVal.currentPage !== oldVal.currentPage) {
-          $scope.getPagedDataAsync($scope.pagingOptions.pageSize, $scope.pagingOptions.currentPage, $scope.filterOptions.filterText);
-        }
-    }, true);
+};
+
+$scope.$watch('pagingOptions', function (newVal, oldVal) {
+	if (newVal !== oldVal || newVal.currentPage !== oldVal.currentPage) {
+		$scope.setPagingData($scope.allUsers,$scope.pagingOptions.currentPage,$scope.pagingOptions.pageSize);
+	}
+}, true);
 
 //$scope.getPagedDataAsync($scope.pagingOptions.pageSize, $scope.pagingOptions.currentPage); 
-	$scope.gridOptions = { 
-		enableFiltering: true,
-		data: 'allUsers',
-		multiSelect:false,
-		showFooter: true,
-		enablePaging:true,
-		pagingOptions: $scope.pagingOptions,
+$scope.gridOptions = { 
+	enableFiltering: true,
+	data: 'allUsers',
+	multiSelect:false,
+	showFooter: true,
+	enablePaging:true,
+	enableColumnResize:true,
+	totalServerItems: 'totalServerItems',
+	footerTemplate:'templates/footerTemplate.html',
+	pagingOptions: $scope.pagingOptions,
 		//	jqueryUITheme: true,
 			columnDefs: 'coldefs'//,
 			//filterOptions:  $scope.filterOptions
@@ -115,20 +136,25 @@ angular.module("myapp").controller("admin",['$scope','$rootScope','$state','$uib
 		}
 
 
-
+        $scope.allUsers = [];
 		commonService.getData('GET','user-list').then(function(resp){
 
 			$scope.totalCount= resp.data.success.length;
 			$scope.allUsers=resp.data.success;
 			$scope.orgData=angular.copy($scope.allUsers);
+			$scope.backupCopy = angular.copy($scope.allUsers);
+			$scope.setPagingData($scope.allUsers,$scope.pagingOptions.currentPage,$scope.pagingOptions.pageSize);
+			
 			commonService.stopSpinner();
 		});
+		$scope.getCount = function(){
+			commonService.getData('GET','count-each-stages').then(function(resp){
 
-		commonService.getData('GET','count-each-stages').then(function(resp){
-
-			$scope.count= resp.data;
-			commonService.stopSpinner();
-		});
+				$scope.count= resp.data;
+				commonService.stopSpinner();
+			});
+		}
+		$scope.getCount();
 		commonService.getData('GET','get-unlists/1').then(function(resp){
 
 			$scope.UnListMembers = resp.data.UnListUser;
@@ -208,12 +234,19 @@ angular.module("myapp").controller("admin",['$scope','$rootScope','$state','$uib
 			}
 			
 			commonService.stopSpinner();
+			
+			
+			$scope.pagingOptions.currentPage= 1;
+			if(!$scope.$$phase)
+				$scope.$apply();
+			$scope.backupCopy = angular.copy($scope.allUsers);
+			$scope.setPagingData($scope.allUsers,$scope.pagingOptions.currentPage,$scope.pagingOptions.pageSize);
+			
 		});
 
 }
 
 $scope.foo = function(resp){
-
 	if(resp.client_name!=null){
 		$scope.AlreadyAssigned = false;
 	}
@@ -223,12 +256,14 @@ $scope.foo = function(resp){
 	$scope.userSelected = true;
 	$scope.home_banner = true;
 	$scope.user_id=resp.entity.user_id;
+	$scope.fileNumber=resp.entity.unique_code;
 	$scope.getComments();
 	$scope.getCurrentInfo(0);
 }
 $scope.userstatus ={};
 
 $scope.getCurrentInfo = function(index){
+	$scope.currentTab = index;
 
 	angular.forEach($scope.user_details_tabs,function(val,key){
 		if(key==index){
@@ -266,7 +301,7 @@ $scope.getCurrentInfo = function(index){
 					
 					$scope.SpouseInfo= resp.data.data;
 					commonService.stopSpinner();
-                      if($scope.SpouseInfo.dob!=null&&$scope.SpouseInfo.dob!=''){
+					if($scope.SpouseInfo.dob!=null&&$scope.SpouseInfo.dob!=''){
 						var x= $scope.SpouseInfo.dob.split('-');
 						if(x[1].length==1){
 							x[1]="0"+parseInt(x[1])
@@ -284,19 +319,19 @@ $scope.getCurrentInfo = function(index){
 					
 					$scope.dependants= resp.data.dep;
 					commonService.stopSpinner();
-angular.forEach($scope.dependants,function(val,key){
-					if(val.dob!=null&&val.dob!=''){
-						var x= val.dob.split('-');
-						if(x[1].length==1){
-							x[1]="0"+parseInt(x[1])
-						}
-						else{
-							x[1]=parseInt(x[1])
-						}
-						val.dob=x[1]+"/"+x[0]+"/"+x[2];
+					angular.forEach($scope.dependants,function(val,key){
+						if(val.dob!=null&&val.dob!=''){
+							var x= val.dob.split('-');
+							if(x[1].length==1){
+								x[1]="0"+parseInt(x[1])
+							}
+							else{
+								x[1]=parseInt(x[1])
+							}
+							val.dob=x[1]+"/"+x[0]+"/"+x[2];
 
-					}
-				});
+						}
+					});
 
 
 				});	
@@ -310,21 +345,27 @@ angular.forEach($scope.dependants,function(val,key){
 			}
 			else if(index==3){
 				commonService.getData('GET','uploadPdfs-page?id='+$scope.user_id).then(function(resp){
-
-					$scope.file_path=resp.data.file_path;
-					$scope.uploads=resp.data.data;
-					commonService.stopSpinner();
+					if(resp.data.data=='No Data Found'){
+						$scope.noData = false;
+					}
+					else{
+						$scope.noData = true;
+						$scope.file_path=resp.data.file_path;
+						$scope.uploads=resp.data.data;
+						commonService.stopSpinner();
+					}
+					
 				});
 			}
 			else if(index==4){
 				commonService.getData('GET','get-user-synopsy/'+$scope.user_id).then(function(resp){
-if(resp.data.data!="No Data Found"){
-	$scope.synopsys_file=resp.data.data;
-					$scope.file_path= resp.data.file_path;
-}
-else{
-	$scope.synopsys_file=[];
-}
+					if(resp.data.data!="No Data Found"){
+						$scope.synopsys_file=resp.data.data;
+						$scope.file_path= resp.data.file_path;
+					}
+					else{
+						$scope.synopsys_file=[];
+					}
 					
 
 
@@ -384,32 +425,33 @@ $scope.user_details_tabs =[
 		if(index.id!=-1){
 			$scope.selectedState = index.id;
 		}
-	/*if($scope.states[index].checked==true)
-	$scope.selectedState = $scope.states[index].id+1;*/
-}
 
-$scope.getComments = function(){
-	commonService.getData('GET','comments-list/'+$scope.user_id).then(function(resp){
-		$scope.TotalComments = resp.data.data;
-		commonService.stopSpinner();
-	});
-};
-
-$scope.updateStatus = function(){
-	if(!$scope.selectedState)
-		$scope.selectedState = $scope.PayerInfo.ps_state.id;
-	commonService.getData('PUT','update-process/'+$scope.user_id,
-		{ps_state:$scope.selectedState,comment:$scope.userstatus.comment}).then(function(resp){
-			$state.reload();
-
-			commonService.stopSpinner();
-		});
 	}
 
-	$scope.inquires = function(e){
-		e.preventDefault();
-		commonService.getData('GET','get-all-reach').then(function(resp){
-			$scope.userSelected = false;
+	$scope.getComments = function(){
+		commonService.getData('GET','comments-list/'+$scope.user_id).then(function(resp){
+			$scope.TotalComments = resp.data.data;
+			commonService.stopSpinner();
+		});
+	};
+
+	$scope.updateStatus = function(){
+		if(!$scope.selectedState)
+			$scope.selectedState = $scope.PayerInfo.ps_state.id;
+		commonService.getData('PUT','update-process/'+$scope.user_id,
+			{ps_state:$scope.selectedState,comment:$scope.userstatus.comment}).then(function(resp){
+				$scope.getComments();
+				$scope.userstatus.comment = undefined;
+
+				$scope.getCount();
+				commonService.stopSpinner();
+			});
+		}
+
+		$scope.inquires = function(e){
+			e.preventDefault();
+			commonService.getData('GET','get-all-reach').then(function(resp){
+				$scope.userSelected = false;
                    //console.log(resp);                   
                    commonService.stopSpinner();
                    $scope.allUsers=resp.data.allContacts;
@@ -419,8 +461,13 @@ $scope.updateStatus = function(){
                    {field:'c_email', displayName:'E-Mail'},
                    {field:'c_message', displayName:'Message'}
                    ];
+                   $scope.pagingOptions.currentPage= 1;
+                   if(!$scope.$$phase)
+                   	$scope.$apply();
+                   $scope.backupCopy = angular.copy($scope.allUsers);
+                   $scope.setPagingData($scope.allUsers,$scope.pagingOptions.currentPage,$scope.pagingOptions.pageSize);
 
 
                });
-	}
-}]);
+		}
+	}]);

@@ -361,7 +361,7 @@
                     $rootScope.$broadcast(eventName, params);
                 }
                 if (debug) {
-                    $log.info(eventName, params);
+                    //$log.info(eventName, params);
                 }
             };
 

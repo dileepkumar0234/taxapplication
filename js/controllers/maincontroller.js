@@ -6,18 +6,18 @@ angular.module("myapp").controller("UmprireTaxController",['$scope','$rootScope'
     isFirstOpen: false,
     isFirstDisabled: false
   };
- 
-   $scope.mainmodalInstance = $uibModal.open({
+
+  $scope.mainmodalInstance = $uibModal.open({
      // animation: $scope.animationsEnabled,
-      templateUrl: 'myModalContent.html',
-      scope:$scope,
-      windowClass:'mainpop'
+     templateUrl: 'myModalContent.html',
+     scope:$scope,
+     windowClass:'mainpop'
      // controller: 'ModalInstanceCtrl',
       //size: size,
       
     });
 
-    $scope.ok = function () {
+  $scope.ok = function () {
     $scope.mainmodalInstance.close();
   };
 
@@ -46,8 +46,8 @@ angular.module("myapp").controller("UmprireTaxController",['$scope','$rootScope'
   $rootScope.userbody ='';
   
   $scope.checkemail = function(email){
-    
-    
+
+
   }
 
   $scope.contactform ={};
@@ -56,7 +56,7 @@ angular.module("myapp").controller("UmprireTaxController",['$scope','$rootScope'
       return false;
     }
     commonService.getData('POST','contact-us',data).then(function(resp){
-      
+
      $scope.contactform ={};
      $scope.willcontact=true;
      $timeout(function(){
@@ -68,28 +68,12 @@ angular.module("myapp").controller("UmprireTaxController",['$scope','$rootScope'
   };
 
 
-/*$scope.forgotPassword = function(){
-  
-  $scope.modalInstance .close();
-  var referalmodalInstance1 = $uibModal.open({
-    templateUrl: 'templates/forgot.html',
-    scope:$scope,
-         //   controller:'logInCtrl',
-         size:'sm',
-         windowClass:'animated rotateIn forg'
-       }); 
-}*/
 
 
 $scope.referals= function(){
-  if(localStorage.getItem('user')==null){
-    alert('Please login to Refer!');
-    return false;
-  }
-    
+  
   $scope.referalmodalInstance = $uibModal.open({
     templateUrl: 'templates/referafriend.html',
-    
     controller:'logInCtrl',
     size:'md',
     windowClass:'animated  top_view reference'
@@ -132,7 +116,7 @@ $scope.current=$state.current.name;
 
 $rootScope.$on('$stateChangeSuccess', 
   function(event, toState, toParams, fromState, fromParams){ 
-   
+
     $scope.current=$state.current.name;
   });
 

@@ -1130,7 +1130,7 @@ h1.mar_top {
 }
 .top_view .modal-content{
     width: 500px;
-    left:20%;
+    left:11%;
     /*top: 10%;*/
     top:-190px;
 }
@@ -1146,7 +1146,7 @@ h1.mar_top {
 .popup_main {
 
     width: 500px;
-    height:550px;
+    height:580px;
     /*position: fixed;
     left: 0;
     top:-2500px;
@@ -1734,5 +1734,16 @@ padding: 32px;
 .Contacts{
         width: 40%;
     float: left;
-
+}
+.synop{
+    clear: left;
+    float: left;
+}
+.ngTopPanel{
+    width: 1037px!important;
+    height: 30px!important;
+}
+.ngGroupPanel{
+   width: 1037px!important;
+    height: 30px!important;  
 }

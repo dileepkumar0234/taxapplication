@@ -39,7 +39,7 @@ $scope.Countries=['INDIA','US','OTHER'];
 
 function getUserData(){
   commonService.getData('GET','taxpayer-page/'+$scope.response_user.id).then(function(resp){
-    console.log("SpouseInfo",resp);
+   // console.log("SpouseInfo",resp);
     commonService.stopSpinner();
     $scope.user = resp.data.data;
     $scope.oldData=angular.copy($scope.user);
@@ -69,9 +69,11 @@ function getUserData(){
     {id: 8, text: 'Payment Pending'},
     {id: 9, text: 'Review Pending'},
     {id: 10, text: 'Confirmation Pending'},
-    {id: 11, text: 'Filing Pending'},
-    {id: 12, text: 'E-Filing Complete'},
-    {id: 13, text: 'Filing Docs Sent'}
+    {id: 11, text: 'E-Filing Pending'},
+  {id: 12, text: 'Paper-Filing Pending'},
+  {id: 13, text: 'E-Filing Complete'},
+  {id: 14, text: 'Filing Docs Sent'},
+  {id: 15, text: 'Cancel Filing'}
     ];
 
     

@@ -1,231 +1,232 @@
 <div class="right_content admin">
-    <nav ng-if="home_banner" class="navbar admin-navbar navbar-default">
-      <div class="container-fluid" style="padding:0;">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
+  <img class="loadImg" ng-if="uploading.update" src="images/animatedEllipse.gif"/>
+  <nav ng-if="home_banner" class="navbar admin-navbar navbar-default">
+    <div class="container-fluid" style="padding:0;">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
         </button>
         <a class="navbar-brand" href="#">Home</a>
-    </div>
+      </div>
 
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <!-- <ul class="nav navbar-nav">
         
         
         
     </ul> -->
     <form class="navbar-form navbar-left " role="search">
-        <div class="form-group">
+      <div class="form-group">
         <select style="color:black;" class="btn" ng-model="selectedCol" ng-change="getSortMethod(selectedCol)" ng-options="item for item in cols"></select>
-          <input type="text" name="search" ng-model="searchColText.search" class="form-control" placeholder="Search">
+        <input type="text" name="search" ng-model="searchColText.search" class="form-control" placeholder="Search">
       </div>
       <button type="submit" class="btn btn-default" ng-click="SearchCategory()">Submit</button>
-  </form>
-  <ul class="nav navbar-nav navbar-left pull-right">
-    <li><a href="#" ng-click="RefreshGrid($event,'total')">All Clinets</a></li>
-    <li><a href="#">Payments</a></li>
-    <li><a href="#" ng-click="getTotalReferals($event)"> Referrals  </a></li>
-    <li><a href="#" ng-click="RefreshGrid($event,2)"> Schedules </a></li>
-    <li><a href="#">Emails  </a></li>
-    <li><a href="#" ng-click="inquires($event)">  Want us to call?</a></li>
-</ul>
-</div><!-- /.navbar-collapse -->
+
+    </form>
+   <button type="submit" style="margin-top:10px;" class="btn btn-default pull-right" ng-click="logout()">Log Out</button>
+    <ul class="nav navbar-nav navbar-left pull-right">
+      <li><a href="#" ng-click="RefreshGrid($event,'total')">All Clinets</a></li>
+      <li><a href="#">Payments</a></li>
+      <li><a href="#" ng-click="getTotalReferals($event)"> Referrals  </a></li>
+      <li><a href="#" ng-click="RefreshGrid($event,2)"> Schedules </a></li>
+      <li><a href="#">Emails  </a></li>
+      <li><a href="#" ng-click="inquires($event)">  Want us to call?</a></li>
+
+    </ul>
+  </div><!-- /.navbar-collapse -->
 </div><!-- /.container-fluid -->
 </nav>
 <div ng-if="home_banner" class="col-md-12">
-    <h1>Welcome Admin!!!</h1>
+  <h1>Welcome Admin!!!</h1>
 
 </div>
 <div ng-if="home_banner&&allUsers==''" class="col-md-12"><h1>No Records Found</h1></div>
-<div ng-if="home_banner&&allUsers!=''" style="padding:0;" class="col-md-12 gridStyle" ng-grid="gridOptions"></div>
+<div ng-if="home_banner&&allUsers!=''&&!userSelected" style="padding:0;" class="col-md-12 gridStyle" ng-grid="gridOptions"></div>
 <div ng-if="home_banner&&userSelected">
-   <div class="col-md-12" style="margin-top:20px;padding:0;">
-       <div class="col-md-1 adminstates"   ng-click="getCurrentInfo($index)" ng-repeat="item in user_details_tabs"> <button  class="btn btn-primary">{{item.label}}</button></div>
-     <!-- <div class="col-md-2 no_padding"> <button  class="btn btn-primary">Basic info</button></div>
-     <div class="col-md-2 no_padding"> <button  class="btn btn-primary">Other info</button></div>
-     <div class="col-md-2 no_padding"> <button  class="btn btn-primary">Scheduling Time</button></div>
-     <div class="col-md-2 no_padding">  <button  class="btn btn-primary">Download documents</button></div>
-     <div class="col-md-2 no_padding">    <button  class="btn btn-primary">Upload documents</button></div>
-     <div class="col-md-2 no_padding">    <button  class="btn btn-primary">File no</button>  </div> 
-     <div class="col-md-2 no_padding">     <button  class="btn btn-primary">Payment info</button></div> -->
+ <div class="col-md-12" style="margin-top:20px;padding:0;">
+   <div class="col-md-1 adminstates"   ng-click="getCurrentInfo($index)" ng-repeat="item in user_details_tabs"> <button  class="btn btn-primary">{{item.label}}</button></div>
 
+   </div>
 
- </div>
- 
- <div class="col-md-12 taxpayer" ng-if="user_details_tabs[0].show">
-   <ul class="adminGroup col-md-6">
+   <div class="col-md-12 taxpayer" ng-if="user_details_tabs[0].show">
+          
+       <h1 class="synop">  <span>File Number&nbsp;:&nbsp;</span>
+         <span>{{PayerInfo.unique_code | uppercase }}</span></h1>
+     <div class="col-md-12" style="padding:0;">
+     <ul class="adminGroup col-md-6">
        <li>First Name</li>
        <li>{{PayerInfo.first_name | uppercase }}</li>
-   </ul>
-   <ul class="adminGroup col-md-6">
+     </ul>
+     <ul class="adminGroup col-md-6">
        <li>Last Name</li>
        <li>{{PayerInfo.last_name | uppercase }}</li>
-   </ul>
-   <ul class="adminGroup col-md-6">
+     </ul>
+   </div>
+     <ul class="adminGroup col-md-6">
        <li>SSN </li>
        <li>{{PayerInfo.ssnitin | uppercase}}</li>
-   </ul>
-   <ul class="adminGroup col-md-6">
+     </ul>
+     <ul class="adminGroup col-md-6">
        <li>Occupation</li>
        <li>{{PayerInfo.occupation | uppercase}}</li>
-   </ul>
-   <ul class="adminGroup col-md-6">
+     </ul>
+     <ul class="adminGroup col-md-6">
        <li>Date Of Birth</li>
        <li>{{PayerInfo.dob | uppercase}}</li>
-   </ul>
-    <ul class="adminGroup col-md-6">
+     </ul>
+     <ul class="adminGroup col-md-6">
        <li>Filing Status </li>
        <li>{{PayerInfo.filling_status | uppercase}}</li>
-   </ul>
-   <ul ng-if="PayerInfo.dependent=='2'" class="adminGroup col-md-6">
+     </ul>
+     <ul ng-if="PayerInfo.dependent=='2'" class="adminGroup col-md-6">
        <li>Dependents: </li>
        <li>YES</li>
-   </ul>
-   <ul ng-if="PayerInfo.dependent=='1'" class="adminGroup col-md-6">
+     </ul>
+     <ul ng-if="PayerInfo.dependent=='1'" class="adminGroup col-md-6">
        <li>Dependents: </li>
        <li>NO</li>
-   </ul>
-   <ul class="adminGroup col-md-6">
+     </ul>
+     <ul class="adminGroup col-md-6">
        <li>EMail</li>
        <li>{{PayerInfo.email | uppercase }}</li>
-   </ul>
-   <ul class="adminGroup col-md-6">
+     </ul>
+     <ul class="adminGroup col-md-6">
        <li>Mobile</li>
        <li>{{PayerInfo.phone | uppercase }}</li>
-   </ul>
- 
-   
-   <ul class="adminGroup col-md-6">
+     </ul>
+
+
+     <ul class="adminGroup col-md-6">
        <li>Alternative Number</li>
        <li>{{PayerInfo.alterphone | uppercase }}</li>
-   </ul>
+     </ul>
      <ul class="adminGroup col-md-6">
        <li>Address</li>
-      <!--  <li>{{PayerInfo.address | uppercase }}</li> -->
+       <!--  <li>{{PayerInfo.address | uppercase }}</li> -->
        <li>{{PayerInfo.apt_no | uppercase }}</li>
-   </ul>
-   <ul class="adminGroup col-md-6">
+     </ul>
+     <ul class="adminGroup col-md-6">
        <li>City</li>
-     
-       <li>{{PayerInfo.city_name | uppercase }}</li>
-   </ul>
-   <ul class="adminGroup col-md-6">
-       <li>State</li>
-     
-       <li>{{PayerInfo.state_name | uppercase }}</li>
-   </ul>
-   <ul class="adminGroup col-md-6">
-       <li>Country</li>
-      
-       <li>{{PayerInfo.country_name | uppercase }}</li>
-   </ul>
-    <ul class="adminGroup col-md-6">
-       <li>ZIP</li>
-      
-       <li>{{PayerInfo.zip | uppercase }}</li>
-   </ul>
-   <!--tax_id_type  -->
-<ul class="adminGroup col-md-6">
-       <li>Health Insurance:</li>
-      
-       <li>{{PayerInfo.tax_id_type | uppercase }}</li>
-   </ul>
 
-   <ul class="adminGroup col-md-6">
+       <li>{{PayerInfo.city_name | uppercase }}</li>
+     </ul>
+     <ul class="adminGroup col-md-6">
+       <li>State</li>
+
+       <li>{{PayerInfo.state_name | uppercase }}</li>
+     </ul>
+     <ul class="adminGroup col-md-6">
+       <li>Country</li>
+
+       <li>{{PayerInfo.country_name | uppercase }}</li>
+     </ul>
+     <ul class="adminGroup col-md-6">
+       <li>ZIP</li>
+
+       <li>{{PayerInfo.zip | uppercase }}</li>
+     </ul>
+     <!--tax_id_type  -->
+     <ul class="adminGroup col-md-6">
+       <li>Health Insurance:</li>
+
+       <li>{{PayerInfo.tax_id_type | uppercase }}</li>
+     </ul>
+
+     <ul class="adminGroup col-md-6">
        <li>Client Location</li>
        <li>{{PayerInfo.c_location | uppercase }}</li>
-   </ul>
-   <ul class="adminGroup col-md-6">
+     </ul>
+     <ul class="adminGroup col-md-6">
        <li>Current Employer</li>
        <li>{{PayerInfo.current_emp | uppercase }}</li>
-   </ul>
-   
-   
-  
-</div>
+     </ul>
 
-<div class="col-md-12 taxpayer" style="overflow:scroll;height:450px;" ng-if="user_details_tabs[1].show">
-<h1>Spouse Information</h1>
+
+
+   </div>
+
+   <div class="col-md-12 taxpayer" style="overflow:scroll;height:700px;" ng-if="user_details_tabs[1].show">
+    <h1>Spouse Information</h1>
     <div class="col-md-12">
 
       <ul class="adminGroup col-md-6">
-           <li>First Name</li>
-           <li>{{SpouseInfo.first_name | uppercase}}</li>
-       </ul>
-      <ul class="adminGroup col-md-6">
-          <li>Last Name</li>
-          <li>{{SpouseInfo.last_name | uppercase }}</li>
-      </ul>
-      <ul class="adminGroup col-md-6">
-          <li>SSN</li>
-          <li>{{SpouseInfo.ssn | uppercase }}</li>
-      </ul>
-      <ul class="adminGroup col-md-6">
-       <li>Occupation</li>
-       <li>{{SpouseInfo.occupation | uppercase }}</li>
+       <li>First Name</li>
+       <li>{{SpouseInfo.first_name | uppercase}}</li>
+     </ul>
+     <ul class="adminGroup col-md-6">
+      <li>Last Name</li>
+      <li>{{SpouseInfo.last_name | uppercase }}</li>
+    </ul>
+    <ul class="adminGroup col-md-6">
+      <li>SSN</li>
+      <li>{{SpouseInfo.ssn | uppercase }}</li>
+    </ul>
+    <ul class="adminGroup col-md-6">
+     <li>Occupation</li>
+     <li>{{SpouseInfo.occupation | uppercase }}</li>
    </ul>
-     
-     
-  <ul class="adminGroup col-md-6">
-       <li>Date Of Birth</li>
-       <li>{{SpouseInfo.dob | uppercase }}</li>
+
+
+   <ul class="adminGroup col-md-6">
+     <li>Date Of Birth</li>
+     <li>{{SpouseInfo.dob | uppercase }}</li>
    </ul>
    <ul class="adminGroup col-md-6">
-          <li>Visa Type</li>
-          <li>{{SpouseInfo.visa_type | uppercase }}</li>
-      </ul>
+    <li>Visa Type</li>
+    <li>{{SpouseInfo.visa_type | uppercase }}</li>
+  </ul>
      <!--  <ul class="adminGroup col-md-6">
           <li>Mobile</li>
           <li>{{SpouseInfo.phone | uppercase }}</li>
-      </ul> -->
-</div>
+        </ul> -->
+      </div>
 
-<div class="col-md-6" ng-repeat="dependantInfo in dependants">
-   <h1>Dependant{{$index+1}}</h1>
-   <ul class="adminGroup col-md-12">
-       <li>First Name</li>
-       <li>{{dependantInfo.first_name | uppercase }}</li>
-   </ul>
-   <ul class="adminGroup col-md-12">
-      <li>Last Name</li>
-      <li>{{dependantInfo.last_name | uppercase }}</li>
-  </ul>
-  <ul class="adminGroup col-md-12">
-      <li>SSN</li>
-      <li>{{dependantInfo.address | uppercase }}</li>
-  </ul>
-  <ul class="adminGroup col-md-12">
-      <li>DOB</li>
-      <li>{{dependantInfo.dob | uppercase }}</li>
-  </ul>
-  <ul class="adminGroup col-md-12">
-      <li>Relationship</li>
-      <li>{{dependantInfo.occupation | uppercase }}</li>
-  </ul>
-  
-<ul class="adminGroup col-md-12">
-   <li>Visa Type:</li>
-   <li>{{dependantInfo.mail_id | uppercase}}</li>
-</ul>
-</div>
-</div>
+      <div class="col-md-6" ng-repeat="dependantInfo in dependants">
+       <h1>Dependant{{$index+1}}</h1>
+       <ul class="adminGroup col-md-12">
+         <li>First Name</li>
+         <li>{{dependantInfo.first_name | uppercase }}</li>
+       </ul>
+       <ul class="adminGroup col-md-12">
+        <li>Last Name</li>
+        <li>{{dependantInfo.last_name | uppercase }}</li>
+      </ul>
+      <ul class="adminGroup col-md-12">
+        <li>SSN</li>
+        <li>{{dependantInfo.address | uppercase }}</li>
+      </ul>
+      <ul class="adminGroup col-md-12">
+        <li>DOB</li>
+        <li>{{dependantInfo.dob | uppercase }}</li>
+      </ul>
+      <ul class="adminGroup col-md-12">
+        <li>Relationship</li>
+        <li>{{dependantInfo.occupation | uppercase }}</li>
+      </ul>
 
-<div class="col-md-12 taxpayer" ng-if="user_details_tabs[2].show">
- <div ng-repeat="item in scheduleInfo">
-   <ul class="adminGroup col-md-6">
+      <ul class="adminGroup col-md-12">
+       <li>Visa Type:</li>
+       <li>{{dependantInfo.mail_id | uppercase}}</li>
+     </ul>
+   </div>
+ </div>
+
+ <div class="col-md-12 taxpayer" ng-if="user_details_tabs[2].show">
+   <div ng-repeat="item in scheduleInfo">
+     <ul class="adminGroup col-md-6">
        <li>Schedule Date</li>
        <li>{{item.schedule_dt | uppercase }}</li>
-  </ul>
-   <ul class="adminGroup col-md-6">
+     </ul>
+     <ul class="adminGroup col-md-6">
       <li>Schedule Time</li>
       <li>{{item.schedule_period | uppercase }}</li>
- </ul>
- </div>
+    </ul>
+  </div>
 </div>
 
 <!-- <div class="col-md-12 taxpayer" ng-if="user_details_tabs[3].show">
@@ -251,100 +252,106 @@
 </ul>
 
 </div>
- -->
-<div class="col-md-12 taxpayer" ng-if="user_details_tabs[3].show">
+-->
+<div class="col-md-12 taxpayer" ng-if="user_details_tabs[3].show && noData">
   <ul ng-if="uploads.w2pdf!=''" class="adminGroup col-md-6">
    <li>W-2</li>
    <li><a download href="services{{file_path}}/{{uploads.w2pdf}}">Download</a></li>
-</ul>
-<ul ng-if="uploads.healthcard!=''" class="adminGroup col-md-6">
+ </ul>
+ <ul ng-if="uploads.healthcard!=''" class="adminGroup col-md-6">
    <li>Other Misc Docs</li>
    <li><a download href="services{{file_path}}/{{uploads.healthcard}}">Download</a></li>
-</ul>
-<ul ng-if="uploads.hsa!=''" class="adminGroup col-md-6">
+ </ul>
+ <ul ng-if="uploads.hsa!=''" class="adminGroup col-md-6">
    <li>HSA / 5498</li>
    <li><a download href="services{{file_path}}/{{uploads.hsa}}">Download</a></li>
-</ul>
-<ul ng-if="uploads.ira!=''" class="adminGroup col-md-6">
+ </ul>
+ <ul ng-if="uploads.ira!=''" class="adminGroup col-md-6">
    <li>IRA / 1099-R </li>
    <li><a download href="services{{file_path}}/{{uploads.ira}}">Download</a></li>
-</ul>
-<ul ng-if="uploads.p1099Int!=''" class="adminGroup col-md-6">
+ </ul>
+ <ul ng-if="uploads.p1099Int!=''" class="adminGroup col-md-6">
    <li>1099 INT / DIV/ B / MISC</li>
    <li><a download href="services{{file_path}}/{{uploads.p1099Int}}">Download</a></li>
-</ul>
+ </ul>
 
 </div>
+<div class="col-md-12 taxpayer" ng-if="user_details_tabs[3].show && !noData">
+  <h1>No Records Found!</h1>
+</div>
 
-
-<div class="col-md-12 taxpayer" ng-if="user_details_tabs[4].show">
-<ul class="adminGroup col-md-6">
+<div class="col-md-12 taxpayer" id="synopsysUpload" ng-if="user_details_tabs[4].show">
+   <h1 class="synop">  <span>File Number&nbsp;:&nbsp;</span>
+         <span>{{fileNumber | uppercase }}</span></h1>
+         <div class="col-md-12" style="padding:0">
+  <ul class="adminGroup col-md-6">
     <li class="uploadAdmin">Title</li>
     <li class="uploadAdmin"> <input  type="text" name="synopsys_title"  ng-model="synopsys_title" class="form-control" id="email"></li>
     
-</ul>
-  <ul class="adminGroup col-md-6">
+  </ul>
+  <ul class="adminGroup col-md-6 synop">
     <li class="uploadAdmin">Upload Synopsys</li>
     <li class="uploadAdmin"> <input  type="file" name="fname"  file-model="myFile" class="form-control" id="email"></li>
     
-</ul>
-<ul class="adminGroup col-md-6">
-    
-    <li class="uploadAdmin"><button  type="submit"  id="uploadsynopsys" class="btn btn-primary" id="email">UPLOAD</li>
-</ul>
-
-<h2 style="color:black;">Previous Tax Summary:</h2>
-
-    <div  class="col-md-12 taxpayer" >
-  <ul class="adminGroup col-md-12" ng-repeat="item in synopsys_file track by $index">
-   <li>{{item.synopsys_title}}</li>
-   <!-- <li><a  download href="ustaxfilerapis{{file_path}}/{{item.synopsys_file}}">View Tax Summary</a></li> --><li><a  download href="services{{file_path}}/{{item.synopsys_file}}">View Tax Summary</a></li>
-   
-</ul>
-
-
+  </ul>
 </div>
+  <ul class="adminGroup col-md-6 synop">
+
+    <li class="uploadAdmin"><button  type="submit"  id="uploadsynopsys" class="btn btn-primary" id="email">UPLOAD</li>
+  </ul>
+
+  <h2 ng-if="synopsys_file.length>0" class="synop" style="color:black;">Previous Tax Summary:</h2>
+
+  <div ng-if="synopsys_file.length>0" class="col-md-12 taxpayer" >
+    <ul class="adminGroup col-md-12" ng-repeat="item in synopsys_file track by $index">
+     <li>{{item.synopsys_title}}</li>
+     <!-- <li><a  download href="ustaxfilerapis{{file_path}}/{{item.synopsys_file}}">View Tax Summary</a></li> --><li><a  download href="services{{file_path}}/{{item.synopsys_file}}">View Tax Summary</a></li>
+
+   </ul>
+
+
+ </div>
 </div>
 
 <div class="col-md-12 taxpayer" style="overflow:scroll;height:450px;" ng-if="user_details_tabs[5].show">
   <ul class="adminGroup col-md-12"><li>File Number:</li><li> <label for="email">{{PayerInfo.unique_code}}</label></li></ul>
   
-     <!--  <input type="checkbox" ng-repeat="role in states"  ng-change="changeState($index)" ng-model="role.checked"> {{role.text}} -->
-    
-    <ul class="adminGroup col-md-12"> <li>File Status:</li>
+  <!--  <input type="checkbox" ng-repeat="role in states"  ng-change="changeState($index)" ng-model="role.checked"> {{role.text}} -->
 
-     <li><select style="color:black;" ng-options="item.text for item in states" ng-model="PayerInfo.ps_state"  ng-change="changeState(PayerInfo.ps_state)">
-  </select>
-  </li>
-  </ul>
-  
-    <ul class="adminGroup col-md-12">
-    <li class="uploadAdmin">Comments:</li>
-    <li class="uploadAdmin"> <input  type="text" name="fname" ng-model="userstatus.comment" class="form-control" id="email"></li>
-    
+  <ul class="adminGroup col-md-12"> <li>File Status:</li>
+
+   <li><select style="color:black;" ng-options="item.text for item in states" ng-model="PayerInfo.ps_state"  ng-change="changeState(PayerInfo.ps_state)">
+   </select>
+ </li>
+</ul>
+
+<ul class="adminGroup col-md-12">
+  <li class="uploadAdmin">Comments:</li>
+  <li class="uploadAdmin"> <textarea  type="text" name="fname" ng-model="userstatus.comment" class="form-control" id="email"></textarea></li>
+
 </ul>
 <ul class="adminGroup col-md-6">
-<li class="uploadAdmin">
-<button class="btn btn-primary" ng-click="updateStatus()">Push to State</button>
-</li>
+  <li class="uploadAdmin">
+    <button class="btn btn-primary" ng-click="updateStatus()">Push to State</button>
+  </li>
 
-  </ul>
-  <ul class="adminGroup col-md-12">
+</ul>
+<ul ng-if="TotalComments.length>0" class="adminGroup col-md-12">
   <li><h2>Comments:</h2></li>
-  </ul>
-  <ul class="adminGroup col-md-12" ng-repeat="item in TotalComments">
-   <li>{{item.first_name}} @ {{item.cmt_created_at}}</li>
-  <li>{{item.comment}}</li>
-  </ul>
+</ul>
+<ul class="adminGroup col-md-12" ng-if="TotalComments.length>0"  ng-repeat="item in TotalComments">
+ <li>{{item.first_name}} @ {{item.cmt_created_at}}</li>
+ <li>{{item.comment}}</li>
+</ul>
 </div>
 
 <div class="col-md-12" ng-if="user_details_tabs[6].show">
-   <h1>Payment Status & Paid Amount</h1>
+ <h1>Payment Status & Paid Amount</h1>
 </div>
 <div class="col-md-12 taxpayer" ng-if="user_details_tabs[7].show">
-   
-   <ul class="adminGroup">
-                  <li>  <label for="email">Assign To :</label></li>
+
+ <ul class="adminGroup">
+  <li>  <label for="email">Assign To :</label></li>
 </li><select style="color:black;" ng-options="item.user_name  for item in UnListMembers" ng-model="assignInfo" ng-change="assignedChange(assignInfo)"></select>
 </li>
 </ul>

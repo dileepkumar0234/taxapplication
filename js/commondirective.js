@@ -1,4 +1,4 @@
-appinstal.directive('fileChange', function ($http,commonService,webServiceUrl,$timeout) {
+appinstal.directive('fileChange', function ($http,commonService,webServiceUrl,$timeout,$q) {
 
   var linker = function ($scope, element, attributes) {
 
@@ -20,7 +20,6 @@ appinstal.directive('fileChange', function ($http,commonService,webServiceUrl,$t
       var files = event.target.files[0];
       var form_data= new FormData();        
       form_data.append("file", files) ;
-      
       
       $http.post(webServiceUrl+'uploadPdfs-page', form_data, {
 
@@ -54,12 +53,18 @@ appinstal.directive('fileChange', function ($http,commonService,webServiceUrl,$t
 
 
 
-appinstal.directive('fileModel', ['$parse','$http','$state', function ($parse,$http,$state) {
+appinstal.directive('fileModel', ['$parse','$http','$state','$compile','$timeout', function ($parse,$http,$state,$compile,$timeout) {
   return {
     restrict: 'A',
     link: function(scope, element, attrs) {
       console.log(scope);
       element.bind('change', function (event) {
+        scope.uploading.update= true;
+      scope.$apply();
+      $timeout(function(){
+        scope.uploading.update= false;
+        scope.$apply();
+      },10000)
            // var key="hid_"+attributes.ngModel;
            var files = event.target.files[0];
            scope.form_data= new FormData(); 
@@ -79,6 +84,10 @@ appinstal.directive('fileModel', ['$parse','$http','$state', function ($parse,$h
 
           alert('File Uploaded Successfully!');
           $state.reload();
+         // $compile(angular.element('#synopsysUpload'))(scope);
+         // scope.synopsys_title = undefined;
+          //scope.getCurrentInfo(scope.currentTab);
+
         })
         .error(function(){
         });

@@ -6,7 +6,8 @@ $scope.uploading={};
 $scope.uploading.update = false;
 
  $scope.uploadDocuments = function(){
-  console.log($scope.x);
+ 
+ // console.log($scope.x);
   if(!$scope.x.hid_Hsa){
     $scope.x.hid_Hsa =$scope.x.hsa;
     }

@@ -72,21 +72,25 @@ $scope.status=[];
       }
        });
     }
+    //console.log($scope.dependants);
  
 });
+
 }
 $scope.getDependants();
 
 
 $scope.UpdateDependants = function(dependent_form){
- if(dependent_form.$invalid==true){
-  alert('Please Fill the Form');
-  return false;
- }
+ 
+ var count = 0;
   angular.forEach($scope.dependants,function(val,key){
+    if(val.address=='' || val.address==undefined){
+    count = count+1;
+    }
+
               if(val.dob!=""){
   if(val.dob)
-var date_to_send=val.dob.getDate().toString()+"-"+(val.dob.getMonth()+1).toString()+"-"+val.dob.getFullYear().toString();
+  var date_to_send=val.dob.getDate().toString()+"-"+(val.dob.getMonth()+1).toString()+"-"+val.dob.getFullYear().toString();
   else
     date_to_send="";
    
@@ -94,7 +98,10 @@ var date_to_send=val.dob.getDate().toString()+"-"+(val.dob.getMonth()+1).toStrin
  }
  });
 
- 
+ if(count!=0){
+   alert('Please Fill the Form');
+  return false;
+ }
 
   commonService.getData('POST','dependent-page',{dep:$scope.dependants}).then(function(resp){
    
@@ -122,6 +129,7 @@ $scope.dependants.splice(index,1);
 $scope.addMore = function(){
   var new_one = createDependant();
   $scope.dependants.push(new_one);
+  $scope.status.push({opened: false});  
 }
 
 $scope.editMode = /*true*/false;
