@@ -51,27 +51,30 @@ angular.module("myapp").controller("UmprireTaxController",['$scope','$rootScope'
   }
 
   $scope.contactform ={};
-  $scope.contactusService = function(form,data){
-    if(form.$invalid){
+  $scope.contactusService = function(formValid,data){
+    if(formValid==true){
       return false;
     }
-    commonService.getData('POST','contact-us',data).then(function(resp){
+    else{
+     commonService.getData('POST','contact-us',data).then(function(resp){
 
-     $scope.contactform ={};
-     $scope.willcontact=true;
-     $timeout(function(){
-      alert('We Will Reach you Shortly!');
-      $scope.willcontact=false;
-    },5000);
-   });
+       $scope.contactform ={};
+       $scope.willcontact=true;
+       $timeout(function(){
+        alert('We Will Reach you Shortly!');
+        $scope.willcontact=false;
+      },5000);
+     });
+   }
+   
 
-  };
+ };
 
 
 
 
-$scope.referals= function(){
-  
+ $scope.referals= function(){
+
   $scope.referalmodalInstance = $uibModal.open({
     templateUrl: 'templates/referafriend.html',
     controller:'logInCtrl',

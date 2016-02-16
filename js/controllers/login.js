@@ -40,10 +40,11 @@
   commonService.getData('GET','taxpayer-page/'+id).then(function(resp){
     $rootScope.userData= resp.data.data;
     });
- $scope.referRegister = function (friend) {
+ $scope.referRegister = function (friend,valid) {
   
   
-
+if(valid==true)
+  return false;
      
    var user_data= {rf_on_name:$scope.userData.first_name,rf_on_email:$scope.userData.email,rf_on_phone:$scope.userData.phone};
   var referal_data= angular.extend(user_data,$scope.friend);

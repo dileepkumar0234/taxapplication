@@ -1,4 +1,17 @@
-<div ng-show="showFooter" class="ngFooterPanel" ng-class="{'ui-widget-content': jqueryUITheme, 'ui-corner-bottom': jqueryUITheme}" style="width: 1037px;height: 55px;">
+<span class="col-md-2" style="margin-top:25px;">Total Items : {{totalServerItems}}</span>
+<ul class="col-md-9 pagination-sm pagination ng-isolate-scope ng-valid ng-dirty ng-valid-parse" total-items="totalServerItems" ng-model="pagingOptions.currentPage" max-size="maxSize" ng-change="getPage()" boundary-links="true" num-pages="numPages">
+
+<li ng-repeat="page in EachPage" ng-class="{active: $index+1 == ActiveIndex}" class="pagination-page ng-scope"><a href="" ng-click="selectPage($index+1, $event)" class="ng-binding">{{$index+1}}</a>
+</li>
+
+</ul>
+
+<!-- 
+
+ng-class="{disabled: noPrevious()||ngDisabled}"
+<uib-pagination total-items="totalServerItems" ng-model="pagingOptions.currentPage" max-size="maxSize" ng-change="getPage()" class="pagination-sm" boundary-links="true" num-pages="numPages"></uib-pagination>
+    <h1>{{totalServerItems}}{{pagingOptions.currentPage}}{{maxSize}}</h1> -->
+<!-- <div ng-show="showFooter" class="ngFooterPanel" ng-class="{'ui-widget-content': jqueryUITheme, 'ui-corner-bottom': jqueryUITheme}" style="width: 100%;height: 55px;">
     <div class="ngTotalSelectContainer" >
         <div class="ngFooterTotalItems" ng-class="{'ngNoMultiSelect': !multiSelect}" >
             <span class="ngLabel">{{i18n.ngTotalItemsLabel}} {{maxRows()}}</span>
@@ -14,4 +27,4 @@
            
         </div>
     </div>
-</div>
+</div> -->

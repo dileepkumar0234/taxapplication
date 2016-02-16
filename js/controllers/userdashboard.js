@@ -45,7 +45,9 @@ $scope.$on('refered',function(){
   //console.log('triggered');
 $scope.referRegister();
 });
-$scope.referRegister = function(friendReference){
+$scope.referRegister = function(friendReference,valid){
+  if(valid==true)
+    return false;
   if(friendReference.$invalid==true){
     alert('Please Fill the Form!');
     return false;

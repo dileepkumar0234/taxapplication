@@ -11,7 +11,7 @@ angular.module("myapp").controller("admin",['$scope','$rootScope','$state','$uib
 	$scope.cols=[];
 	$scope.searchColText={};
 	$scope.uploading={};
-	
+
 	$scope.AlreadyAssigned = true;
 	$scope.coldefs=ColDefs.Basic;
 	$scope.states = States;
@@ -51,12 +51,12 @@ angular.module("myapp").controller("admin",['$scope','$rootScope','$state','$uib
 	}
 
 	function SetPagination(){
+		console.info('Hi:::',$scope.allUsers);
 		$scope.pagingOptions = {
-		pageSizes: [10,20,50],
-		pageSize: 20,
-		currentPage: 1
-	    };
-		$scope.pagingOptions.currentPage= 1;
+			pageSize: 20,
+			currentPage: 1
+		};
+		//$scope.pagingOptions.currentPage= 1;
 		if(!$scope.$$phase)
 			$scope.$apply();
 		$scope.backupCopy = angular.copy($scope.allUsers);
@@ -64,6 +64,31 @@ angular.module("myapp").controller("admin",['$scope','$rootScope','$state','$uib
 
 	}
 	HomeBanner();
+    $scope.pageSize = 20;
+	$scope.setPagingData = function(data, page){
+		console.log(data,page);
+		$scope.ActiveIndex = page;
+		var data = $scope.backupCopy;
+
+		var pagedData = data.slice((page - 1) * $scope.pageSize, page * $scope.pageSize);
+		$scope.allUsers = pagedData;
+		$scope.totalServerItems = $scope.backupCopy.length;
+		$scope.pages = Math.ceil($scope.totalServerItems / $scope.pageSize);
+		$scope.EachPage = [];
+		for(var i=0;i<$scope.pages;i++)
+		$scope.EachPage.push(i);
+		//console.log($scope.pages,$scope.totalServerItems);
+		$scope.maxSize = 5;
+		if (!$scope.$$phase) {
+			$scope.$apply();
+		}
+	};
+
+	$scope.selectPage = function(index,e){
+		console.log("CLicked:::",index,e);
+		$scope.setPagingData($scope.backupCopy,index);
+
+	}
 	
 	$scope.getTotalReferals = function(e){	
 		
@@ -120,22 +145,16 @@ angular.module("myapp").controller("admin",['$scope','$rootScope','$state','$uib
 		else
 			$scope.allUsers=$scope.sortedList;
 	}
-	$scope.setPagingData = function(data, page, pageSize){
-		var data = $scope.backupCopy;
-		var pagedData = data.slice((page - 1) * pageSize, page * pageSize);
-		$scope.allUsers = pagedData;
-		$scope.totalServerItems = $scope.backupCopy.length;
-		if (!$scope.$$phase) {
-			$scope.$apply();
-		}
-	};
+	
 
-	$scope.$watch('pagingOptions', function (newVal, oldVal) {
-		if (newVal !== oldVal || newVal.currentPage !== oldVal.currentPage) {
-			$scope.setPagingData($scope.allUsers,$scope.pagingOptions.currentPage,$scope.pagingOptions.pageSize);
-		}
-	}, true);
-
+	/*$scope.$watch('pagingOptions.currentPage', function (newVal, oldVal) {
+		console.log(newVal,oldVal);
+		if(newVal)
+			if (newVal !== oldVal) {
+				$scope.setPagingData($scope.allUsers,$scope.pagingOptions.currentPage,$scope.pagingOptions.pageSize);
+			}
+		}, true);
+*/
 
 	commonService.getData('GET','user-list').then(function(resp){
 

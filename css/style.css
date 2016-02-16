@@ -1740,8 +1740,8 @@ padding: 32px;
     float: left;
 }
 .ngTopPanel{
-    width: 1037px!important;
-    height: 30px!important;
+   /* width: 1037px!important;
+    height: 30px!important;*/
 }
 .ngGroupPanel{
    width: 1037px!important;

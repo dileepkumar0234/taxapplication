@@ -104,7 +104,7 @@
                         <div class="s-12"><textarea ng-model="contactform.c_message" placeholder="Your Message" name=""
                                                     rows="5"></textarea></div>
                         <div class="s-12 m-12 l-4">
-                            <button ng-click="contactusService(contactus,contactform)" class="color-btn" type="submit">Submit
+                            <button ng-click="contactusService(contactus.$invalid,contactform)" class="color-btn" type="submit">Submit
                             </button>
                         </div>
                     </form>
