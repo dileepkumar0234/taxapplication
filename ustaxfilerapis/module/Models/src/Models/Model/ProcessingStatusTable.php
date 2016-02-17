@@ -172,9 +172,10 @@ class ProcessingStatusTable
 		$select = $this->tableGateway->getSql()->select();
 		$select->join('user', new Expression('processing_status.ps_user_id=user.user_id'),array('*'),'left');
 		$select->join('user_details', new Expression('user_details.u_user_id=user.user_id'),array('*'),'left');
-		$select->join('payments', new Expression('payments.p_user_id=user.user_id'),array('*'),'left');
-		$select->where('processing_status.ps_state="'.$state.'"');
+		$select->join('payments', new Expression('payments.p_user_id=user.user_id'),array('*'),'left');		
+		$select->group('user.user_id');
 		$select->order('processing_status.ps_updated_at DESC');
+		$select->where('processing_status.ps_state="'.$state.'"');
 		$resultSet = $this->tableGateway->selectWith($select);	
 		return $resultSet;		
 	}
